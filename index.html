@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Morningstar</title>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Plotly -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <!-- jquery UI & mousewheel -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <!-- bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- jquery UI stylesheet -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+
+    <!-- HTML Codes by Quackit.com -->
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        /* css override for morningstar table */
+
+        .table-striped tr:nth-child(odd) td {
+            background-color: #f9f9f9;
+        }
+
+        .table tr:hover td,
+        .table-striped tr:nth-child(odd):hover td,
+        .table-striped tr:nth-child(even):hover td {
+            background-color: #d4e3f2;
+        }
+
+        th,
+        td {
+            white-space: nowrap;
+            line-height: 9px;
+            min-height: 9px;
+            height: 9px;
+        }
+
+
+        /* css to freeze pane */
+        .tab-pane {
+            overflow: auto;
+            width: 100%;
+            height: 80vh;
+        }
+
+        th {
+            background-color: white;
+        }
+
+        table {
+            table-layout: auto;
+            width: 100%;
+        }
+
+        td:first-child,
+        th:first-child {
+            position: sticky;
+            left: 0;
+            z-index: 1;
+            background-color: white;
+        }
+
+        thead tr th {
+            position: sticky;
+            top: 0;
+        }
+
+        th:first-child {
+            z-index: 2
+        }
+
+        .clear-both {
+            clear: both;
+        }
+
+        .inputfield{
+            height: 25px;
+        }
+
+        .w-ticker{
+            width: 250px;
+        }
+
+        .w-ccy{
+            width: 60px;
+        }
+
+        .w-name{
+            width: 350px;
+        }
+
+        .w-tr{
+            width: 100px;
+        }
+
+        /* for chart overlay */
+        .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.6;
+            opacity: .60;
+            filter: alpha(opacity=66);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 5vh;
+            /* left: 5%; */
+            width: 100%;
+            height: 90vh;
+            padding: 3px;
+            border: 1px solid gray;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+    <!-- /************************************/
+        // for PLOTLY CHART
+        /************************************/ -->
+
+    <div id="light" class="white_content">
+    <p style='text-align: right'><a href="javascript:void(0)" onclick="closeChart()">CLOSE</a>
+    </p>
+
+    <!-- PLOTLY CHART STARTS -->
+
+    <!-- from/to dates input fields -->
+    <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">From</span>
+            </div>
+            <input id="startDate" type="text" class="form-control" aria-label="startDate"
+                aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">To</span>
+            </div>
+            <input id="endDate" type="text" class="form-control" aria-label="endDate"
+                aria-describedby="inputGroup-sizing-sm">
+    </div>
+
+    <button class="btn btn-light btn-sm" onclick="makePlotly()">Chart</button>
+    <button class="btn btn-light btn-sm" onclick="clearAll()">Clear All</button>
+
+    <!-- ticker, currency, name and return input fields -->
+        <div class="clear-both">
+        <div class="w-ticker float-left"><input id="ticker01" type="text" class="form-control inputfield"
+                aria-label="ticker01" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-ccy float-left"><input id="ccy01" type="text" class="form-control inputfield" aria-label="ccy01"
+                aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-name float-left"><input id="name01" type="text" class="form-control inputfield"
+            aria-label="name01" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-tr float-left"><input id="tr01" type="text" class="form-control inputfield"
+            aria-label="tr01" aria-describedby="inputGroup-sizing-sm"></div>
+        </div>
+
+        <div class="clear-both">
+        <div class="w-ticker float-left"><input id="ticker02" type="text" class="form-control inputfield"
+                aria-label="ticker02" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-ccy float-left"><input id="ccy02" type="text" class="form-control inputfield" aria-label="ccy02"
+                aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-name float-left"><input id="name02" type="text" class="form-control inputfield"
+            aria-label="name02" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-tr float-left"><input id="tr02" type="text" class="form-control inputfield"
+            aria-label="tr02" aria-describedby="inputGroup-sizing-sm"></div>
+        </div>
+
+        <div class="clear-both">
+        <div class="w-ticker float-left"><input id="ticker03" type="text" class="form-control inputfield"
+                aria-label="ticker03" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-ccy float-left"><input id="ccy03" type="text" class="form-control inputfield" aria-label="ccy03"
+                aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-name float-left"><input id="name03" type="text" class="form-control inputfield"
+            aria-label="name03" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-tr float-left"><input id="tr03" type="text" class="form-control inputfield"
+            aria-label="tr03" aria-describedby="inputGroup-sizing-sm"></div>
+        </div>
+
+        <div class="clear-both">
+        <div class="w-ticker float-left"><input id="ticker04" type="text" class="form-control inputfield"
+                aria-label="ticker04" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-ccy float-left"><input id="ccy04" type="text" class="form-control inputfield" aria-label="ccy04"
+                aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-name float-left"><input id="name04" type="text" class="form-control inputfield"
+            aria-label="name04" aria-describedby="inputGroup-sizing-sm"></div>
+        <div class="w-tr float-left"><input id="tr04" type="text" class="form-control inputfield"
+            aria-label="tr04" aria-describedby="inputGroup-sizing-sm"></div>
+        </div>
+
+
+    <!-- charting area -->
+    <div id="comp" class="clear-both" style="height: 75%"></div>
+
+
+    <!-- PLOTLY CHART ENDS -->
+    
+    </div>
+    <div id="fade" class="black_overlay"></div>
+
+
+
+        <!-- /************************************/
+            // for PERFORMANCE TABLE
+            /************************************/ -->
+
+        <br>
+
+        <!-- bootstrap nav tabs START -->
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-mac-tab" data-toggle="tab" href="#nav-mac" role="tab"
+                    aria-controls="nav-mac" aria-selected="true">MAC</a>
+                <a class="nav-item nav-link" id="nav-hyb-tab" data-toggle="tab" href="#nav-hyb" role="tab"
+                    aria-controls="nav-hyb" aria-selected="false">HYB</a>
+                <a class="nav-item nav-link" id="nav-ghy-tab" data-toggle="tab" href="#nav-ghy" role="tab"
+                    aria-controls="nav-ghy" aria-selected="false">GHY</a>
+                <a class="nav-item nav-link" id="nav-ig-tab" data-toggle="tab" href="#nav-ig" role="tab"
+                    aria-controls="nav-ig" aria-selected="false">IG</a>
+                <a class="nav-item nav-link" id="nav-si-tab" data-toggle="tab" href="#nav-si" role="tab"
+                    aria-controls="nav-si" aria-selected="false">SI</a>
+                <a class="nav-item nav-link" id="nav-emdlc-tab" data-toggle="tab" href="#nav-emdlc" role="tab"
+                    aria-controls="nav-emdlc" aria-selected="false">EMDLC</a>
+                <a class="nav-item nav-link" id="nav-emdhc-tab" data-toggle="tab" href="#nav-emdhc" role="tab"
+                    aria-controls="nav-emdhc" aria-selected="false">EMDHC</a>
+                <a class="nav-item nav-link" id="nav-cb-tab" data-toggle="tab" href="#nav-cb" role="tab"
+                    aria-controls="nav-cb" aria-selected="false">CB</a>
+                <a class="nav-item nav-link" id="nav-eme-tab" data-toggle="tab" href="#nav-eme" role="tab"
+                    aria-controls="nav-eme" aria-selected="false">EME</a>
+                <a class="nav-item nav-link" id="nav-nbge-tab" data-toggle="tab" href="#nav-nbge" role="tab"
+                    aria-controls="nav-nbge" aria-selected="false">GE</a>
+                <a class="nav-item nav-link" id="nav-use-tab" data-toggle="tab" href="#nav-use" role="tab"
+                    aria-controls="nav-use" aria-selected="false">USE</a>
+                <a class="nav-item nav-link" id="nav-fivg-tab" data-toggle="tab" href="#nav-fivg" role="tab"
+                    aria-controls="nav-fivg" aria-selected="false">5G</a>
+                <a class="nav-item nav-link" id="nav-reit-tab" data-toggle="tab" href="#nav-reit" role="tab"
+                    aria-controls="nav-reit" aria-selected="false">REIT</a>
+                <a class="nav-item nav-link" id="nav-ar-tab" data-toggle="tab" href="#nav-ar" role="tab"
+                    aria-controls="nav-ar" aria-selected="false">AR</a>
+
+
+                <a class="nav-item nav-link" id="nav-site-tab" data-toggle="tab" href="#nav-site" role="tab"
+                    aria-controls="nav-site" aria-selected="false">SITE</a>
+                <a class="nav-item nav-link" id="nav-units-tab" data-toggle="tab" href="#nav-ucits" role="tab"
+                    aria-controls="nav-ucits" aria-selected="false">UCITS</a>
+                <a class="nav-item nav-link" id="nav-project-tab" data-toggle="tab" href="#nav-project" role="tab"
+                    aria-controls="nav-project" aria-selected="false">Project</a>
+
+                <a class="nav-item nav-link" id="nav-search-tab" data-toggle="tab" href="#nav-search" role="tab"
+                    aria-controls="nav-search" aria-selected="false">Search</a>
+            </div>
+        </nav>
+
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-mac" role="tabpanel" aria-labelledby="nav-mac-tab">
+                <table class="table table-sm table-bordered table-striped" id="mac-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-hyb" role="tabpanel" aria-labelledby="nav-hyb-tab">
+                <table class="table table-sm table-bordered table-striped" id="hyb-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-ghy" role="tabpanel" aria-labelledby="nav-ghy-tab">
+                <table class="table table-sm table-bordered table-striped" id="ghy-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-ig" role="tabpanel" aria-labelledby="nav-ig-tab">
+                <table class="table table-sm table-bordered table-striped" id="ig-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-si" role="tabpanel" aria-labelledby="nav-si-tab">
+                <table class="table table-sm table-bordered table-striped" id="si-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-emdlc" role="tabpanel" aria-labelledby="nav-emdlc-tab">
+                <table class="table table-sm table-bordered table-striped" id="emdlc-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-emdhc" role="tabpanel" aria-labelledby="nav-emdhc-tab">
+                <table class="table table-sm table-bordered table-striped" id="emdhc-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-cb" role="tabpanel" aria-labelledby="nav-cb-tab">
+                <table class="table table-sm table-bordered table-striped" id="cb-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-eme" role="tabpanel" aria-labelledby="nav-eme-tab">
+                <table class="table table-sm table-bordered table-striped" id="eme-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-nbge" role="tabpanel" aria-labelledby="nav-nbge-tab">
+                <table class="table table-sm table-bordered table-striped" id="nbge-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-use" role="tabpanel" aria-labelledby="nav-use-tab">
+                <table class="table table-sm table-bordered table-striped" id="use-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-fivg" role="tabpanel" aria-labelledby="nav-fivg-tab">
+                <table class="table table-sm table-bordered table-striped" id="fivg-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-reit" role="tabpanel" aria-labelledby="nav-reit-tab">
+                <table class="table table-sm table-bordered table-striped" id="reit-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-ar" role="tabpanel" aria-labelledby="nav-ar-tab">
+                <table class="table table-sm table-bordered table-striped" id="ar-table" style="font-size: 11px">
+                </table>
+            </div>
+
+
+            <div class="tab-pane fade" id="nav-site" role="tabpanel" aria-labelledby="nav-site-tab">
+                <table class="table table-sm table-bordered table-striped" id="site-table" style="font-size: 11px">
+                </table>
+            </div>
+            <div class="tab-pane fade" id="nav-ucits" role="tabpanel" aria-labelledby="nav-ucits-tab">
+                <table class="table table-sm table-bordered table-striped" id="ucits-table" style="font-size: 11px">
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="nav-project" role="tabpanel" aria-labelledby="nav-project-tab">
+                <table class="table table-sm table-bordered table-striped" id="project-table" style="font-size: 11px">
+                </table>
+            </div>
+
+            <div class="tab-pane fade" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">
+                <br>
+                <div class="input-group input-group-sm mb-3" style="width: 300px; float: left; margin-right: 5px">
+                    <input id="search-value" type="text" class="form-control" aria-label="Currency"
+                        aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <button class="btn btn-light btn-sm" onclick="getSearchResults()">Search</button><br>
+                <br>
+                <table class="table table-sm table-bordered table-striped" id="search-table" style="font-size: 11px">
+                </table>
+            </div>
+        </div>
+        <!-- bootstrap nav tabs END -->
+
+        <br>
+        <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Currency</span>
+            </div>
+            <input id="ccy" type="text" class="form-control" aria-label="currency"
+                aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <button class="btn btn-light btn-sm" onclick="getChart()">m*Chart</button>
+        <button class="btn btn-light btn-sm" onclick="plotlyChart()">Chart</button>
+
+        <button class="btn btn-light btn-sm" style="width: 100px" onclick="clearAll()">Clear All</button>
+
+    </div>
+
+
+    <script>
+
+
+        // store security PerformanceId as arrays here
+        mac = ['0P0001EHJ4', '0P0001EHJ8', '0P0001D2PN', '0P0000UQW0', '0P0000WB2J', '0P000136OF', '0P0000YEZO', '0P0001CMHI', '0P00000AWK', '0P00000M86', '0P000128I4', '0P000156TY', '0P0000VX16', '0P0001DFJ8', '0P00000DQ0', '0P0001DI7E', '0P00016Z1F', '0P00016Z1I', '0P0001H7TJ', '0P0001H7TM', '0P00005ZMG', '0P0001DYYM', '0P0000YYAS', '0P0000GB8V', '0P0000Z35N', '0P0000YXK7', '0P00019PJH', '0P000153C6', '0P0001ALVE']
+        hyb = ['0P0000XPV1', '0P00005ZMG', '0P00000M86', '0P0000HNYL', '0P0000JSAN', '0P0000T1CH', '0P00000SMG', '0P00000ITO', '0P0000222E', '0P00000MMW', '0P00000RWH'];
+        ghy = ['0P0000XDP7', '0P0001DYYL', '0P0001DYYM', '0P00018HXQ', '0P0001EGIM', '0P00017F6Z', '0P00018H2C', '0P0001HHQ7', '0P0001HHQ8', '0P00000M86', '0P00015K6Z', '0P00015K71', '0P00011ST6', '0P00016YM9', '0P000111FI', '0P0000ZR2L', '0P00013MJH', '0P00013MJG', '0P0000XS20', '0P00019P9W', '0P00000D78', '0P0000TCNI', '0P00000SWL', '0P000159B4', '0P0000T2WP', '0P0001DAO9', '0P0000UZ7W']
+        ig = ['0P0001IX0T','0P0001IX0X','0P000136OF','0P0001J05Q','0P0001J05L','0P00015YOJ','0P0001IIYJ','0P0001ED23','0P0001IJUC','0P0001IJUG','0P0000MQ39','0P0001HXKF','0P0001HXKH','0P00018PCT','0P0001CPBK','0P0000T1DC','0P00001VCU','0P0000F8J7','0P00000F2F'];
+        si = ['0P0000YXK7','0P0000WX1M','0P00019NID','0P000136OF','0P00019B22','0P00015YOJ','0P0001HRFR','0P0001HRJJ','0P00000M7S','0P00006D18','0P00001SUH','0P00000C35','0P0000IADE'];
+        emdlc = ['0P0000NBYF','0P0000TQ53','0P0000HNVT','0P000169QF','0P0000Z35N','0P0000ZMM0','0P0000N548','0P0001H0BW','0P0001HRJ0','0P0000SCQF','0P0000CNC5','0P00009X56','0P00006TAL','0P00009XUP','0P0000YSP3','0P00008242','0P0000T19Y','0P0001ENMV'];
+        emdhc = ['0P00009QAU','0P0000TSHS','0P0001EOLR','IE00B99K4563','0P0001KOGG','0P0001KOGE','0P00000SBZ','0P0000T19L','0P0001IWZW','0P0001IWZV','0P00000LKN','0P0001E4NN','0P0000NQIY','0P0001HSP8'];
+        cb = ['0P00019GXR','0P0001DWIQ'];
+        eme = ['0P00019K6I','0P0001BW3X','0P00000D57','0P00000SAK','0P00000B0F','0P00000RPA','0P00000B5O','0P00006AGG','0P00008WA2','0P00009XZT','0P00000AWO','0P00000SER','0P00002DAU','0P00000MNT','0P000069KY','0P00000YAN'];
+        nbge = ['0P000020Z4','0P00012UGX','0P00000EKN','0P000019WB','0P0000RWWZ','0P0000RS76'];
+        use = ['0P00002D7Z','0P00002D7X','0P000123IQ','0P00000BN2','0P00012KAY','0P00019PJH','0P00000BM0','0P00000MLI','0P00000EIA','0P0000Z2DQ','0P00000YO8','0P00000RMX','0P00000C2P','0P0000YSXN'];
+        fivg = ['0P00002D82','0P0000U0D2','0P00002D89','0P0001JWAH','0P0001HHQU','0P0001HHQT','0P0001IQXQ','0P0001F4LB','0P0000P8QS','0P0000OMVY','0P0001FEVX','0P0001FE7Q','0P0001DGHZ','0P000184IC','0P0001A3R3','0P00016UT9','0P00015XL1','0P000172XQ','0P0001881H','0P0001DZ8G','0P0001DHTS','0P0001ESKN','0P0001ESKO','0P0001FFCB','0P000199MT','0P00017WW7','0P0001F3O2','0P0001DEXG','0P0001DCYK','0P0001CHEJ','0P0001CBAC'];
+        reit = ['0P0000Z2DJ','0P00000BNH','0P00001FBD','0P00000I3H','0P00006AMH','0P00006ALZ','0P00016NKN','0P00006AGX','0P00019MTQ','0P00019MTU','0P00002D8Z'];
+        ar = ['0P00002D9L','0P00006AET','0P0001BM5F','0P0001BLA0','0P00006AHG','0P00006AAT'];
+
+        site = ['0P0001H6JA', '0P0001H6JB', '0P0001BLA0', '0P0001BLA1', '0P0001HHR1', '0P0001HHR0', '0P0001HHQY', '0P0001HHQZ', '0P0001HHR2', '0P0001HHQW', '0P0001HHQV', '0P0001HHQT', '0P0001HHQU', '0P0001HHQX', '0P0001EHJI', '0P0001EHJE', '0P0001EHJ6', '0P0001EHJA', '0P0001EHJM', '0P0001EHJJ', '0P0001EHJF', '0P0001EHJ7', '0P0001EHJB', '0P0001EHJN', '0P0001EHJG', '0P0001EHJC', '0P0001EHJ4', '0P0001EHJ8', '0P0001EHJK', '0P0001EHJH', '0P0001EHJD', '0P0001EHJ5', '0P0001EHJ9', '0P0001EHJL', '0P0001KOGL', '0P0001KOGU', '0P0001KOGK', '0P0001KOGT', '0P0001KOGJ', '0P0001KOGS', '0P0001KOGI', '0P0001KOGR', '0P0001KOGF', '0P0001KOH2', '0P0001KOGE', '0P0001KOGO', '0P0001KOGH', '0P0001KOGQ', '0P0001KOGG', '0P0001KOGP', '0P0001KOGN', '0P0001KOGW', '0P0001KOGM', '0P0001KOGV', '0P0001FWB5', '0P0001FWB0', '0P0001FWAO', '0P0001FWAU', '0P0001FWBA', '0P0001FWB7', '0P0001FWB3', '0P0001FWAR', '0P0001FWAX', '0P0001FWBB', '0P0001DYYO', '0P0001DYYN', '0P0001DYYL', '0P0001DYYM', '0P0001DYYP', '0P0001DYYW', '0P0001DYYV', '0P0001DYYT', '0P0001DYYU', '0P0001DYYX', '0P0001IX17', '0P0001IX13', '0P0001IX0V', '0P0001IX0Z', '0P0001IX1B', '0P0001IX18', '0P0001IX14', '0P0001IX0W', '0P0001IX10', '0P0001IX1C', '0P0001IX15', '0P0001IX11', '0P0001IX0T', '0P0001IX0X', '0P0001IX19', '0P0001IX16', '0P0001IX12', '0P0001IX0U', '0P0001IX0Y', '0P0001IX1A'];
+        ucits = ['0P0000YPLZ', '0P0000YYAZ', '0P0000YYB0', '0P0000YPM0', '0P00013N2T', '0P00013N2U', '0P0000Z2DI', '0P0000YPM1', '0P0000YYB1', '0P00005ZY9', '0P0000XPUY', '0P0000XPUZ', '0P0000YYB2', '0P0000XPV0', '0P0000XPV4', '0P0000YYB3', '0P00013N2V', '0P00013N2R', '0P00005ZMG', '0P0000X4PH', '0P0000XPV1', '0P0000XPV2', '0P0000YYB4', '0P0000X7OK', '0P0000YR9F', '0P00019NIB', '0P0000Z2EH', '0P0000Z2EI', '0P00013N2W', '0P00013N2S', '0P0000Z2EJ', '0P000169Q1', '0P000169Q2', '0P000169Q3', '0P000169Q4', '0P000169Q5', '0P000169Q6', '0P000169Q7', '0P000169Q9', '0P000169QA', '0P000169QB', '0P000169QC', '0P000169QD', '0P000169QE', '0P0000Z35N', '0P000169QF', '0P000169QG', '0P000169QH', '0P000169QI', '0P000169QJ', '0P000169QK', '0P000169QL', '0P000169QM', '0P000169QN', '0P000169QO', '0P000169Q8', '0P00019K6A', '0P00019K6D', '0P00019K6G', '0P00019K6J', '0P00019K69', '0P00019K6C', '0P00019K6F', '0P0000Q3I4', '0P00019K6I', '0P00019K68', '0P00019K6B', '0P00019K6E', '0P00019K6H', '0P00013N50', '0P00019NIC', '0P000123IS', '0P000123IR', '0P00013N51', '0P000123IQ', '0P0000XZZZ', '0P0000WX0O', '0P00012B6Z', '0P00012B70', '0P00013N52', '0P00012B71', '0P0000Z2DP', '0P0000YPM8', '0P0000Z2E4', '0P0000YPM2', '0P00013N56', '0P00018XGJ', '0P0000Z2DL', '0P0000YPM9', '0P00005VQH', '0P0000Z2DM', '0P0000YPM5', '0P0000Z74C', '0P0000YPM6', '0P00013N57', '0P00018XGI', '0P00005VQE', '0P0000Z2DJ', '0P0000YPM7', '0P00015KO1', '0P0000Z2EK', '0P00015KO3', '0P0000Z2EL', '0P00013N58', '0P00018XGK', '0P0000ZA73', '0P0000Z2EM', '0P00013N5C', '0P0000Z2DS', '0P0000Z2DX', '0P0000Z2DY', '0P0000TM0A', '0P0000Z2DT', '0P0000Z2DU', '0P00013N5D', '0P0000TM0C', '0P0000Z2DQ', '0P00019NIJ', '0P00013N5E'];
+        project = ['0P000020Z4','0P000019WB','0P0000WX1M','0P00019B22','0P0001HRJJ','0P00015YOJ','0P00019GXR','0P0001DWIQ'];
+
+        $(document).ready(function () {
+            getTable(mac, 'mac-table');
+            getTable(hyb, 'hyb-table');
+            getTable(ghy, 'ghy-table');
+            getTable(ig, 'ig-table');
+            getTable(si, 'si-table');
+            getTable(emdlc, 'emdlc-table');
+            getTable(emdhc, 'emdhc-table');
+            getTable(cb, 'cb-table');
+            getTable(eme, 'eme-table');
+            getTable(nbge, 'nbge-table');
+            getTable(use, 'use-table');
+            getTable(fivg, 'fivg-table');
+            getTable(reit, 'reit-table');
+            getTable(ar, 'ar-table');
+
+            getTable(site, 'site-table');
+            getTable(ucits, 'ucits-table');
+            getTable(project, 'project-table');
+        })
+
+
+
+
+        /************************************/
+        // get search results
+        /************************************/
+
+
+        function getSearchResults() {
+
+
+                var sec = document.getElementById("search-value").value;
+
+                document.getElementById("search-table").innerHTML = "";
+                // get json url
+                jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-TW";
+                jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOIRL$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
+                jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Ticker|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype";
+                jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
+                jsonUrl_pfId = "&term=" + sec;
+
+                mstarFile = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_pfId;
+
+                $.getJSON(mstarFile, function (mstar_data) {
+
+                    // append thead
+                    let thead = `
+                                <thead>
+                                    <tr>
+                                        <th>ISIN</th>
+                                        <th>SecId</th>
+                                        <th>PerformanceId</th>
+                                        <th>Ticker</th>
+                                        <th>Name</th>
+                                        <th>Currency</th>
+                                        <th>AUM</th>
+                                    </tr>
+                                </thead>
+                                `;
+
+                    $('#search-table').append(thead);
+
+                    // append tbody
+                    $('#search-table').append('<tbody>');
+
+                    let rows_data = mstar_data["rows"];
+
+
+                    rows_data.forEach(function (data) {
+
+
+                        var dec = 1; //define number of decimals
+
+                        var sec_data = '';
+                        sec_data += '<tr>';
+                        sec_data += '<td>' + data.ISIN + '</td>'
+                        sec_data += '<td>' + data.SecId + '</td>'
+                        sec_data += '<td>' + data.PerformanceId + '</td>'
+                        sec_data += '<td>' + data.Ticker + '</td>'
+                        sec_data += '<td>' + data.Name + '</td>'
+                        sec_data += '<td>' + data.PriceCurrency + '</td>'
+                        sec_data += '<td class="text-right">' + formatNumber(parseFloat(data.FundTNAV).toFixed(0)) + '</td>'
+
+                        sec_data += '</tr>';
+
+                        $('#search-table').append(sec_data);
+
+                    })
+
+                    $('#search-table').append('</tbody>');
+
+                });
+
+        }
+
+
+
+
+        /************************************/
+        // get performance table
+        /************************************/
+
+
+        async function getTable(sec, tableId) {
+
+
+                document.getElementById(tableId).innerHTML = "";
+                // get json url
+                jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-TW";
+                jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL";
+                jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype";
+                jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
+                jsonUrl_pfId = "&term=" + sec.join(" ");
+
+                mstarFile = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_pfId;
+
+                // $.getJSON(mstarFile, function (mstar_data) {
+                var mstar_data = await getJsonData(mstarFile);
+                
+
+                    // append thead
+                    let thead = `
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th></th>
+                        <th>CCY</th>
+                        <th>NAV</th>
+                        <th>1D</th>
+                        <th>1W</th>
+                        <th>1M</th>
+                        <th>3M</th>
+                        <th>6M</th>
+                        <th>YTD</th>
+                        <th>1Y</th>
+                        <th>3Y</th>
+                        <th>5Y</th>
+                        <th>AUM</th>
+                        <th>1Y SD</th>
+                        <th>3Y SD</th>
+                        <th>Date</th>
+                        <th>AUM Date</th>
+                        <th>Inception</th>
+                        <th>Pf ID</th>
+                    </tr>
+                </thead>
+                `;
+
+
+                    $('#' + tableId).append(thead);
+
+                    // append tbody
+                    $('#' + tableId).append('<tbody>');
+
+                    let rows_data = mstar_data["rows"];
+
+                    rows_data.forEach(function (data) {
+
+                        // add security token
+                        var sec_token = "";
+
+                        if (data.ISIN.slice(0, 2) == "TW") {
+                            sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL'; //TW registered
+                        } else if (data.investmenttype == "FO") {
+                            sec_token = data.SecId + ']22]0]' + 'UNIVE$$ALL'; //including ETF
+                        } else if (data.investmenttype == "IX") {
+                            sec_token = data.SecId + ']7]0]' + 'IXALL$$ALL';
+                        }
+
+                        data.SecurityToken = sec_token;
+
+                        var dec = 1; //define number of decimals
+
+                        var sec_data = '';
+                        sec_data += '<tr order="' + sec.indexOf(data.PerformanceId) + '">';
+
+                        sec_data += '<td><input type="checkbox" style="margin-right: 5px" id="' + data.PerformanceId + '" name="fund" value="' + data.SecurityToken + '"><a href="https://sfiles.cnyes.cool/funds/files/prod/' + data.PerformanceId + '/monthlyReport.pdf" target="_blank">' + data.Name + '</td>'
+                        sec_data += '<td>' + '<a href="http://globaldocuments.morningstar.com/DocumentLibrary/dochistory.aspx?secId=' + data.SecId + '" target="_blank">GL</td>'
+                        sec_data += '<td>' + data.PriceCurrency + '</td>'
+                        sec_data += '<td class="text-right">' + parseFloat(data.ClosePrice).toFixed(2) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnD1).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnW1).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM1).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM3).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM6).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM0).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM12).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM36).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM60).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000).toFixed(0)) + '</td>'
+                        sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>'
+                        sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>'
+
+                        sec_data += '<td>' + data.ClosePriceDate + '</td>'
+                        sec_data += '<td>' + data.FundTNAVDate + '</td>'
+                        sec_data += '<td>' + data.InceptionDate + '</td>'
+                        sec_data += '<td>' + data.PerformanceId + '</td>'
+
+                        sec_data += '</tr>';
+
+                        $('#' + tableId).append(sec_data);
+
+
+                    })
+
+                    $('#' + tableId).append('</tbody>');
+
+                    // reorder table rows
+                    // 1. sort table rows
+                    var sortedTableRows = $('#' + tableId + ' tbody tr').get().sort(function (a, b) {
+                        var aVal = +a.getAttribute('order');
+                        var bVal = +b.getAttribute('order');
+                        return (aVal > bVal) ? 1 : (aVal < bVal) ? -1 : 0;
+                    });
+
+                    // 2. replace the table rows with the ordered one
+                    $.each(sortedTableRows, function (i, e) {
+                        $('#' + tableId + ' tbody').append(e);
+                    });
+
+                    // 3. replace undefined/NaN with empty string
+                    document.body.innerHTML = document.body.innerHTML.replace(/undefined/g, '');
+                    document.body.innerHTML = document.body.innerHTML.replace(/NaN/g, '');
+
+
+
+        /************************************/
+        // functions for HEATMAP
+        /************************************/
+
+                    // Function to get the max & value in an Array
+                    Array.max = function (array) {
+                        return Math.max.apply(Math, array);
+                    };
+
+                    Array.min = function (array) {
+                        return Math.min.apply(Math, array);
+                    }
+
+                    // Get all data values from our table cells making sure to ignore the first column of text
+                    // Use the parseInt function to convert the text string to a number
+                    var counts = $('#' + tableId + ' td.heat-map').map(function () {
+                        if (parseFloat($(this).text()) === null || parseFloat($(this).text()) === "" || isNaN(parseFloat($(this).text()))) {
+                            return 0.0;
+                        } else {
+                            return parseFloat($(this).text());
+                        }
+                    }).get();
+
+                    // run max value function and store in variable
+                    var max = Array.max(counts);
+                    var min = Array.min(counts);
+                    var pos = 0;
+
+                    n = 100; // Declare the number of groups
+
+                    // Define the colour for value = zero: white
+                    zr = 255; // Red value
+                    zg = 255; // Green value
+                    zb = 255; // Blue value
+
+                    // Define the starting colour for positive#: green
+                    pr = 99; // Red value
+                    pg = 190; // Green value
+                    pb = 123; // Blue value
+
+                    // Define the negative starting colour for negative#: red
+                    nr = 248; // Red value
+                    ng = 105; // Green value
+                    nb = 107; // Blue value
+
+                    // Loop through each data point and calculate its % value
+                    $('#' + tableId + ' td.heat-map').not(":empty").each(function () {
+                        var val = parseFloat($(this).text());
+
+                        if (val === 0) {
+                            red = zr;
+                            green = zg;
+                            blue = zb;
+                        } else if (val > 0) {
+                            pos = parseFloat((Math.round((val / max) * 100)).toFixed(0));
+                            red = parseFloat((zr + ((pos * (pr - zr)) / (n - 1))).toFixed(0));
+                            green = parseFloat((zg + ((pos * (pg - zg)) / (n - 1))).toFixed(0));
+                            blue = parseFloat((zb + ((pos * (pb - zb)) / (n - 1))).toFixed(0));
+                        } else if (val < 0) {
+                            pos = parseFloat((Math.round(-(val / min) * 100)).toFixed(0)); //make min absolute value
+                            red = parseFloat((zr + ((- pos * (nr - zr)) / (n - 1))).toFixed(0));
+                            green = parseFloat((zg + ((- pos * (ng - zg)) / (n - 1))).toFixed(0));
+                            blue = parseFloat((zb + ((- pos * (nb - zb)) / (n - 1))).toFixed(0));
+                        }
+
+                        clr = 'rgb(' + red + ',' + green + ',' + blue + ')';
+                        $(this).css('background-color', clr);
+
+                    });
+
+
+                // });
+
+        }
+
+
+
+
+
+
+        /************************************/
+        // functions to get PLOTLY CHART
+        /************************************/
+
+        function plotlyChart() {
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
+            document.getElementById('comp').innerHTML = "";
+            makePlotly();
+        }
+
+
+        function closeChart() {
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
+            clearAll();
+        }
+
+
+
+
+        /************************************/
+        // functions to get SEC INFO
+        /************************************/
+
+        function getSecInfo(){
+            var token = [];
+            var fundName = [];
+            var ccy = [];
+            var incept = [];
+            $("table > tbody > tr").each(function () {
+                var chk = $(this).find('input:checkbox');
+                if (chk.is(':checked')) {
+                    token.push(chk.val());
+                    fundName.push($(this).find('td').eq(0).text());
+                    ccy.push($(this).find('td').eq(2).text());
+                    incept.push($(this).find('td').eq(18).text());
+                }
+            });
+            console.log(token, fundName, ccy, incept);
+        }
+
+
+
+
+        /************************************/
+        // CHARTING
+        /************************************/
+
+        /************************************/
+        // functions for CHARTING
+        /************************************/
+
+        async function makePlotly() {
+            // 1. define data and layout; 2. charting
+            var layout = {
+                xaxis: {
+                    showgrid: false,
+                },
+                yaxis: {
+                    showgrid: false,
+                },
+                showlegend: true,
+                legend: {
+                    x: 0.1,
+                    y: 1.2
+                },
+            };
+            var data = await getData();
+            Plotly.newPlot("comp", data, layout);
+        }
+
+        async function getData() {
+            var data = []; //clear previous data
+
+            // get secInfo from user selection
+            var token = [];
+            var fundName = [];
+            var ccy = [];
+            var incept = [];
+            var lastNavDate = [];
+            $("table > tbody > tr").each(function () {
+                var chk = $(this).find('input:checkbox');
+                if (chk.is(':checked')) {
+                    token.push(chk.val());
+                    fundName.push($(this).find('td').eq(0).text());
+                    ccy.push($(this).find('td').eq(2).text());
+                    incept.push($(this).find('td').eq(18).text());
+                    lastNavDate.push($(this).find('td').eq(16).text());
+                }
+            });
+
+            // determine end date
+            if ($("#endDate").val() == null | $("#endDate").val() == "") {
+                //do nothing
+            } else {
+                lastNavDate.push(convertDate($("#endDate").val()));
+            }
+            var eDates = lastNavDate.map(x => new Date(x));
+            var endDate = toDate(eDates); //yyyy-mm-dd
+            
+            // determine start date
+            if ($("#startDate").val() == null || $("#startDate").val() == ''){
+                incept.push(yearAgo(endDate, 1));
+            } else {
+                incept.push(convertDate($("#startDate").val()));
+            }
+            var sDates = incept.map(x => new Date(x));
+            var startDate = fromDate(sDates); //yyyy-mm-dd
+
+
+            json_url = "https://tools.morningstar.co.uk/api/rest.svc/timeseries_cumulativereturn/t92wz0sj7c?idtype=Morningstar&priceType=&outputType=COMPACTJSON&decPlaces=2&applyTrackRecordExtension=true";
+            json_frq = "&frequency=daily";
+            var json_str = "&startDate=" + startDate;
+            var json_end = "&endDate=" + endDate;
+            var colors = ['rgb(110,141,176)', 'rgb(173,174,176)', 'rgb(55,81,114)', 'rgb(95,130,137)', 'rgb(110,178,189)', 'rgb(220,181,150)',
+                            'rgb(192,109,89)', 'rgb(103,112,122)', 'rgb(76,180,231)', 'rgb(166,169,123)', 'rgb(241,225,213)', 'rgb(157,182,187)'];
+            
+            // include dates data into from/to fields
+            $("#startDate").val(convertDateReverse(startDate));
+            $("#endDate").val(convertDateReverse(endDate));
+
+            // user input ccy for charting
+            var ccyUserInput = [$("#ccy01").val(), $("#ccy02").val(), $("#ccy03").val(), $("#ccy04").val()];
+
+            for (var i = 0; i < ccy.length; i++){
+                if (ccyUserInput[i] == null || ccyUserInput[i] ==""){
+                    ccy[i] = ccy[i];
+                } else {
+                    ccy[i] = ccyUserInput[i];
+                }
+            }            
+
+            // looping to get data
+            for (var i = 0; i < token.length; i++) {
+                var priceCurrency = "";
+                if (ccy[i] == null || ccy[i] == ""){
+                    priceCurrency = "USD";
+                } else {priceCurrency = ccy[i]};
+
+                var json_ccy = "&currencyId=" + priceCurrency;
+                var json_id = "&id=" + token[i];
+                var json = json_url + json_ccy + json_frq + json_str + json_end + json_id;
+
+                var sec_id = "&term=" + token[i].slice(0, 10);
+                // var secInfo = sec_url + sec_uni + sec_data + sec_id;
+
+                var trace = await getTrace(json, fundName[i], colors[i]);
+                data.push(trace);
+
+                // include data into input fields
+                $("#ticker0" + (i+1)).val(token[i]);
+                $("#ccy0" + (i+1)).val(ccy[i]);
+                $("#name0" + (i+1)).val(fundName[i]);
+                $("#tr0" + (i+1)).val(trace["y"][trace["y"].length -1]);
+            }
+            return data;
+        }
+
+        async function getTrace(url, name, clr) {
+            var trace = await getXY(url);
+            trace.name = name;
+            trace.line = {color: clr};
+            return trace;
+        }
+
+        async function getXY(url) {
+            var date = [];
+            var value = [];
+            var res = await getJsonData(url);
+            res.forEach(function (val) {
+                date.push(plotlyDate(val[0]));
+                value.push(val[1]);
+            });
+            return { x: date, y: value, type: 'scatter', mode: 'lines' };
+        }
+
+        function getJsonData(url) {
+            return new Promise((resolve, reject) => {
+                resolve($.getJSON(url));
+            })
+        }
+
+
+
+
+        /************************************/
+        // functions for DATES
+        /************************************/
+
+        function fromDate(dates){
+            var latest = new Date(Math.max.apply(null, dates));
+            return dateFormat(latest);
+        }
+
+        function toDate(dates){
+            var earliest = new Date(Math.min.apply(null, dates));
+            return dateFormat(earliest);
+        }
+
+        function convertDate(date) { //convert yyyymmdd format to yyyy-mm-dd
+            return [date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join('-');
+        }
+
+        function convertDateReverse(date) { //convert yyyy-mm-dd format back to yyyymmdd
+            return date.slice(0, 4) + date.slice(5, 7) + date.slice(8, 10);
+        }
+
+        function lastDay() {
+            var dt = new Date();
+            dt.setDate(dt.getDate() - 1); //yesterday
+            var yyyy = getYYYY(dt);
+            var mm = getMM(dt);
+            var dd = getDD(dt);
+            return [yyyy, mm, dd].join('-')
+        }
+
+        function plotlyDate(jsonDate) {
+            var dt = new Date(parseInt(jsonDate));
+            var dd = dt.getDate();
+            var mm = dt.getMonth() + 1; //January is 0! 
+            var yyyy = dt.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            return [yyyy, mm, dd].join('-');
+        }
+
+        function dateFormat(dt){
+            var dd = dt.getDate();
+            var mm = dt.getMonth() + 1; //January is 0! 
+            var yyyy = dt.getFullYear();
+            if (dd < 10) { dd = '0' + dd }
+            if (mm < 10) { mm = '0' + mm }
+            return [yyyy, mm, dd].join('-');
+        }
+
+
+        /************************************/
+        // calculate TIME FRAME
+        /************************************/
+    
+
+        function mthAgo(mth){ //when mth < 12
+            var dt = new Date();
+            var mm = dt.getMonth() - mth + 1;
+            var yyyy = dt.getFullYear();
+            if (mm <= 0) {
+                mm = mm + 12
+                yyyy = yyyy - 1
+            } else {
+                mm = mm
+            }
+
+            var dd = dt.getDate();
+            if (dd > getMonthEnd(yyyy, mm)){
+                dd = getMonthEnd(yyyy, mm)
+            } else {
+                dd = dd
+            }
+
+            if (mm < 10) { mm = '0' + mm };
+            if (dd < 10) { dd = '0' + dd };
+
+            return [yyyy, mm, dd].join('-')
+        }
+
+        // function yearAgo(yr){
+        //     var dt = new Date();
+        //     var yyyy = getYYYY(dt) - yr;
+        //     var mm = getMM(dt);
+        //     var dd = getDD(dt);
+        //     return [yyyy, mm, dd].join('-');
+        // }
+
+        function yearAgo(dt, yr){ //yyyy-mm-dd
+            var yyyy = dt.slice(0,4) - yr;
+            var mm = dt.slice(5,7);
+            var dd = dt.slice(8,10);
+            return [yyyy, mm, dd].join('-');
+        }
+
+        function lastYearEnd(){
+            var dt = new Date(); //today()
+            return (getYYYY(dt) - 1) + "-12-31";
+        }
+
+        function getDD(dt){
+            var dd = dt.getDate();
+            if (dd < 10) { dd = '0' + dd };
+            return dd;
+        }
+
+        function getMM(dt){
+            var mm = dt.getMonth() + 1; //January is 0! 
+            if (mm < 10) { mm = '0' + mm };
+            return mm;
+        }
+
+        function getYYYY(dt){
+            var yyyy = dt.getFullYear();
+            return yyyy;
+        }
+
+        function getMonthEnd(yyyy, m){
+            day = [31,28,31,30,31,30,31,31,30,31,30,31];
+            dayR = [31,29,31,30,31,30,31,31,30,31,30,31];
+            if (yyyy % 4 == 0){
+                return dayR[m - 1];
+            } else {
+                return day[m - 1];
+            }
+        }
+
+
+
+
+
+
+
+
+        /************************************/
+        // functions to get chart url
+        /************************************/
+
+        // 1. get tickers first
+        function ticker() {
+            var tickers = $('input[name="fund"]:checked').map(function () {
+                return this.value;
+            }).get().join('|');
+            return tickers;
+        }
+
+        // 2. get chart url
+        function getChart() {
+            var ccy = "";
+            if (document.getElementById("ccy").value == null || document.getElementById("ccy").value == "") {
+                ccy = "USD"
+            } else {
+                ccy = document.getElementById("ccy").value
+            };
+
+            // var sec = document.getElementById("").value;
+            url_url = "https://tools.morningstar.co.uk/uk/interactivechart/htmlv2/default.aspx?embedded=true";
+            url_ccy = "&CurrencyId=" + ccy;
+            url_sec = "&SecurityTokenList=" + ticker();
+            chartUrl = url_url + url_ccy + url_sec;
+            // document.getElementById("myChart").src = chartUrl;
+            window.open(chartUrl, "_blank", width = 1000, height = 800)
+        }
+
+
+
+        /************************************/
+        // clear all
+        /************************************/
+
+        function clearAll(){
+            $("input:text").val("");
+            $('input:checkbox').prop("checked", false);
+        }
+
+        /************************************/
+        // format numbers
+        /************************************/
+        function formatNumber(num) {
+            return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
+        }
+
+    </script>
+
+    <!-- bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
