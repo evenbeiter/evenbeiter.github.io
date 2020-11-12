@@ -27,15 +27,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
-        /* css override for morningstar table */
-
-        .table-striped tr:nth-child(odd) td {
-            background-color: #f9f9f9;
-        }
-
-        .table tr:hover td,
-        .table-striped tr:nth-child(odd):hover td,
-        .table-striped tr:nth-child(even):hover td {
+        table.table.table-striped tr:hover td {
             background-color: #d4e3f2;
         }
 
@@ -69,7 +61,6 @@
             position: sticky;
             left: 0;
             z-index: 1;
-            background-color: white;
         }
 
         thead tr th {
@@ -79,6 +70,26 @@
 
         th:first-child {
             z-index: 2
+        }
+
+        .tr-ind {
+            color: firebrick;
+        }
+
+        .tr-twn {
+            color: blue;
+        }
+
+        table.table.table-striped td.td-nbf {
+            background-color: #d4e3f2;
+        }
+
+        table.table td.td-non-nbf {
+            background-color: white;
+        }
+
+        .table-striped tr:nth-child(odd) td {
+            background-color: #f9f9f9;
         }
 
         .clear-both {
@@ -315,9 +326,9 @@
             document.getElementById("search-table").innerHTML = "";
             // get json url
             // lwbti4ryk4
-            jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-TW";
+            jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-Hant&locale=zh-Hant";
             jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOIRL$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
-            jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Ticker|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype";
+            jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Ticker|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId";
             jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
             jsonUrl_pfId = "&term=" + sec;
 
@@ -443,7 +454,7 @@
             // get json url
             jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-TW";
             jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
-            jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype";
+            jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId";
             jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
             jsonUrl_pfId = "&term=" + sec.join(" ");
 
@@ -486,25 +497,37 @@
 
             rows_data.forEach(function (data) {
 
-                // add security token
+                // add security token; define css class
                 var sec_token = "";
+                var cssClassTr = "";
+                var cssClassTd = "";
+                
+                if (data.BrandingCompanyId == "BN000009J2") { //NB funds
+                    cssClassTd = ' class="td-nbf"';
+                } else {
+                    cssClassTd = ' class="td-non-nbf"';
+                }
 
                 if (data.investmenttype == "IX") { //index
                     sec_token = data.SecId + ']7]0]' + 'IXALL$$ALL';
-                } else if (data.ISIN.slice(0, 2) == "TW") {
-                    sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL'; //TW registered
+                    cssClassTr = ' class="tr-ind"';
+                } else if (data.ISIN.slice(0, 2) == "TW") { //TW registered
+                    sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL';
+                    cssClassTr = ' class="tr-twn"';
                 } else if (data.investmenttype == "FO") {
                     sec_token = data.SecId + ']22]0]' + 'UNIVE$$ALL'; //including ETF
                 }
 
+
                 data.SecurityToken = sec_token;
+
 
                 var dec = 1; //define number of decimals
 
                 var sec_data = '';
-                sec_data += '<tr order="' + sec.indexOf(data.PerformanceId) + '">';
+                sec_data += '<tr' + cssClassTr + ' order="' + sec.indexOf(data.PerformanceId) + '">';
 
-                sec_data += '<td><input type="checkbox" style="margin-right: 5px" id="' + data.PerformanceId + '" name="fund" value="' + data.SecurityToken + '"><a href="https://sfiles.cnyes.cool/funds/files/prod/' + data.PerformanceId + '/monthlyReport.pdf" target="_blank">' + data.Name + '</td>'
+                sec_data += '<td' + cssClassTd +'><input type="checkbox" style="margin-right: 5px" id="' + data.PerformanceId + '" name="fund" value="' + data.SecurityToken + '"><a href="https://sfiles.cnyes.cool/funds/files/prod/' + data.PerformanceId + '/monthlyReport.pdf" target="_blank">' + data.Name + '</td>'
                 sec_data += '<td>' + '<a href="http://globaldocuments.morningstar.com/DocumentLibrary/dochistory.aspx?secId=' + data.SecId + '" target="_blank">GL</td>'
                 sec_data += '<td>' + data.PriceCurrency + '</td>'
                 sec_data += '<td class="text-right">' + parseFloat(data.ClosePrice).toFixed(2) + '</td>'
@@ -622,10 +645,6 @@
 
             });            
         }
-
-
-
-
 
 
 
