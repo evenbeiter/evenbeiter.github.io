@@ -155,11 +155,11 @@
         }
     </style>
 
-
 </head>
 
-
 <body>
+
+    <!-- LOADING **************************************************************************************************-->
 
     <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status" id="spinner">
@@ -167,38 +167,35 @@
         </div>
     </div>
 
-    <!-- /************************************/
-        // for PLOTLY CHART
-        /************************************/ -->
-
+    <!-- POP UP CHART *********************************************************************************************-->
     <div id="light" class="white_content">
         <p style='text-align: right'><a href="javascript:void(0)" onclick="closeChart()">CLOSE</a>
         </p>
 
-        <!-- PLOTLY CHART STARTS -->
-
-        <!-- from/to dates input fields -->
-        <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">From</span>
+    <!-- PLOTLY CHART *********************************************************************************************-->
+        <!-- from/to dates input fields ***************************************************************************-->
+        <div class="col col-sm-12 col-lg-6 clear-both">
+            <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">From</span>
+                </div>
+                <input id="startDate" type="text" class="form-control" aria-label="startDate"
+                    aria-describedby="inputGroup-sizing-sm">
             </div>
-            <input id="startDate" type="text" class="form-control" aria-label="startDate"
-                aria-describedby="inputGroup-sizing-sm">
+
+            <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">To</span>
+                </div>
+                <input id="endDate" type="text" class="form-control" aria-label="endDate"
+                    aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+            <button class="btn btn-light btn-sm" onclick="makePlotly()">Chart</button>
         </div>
 
-        <div class="input-group input-group-sm mb-3" style="width: 150px; float: left; margin-right: 5px">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">To</span>
-            </div>
-            <input id="endDate" type="text" class="form-control" aria-label="endDate"
-                aria-describedby="inputGroup-sizing-sm">
-        </div>
-
-        <button class="btn btn-light btn-sm" onclick="makePlotly()">Chart</button>
-        <button class="btn btn-light btn-sm" onclick="clearAll()">Clear All</button>
-
-        <!-- ticker, currency, name and return input fields -->
-        <div class="clear-both">
+        <!-- ticker, currency, name and return input fields ********************************************************-->
+        <div class="col col-sm-12 clear-both">
             <div class="w-ticker float-left"><input id="ticker01" type="text" class="form-control inputfield input-text"
                     aria-label="ticker01" aria-describedby="inputGroup-sizing-sm"></div>
             <div class="w-ccy float-left"><input id="ccy01" type="text" class="form-control inputfield input-text"
@@ -209,7 +206,7 @@
                     aria-label="tr01" aria-describedby="inputGroup-sizing-sm"></div>
         </div>
 
-        <div class="clear-both">
+        <div class="col col-sm-12 clear-both">
             <div class="w-ticker float-left"><input id="ticker02" type="text" class="form-control inputfield input-text"
                     aria-label="ticker02" aria-describedby="inputGroup-sizing-sm"></div>
             <div class="w-ccy float-left"><input id="ccy02" type="text" class="form-control inputfield input-text"
@@ -220,7 +217,7 @@
                     aria-label="tr02" aria-describedby="inputGroup-sizing-sm"></div>
         </div>
 
-        <div class="clear-both">
+        <div class="col col-sm-12 clear-both">
             <div class="w-ticker float-left"><input id="ticker03" type="text" class="form-control inputfield input-text"
                     aria-label="ticker03" aria-describedby="inputGroup-sizing-sm"></div>
             <div class="w-ccy float-left"><input id="ccy03" type="text" class="form-control inputfield input-text"
@@ -231,7 +228,7 @@
                     aria-label="tr03" aria-describedby="inputGroup-sizing-sm"></div>
         </div>
 
-        <div class="clear-both">
+        <div class="col col-sm-12 clear-both">
             <div class="w-ticker float-left"><input id="ticker04" type="text" class="form-control inputfield input-text"
                     aria-label="ticker04" aria-describedby="inputGroup-sizing-sm"></div>
             <div class="w-ccy float-left"><input id="ccy04" type="text" class="form-control inputfield input-text"
@@ -243,22 +240,33 @@
         </div>
 
 
-        <!-- charting area -->
-        <div id="comp" class="clear-both" style="height: 75%"></div>
+        <!-- charting area ************************************************************************************-->
 
+        <div class="clear-both">
+            <div class="col col-sm-12 col-lg-6 clear-both">
+                    <button class="btn btn-light btn-sm" onclick="m1Chart()">1M</button>
+                    <button class="btn btn-light btn-sm" onclick="m3Chart()">3M</button>
+                    <button class="btn btn-light btn-sm" onclick="m6Chart()">6M</button>
+                    <button class="btn btn-light btn-sm" onclick="ytdChart()">YTD</button>
+                    <button class="btn btn-light btn-sm" onclick="y1Chart()">1Y</button>
+                    <button class="btn btn-light btn-sm" onclick="y2Chart()">2Y</button>
+                    <button class="btn btn-light btn-sm" onclick="y3Chart()">3Y</button>
+                    <button class="btn btn-light btn-sm" onclick="y5Chart()">5Y</button>
+                    <button class="btn btn-light btn-sm" onclick="y10Chart()">10Y</button>
+                    <button class="btn btn-light btn-sm" onclick="maxChart()">MAX</button>
+            </div>
 
-        <!-- PLOTLY CHART ENDS -->
+            <div id="comp" class="col col-sm-12 col-lg-6 clear-both" style="height: 75%"></div>
+        </div>
+
+    <!-- PLOTLY CHART ENDS **************************************************************************************-->
 
     </div>
     <div id="fade" class="black_overlay"></div>
 
 
 
-    <!-- /************************************/
-            // for PERFORMANCE TABLE
-            /************************************/ -->
-
-    <br>
+    <!-- PERFORMANCE TABLE **************************************************************************************-->
 
     <!-- bootstrap nav tabs START -->
     <nav>
@@ -275,26 +283,31 @@
         </div>
         <input id="ccy" type="text" class="form-control" aria-label="currency" aria-describedby="inputGroup-sizing-sm">
     </div>
-    <button class="btn btn-light btn-sm" onclick="getChart()">m*Chart</button>
-    <button class="btn btn-light btn-sm" onclick="plotlyChart()">Chart</button>
+    <div class="float-left">
+        <button class="btn btn-light btn-sm" onclick="getChart()">m*Chart</button>
+        <button class="btn btn-light btn-sm" onclick="plotlyChart()">Chart</button>
+        <button class="btn btn-light btn-sm" style="width: 100px" onclick="clearAll()">Clear All</button>
+        <button class="btn btn-light btn-sm" onclick="refresh()">Refresh</button>
+    </div>
 
-    <button class="btn btn-light btn-sm" style="width: 100px" onclick="clearAll()">Clear All</button>
-    <button class="btn btn-light btn-sm" onclick="refresh()">Refresh</button>
-
+    <div class="input-group input-group-sm mb-3" style="width: 300px; float: left; margin-left: 5px; margin-right: 5px">
+        <input id="search-value" type="text" class="form-control" aria-label="search-value"
+            aria-describedby="inputGroup-sizing-sm">
+    </div>
+    <button class="btn btn-light btn-sm float-left" onclick="search()">Search</button>
     </div>
 
 
     <script>
 
-
         $(document).ready(async function () {
+            await createPage('nb');
             await createPage('mac');
             await createPage('hyb');
             await createPage('ghy');
             await createPage('ig');
             await createPage('si');
-            await createPage('emdlc');
-            await createPage('emdhc');
+            await createPage('emd');
             await createPage('cb');
             await createPage('eme');
             await createPage('ge');
@@ -302,170 +315,77 @@
             await createPage('fivg');
             await createPage('reit');
             await createPage('ar');
-
-            await createPage('site');
-            await createPage('ucits');
             await createPage('project');
 
-            getSearchTab();
+            await createTab('search');
             hideSpinner();
         })
 
 
-
-
-        /************************************/
-        // get search results
-        /************************************/
-
-
-        function getSearchResults() {
-
-            var sec = document.getElementById("search-value").value;
-
-            document.getElementById("search-table").innerHTML = "";
-            // get json url
-            // lwbti4ryk4
-            jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-Hant&locale=zh-Hant";
-            jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOIRL$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
-            jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Ticker|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId";
-            jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
-            jsonUrl_pfId = "&term=" + sec;
-
-            mstarFile = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_pfId;
-
-            $.getJSON(mstarFile, function (mstar_data) {
-
-                // append thead
-                let thead = `
-                                <thead>
-                                    <tr>
-                                        <th>ISIN</th>
-                                        <th>SecId</th>
-                                        <th>PerformanceId</th>
-                                        <th>Ticker</th>
-                                        <th>Name</th>
-                                        <th>Currency</th>
-                                        <th>AUM</th>
-                                    </tr>
-                                </thead>
-                                `;
-
-                $('#search-table').append(thead);
-
-                // append tbody
-                $('#search-table').append('<tbody>');
-
-                let rows_data = mstar_data["rows"];
-
-
-                rows_data.forEach(function (data) {
-
-
-                    var dec = 1; //define number of decimals
-
-                    var sec_data = '';
-                    sec_data += '<tr>';
-                    sec_data += '<td>' + data.ISIN + '</td>'
-                    sec_data += '<td>' + data.SecId + '</td>'
-                    sec_data += '<td>' + data.PerformanceId + '</td>'
-                    sec_data += '<td>' + data.Ticker + '</td>'
-                    sec_data += '<td>' + data.Name + '</td>'
-                    sec_data += '<td>' + data.PriceCurrency + '</td>'
-                    sec_data += '<td class="text-right">' + formatNumber(parseFloat(data.FundTNAV).toFixed(0)) + '</td>'
-
-                    sec_data += '</tr>';
-
-                    $('#search-table').append(sec_data);
-
-                })
-
-                $('#search-table').append('</tbody>');
-
-            });
-
-        }
-
-
-        function getSearchTab(){
-            // append nav-search-tab
-            let navTab = `
-                <a class="nav-item nav-link" id="nav-search-tab" data-toggle="tab" href="#nav-search" role="tab" 
-                aria-controls="nav-search" aria-selected="false">Search</a>
-            `;
-            $('#nav-tab').append(navTab);
-
-            let navTabContent = `
-                <div class="tab-pane fade" id="nav-search" role="tabpanel" aria-labelledby="nav-search-tab">
-                <br>
-                <div class="input-group input-group-sm mb-3" style="width: 300px; float: left; margin-right: 5px">
-                    <input id="search-value" type="text" class="form-control" aria-label="Currency"
-                        aria-describedby="inputGroup-sizing-sm">
-                </div>
-                <button class="btn btn-light btn-sm" onclick="getSearchResults()">Search</button><br>
-                <br>
-                <table class="table table-sm table-bordered table-striped" id="search-table" style="font-size: 11px">
-                </table>
-                </div>
-            `;
-            $('#nav-tabContent').append(navTabContent);
-
-        }
-
-
-        /************************************/
-        // get performance table
-        /************************************/
-
+        // PERFORMANCE TABLE ***************************************************************************************************************
 
         function createPage(tabName) {
             createTab(tabName);
             getTable(tabName);
         }
 
-
         function createTab(tabName){
             // append nav tab & tab content
             var navTab = "";
             var navTabContent = "";
 
-            if (tabName == 'mac'){
+            if (tabName == 'nb'){ //default active tab
                 navTab = '<a class="nav-item nav-link active" id="nav-' + tabName + '-tab" data-toggle="tab" href="#nav-' + tabName 
                                 + '" role="tab" aria-controls="nav-' + tabName + '" aria-selected="true">' + tabName.toUpperCase() + '</a>';                
-                navTabContent = '<div class="tab-pane fade show active" id="nav-' + tabName + '" role="tabpanel" aria-labelledby="nav-' 
-                                + tabName + '-tab"><table class="table table-sm table-bordered table-striped" id="' + tabName 
-                                + '-table" style="font-size: 11px"></table></div>';                           
+                navTabContent = '<div class="tab-pane fade show active" id="nav-' + tabName + '" role="tabpanel" aria-labelledby="nav-' + tabName + '-tab">'
+                                + '<table class="table table-sm table-bordered table-striped" id="' + tabName
+                                + '-table" style="font-size: 11px"></table></div>'; 
+
             } else {
                 navTab = '<a class="nav-item nav-link" id="nav-' + tabName + '-tab" data-toggle="tab" href="#nav-' + tabName 
                                 + '" role="tab" aria-controls="nav-' + tabName + '" aria-selected="true">' + tabName.toUpperCase() + '</a>';                
-                navTabContent = '<div class="tab-pane fade" id="nav-' + tabName + '" role="tabpanel" aria-labelledby="nav-' 
-                                + tabName + '-tab"><table class="table table-sm table-bordered table-striped" id="' + tabName 
+                navTabContent = '<div class="tab-pane fade" id="nav-' + tabName + '" role="tabpanel" aria-labelledby="nav-' + tabName + '-tab">'
+                                + '<table class="table table-sm table-bordered table-striped" id="' + tabName
                                 + '-table" style="font-size: 11px"></table></div>';
             }
 
             $('#nav-tab').append(navTab);
-            $('#nav-tabContent').append(navTabContent);            
+            $('#nav-tabContent').append(navTabContent);     
         }
 
         async function getTable(tabName){
             var sec_json = await getJsonData("https://evenbeiter.github.io/ticker.json"); //get security list
-            var sec = sec_json[tabName];
+            var sec = [];
+
+            if (tabName == 'search') {
+                sec = $('#search-value').val().split(' ');
+            } else {
+                sec = sec_json[tabName];
+            }
 
             // get json url
-            jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=500&outputType=json&version=1&languageId=zh-TW";
-            jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
-            jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId";
-            jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
-            jsonUrl_pfId = "&term=" + sec.join(" ");
+            const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=1000&outputType=json&version=1&languageId=zh-TW";
+            var jsonUrl_uni = "";
+            const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
+            const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
+            var jsonUrl_id = "";
 
-            mstarFile = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_pfId;
+            if (tabName == "nb") {
+                jsonUrl_uni = "&universeIds=FOTWN$$ALL";
+                jsonUrl_id = "&filters=BrandingCompanyId:EQ:BN000009J2";
+            } else {
+                jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
+                jsonUrl_id = "&term=" + sec.join(" ");
+            }
+
+            mstarFile = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_id;
 
             // append thead & tbody
             let tHeadBody = `
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th></th>
+                                <th>Info</th>
                                 <th>CCY</th>
                                 <th>NAV</th>
                                 <th>1D</th>
@@ -483,7 +403,10 @@
                                 <th>Date</th>
                                 <th>AUM Date</th>
                                 <th>Inception</th>
-                                <th>Pf ID</th>
+                                <th>BM</th>
+                                <th>BM</th>
+                                <th>SecId</th>
+                                <th>PerformanceId</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -492,16 +415,29 @@
             $('#' + tabName + '-table').append(tHeadBody);
 
             var mstar_data = await getJsonData(mstarFile);
+            var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 3) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
 
             let rows_data = mstar_data["rows"];
+            let gbp_data = fx_data["rates"];
+            let gbp_dt = Object.keys(gbp_data);
 
-            rows_data.forEach(function (data) {
+            rows_data.forEach(async function (data) {
 
                 // add security token; define css class
                 var sec_token = "";
                 var cssClassTr = "";
                 var cssClassTd = "";
-                
+
+                // get GBP to convert AUM into USD based
+                var gbpUSD = 1.00;
+                if (data.FundTNAVDate !== 'undefined'){
+                    gbp_dt.forEach(function(dt){
+                        if(dt == data.FundTNAVDate) {
+                            gbpUSD = gbp_data[dt]["USD"];
+                        }
+                    })                
+                }
+
                 if (data.BrandingCompanyId == "BN000009J2") { //NB funds
                     cssClassTd = ' class="td-nbf"';
                 } else {
@@ -511,24 +447,37 @@
                 if (data.investmenttype == "IX") { //index
                     sec_token = data.SecId + ']7]0]' + 'IXALL$$ALL';
                     cssClassTr = ' class="tr-ind"';
-                } else if (data.ISIN.slice(0, 2) == "TW") { //TW registered
-                    sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL';
-                    cssClassTr = ' class="tr-twn"';
+                } else if (typeof data.ISIN !== 'undefined') {
+                    if (data.ISIN.slice(0, 2) == "TW") { //TW registered
+                        sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL';
+                        cssClassTr = ' class="tr-twn"';
+                    }
                 } else if (data.investmenttype == "FO") {
                     sec_token = data.SecId + ']22]0]' + 'UNIVE$$ALL'; //including ETF
                 }
 
-
                 data.SecurityToken = sec_token;
-
 
                 var dec = 1; //define number of decimals
 
                 var sec_data = '';
-                sec_data += '<tr' + cssClassTr + ' order="' + sec.indexOf(data.PerformanceId) + '">';
 
-                sec_data += '<td' + cssClassTd +'><input type="checkbox" style="margin-right: 5px" id="' + data.PerformanceId + '" name="fund" value="' + data.SecurityToken + '"><a href="https://sfiles.cnyes.cool/funds/files/prod/' + data.PerformanceId + '/monthlyReport.pdf" target="_blank">' + data.Name + '</td>'
-                sec_data += '<td>' + '<a href="http://globaldocuments.morningstar.com/DocumentLibrary/dochistory.aspx?secId=' + data.SecId + '" target="_blank">GL</td>'
+                if (tabName == "nb") {
+                    sec_data += '<tr' + cssClassTr + '>';
+                } else {
+                    sec_data += '<tr' + cssClassTr + ' order="' + sec.indexOf(data.PerformanceId) + '">';
+                }
+
+                sec_data += '<td' + cssClassTd +'><input type="checkbox" style="margin-right: 5px" id="' + data.PerformanceId + '" name="fund" value="' + data.SecurityToken + '"><a href="https://sfiles.cnyes.cool/funds/files/prod/' + data.PerformanceId + '/monthlyReport.pdf" target="_blank">' + data.Name + '</a></td>'
+                sec_data += '<td>'  + '<a href="https://www.morningstar.co.uk/uk/funds/snapshot/p_snapshot.aspx?id=' + data.SecId + '" target="_blank">MS</a>'
+                sec_data += ' '  + '<a href="https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=' + data.SecId + '&tab=12" target="_blank">DX</a>'
+                sec_data += ' '  + '<a href="http://globaldocuments.morningstar.com/DocumentLibrary/dochistory.aspx?secId=' + data.SecId + '" target="_blank">GL</a></td>'
+                
+                // sec_data += '<td' + cssClassTd +'><input type="checkbox" style="margin-right: 5px" id="' + data.PerformanceId + '" name="fund" value="' + data.SecurityToken + '"><a href="https://sfiles.cnyes.cool/funds/files/prod/' + data.PerformanceId + '/monthlyReport.pdf" target="_blank">' + data.Name + '</a></td>'
+                // sec_data += '<td>' + '<a href="https://www.morningstar.co.uk/uk/funds/snapshot/p_snapshot.aspx?id=' + data.SecId + '" target="_blank">MS</a></td>'
+                // sec_data += '<td>' + '<a href="https://www.morningstar.co.uk/uk/funds/snapshot/snapshot.aspx?id=' + data.SecId + '&tab=12" target="_blank">DX</a></td>'
+                // sec_data += '<td>' + '<a href="http://globaldocuments.morningstar.com/DocumentLibrary/dochistory.aspx?secId=' + data.SecId + '" target="_blank">GL</a></td>'
+                
                 sec_data += '<td>' + data.PriceCurrency + '</td>'
                 sec_data += '<td class="text-right">' + parseFloat(data.ClosePrice).toFixed(2) + '</td>'
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnD1).toFixed(dec) + '</td>'
@@ -540,13 +489,16 @@
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM12).toFixed(dec) + '</td>'
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM36).toFixed(dec) + '</td>'
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM60).toFixed(dec) + '</td>'
-                sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000).toFixed(0)) + '</td>'
+                sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000 * gbpUSD).toFixed(0)) + '</td>'                    
                 sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>'
                 sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>'
 
                 sec_data += '<td>' + data.ClosePriceDate + '</td>'
                 sec_data += '<td>' + data.FundTNAVDate + '</td>'
                 sec_data += '<td>' + data.InceptionDate + '</td>'
+                sec_data += '<td>' + data.PrimaryBenchmarkId + '</td>'
+                sec_data += '<td>' + data.PrimaryBenchmarkName + '</td>'
+                sec_data += '<td>' + data.SecId + '</td>'
                 sec_data += '<td>' + data.PerformanceId + '</td>'
 
                 sec_data += '</tr>';
@@ -575,9 +527,7 @@
 
 
 
-            /************************************/
-            // functions for HEATMAP
-            /************************************/
+            // HEAT MAP *************************************************************************************************************
 
             // Function to get the max & value in an Array
             Array.max = function (array) {
@@ -648,10 +598,8 @@
 
 
 
-        /************************************/
-        // functions to get PLOTLY CHART
-        /************************************/
-
+        // functions to get PLOTLY CHART *********************************************************************************************************
+        
         function plotlyChart() {
             document.getElementById('light').style.display = 'block';
             document.getElementById('fade').style.display = 'block';
@@ -659,19 +607,13 @@
             makePlotly();
         }
 
-
         function closeChart() {
             document.getElementById('light').style.display = 'none';
             document.getElementById('fade').style.display = 'none';
             clearAll();
         }
 
-
-
-
-        /************************************/
-        // functions to get SEC INFO
-        /************************************/
+        // functions to get SEC INFO *********************************************************************************************************
 
         function getSecInfo() {
             var token = [];
@@ -690,35 +632,44 @@
             console.log(token, fundName, ccy, incept);
         }
 
-
-
-
-        /************************************/
-        // CHARTING
-        /************************************/
-
-        /************************************/
-        // functions for CHARTING
-        /************************************/
+        // CHARTING ****************************************************************************************************************************
 
         async function makePlotly() {
             // 1. define data and layout; 2. charting
-            var layout = {
+            const layout = {
                 xaxis: {
                     showgrid: false,
+                    fixedrange: true,
                 },
                 yaxis: {
                     showgrid: false,
+                    fixedrange: true,
                 },
                 showlegend: true,
                 legend: {
                     x: 0.1,
-                    y: 1.2
+                    y: 1.1,
+                    bgcolor: 'rgba(0,0,0,0)',
                 },
+                margin: {
+                    l: 50,
+                    r: 50,
+                    b: 50,
+                    t: 50,
+                },
+                paper_bgcolor: '#f8f8f8',
+            };
+            const config = {
+                responsive: true,
+                displayModeBar: false,
             };
             var data = await getData();
-            Plotly.newPlot("comp", data, layout);
+            Plotly.newPlot("comp", data, layout, config);
         }
+
+
+        var endDate = ""; //yyyy-mm-dd
+        var startDate = ""; //yyyy-mm-dd
 
         async function getData() {
             var data = []; //clear previous data
@@ -747,7 +698,7 @@
                 lastNavDate.push(convertDate($("#endDate").val()));
             }
             var eDates = lastNavDate.map(x => new Date(x));
-            var endDate = toDate(eDates); //yyyy-mm-dd
+            endDate = toDate(eDates); //yyyy-mm-dd
 
             // determine start date
             if ($("#startDate").val() == null || $("#startDate").val() == '') {
@@ -756,7 +707,7 @@
                 incept.push(convertDate($("#startDate").val()));
             }
             var sDates = incept.map(x => new Date(x));
-            var startDate = fromDate(sDates); //yyyy-mm-dd
+            startDate = fromDate(sDates); //yyyy-mm-dd
 
 
             json_url = "https://tools.morningstar.co.uk/api/rest.svc/timeseries_cumulativereturn/t92wz0sj7c?idtype=Morningstar&priceType=&outputType=COMPACTJSON&decPlaces=2&applyTrackRecordExtension=true";
@@ -802,7 +753,7 @@
                 $("#ticker0" + (i + 1)).val(token[i]);
                 $("#ccy0" + (i + 1)).val(ccy[i]);
                 $("#name0" + (i + 1)).val(fundName[i]);
-                $("#tr0" + (i + 1)).val(trace["y"][trace["y"].length - 1]);
+                $("#tr0" + (i + 1)).val(trace["y"][trace["y"].length - 1].toFixed(2));
             }
             return data;
         }
@@ -832,18 +783,66 @@
         }
 
 
+        // CHARTING different time periods *********************************************************************************************************
+      
+        function ytdChart() {
+            $("#startDate").val(convertDateReverse(lastYearEnd()));
+            makePlotly();
+        }
 
+        function m1Chart() {
+            $("#startDate").val(convertDateReverse(mthAgo(endDate, 1)));
+            makePlotly();
+        }
 
-        /************************************/
-        // functions for DATES
-        /************************************/
+        function m3Chart() {
+            $("#startDate").val(convertDateReverse(mthAgo(endDate, 3)));
+            makePlotly();
+        }
 
-        function fromDate(dates) {
+        function m6Chart() {
+            $("#startDate").val(convertDateReverse(mthAgo(endDate, 6)));
+            makePlotly();
+        }
+
+        function y1Chart() {
+            $("#startDate").val(convertDateReverse(yearAgo(endDate, 1)));
+            makePlotly();
+        }
+
+        function y2Chart() {
+            $("#startDate").val(convertDateReverse(yearAgo(endDate, 2)));
+            makePlotly();
+        }
+
+        function y3Chart() {
+            $("#startDate").val(convertDateReverse(yearAgo(endDate, 3)));
+            makePlotly();
+        }
+
+        function y5Chart() {
+            $("#startDate").val(convertDateReverse(yearAgo(endDate, 5)));
+            makePlotly();
+        }
+
+        function y10Chart() {
+            $("#startDate").val(convertDateReverse(yearAgo(endDate, 10)));
+            makePlotly();
+        }
+
+        function maxChart() {
+            $("#startDate").val(convertDateReverse("1900-01-01"));
+            makePlotly();            
+        }
+
+        // DATES *********************************************************************************************************************************
+
+        function fromDate(dates) { //yyyy-mm-dd
             var latest = new Date(Math.max.apply(null, dates));
             return dateFormat(latest);
         }
 
-        function toDate(dates) {
+        function toDate(dates) { //yyyy-mm-dd
             var earliest = new Date(Math.min.apply(null, dates));
             return dateFormat(earliest);
         }
@@ -853,47 +852,50 @@
         }
 
         function convertDateReverse(date) { //convert yyyy-mm-dd format back to yyyymmdd
-            return date.slice(0, 4) + date.slice(5, 7) + date.slice(8, 10);
+            return date.replace(/-/g, '');
+            // return date.slice(0, 4) + date.slice(5, 7) + date.slice(8, 10);
         }
 
-        function lastDay() {
+        function lastDay() { //yyyy-mm-dd
             var dt = new Date();
             dt.setDate(dt.getDate() - 1); //yesterday
-            var yyyy = getYYYY(dt);
-            var mm = getMM(dt);
-            var dd = getDD(dt);
-            return [yyyy, mm, dd].join('-')
+            return dt.toLocaleDateString('fr-CA');
+            // var yyyy = getYYYY(dt);
+            // var mm = getMM(dt);
+            // var dd = getDD(dt);
+            // return [yyyy, mm, dd].join('-')
         }
 
-        function plotlyDate(jsonDate) {
+        function plotlyDate(jsonDate) { //yyyy-mm-dd
             var dt = new Date(parseInt(jsonDate));
-            var dd = dt.getDate();
-            var mm = dt.getMonth() + 1; //January is 0! 
-            var yyyy = dt.getFullYear();
-            if (dd < 10) { dd = '0' + dd }
-            if (mm < 10) { mm = '0' + mm }
-            return [yyyy, mm, dd].join('-');
+            return dt.toLocaleDateString('fr-CA');
+            // var dd = dt.getDate();
+            // var mm = dt.getMonth() + 1; //January is 0! 
+            // var yyyy = dt.getFullYear();
+            // if (dd < 10) { dd = '0' + dd }
+            // if (mm < 10) { mm = '0' + mm }
+            // return [yyyy, mm, dd].join('-');
         }
 
         function dateFormat(dt) {
-            var dd = dt.getDate();
-            var mm = dt.getMonth() + 1; //January is 0! 
-            var yyyy = dt.getFullYear();
-            if (dd < 10) { dd = '0' + dd }
-            if (mm < 10) { mm = '0' + mm }
-            return [yyyy, mm, dd].join('-');
+            return dt.toLocaleDateString('fr-CA');
+            // var dd = dt.getDate();
+            // var mm = dt.getMonth() + 1; //January is 0! 
+            // var yyyy = dt.getFullYear();
+            // if (dd < 10) { dd = '0' + dd }
+            // if (mm < 10) { mm = '0' + mm }
+            // return [yyyy, mm, dd].join('-');
         }
 
 
-        /************************************/
-        // calculate TIME FRAME
-        /************************************/
+        // CALCULATE TIME FRAME *********************************************************************************************************************
+      
+        function mthAgo(dt, mth) { //dt=yyyy-mm-dd; when mth < 12
 
+            var yyyy = dt.slice(0, 4);
+            var mm = dt.slice(5, 7);
+            var dd = dt.slice(8, 10);
 
-        function mthAgo(mth) { //when mth < 12
-            var dt = new Date();
-            var mm = dt.getMonth() - mth + 1;
-            var yyyy = dt.getFullYear();
             if (mm <= 0) {
                 mm = mm + 12
                 yyyy = yyyy - 1
@@ -901,7 +903,6 @@
                 mm = mm
             }
 
-            var dd = dt.getDate();
             if (dd > getMonthEnd(yyyy, mm)) {
                 dd = getMonthEnd(yyyy, mm)
             } else {
@@ -931,25 +932,26 @@
 
         function lastYearEnd() {
             var dt = new Date(); //today()
-            return (getYYYY(dt) - 1) + "-12-31";
+            var yyyy = dt.getFullYear() - 1;
+            return yyyy + "-12-31";
         }
 
-        function getDD(dt) {
-            var dd = dt.getDate();
-            if (dd < 10) { dd = '0' + dd };
-            return dd;
-        }
+        // function getDD(dt) {
+        //     var dd = dt.getDate();
+        //     if (dd < 10) { dd = '0' + dd };
+        //     return dd;
+        // }
 
-        function getMM(dt) {
-            var mm = dt.getMonth() + 1; //January is 0! 
-            if (mm < 10) { mm = '0' + mm };
-            return mm;
-        }
+        // function getMM(dt) {
+        //     var mm = dt.getMonth() + 1; //January is 0! 
+        //     if (mm < 10) { mm = '0' + mm };
+        //     return mm;
+        // }
 
-        function getYYYY(dt) {
-            var yyyy = dt.getFullYear();
-            return yyyy;
-        }
+        // function getYYYY(dt) {
+        //     var yyyy = dt.getFullYear();
+        //     return yyyy;
+        // }
 
         function getMonthEnd(yyyy, m) {
             day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -961,17 +963,8 @@
             }
         }
 
-
-
-
-
-
-
-
-        /************************************/
-        // functions to get chart url
-        /************************************/
-
+        // GETTING CHART URL *****************************************************************************************************************
+      
         // 1. get tickers first
         function ticker() {
             var tickers = $('input[name="fund"]:checked').map(function () {
@@ -999,42 +992,42 @@
         }
 
 
-
-        /************************************/
-        // clear all
-        /************************************/
-
+        // CLEAR ALL *************************************************************************************************************************
         function clearAll() {
             $("input:text").val("");
             $('input:checkbox').prop("checked", false);
         }
 
-        /************************************/
-        // refresh nav tab
-        /************************************/
-
+        // REFRESH NAV TAB *******************************************************************************************************************
         function refresh(){
             var tabName = $('.nav-tabs .active').text().toLowerCase();
             $('#' + tabName + '-table').empty();
-            getTable(tabName);
+            getTable(tabName);                
+        }
+
+        async function search(){
+            $('#search-table').empty();
+            $('#nav-search-tab').tab('show');
+            await getTable('search');
+            $('#search-value').val('');
         }
 
 
-
-        /************************************/
-        // format numbers
-        /************************************/
+        // FORMAT NUMBERS ********************************************************************************************************************
         function formatNumber(num) {
             return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
 
-        /************************************/
-        // spinner
-        /************************************/
+        // SPINNER ***************************************************************************************************************************
         function hideSpinner() { 
             document.getElementById('spinner') 
                     .style.display = 'none'; 
         }  
+
+        // CLICK INPUT TO SELECT ALL *********************************************************************************************************
+        $("input[type='text']").on("click", function () {
+            $(this).select();
+        });
 
     </script>
 
