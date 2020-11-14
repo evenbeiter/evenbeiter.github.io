@@ -285,9 +285,10 @@
             <input id="ccy" type="text" class="form-control" aria-label="currency" aria-describedby="inputGroup-sizing-sm">
         </div>
         <div class="float-left">
-            <button class="btn btn-light btn-sm" onclick="getChart()">m*Chart</button>
+            <button class="btn btn-light btn-sm" onclick="getChart()">MStar</button>
             <button class="btn btn-light btn-sm" onclick="clearAll()">Clear</button>
             <button class="btn btn-light btn-sm" onclick="refresh()">Refresh</button>
+            <button class="btn btn-light btn-sm" onclick="secInfo()">Info</button>
             <button class="btn btn-light btn-sm" onclick="plotlyChart()">Chart</button>
         </div>
     </div>
@@ -356,6 +357,12 @@
             $('#nav-tabContent').append(navTabContent);     
         }
 
+        const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=5000&outputType=json&version=1&languageId=zh-TW";
+        var jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
+        const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
+        const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
+        var jsonUrl_id = "";
+
         async function getTable(tabName){
             var sec_json = await getJsonData("https://evenbeiter.github.io/ticker.json"); //get security list
             var sec = [];
@@ -367,11 +374,11 @@
             }
 
             // get json url
-            const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=5000&outputType=json&version=1&languageId=zh-TW";
-            var jsonUrl_uni = "";
-            const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
-            const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
-            var jsonUrl_id = "";
+            // const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=5000&outputType=json&version=1&languageId=zh-TW";
+            // var jsonUrl_uni = "";
+            // const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
+            // const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
+            // var jsonUrl_id = "";
 
             if (tabName == "nb") {
                 jsonUrl_uni = "&universeIds=FOTWN$$ALL";
@@ -406,8 +413,6 @@
                                 <th>Date</th>
                                 <th>AUM Date</th>
                                 <th>Inception</th>
-                                <th>BM</th>
-                                <th>BM</th>
                                 <th>SecId</th>
                                 <th>PerformanceId</th>
                             </tr>
@@ -499,8 +504,6 @@
                 sec_data += '<td>' + data.ClosePriceDate + '</td>';
                 sec_data += '<td>' + data.FundTNAVDate + '</td>';
                 sec_data += '<td>' + data.InceptionDate + '</td>';
-                sec_data += '<td>' + data.PrimaryBenchmarkId + '</td>';
-                sec_data += '<td>' + data.PrimaryBenchmarkName + '</td>';
                 sec_data += '<td>' + data.SecId + '</td>';
                 sec_data += '<td>' + data.PerformanceId + '</td>';
 
@@ -995,6 +998,18 @@
         }
 
 
+        // SEC INFO POP UP *******************************************************************************************************************
+        function secInfo(){
+            $("table > tbody > tr").each(function () {
+                var chk = $(this).find('input:checkbox');
+                if (chk.is(':checked')) {
+                    jsonUrl_id = "&term=" + chk.val().slice(0, 10);
+                    let secInfoUrl = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_id;
+                    window.open(secInfoUrl, "_blank", width = 1000, height = 800);
+                }
+            })             
+        }
+
         // CLEAR ALL *************************************************************************************************************************
         function clearAll() {
             $("input:text").val("");
@@ -1008,6 +1023,7 @@
             getTable(tabName);                
         }
 
+        // SEARCH ****************************************************************************************************************************
         async function search(){
             $('#search-table').empty();
             $('#nav-search-tab').tab('show');
