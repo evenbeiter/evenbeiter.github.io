@@ -72,6 +72,7 @@
             z-index: 2
         }
 
+        .tr-ind,
         .tr-ind a {
             color: firebrick;
         }
@@ -307,19 +308,19 @@
         $(document).ready(async function () {
             await createPage('nb');
             await createPage('mac');
-            await createPage('hyb');
-            await createPage('ghy');
-            await createPage('ig');
-            await createPage('si');
-            await createPage('emd');
-            await createPage('cb');
-            await createPage('eme');
-            await createPage('ge');
-            await createPage('use');
-            await createPage('fivg');
-            await createPage('reit');
-            await createPage('ar');
-            await createPage('project');
+            // await createPage('hyb');
+            // await createPage('ghy');
+            // await createPage('ig');
+            // await createPage('si');
+            // await createPage('emd');
+            // await createPage('cb');
+            // await createPage('eme');
+            // await createPage('ge');
+            // await createPage('use');
+            // await createPage('fivg');
+            // await createPage('reit');
+            // await createPage('ar');
+            // await createPage('project');
 
             await createTab('search');
             hideSpinner();
@@ -497,9 +498,17 @@
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM12).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM36).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM60).toFixed(dec) + '</td>';
-                sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000 * gbpUSD).toFixed(0)) + '</td>';                  
-                sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>';
-                sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>';
+                sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000 * gbpUSD).toFixed(0)) + '</td>';
+
+                // if (tabName == "nb" || tabName == "search") {
+                    sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>';
+                    sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>';
+                    
+                // } else {
+                //     sec_data += '<td class="text-right">' + parseFloat(getStDev(data.SecurityToken, data.PriceCurrency, data.ClosePriceDate, 1)).toFixed(dec) + '</td>';
+                //     sec_data += '<td class="text-right">' + parseFloat(getStDev(data.SecurityToken, data.PriceCurrency, data.ClosePriceDate, 3)).toFixed(dec) + '</td>';
+                // }
+
 
                 sec_data += '<td>' + data.ClosePriceDate + '</td>';
                 sec_data += '<td>' + data.FundTNAVDate + '</td>';
@@ -749,7 +758,7 @@
                 var json_id = "&id=" + token[i];
                 var json = json_url + json_ccy + json_frq + json_str + json_end + json_id;
 
-                var sec_id = "&term=" + token[i].slice(0, 10);
+                var sec_id = "&term=" + token[i].slice(0, 10); //unused
                 // var secInfo = sec_url + sec_uni + sec_data + sec_id;
 
                 var trace = await getTrace(json, fundName[i], colors[i]);
@@ -766,6 +775,8 @@
 
         async function getTrace(url, name, clr) {
             var trace = await getXY(url);
+            trace.type = 'scatter';
+            trace.mode = 'lines';
             trace.name = name;
             trace.line = { color: clr };
             return trace;
@@ -779,7 +790,8 @@
                 date.push(plotlyDate(val[0]));
                 value.push(val[1]);
             });
-            return { x: date, y: value, type: 'scatter', mode: 'lines' };
+            return { x: date, y: value };
+            // return { x: date, y: value, type: 'scatter', mode: 'lines' };
         }
 
         function getJsonData(url) {
@@ -840,6 +852,51 @@
             $("#startDate").val(convertDateReverse("1900-01-01"));
             makePlotly();            
         }
+
+
+
+
+        // STDEV *********************************************************************************************************************************
+
+        async function getStDev(token, priceCurrency, endDate, yr){
+            var sum = function(x, y){
+                return x + y;
+            }
+            var square = function(x){
+                return x * x;
+            }
+
+            const json_url = "https://tools.morningstar.co.uk/api/rest.svc/timeseries_cumulativereturn/t92wz0sj7c?idtype=Morningstar&priceType=&outputType=COMPACTJSON&decPlaces=8&applyTrackRecordExtension=true";
+            let json_ccy = "&currencyId=" + priceCurrency;
+            const json_frq = "&frequency=monthly";
+            let json_str = "&startDate=" + yearAgo(endDate, yr);
+            let json_end = "&endDate=" + endDate;
+            let json_id = "&id=" + token;
+            let json = json_url + json_ccy + json_frq + json_str + json_end + json_id;
+
+            let data = await getMthReturn(json);
+            console.log(data);
+            let mean = data.reduce(sum)/data.length;
+            let deviations = data.map(function(x){
+                return x - mean;
+            })
+            return stdev = Math.sqrt(deviations.map(square).reduce(sum)/(data.length - 1)) * Math.sqrt(12) * 100;
+        }
+
+        async function getMthReturn(url) {
+            var value = [];
+            var mthReturn = [];
+            var res = await getJsonData(url);
+            res.forEach(function (val) {
+                value.push(val[1] + 100);
+            });
+
+            for (var i = 1; i < value.length; i++) {
+                mthReturn.push(value[i] / value[i-1] - 1);
+            }
+            return mthReturn;
+        }
+
 
         // DATES *********************************************************************************************************************************
 
