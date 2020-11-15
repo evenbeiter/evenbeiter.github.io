@@ -195,7 +195,14 @@
             <button class="btn btn-light btn-sm" onclick="makePlotly()">Chart</button>
         </div>
 
-        <!-- ticker, currency, name and return input fields ********************************************************-->
+        <!-- ticker, currency, name and return fields ********************************************************-->
+
+        <table id="comp-table">
+
+
+        </table>
+
+
         <div class="col col-sm-12 clear-both">
             <div class="w-ticker float-left"><input id="ticker01" type="text" class="form-control inputfield input-text"
                     aria-label="ticker01" aria-describedby="inputGroup-sizing-sm"></div>
@@ -424,7 +431,10 @@
             $('#' + tabName + '-table').append(tHeadBody);
 
             var mstar_data = await getJsonData(mstarFile);
-            var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 3) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
+            var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 5) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
+
+            console.log(lastDay());
+            console.log(mthAgo(lastDay(), 5));
 
             let rows_data = mstar_data["rows"];
             let gbp_data = fx_data["rates"];
@@ -503,7 +513,7 @@
                 // if (tabName == "nb" || tabName == "search") {
                     sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>';
                     sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>';
-                    
+
                 // } else {
                 //     sec_data += '<td class="text-right">' + parseFloat(getStDev(data.SecurityToken, data.PriceCurrency, data.ClosePriceDate, 1)).toFixed(dec) + '</td>';
                 //     sec_data += '<td class="text-right">' + parseFloat(getStDev(data.SecurityToken, data.PriceCurrency, data.ClosePriceDate, 3)).toFixed(dec) + '</td>';
@@ -956,7 +966,7 @@
         function mthAgo(dt, mth) { //dt=yyyy-mm-dd; when mth < 12
 
             var yyyy = dt.slice(0, 4);
-            var mm = dt.slice(5, 7);
+            var mm = dt.slice(5, 7) - mth;
             var dd = dt.slice(8, 10);
 
             if (mm <= 0) {
