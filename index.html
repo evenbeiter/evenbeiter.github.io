@@ -196,57 +196,59 @@
         </div>
 
         <!-- ticker, currency, name and return fields ********************************************************-->
-
-        <table id="comp-table">
-
-
+        <div class="col col-sm-12 col-md-12 col-lg-8 clear-both">
+        <table id="comp-table" style="font-size: 11px">
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>CCY</th>
+                    <th>Name</th>
+                    <th class="text-center">TR</th>
+                    <th class="text-center">1Y SD</th>
+                    <th class="text-center">3Y SD</th>
+                    <th class="text-center">SD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="w-ticker"><input id="ticker-01" type="text" class="form-control inputfield input-text w-100" aria-label="ticker-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-ccy"><input id="ccy-01" type="text" class="form-control inputfield input-text w-100" aria-label="ccy-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-name"><input id="name-01" type="text" class="form-control inputfield input-text w-100" aria-label="name-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="tr-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="1y-sd-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="3y-sd-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="custom-sd-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-01" aria-describedby="inputGroup-sizing-sm"></td>
+                </tr>
+                <tr>
+                    <td><input id="ticker-02" type="text" class="form-control inputfield input-text" aria-label="ticker-02" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="ccy-02" type="text" class="form-control inputfield input-text" aria-label="ccy-02" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="name-02" type="text" class="form-control inputfield input-text" aria-label="name-02" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="tr-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-02" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="1y-sd-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-02" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="3y-sd-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-02" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="custom-sd-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-02" aria-describedby="inputGroup-sizing-sm"></td>
+                </tr>
+                <tr>
+                    <td><input id="ticker-03" type="text" class="form-control inputfield input-text" aria-label="ticker-03" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="ccy-03" type="text" class="form-control inputfield input-text" aria-label="ccy-03" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="name-03" type="text" class="form-control inputfield input-text" aria-label="name-03" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="tr-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="1y-sd-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-03" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="3y-sd-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-03" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="custom-sd-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-03" aria-describedby="inputGroup-sizing-sm"></td>
+                </tr>
+                <tr>
+                    <td><input id="ticker-04" type="text" class="form-control inputfield input-text" aria-label="ticker-04" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="ccy-04" type="text" class="form-control inputfield input-text" aria-label="ccy-04" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td><input id="name-04" type="text" class="form-control inputfield input-text" aria-label="name-04" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="tr-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-01" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="1y-sd-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-04" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="3y-sd-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-04" aria-describedby="inputGroup-sizing-sm"></td>
+                    <td class="w-tr"><input id="custom-sd-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-04" aria-describedby="inputGroup-sizing-sm"></td>
+                </tr>
+            </tbody>
         </table>
-
-
-        <div class="col col-sm-12 clear-both">
-            <div class="w-ticker float-left"><input id="ticker01" type="text" class="form-control inputfield input-text"
-                    aria-label="ticker01" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-ccy float-left"><input id="ccy01" type="text" class="form-control inputfield input-text"
-                    aria-label="ccy01" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-name float-left"><input id="name01" type="text" class="form-control inputfield input-text"
-                    aria-label="name01" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-tr float-left"><input id="tr01" type="text" class="form-control inputfield input-numbers"
-                    aria-label="tr01" aria-describedby="inputGroup-sizing-sm"></div>
         </div>
-
-        <div class="col col-sm-12 clear-both">
-            <div class="w-ticker float-left"><input id="ticker02" type="text" class="form-control inputfield input-text"
-                    aria-label="ticker02" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-ccy float-left"><input id="ccy02" type="text" class="form-control inputfield input-text"
-                    aria-label="ccy02" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-name float-left"><input id="name02" type="text" class="form-control inputfield input-text"
-                    aria-label="name02" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-tr float-left"><input id="tr02" type="text" class="form-control inputfield input-numbers"
-                    aria-label="tr02" aria-describedby="inputGroup-sizing-sm"></div>
-        </div>
-
-        <div class="col col-sm-12 clear-both">
-            <div class="w-ticker float-left"><input id="ticker03" type="text" class="form-control inputfield input-text"
-                    aria-label="ticker03" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-ccy float-left"><input id="ccy03" type="text" class="form-control inputfield input-text"
-                    aria-label="ccy03" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-name float-left"><input id="name03" type="text" class="form-control inputfield input-text"
-                    aria-label="name03" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-tr float-left"><input id="tr03" type="text" class="form-control inputfield input-numbers"
-                    aria-label="tr03" aria-describedby="inputGroup-sizing-sm"></div>
-        </div>
-
-        <div class="col col-sm-12 clear-both">
-            <div class="w-ticker float-left"><input id="ticker04" type="text" class="form-control inputfield input-text"
-                    aria-label="ticker04" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-ccy float-left"><input id="ccy04" type="text" class="form-control inputfield input-text"
-                    aria-label="ccy04" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-name float-left"><input id="name04" type="text" class="form-control inputfield input-text"
-                    aria-label="name04" aria-describedby="inputGroup-sizing-sm"></div>
-            <div class="w-tr float-left"><input id="tr04" type="text" class="form-control inputfield input-numbers"
-                    aria-label="tr04" aria-describedby="inputGroup-sizing-sm"></div>
-        </div>
-
 
         <!-- charting area ************************************************************************************-->
 
@@ -264,7 +266,7 @@
                     <button class="btn btn-light btn-sm" onclick="maxChart()">MAX</button>
             </div>
 
-            <div id="comp" class="col col-sm-12 col-lg-6 clear-both" style="height: 75%"></div>
+            <div id="comp" class="col col-sm-12 col-lg-8 clear-both" style="height: 75%"></div>
         </div>
 
     <!-- PLOTLY CHART ENDS **************************************************************************************-->
@@ -433,9 +435,6 @@
             var mstar_data = await getJsonData(mstarFile);
             var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 5) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
 
-            console.log(lastDay());
-            console.log(mthAgo(lastDay(), 5));
-
             let rows_data = mstar_data["rows"];
             let gbp_data = fx_data["rates"];
             let gbp_dt = Object.keys(gbp_data);
@@ -509,16 +508,8 @@
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM36).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM60).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000 * gbpUSD).toFixed(0)) + '</td>';
-
-                // if (tabName == "nb" || tabName == "search") {
-                    sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>';
-                    sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>';
-
-                // } else {
-                //     sec_data += '<td class="text-right">' + parseFloat(getStDev(data.SecurityToken, data.PriceCurrency, data.ClosePriceDate, 1)).toFixed(dec) + '</td>';
-                //     sec_data += '<td class="text-right">' + parseFloat(getStDev(data.SecurityToken, data.PriceCurrency, data.ClosePriceDate, 3)).toFixed(dec) + '</td>';
-                // }
-
+                sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>';
+                sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>';
 
                 sec_data += '<td>' + data.ClosePriceDate + '</td>';
                 sec_data += '<td>' + data.FundTNAVDate + '</td>';
@@ -716,6 +707,7 @@
                 }
             });
 
+
             // determine end date
             if ($("#endDate").val() == null | $("#endDate").val() == "") {
                 //do nothing
@@ -747,7 +739,7 @@
             $("#endDate").val(convertDateReverse(endDate));
 
             // user input ccy for charting
-            var ccyUserInput = [$("#ccy01").val(), $("#ccy02").val(), $("#ccy03").val(), $("#ccy04").val()];
+            var ccyUserInput = [$("#ccy-01").val(), $("#ccy-02").val(), $("#ccy-03").val(), $("#ccy-04").val()];
 
             for (var i = 0; i < ccy.length; i++) {
                 if (ccyUserInput[i] == null || ccyUserInput[i] == "") {
@@ -774,11 +766,21 @@
                 var trace = await getTrace(json, fundName[i], colors[i]);
                 data.push(trace);
 
+                var sd1y = await getStDev(token[i], priceCurrency, incept[i], lastNavDate[i], 1);
+                var sd3y = await getStDev(token[i], priceCurrency, incept[i], lastNavDate[i], 3);
+
                 // include data into input fields
-                $("#ticker0" + (i + 1)).val(token[i]);
-                $("#ccy0" + (i + 1)).val(ccy[i]);
-                $("#name0" + (i + 1)).val(fundName[i]);
-                $("#tr0" + (i + 1)).val(trace["y"][trace["y"].length - 1].toFixed(2));
+                $("#ticker-0" + (i + 1)).val(token[i]);
+                $("#ccy-0" + (i + 1)).val(ccy[i]);
+                $("#name-0" + (i + 1)).val(fundName[i]);
+                $("#tr-0" + (i + 1)).val(trace["y"][trace["y"].length - 1].toFixed(2));
+                if (sd1y !== null && sd1y !== "") {
+                    $("#1y-sd-0" + (i + 1)).val(sd1y.toFixed(2));
+                }
+                if (sd3y !== null && sd3y !== "") {
+                    $("#3y-sd-0" + (i + 1)).val(sd3y.toFixed(2));
+                }
+
             }
             return data;
         }
@@ -868,7 +870,7 @@
 
         // STDEV *********************************************************************************************************************************
 
-        async function getStDev(token, priceCurrency, endDate, yr){
+        async function getStDev(token, priceCurrency, fundIncept, endDate, yr){
             var sum = function(x, y){
                 return x + y;
             }
@@ -876,21 +878,25 @@
                 return x * x;
             }
 
-            const json_url = "https://tools.morningstar.co.uk/api/rest.svc/timeseries_cumulativereturn/t92wz0sj7c?idtype=Morningstar&priceType=&outputType=COMPACTJSON&decPlaces=8&applyTrackRecordExtension=true";
-            let json_ccy = "&currencyId=" + priceCurrency;
-            const json_frq = "&frequency=monthly";
-            let json_str = "&startDate=" + yearAgo(endDate, yr);
-            let json_end = "&endDate=" + endDate;
-            let json_id = "&id=" + token;
-            let json = json_url + json_ccy + json_frq + json_str + json_end + json_id;
+            if (convertDateToSystem(fundIncept) > convertDateToSystem(yearAgo(endDate, yr))){
+                return stdev = "";
+            } else {
+                const json_url = "https://tools.morningstar.co.uk/api/rest.svc/timeseries_cumulativereturn/t92wz0sj7c?idtype=Morningstar&priceType=&outputType=COMPACTJSON&decPlaces=8&applyTrackRecordExtension=true";
+                let json_ccy = "&currencyId=" + priceCurrency;
+                const json_frq = "&frequency=monthly";
+                let json_str = "&startDate=" + yearAgo(endDate, yr);
+                let json_end = "&endDate=" + endDate;
+                let json_id = "&id=" + token;
+                let json = json_url + json_ccy + json_frq + json_str + json_end + json_id;
 
-            let data = await getMthReturn(json);
-            console.log(data);
-            let mean = data.reduce(sum)/data.length;
-            let deviations = data.map(function(x){
-                return x - mean;
-            })
-            return stdev = Math.sqrt(deviations.map(square).reduce(sum)/(data.length - 1)) * Math.sqrt(12) * 100;
+                let data = await getMthReturn(json);
+                let mean = data.reduce(sum)/data.length;
+                let deviations = data.map(function(x){
+                    return x - mean;
+                })
+                return stdev = Math.sqrt(deviations.map(square).reduce(sum)/(data.length - 1)) * Math.sqrt(12) * 100;                
+            }
+
         }
 
         async function getMthReturn(url) {
@@ -927,6 +933,10 @@
         function convertDateReverse(date) { //convert yyyy-mm-dd format back to yyyymmdd
             return date.replace(/-/g, '');
             // return date.slice(0, 4) + date.slice(5, 7) + date.slice(8, 10);
+        }
+
+        function convertDateToSystem(date) { //yyyy-mm-dd to system (for calculation purpose)
+            return new Date(date.slice(0, 4), date.slice(5, 7), date.slice(8, 10));
         }
 
         function lastDay() { //yyyy-mm-dd
@@ -1009,22 +1019,23 @@
             return yyyy + "-12-31";
         }
 
-        // function getDD(dt) {
-        //     var dd = dt.getDate();
-        //     if (dd < 10) { dd = '0' + dd };
-        //     return dd;
-        // }
+        function lastMonthEnd(dt) {
+            var yyyy = dt.slice(0, 4);
+            var mm = dt.slice(5, 7) - 1;
 
-        // function getMM(dt) {
-        //     var mm = dt.getMonth() + 1; //January is 0! 
-        //     if (mm < 10) { mm = '0' + mm };
-        //     return mm;
-        // }
+            if (mm <= 0) {
+                mm = mm + 12
+                yyyy = yyyy - 1
+            } else {
+                mm = mm
+            }
 
-        // function getYYYY(dt) {
-        //     var yyyy = dt.getFullYear();
-        //     return yyyy;
-        // }
+            dd = getMonthEnd(yyyy, mm);
+
+            if (mm < 10) { mm = '0' + mm };
+
+            return [yyyy, mm, dd].join('-');
+        }
 
         function getMonthEnd(yyyy, m) {
             day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
