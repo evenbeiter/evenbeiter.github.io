@@ -114,7 +114,7 @@
         }
 
         .w-tr {
-            width: 70px;
+            width: 60px;
         }
 
         .input-numbers {
@@ -315,6 +315,7 @@
     <script>
 
         $(document).ready(async function () {
+            showSpinner();
             await createPage('nb');
             await createPage('mac');
             await createPage('hyb');
@@ -368,7 +369,7 @@
         }
 
         const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=5000&outputType=json&version=1&languageId=zh-TW";
-        var jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
+        var jsonUrl_uni = "";
         const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
         const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
         var jsonUrl_id = "";
@@ -394,7 +395,7 @@
                 jsonUrl_uni = "&universeIds=FOTWN$$ALL";
                 jsonUrl_id = "&filters=BrandingCompanyId:EQ:BN000009J2";
             } else {
-                jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
+                jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOGBR$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
                 jsonUrl_id = "&term=" + sec.join(" ");
             }
 
@@ -505,8 +506,8 @@
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM6).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM0).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM12).toFixed(dec) + '</td>';
-                sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM36).toFixed(dec) + '</td>';
-                sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM60).toFixed(dec) + '</td>';
+                sec_data += '<td class="text-right heat-map">' + ((Math.pow(1 + parseFloat(data.GBRReturnM36) / 100, 3) - 1) * 100).toFixed(dec) + '</td>';
+                sec_data += '<td class="text-right heat-map">' + ((Math.pow(1 + parseFloat(data.GBRReturnM60) / 100, 5) - 1) * 100).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right">' + formatNumber((parseFloat(data.FundTNAV) / 1000000 * gbpUSD).toFixed(0)) + '</td>';
                 sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM12).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right">' + parseFloat(data.StandardDeviationM36).toFixed(dec) + '</td>';
@@ -1082,8 +1083,9 @@
                 var chk = $(this).find('input:checkbox');
                 if (chk.is(':checked')) {
                     jsonUrl_id = "&term=" + chk.val().slice(0, 10);
-                    let secInfoUrl = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_id;
+                    let secInfoUrl = jsonUrl_url + jsonUrl_uni + jsonUrl_dataAll + jsonUrl_id;
                     window.open(secInfoUrl, "_blank", width = 1000, height = 800);
+                    $('input:checkbox').prop("checked", false);
                 }
             })             
         }
@@ -1116,6 +1118,11 @@
         }
 
         // SPINNER ***************************************************************************************************************************
+        function showSpinner() { 
+            document.getElementById('spinner') 
+                    .style.display = 'block'; 
+        }  
+
         function hideSpinner() { 
             document.getElementById('spinner') 
                     .style.display = 'none'; 
