@@ -192,62 +192,13 @@
                     aria-describedby="inputGroup-sizing-sm">
             </div>
             
-            <button class="btn btn-light btn-sm" onclick="makePlotly()">Chart</button>
+            <button id="keep-comp-table" class="btn btn-light btn-sm" onclick="makePlotly()">Chart</button>
         </div>
 
         <!-- ticker, currency, name and return fields ********************************************************-->
-        <div class="col col-sm-12 col-md-12 col-lg-8 clear-both">
-        <table id="comp-table" style="font-size: 11px">
-            <thead>
-                <tr>
-                    <th>Ticker</th>
-                    <th>CCY</th>
-                    <th>Name</th>
-                    <th class="text-center">TR</th>
-                    <th class="text-center">1Y SD</th>
-                    <th class="text-center">3Y SD</th>
-                    <th class="text-center">SD</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="w-ticker"><input id="ticker-01" type="text" class="form-control inputfield input-text w-100" aria-label="ticker-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-ccy"><input id="ccy-01" type="text" class="form-control inputfield input-text w-100" aria-label="ccy-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-name"><input id="name-01" type="text" class="form-control inputfield input-text w-100" aria-label="name-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="tr-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="1y-sd-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="3y-sd-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="custom-sd-01" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-01" aria-describedby="inputGroup-sizing-sm"></td>
-                </tr>
-                <tr>
-                    <td><input id="ticker-02" type="text" class="form-control inputfield input-text" aria-label="ticker-02" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td><input id="ccy-02" type="text" class="form-control inputfield input-text" aria-label="ccy-02" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td><input id="name-02" type="text" class="form-control inputfield input-text" aria-label="name-02" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="tr-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-02" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="1y-sd-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-02" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="3y-sd-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-02" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="custom-sd-02" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-02" aria-describedby="inputGroup-sizing-sm"></td>
-                </tr>
-                <tr>
-                    <td><input id="ticker-03" type="text" class="form-control inputfield input-text" aria-label="ticker-03" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td><input id="ccy-03" type="text" class="form-control inputfield input-text" aria-label="ccy-03" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td><input id="name-03" type="text" class="form-control inputfield input-text" aria-label="name-03" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="tr-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="1y-sd-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-03" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="3y-sd-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-03" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="custom-sd-03" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-03" aria-describedby="inputGroup-sizing-sm"></td>
-                </tr>
-                <tr>
-                    <td><input id="ticker-04" type="text" class="form-control inputfield input-text" aria-label="ticker-04" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td><input id="ccy-04" type="text" class="form-control inputfield input-text" aria-label="ccy-04" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td><input id="name-04" type="text" class="form-control inputfield input-text" aria-label="name-04" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="tr-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-01" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="1y-sd-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-04" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="3y-sd-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-04" aria-describedby="inputGroup-sizing-sm"></td>
-                    <td class="w-tr"><input id="custom-sd-04" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-04" aria-describedby="inputGroup-sizing-sm"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="demo" class="col col-sm-12 col-md-12 col-lg-8 clear-both">
+            <table id="comp-table" style="font-size: 11px">
+            </table>
         </div>
 
         <!-- charting area ************************************************************************************-->
@@ -295,11 +246,11 @@
             <input id="ccy" type="text" class="form-control" aria-label="currency" aria-describedby="inputGroup-sizing-sm">
         </div>
         <div class="float-left">
-            <button class="btn btn-light btn-sm" onclick="getChart()">MStar</button>
+            <button class="btn btn-light btn-sm" onclick="getMsChart()">MStar</button>
             <button class="btn btn-light btn-sm" onclick="clearAll()">Clear</button>
             <button class="btn btn-light btn-sm" onclick="refresh()">Refresh</button>
             <button class="btn btn-light btn-sm" onclick="secInfo()">Info</button>
-            <button class="btn btn-light btn-sm" onclick="plotlyChart()">Chart</button>
+            <button class="btn btn-light btn-sm" onclick="newWindowChart()">Chart</button>
         </div>
     </div>
 
@@ -449,9 +400,16 @@
 
                 // get GBP to convert AUM into USD based
                 var gbpUSD = 1.00;
-                if (data.FundTNAVDate !== 'undefined'){
+                if (typeof data.FundTNAVDate !== 'undefined'){
+                    var getGbpDate = "";
+                    if (convertDateToSystem(data.FundTNAVDate).getDay() == 6) { // if aum date is on Sat
+                        getGbpDate = new Date(convertDateToSystem(data.FundTNAVDate) - 1).toLocaleDateString('fr-CA');
+                    } else if (convertDateToSystem(data.FundTNAVDate).getDay() == 0) { // if aum date is on Sun
+                        getGbpDate = new Date(convertDateToSystem(data.FundTNAVDate) - 2).toLocaleDateString('fr-CA');
+                    }
+
                     gbp_dt.forEach(function(dt){
-                        if(dt == data.FundTNAVDate) {
+                        if(dt == getGbpDate) {
                             gbpUSD = gbp_data[dt]["USD"];
                         }
                     })                
@@ -615,11 +573,19 @@
 
 
 
-        // functions to get PLOTLY CHART *********************************************************************************************************
+        // functions to get NEW WINDOW PLOTLY CHART *********************************************************************************************
         
-        function plotlyChart() {
+        function newWindowChart() {
+            // 1. clear and make new comp-table
+            $('#comp-table').empty(); //clear table
+            var numOfRows = $('input[type="checkbox"]:checked').length;
+            makeCompTable(numOfRows);
+
+            // 2. show window
             document.getElementById('light').style.display = 'block';
             document.getElementById('fade').style.display = 'block';
+            
+            // 3. charting
             document.getElementById('comp').innerHTML = "";
             makePlotly();
         }
@@ -630,28 +596,56 @@
             clearAll();
         }
 
-        // functions to get SEC INFO *********************************************************************************************************
-
-        // function getSecInfo() {
-        //     var token = [];
-        //     var fundName = [];
-        //     var ccy = [];
-        //     var incept = [];
-        //     $("table > tbody > tr").each(function () {
-        //         var chk = $(this).find('input:checkbox');
-        //         if (chk.is(':checked')) {
-        //             token.push(chk.val());
-        //             fundName.push($(this).find('td').eq(0).text());
-        //             ccy.push($(this).find('td').eq(2).text());
-        //             incept.push($(this).find('td').eq(18).text());
-        //         }
-        //     });
-        //     console.log(token, fundName, ccy, incept);
-        // }
 
         // CHARTING ****************************************************************************************************************************
 
-        async function makePlotly() {
+        function makeCompTable(num){  // COMP TABLE ********************************************************************************************
+            console.log('start making comp table');
+
+            // append thead & tbody
+            let tHeadBody = `
+                            <thead>
+                                <tr>
+                                    <th>Ticker</th>
+                                    <th>CCY</th>
+                                    <th>Name</th>
+                                    <th class="text-center">TR</th>
+                                    <th class="text-center">1Y SD</th>
+                                    <th class="text-center">3Y SD</th>
+                                    <th class="text-center">SD</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                            `;                    
+
+            $('#comp-table').append(tHeadBody);
+            console.log('head body appended');
+            console.log(tHeadBody);
+            console.log($('#comp-table').html());
+
+            // append row
+            var table_row = '';
+            for (var i = 1; i < num + 1; i++) {
+                table_row += '<tr>';
+                table_row += '<td class="w-ticker"><input id="ticker-' + i + '" type="text" class="form-control inputfield input-text w-100" aria-label="ticker-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '<td class="w-ccy"><input id="ccy-' + i + '" type="text" class="form-control inputfield input-text w-100" aria-label="ccy-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '<td class="w-name"><input id="name-' + i + '" type="text" class="form-control inputfield input-text w-100" aria-label="name-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '<td class="w-tr"><input id="tr-' + i + '" type="text" class="form-control inputfield input-numbers w-100" aria-label="tr-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '<td class="w-tr"><input id="1y-sd-' + i + '" type="text" class="form-control inputfield input-numbers w-100" aria-label="1y-sd-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '<td class="w-tr"><input id="3y-sd-' + i + '" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '<td class="w-tr"><input id="custom-sd-' + i + '" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
+                table_row += '</tr>';
+                console.log('one row added');
+                console.log(table_row);
+            }
+
+            $('#comp-table').append(table_row);
+            console.log('rows appended');
+        }
+
+
+        async function makePlotly() {  // CHARTING ********************************************************************************************
+            
             // 1. define data and layout; 2. charting
             const layout = {
                 xaxis: {
@@ -688,7 +682,8 @@
         var endDate = ""; //yyyy-mm-dd
         var startDate = ""; //yyyy-mm-dd
 
-        async function getData() {
+        async function getData() {  // GET DATA ********************************************************************************************
+
             var data = []; //clear previous data
 
             // get secInfo from user selection
@@ -710,9 +705,7 @@
 
 
             // determine end date
-            if ($("#endDate").val() == null | $("#endDate").val() == "") {
-                //do nothing
-            } else {
+            if ($("#endDate").val() !== null && $("#endDate").val() !== "") {
                 lastNavDate.push(convertDate($("#endDate").val()));
             }
             var eDates = lastNavDate.map(x => new Date(x));
@@ -740,7 +733,11 @@
             $("#endDate").val(convertDateReverse(endDate));
 
             // user input ccy for charting
-            var ccyUserInput = [$("#ccy-01").val(), $("#ccy-02").val(), $("#ccy-03").val(), $("#ccy-04").val()];
+
+            var ccyUserInput = [];
+            for (var u = 1; u < ccy.length + 1; u++) {
+                ccyUserInput.push($('#ccy-' + u).val());
+            }
 
             for (var i = 0; i < ccy.length; i++) {
                 if (ccyUserInput[i] == null || ccyUserInput[i] == "") {
@@ -749,13 +746,17 @@
                     ccy[i] = ccyUserInput[i];
                 }
             }
+            
 
             // looping to get data
             for (var i = 0; i < token.length; i++) {
                 var priceCurrency = "";
+                console.log(ccy[i]);
                 if (ccy[i] == null || ccy[i] == "") {
                     priceCurrency = "USD";
                 } else { priceCurrency = ccy[i] };
+
+                console.log(priceCurrency);
 
                 var json_ccy = "&currencyId=" + priceCurrency;
                 var json_id = "&id=" + token[i];
@@ -771,15 +772,15 @@
                 var sd3y = await getStDev(token[i], priceCurrency, incept[i], lastNavDate[i], 3);
 
                 // include data into input fields
-                $("#ticker-0" + (i + 1)).val(token[i]);
-                $("#ccy-0" + (i + 1)).val(ccy[i]);
-                $("#name-0" + (i + 1)).val(fundName[i]);
-                $("#tr-0" + (i + 1)).val(trace["y"][trace["y"].length - 1].toFixed(2));
+                $("#ticker-" + (i + 1)).val(token[i]);
+                $("#ccy-" + (i + 1)).val(ccy[i]);
+                $("#name-" + (i + 1)).val(fundName[i]);
+                $("#tr-" + (i + 1)).val(trace["y"][trace["y"].length - 1].toFixed(2));
                 if (sd1y !== null && sd1y !== "") {
-                    $("#1y-sd-0" + (i + 1)).val(sd1y.toFixed(2));
+                    $("#1y-sd-" + (i + 1)).val(sd1y.toFixed(2));
                 }
                 if (sd3y !== null && sd3y !== "") {
-                    $("#3y-sd-0" + (i + 1)).val(sd3y.toFixed(2));
+                    $("#3y-sd-" + (i + 1)).val(sd3y.toFixed(2));
                 }
 
             }
@@ -804,7 +805,6 @@
                 value.push(val[1]);
             });
             return { x: date, y: value };
-            // return { x: date, y: value, type: 'scatter', mode: 'lines' };
         }
 
         function getJsonData(url) {
@@ -937,7 +937,7 @@
         }
 
         function convertDateToSystem(date) { //yyyy-mm-dd to system (for calculation purpose)
-            return new Date(date.slice(0, 4), date.slice(5, 7), date.slice(8, 10));
+            return new Date(date.slice(0, 4), date.slice(5, 7) - 1, date.slice(8, 10));
         }
 
         function lastDay() { //yyyy-mm-dd
@@ -1059,7 +1059,7 @@
         }
 
         // 2. get chart url
-        function getChart() {
+        function getMsChart() {
             var ccy = "";
             if (document.getElementById("ccy").value == null || document.getElementById("ccy").value == "") {
                 ccy = "USD"
