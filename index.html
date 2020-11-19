@@ -385,9 +385,9 @@
             $('#' + tabName + '-table').append(tHeadBody);
 
             var mstar_data = await getJsonData(mstarFile);
-            var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 5) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
-
             let rows_data = mstar_data["rows"];
+
+            var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 5) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
             let gbp_data = fx_data["rates"];
             let gbp_dt = Object.keys(gbp_data);
 
@@ -406,6 +406,8 @@
                         getGbpDate = new Date(convertDateToSystem(data.FundTNAVDate) - 1).toLocaleDateString('fr-CA');
                     } else if (convertDateToSystem(data.FundTNAVDate).getDay() == 0) { // if aum date is on Sun
                         getGbpDate = new Date(convertDateToSystem(data.FundTNAVDate) - 2).toLocaleDateString('fr-CA');
+                    } else {
+                        getGbpDate = data.FundTNAVDate;
                     }
 
                     gbp_dt.forEach(function(dt){
@@ -600,7 +602,6 @@
         // CHARTING ****************************************************************************************************************************
 
         function makeCompTable(num){  // COMP TABLE ********************************************************************************************
-            console.log('start making comp table');
 
             // append thead & tbody
             let tHeadBody = `
@@ -619,9 +620,6 @@
                             `;                    
 
             $('#comp-table').append(tHeadBody);
-            console.log('head body appended');
-            console.log(tHeadBody);
-            console.log($('#comp-table').html());
 
             // append row
             var table_row = '';
@@ -635,12 +633,9 @@
                 table_row += '<td class="w-tr"><input id="3y-sd-' + i + '" type="text" class="form-control inputfield input-numbers w-100" aria-label="3y-sd-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
                 table_row += '<td class="w-tr"><input id="custom-sd-' + i + '" type="text" class="form-control inputfield input-numbers w-100" aria-label="custom-sd-' + i + '" aria-describedby="inputGroup-sizing-sm"></td>';
                 table_row += '</tr>';
-                console.log('one row added');
-                console.log(table_row);
             }
 
             $('#comp-table').append(table_row);
-            console.log('rows appended');
         }
 
 
@@ -751,12 +746,10 @@
             // looping to get data
             for (var i = 0; i < token.length; i++) {
                 var priceCurrency = "";
-                console.log(ccy[i]);
                 if (ccy[i] == null || ccy[i] == "") {
                     priceCurrency = "USD";
                 } else { priceCurrency = ccy[i] };
 
-                console.log(priceCurrency);
 
                 var json_ccy = "&currencyId=" + priceCurrency;
                 var json_id = "&id=" + token[i];
