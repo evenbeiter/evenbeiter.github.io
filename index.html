@@ -168,6 +168,42 @@
         </div>
     </div>
 
+    <!-- PERFORMANCE TABLE **************************************************************************************-->
+
+    <!-- bootstrap nav tabs START -->
+    <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist"></div>
+        </nav>
+    
+        <div class="tab-content" id="nav-tabContent"></div>
+        <!-- bootstrap nav tabs END -->
+    
+        <br>
+        <div class="col col-sm-12 col-md-6 float-left">
+            <div class="input-group input-group-sm mb-3" style="width: 120px; float: left; margin-right: 5px">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">CCY</span>
+                </div>
+                <input id="ccy" type="text" class="form-control" aria-label="currency" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <div class="float-left">
+                <button class="btn btn-light btn-sm" onclick="getMsChart()">MStar</button>
+                <button class="btn btn-light btn-sm" onclick="clearAll()">Clear</button>
+                <button class="btn btn-light btn-sm" onclick="refresh()">Refresh</button>
+                <button class="btn btn-light btn-sm" onclick="secInfo()">Info</button>
+                <button class="btn btn-light btn-sm" onclick="newWindowChart()">Chart</button>
+            </div>
+        </div>
+    
+        <div class="col col-sm-12 col-md-6 float-left">
+            <div class="input-group input-group-sm mb-3" style="width: 300px; float: left; margin-left: 5px; margin-right: 5px">
+                <input id="search-value" type="text" class="form-control" aria-label="search-value"
+                    aria-describedby="inputGroup-sizing-sm">
+            </div>
+            <button class="btn btn-light btn-sm float-left" onclick="search()">Search</button>
+            </div>
+        </div>
+
     <!-- POP UP CHART *********************************************************************************************-->
     <div id="light" class="white_content">
         <p style='text-align: right'><a href="javascript:void(0)" onclick="closeChart()">CLOSE</a>
@@ -226,42 +262,6 @@
     <div id="fade" class="black_overlay"></div>
 
 
-
-    <!-- PERFORMANCE TABLE **************************************************************************************-->
-
-    <!-- bootstrap nav tabs START -->
-    <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist"></div>
-    </nav>
-
-    <div class="tab-content" id="nav-tabContent"></div>
-    <!-- bootstrap nav tabs END -->
-
-    <br>
-    <div class="col col-sm-12 col-md-6 float-left">
-        <div class="input-group input-group-sm mb-3" style="width: 120px; float: left; margin-right: 5px">
-            <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-sm">CCY</span>
-            </div>
-            <input id="ccy" type="text" class="form-control" aria-label="currency" aria-describedby="inputGroup-sizing-sm">
-        </div>
-        <div class="float-left">
-            <button class="btn btn-light btn-sm" onclick="getMsChart()">MStar</button>
-            <button class="btn btn-light btn-sm" onclick="clearAll()">Clear</button>
-            <button class="btn btn-light btn-sm" onclick="refresh()">Refresh</button>
-            <button class="btn btn-light btn-sm" onclick="secInfo()">Info</button>
-            <button class="btn btn-light btn-sm" onclick="newWindowChart()">Chart</button>
-        </div>
-    </div>
-
-    <div class="col col-sm-12 col-md-6 float-left">
-        <div class="input-group input-group-sm mb-3" style="width: 300px; float: left; margin-left: 5px; margin-right: 5px">
-            <input id="search-value" type="text" class="form-control" aria-label="search-value"
-                aria-describedby="inputGroup-sizing-sm">
-        </div>
-        <button class="btn btn-light btn-sm float-left" onclick="search()">Search</button>
-        </div>
-    </div>
 
     <script>
 
@@ -334,13 +334,6 @@
             } else {
                 sec = sec_json[tabName];
             }
-
-            // get json url
-            // const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=5000&outputType=json&version=1&languageId=zh-TW";
-            // var jsonUrl_uni = "";
-            // const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
-            // const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
-            // var jsonUrl_id = "";
 
             if (tabName == "nb") {
                 jsonUrl_uni = "&universeIds=FOTWN$$ALL";
@@ -430,9 +423,9 @@
                     if (data.ISIN.slice(0, 2) == "TW") { //TW registered
                         sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL';
                         cssClassTr = ' class="tr-twn"';
-                    } else if (data.investmenttype == "FO") {
+                    } 
+                } else if (data.investmenttype == "FO") {
                     sec_token = data.SecId + ']22]0]' + 'UNIVE$$ALL'; //including ETF
-                    }
                 }
 
                 data.SecurityToken = sec_token;
@@ -459,7 +452,7 @@
                 
                 sec_data += '<td>' + data.PriceCurrency + '</td>';
                 sec_data += '<td class="text-right">' + parseFloat(data.ClosePrice).toFixed(2) + '</td>';
-                sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnD1).toFixed(dec) + '</td>';
+                sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnD1).toFixed(2) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnW1).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM1).toFixed(dec) + '</td>';
                 sec_data += '<td class="text-right heat-map">' + parseFloat(data.GBRReturnM3).toFixed(dec) + '</td>';
@@ -715,6 +708,9 @@
             var sDates = incept.map(x => new Date(x));
             startDate = fromDate(sDates); //yyyy-mm-dd
 
+            // include dates data into from/to fields
+            $("#startDate").val(convertDateReverse(startDate));
+            $("#endDate").val(convertDateReverse(endDate));
 
             json_url = "https://tools.morningstar.co.uk/api/rest.svc/timeseries_cumulativereturn/t92wz0sj7c?idtype=Morningstar&priceType=&outputType=COMPACTJSON&decPlaces=2&applyTrackRecordExtension=true";
             json_frq = "&frequency=daily";
@@ -722,10 +718,6 @@
             var json_end = "&endDate=" + endDate;
             var colors = ['rgb(110,141,176)', 'rgb(173,174,176)', 'rgb(55,81,114)', 'rgb(95,130,137)', 'rgb(110,178,189)', 'rgb(220,181,150)',
                 'rgb(192,109,89)', 'rgb(103,112,122)', 'rgb(76,180,231)', 'rgb(166,169,123)', 'rgb(241,225,213)', 'rgb(157,182,187)'];
-
-            // include dates data into from/to fields
-            $("#startDate").val(convertDateReverse(startDate));
-            $("#endDate").val(convertDateReverse(endDate));
 
             // user input ccy for charting
 
@@ -749,7 +741,6 @@
                 if (ccy[i] == null || ccy[i] == "") {
                     priceCurrency = "USD";
                 } else { priceCurrency = ccy[i] };
-
 
                 var json_ccy = "&currencyId=" + priceCurrency;
                 var json_id = "&id=" + token[i];
@@ -890,7 +881,6 @@
                 })
                 return stdev = Math.sqrt(deviations.map(square).reduce(sum)/(data.length - 1)) * Math.sqrt(12) * 100;                
             }
-
         }
 
         async function getMthReturn(url) {
@@ -937,31 +927,15 @@
             var dt = new Date();
             dt.setDate(dt.getDate() - 1); //yesterday
             return dt.toLocaleDateString('fr-CA');
-            // var yyyy = getYYYY(dt);
-            // var mm = getMM(dt);
-            // var dd = getDD(dt);
-            // return [yyyy, mm, dd].join('-')
         }
 
-        function plotlyDate(jsonDate) { //yyyy-mm-dd
+        function plotlyDate(jsonDate) { //from json date to yyyy-mm-dd
             var dt = new Date(parseInt(jsonDate));
             return dt.toLocaleDateString('fr-CA');
-            // var dd = dt.getDate();
-            // var mm = dt.getMonth() + 1; //January is 0! 
-            // var yyyy = dt.getFullYear();
-            // if (dd < 10) { dd = '0' + dd }
-            // if (mm < 10) { mm = '0' + mm }
-            // return [yyyy, mm, dd].join('-');
         }
 
         function dateFormat(dt) {
             return dt.toLocaleDateString('fr-CA');
-            // var dd = dt.getDate();
-            // var mm = dt.getMonth() + 1; //January is 0! 
-            // var yyyy = dt.getFullYear();
-            // if (dd < 10) { dd = '0' + dd }
-            // if (mm < 10) { mm = '0' + mm }
-            // return [yyyy, mm, dd].join('-');
         }
 
 
@@ -976,29 +950,16 @@
             if (mm <= 0) {
                 mm = mm + 12
                 yyyy = yyyy - 1
-            } else {
-                mm = mm
-            }
+            } else { mm = mm }
 
             if (dd > getMonthEnd(yyyy, mm)) {
                 dd = getMonthEnd(yyyy, mm)
-            } else {
-                dd = dd
-            }
+            } else { dd = dd }
 
             if (mm < 10) { mm = '0' + mm };
             if (dd < 10) { dd = '0' + dd };
-
             return [yyyy, mm, dd].join('-')
         }
-
-        // function yearAgo(yr){
-        //     var dt = new Date();
-        //     var yyyy = getYYYY(dt) - yr;
-        //     var mm = getMM(dt);
-        //     var dd = getDD(dt);
-        //     return [yyyy, mm, dd].join('-');
-        // }
 
         function yearAgo(dt, yr) { //yyyy-mm-dd
             var yyyy = dt.slice(0, 4) - yr;
@@ -1020,14 +981,10 @@
             if (mm <= 0) {
                 mm = mm + 12
                 yyyy = yyyy - 1
-            } else {
-                mm = mm
-            }
+            } else { mm = mm }
 
             dd = getMonthEnd(yyyy, mm);
-
             if (mm < 10) { mm = '0' + mm };
-
             return [yyyy, mm, dd].join('-');
         }
 
