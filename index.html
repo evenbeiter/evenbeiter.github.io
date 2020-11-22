@@ -266,25 +266,25 @@
     <script>
 
         $(document).ready(async function () {
-            showSpinner();
-            await createPage('nb');
-            await createPage('mac');
-            await createPage('hyb');
-            await createPage('ghy');
-            await createPage('ig');
-            await createPage('si');
-            await createPage('emd');
-            await createPage('cb');
-            await createPage('eme');
-            await createPage('ge');
-            await createPage('use');
-            await createPage('fivg');
-            await createPage('reit');
-            await createPage('ar');
-            await createPage('project');
-
-            await createTab('search');
-            hideSpinner();
+            let res = await Promise.all([
+                createPage('nb'),
+                createPage('mac'),
+                createPage('hyb'),
+                createPage('ghy'),
+                createPage('ig'),
+                createPage('si'),
+                createPage('emd'),
+                createPage('cb'),
+                createPage('eme'),
+                createPage('ge'),
+                createPage('use'),
+                createPage('fivg'),
+                createPage('reit'),
+                createPage('ar'),
+                createPage('project'),
+                createTab('search')               
+            ]);
+            if (res) { hideSpinner() };
         })
 
 
