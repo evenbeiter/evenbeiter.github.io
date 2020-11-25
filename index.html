@@ -179,7 +179,7 @@
         <!-- bootstrap nav tabs END -->
     
         <br>
-        <div class="col col-sm-12 col-md-6 float-left">
+        <div class="col col-sm-12 col-md-6 col-lg-4 float-left">
             <div class="input-group input-group-sm mb-3" style="width: 120px; float: left; margin-right: 5px">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-sm">CCY</span>
@@ -195,12 +195,34 @@
             </div>
         </div>
     
-        <div class="col col-sm-12 col-md-6 float-left">
+        <div class="col col-sm-12 col-md-6 col-lg-4 float-left">
             <div class="input-group input-group-sm mb-3" style="width: 300px; float: left; margin-left: 5px; margin-right: 5px">
                 <input id="search-value" type="text" class="form-control" aria-label="search-value"
                     aria-describedby="inputGroup-sizing-sm">
             </div>
             <button class="btn btn-light btn-sm float-left" onclick="search()">Search</button>
+        </div>
+
+        <div class="col col-sm-12 col-md-6 col-lg-4 float-left">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="search-twn" value="ALL" checked>
+                <label class="form-check-label" for="search-twn">ALL</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="search-all" value="TWN">
+                <label class="form-check-label" for="search-all">TWN</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="search-idx" value="IDX">
+                <label class="form-check-label" for="search-idx">IDX</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="search-etf" value="ETF">
+                <label class="form-check-label" for="search-etf">ETF</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="search-stk" value="STK">
+                <label class="form-check-label" for="search-stk">STK</label>
             </div>
         </div>
 
@@ -322,8 +344,8 @@
 
         const jsonUrl_url = "https://lt.morningstar.com/api/rest.svc/klr5zyak8x/security/screener?page=1&pageSize=5000&outputType=json&version=1&languageId=zh-TW";
         var jsonUrl_uni = "";
-        const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName";
-        const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension";
+        const jsonUrl_data = "&securityDataPoints=SecId|PerformanceId|ISIN|Name|LegalName|CategoryId|CategoryName|PriceCurrency|ClosePrice|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|FundTNAV|FundTNAVDate|StandardDeviationM12|StandardDeviationM36|SharpeM36|ClosePriceDate|InceptionDate|investmenttype|BrandingCompanyId|PrimaryBenchmarkId|PrimaryBenchmarkName|Ticker";
+        const jsonUrl_dataAll = "&securityDataPoints=ISIN|SecId|PerformanceId|Name|LegalName|PriceCurrency|CategoryName|ClosePrice|StarRatingM255|SustainabilityRank|QuantitativeRating|AnalystRatingScale|Yield_M12|GBRReturnD1|GBRReturnW1|GBRReturnM1|GBRReturnM3|GBRReturnM6|GBRReturnM0|GBRReturnM12|GBRReturnM36|GBRReturnM60|GBRReturnM120|MaxFrontEndLoad|OngoingCharge|OngoingCostActual|PerformanceFeeActual|TransactionFeeActual|MaximumExitCostAcquired|FeeLevel|ManagerTenure|MaxDeferredLoad|InitialPurchase|FundTNAV|EquityStyleBox|BondStyleBox|AverageMarketCapital|AverageCreditQualityCode|EffectiveDuration|MorningstarRiskM255|AlphaM36|BetaM36|R2M36|StandardDeviationM36|SharpeM36|InvestorTypeRetail|InvestorTypeProfessional|InvestorTypeEligibleCounterparty|ExpertiseBasic|ExpertiseAdvanced|ExpertiseInformed|ReturnProfilePreservation|ReturnProfileGrowth|ReturnProfileIncome|ReturnProfileHedging|ReturnProfileOther|TrackRecordExtension|Ticker";
         var jsonUrl_id = "";
 
         async function getTable(tabName){
@@ -336,12 +358,28 @@
                 sec = sec_json[tabName];
             }
 
+            // determine jsonUrl_uni & jsonUrl_id
             if (tabName == "nb") {
                 jsonUrl_uni = "&universeIds=FOTWN$$ALL";
                 jsonUrl_id = "&filters=BrandingCompanyId:EQ:BN000009J2";
-            } else {
-                jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOGBR$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";
+
+            } else { //including search radio button value to determin search universe
                 jsonUrl_id = "&term=" + sec.join(" ");
+                // determine jsonUrl_uni
+                let rdo = $("input[type='radio']:checked").val(); //default ALL, change when search
+                if (rdo == "ALL") {
+                    jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOGBR$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL"; 
+                } else if (rdo == "TWN") {
+                    jsonUrl_uni = "&universeIds=FOTWN$$ALL";
+                } else if (rdo == "IDX") {
+                    jsonUrl_uni = "&universeIds=IXALL$$ALL";
+                } else if (rdo == "ETF") {
+                    jsonUrl_uni = "&universeIds=ETALL$$ALL";
+                } else if (rdo == "STK") {
+                    jsonUrl_uni = "&universeIds=E0EXG$XNYS|E0EXG$XNAS|E0EXG$XLON|E0EXG$XTAI|E0EXG$XTKS|E0EXG$XSHG|E0EXG$XSHE";
+                } else {
+                    jsonUrl_uni = "&universeIds=FOTWN$$ALL|FOGBR$$ALL|FOLUX$$ALL|ETALL$$ALL|IXALL$$ALL";  //prevent error
+                }
             }
 
             mstarFile = jsonUrl_url + jsonUrl_uni + jsonUrl_data + jsonUrl_id;
@@ -369,6 +407,7 @@
                                 <th>Date</th>
                                 <th>AUM Date</th>
                                 <th>Inception</th>
+                                <th>Ticker</th>
                                 <th>SecId</th>
                                 <th>PerformanceId</th>
                             </tr>
@@ -424,9 +463,9 @@
                     if (data.ISIN.slice(0, 2) == "TW") { //TW registered
                         sec_token = data.SecId + ']2]0]' + data.investmenttype + 'TWN$$ALL';
                         cssClassTr = ' class="tr-twn"';
-                    } 
-                } else if (data.investmenttype == "FO") {
+                    } else if (data.investmenttype == "FO") {
                     sec_token = data.SecId + ']22]0]' + 'UNIVE$$ALL'; //including ETF
+                    }
                 }
 
                 data.SecurityToken = sec_token;
@@ -469,6 +508,7 @@
                 sec_data += '<td>' + data.ClosePriceDate + '</td>';
                 sec_data += '<td>' + data.FundTNAVDate + '</td>';
                 sec_data += '<td>' + data.InceptionDate + '</td>';
+                sec_data += '<td>' + data.Ticker + '</td>';
                 sec_data += '<td>' + data.SecId + '</td>';
                 sec_data += '<td>' + data.PerformanceId + '</td>';
 
