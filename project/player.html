@@ -107,6 +107,23 @@
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
         <input type="file" id="browseText" onchange="browseText(this.value)">
       </div>
+
+      <div id='srcWin'>
+        <div id='srcWinBarBlock'>
+          <div id="srcWinBar">
+            <div id="srcWinbarTitle1">
+              <div id='tablrc'>LRC</div>
+              <div id='tabtxt'>TXT</div>
+            </div>
+            <div id="plus2" onclick="fontSize(event, 1, 1)">大字</div>
+            <div id="minus2" onclick="fontSize(event, 1, -1)">小字</div>
+            <div id="srcWinBarPart" onclick="$('#lrc').css({'height':'300px', 'overflowY':'scroll'})">滚動</div>
+            <div id="srcWinBarFull" onclick="$('#lrc').css({'height':'auto', 'overflowY':'visible'})">全頁</div>
+          </div>
+        </div>
+        <div id='lrc'></div>
+        <div id='txt'></div>
+      </div>
       
     </div>
   </div>
