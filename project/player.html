@@ -103,39 +103,11 @@
         <button id='btnOpenMedia' onClick="$('#browseMedia').click()">mp3 / mp4</button>
         <span id='mediaName'>加載音頻(mp3)或視頻文件(mp4)</span> <br>
         <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
-        <span id='textName'>加載文本(txt)或歌詞(lrc)文件 (若没有可省略)</span>
+        <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span>
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
         <input type="file" id="browseText" onchange="browseText(this.value)">
       </div>
-
-      <div id="editWin">
-        <div id="editWinBar">
-          <div id="barTitle1">聽寫 / 編輯區</div>
-              <div id="plus1" onclick="fontSize(event, 0, 1)">大字</div>
-              <div id="minus1" onclick="fontSize(event, 0, -1)">小字</div>
-              <div id="reset1" onclick="editWinForm.reset()">&nbsp;重寫&nbsp;</div>
-              <div id="save1" onclick="send()">&nbsp;保存&nbsp;</div>
-        </div>
-        <form id="editWinForm" name="editWinForm" method="post" action="savemytext.php">
-          <textarea name="editWinText" id="editWinText"></textarea>
-        </form>
-      </div>
-      <div id='srcWin'>
-        <div id='srcWinBarBlock'>
-          <div id="srcWinBar">
-            <div id="srcWinbarTitle1">
-              <div id='tablrc'>LRC</div>
-              <div id='tabtxt'>TXT</div>
-            </div>
-            <div id="plus2" onclick="fontSize(event, 1, 1)">大字</div>
-            <div id="minus2" onclick="fontSize(event, 1, -1)">小字</div>
-            <div id="srcWinBarPart" onclick="$('#lrc').css({'height':'300px', 'overflowY':'scroll'})">滚动</div>
-            <div id="srcWinBarFull" onclick="$('#lrc').css({'height':'auto', 'overflowY':'visible'})">全页</div>
-          </div>
-        </div>
-        <div id='lrc'></div>
-        <div id='txt'></div>
-      </div>
+      
     </div>
   </div>
 </div>
