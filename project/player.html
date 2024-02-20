@@ -14,11 +14,6 @@
 </head>
 
 <body id='bdy'>
-  <script
-    src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-    crossorigin="anonymous">
-  </script>
 
 <div id='pagewrap'>
   <div id='main'>
@@ -30,14 +25,6 @@
         <div id='playerwrap'>
 
           <audio id='ap' preload='auto'>HTML5 audio not supported.</audio>
-
-          <!-- <script>
-              console.log('js is running');
-              let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/PaulHudson_2023S.mp3&lrc=https://abc.com/a.lrc';
-              let src=url.match(/player.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');
-              $('#ap').attr('src',src);
-          </script> -->
-
           <video id='vp'></video>
           <div id='infobox'>
             <div id='timebox'>00:00 / 00:00</div>
@@ -148,10 +135,10 @@
     </div>
   </div>
 </div>
-<!-- <script
+<script
   src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
   integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-  crossorigin="anonymous"></script> -->
+  crossorigin="anonymous"></script>
 <script src="https://evenbeiter.github.io/project/player.js"></script> 
 <!-- <script src="player.js"></script>  -->
 <script>
@@ -159,7 +146,9 @@ progfilename='';
 txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 <script>
-    let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
+https://py.tedcdn.com/consus/projects/00/18/95/006/products/2013g-julian-treasure-006-fallback-ac29472c1ff8963e8846a172e4f27d3d-1200k.mp4
+    // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
+    let url='https://evenbeiter.github.io/project/player.html?snd=https://py.tedcdn.com/consus/projects/00/18/95/006/products/2013g-julian-treasure-006-fallback-ac29472c1ff8963e8846a172e4f27d3d-1200k.mp43&lrc=https://evenbeiter.github.io/project/src/txt.txt';
     let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');console.log(mediaSrc);
     let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
     $('#ap').attr('src',mediaSrc);
