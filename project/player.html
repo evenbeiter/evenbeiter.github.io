@@ -160,8 +160,8 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 <script>
     let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');
-    let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');
+    let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');console.log(mediaSrc);
+    let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
     $('#ap').attr('src',mediaSrc);
     getLrc();
 
@@ -170,6 +170,10 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     let str = await response.text();
     console.log(str);
     putlrc(str);
+    $("#tablrc").addClass("tabshow");
+    $("#tabtxt").removeClass("tabshow");
+    $("#lrc").show();
+    $("#txt").hide();
     }
 
 </script>
