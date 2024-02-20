@@ -1,9 +1,8 @@
 javascript:(async()=>{
 
-let a = Number(prompt("Please input delay time in ms."));
-
 let response = await fetch(window.location.href);
 let str = await response.text();
+let filename=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace('</title>','.lrc');
 let raw=str.match(/transcriptData":[\s\S]*?video":{/g)[0].replace(/\\n/g,' ').replace('transcriptData":{"translation":','').replace(',"video":{','');
 let data=JSON.parse(raw);
 
@@ -27,7 +26,7 @@ let txtUrl = URL.createObjectURL(txtData);
 let link = document.createElement('a');
 link.href = txtUrl;
 link.target = '_blank';
-link.download = 'txt.lrc';
+link.download = filename;
 link.click();
 
 })();
