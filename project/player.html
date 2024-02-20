@@ -106,7 +106,7 @@
         <span id='mediaName'>加載音頻(mp3)或視頻文件(mp4)</span> <br>
         <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
         <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span>
-        <span>Delay Time </span><input id="delaySec" type="number" value="2" />
+        <span>Delay Time </span><input id="delaySec" type="number" value="0" />
         <button onclick="delayTime()">Go</button>
         
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
@@ -142,8 +142,7 @@
 </script>
 
 <script>
-  // let delaySec = Number(prompt("Please input delay time in ms."));
-  let delaySec = $('#delaySec').value;console.log(delaySec);
+  let delaySec = $('#delaySec').val();console.log(delaySec);
 </script>
 <script src="https://evenbeiter.github.io/project/player.js"></script> 
 <!-- <script src="player.js"></script>  -->
