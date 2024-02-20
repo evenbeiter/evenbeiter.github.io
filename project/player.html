@@ -170,6 +170,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     let str = await response.text();
     console.log(str);
     putlrc(str);
+    $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
     $("#tabtxt").removeClass("tabshow");
     $("#lrc").show();
