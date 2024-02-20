@@ -160,13 +160,12 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 <script>
     let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let mediaSrc=url.match(/player.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');
-    let lrcSrc=url.match(/&lrc=[\s\S]*?.txt/g)[0].replace('&lrc=','');
+    let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');
+    let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');
     $('#ap').attr('src',mediaSrc);
     getLrc();
 
     async function getLrc() {
-    console.log('calling');
     let response = await fetch(lrcSrc);
     let str = await response.text();
     console.log(str);
