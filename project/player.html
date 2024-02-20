@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 <head>
@@ -11,19 +10,34 @@
 <meta name="x5-orientation" content="portrait">
 <title>Player</title>
 <link href="https://evenbeiter.github.io/project/player.css" rel="stylesheet"/>
+<!-- <link href="player.css" rel="stylesheet"/> -->
 </head>
 
 <body id='bdy'>
+  <script
+    src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+    integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+    crossorigin="anonymous">
+  </script>
 
 <div id='pagewrap'>
   <div id='main'>
     <div id='content'>
-      <div id="title">
+      <!-- <div id="title">
         <h1>LRC Player</h1>
-      </div>
+      </div> -->
       <div id='playerblock'>
         <div id='playerwrap'>
-          <audio id='ap'>您設備上的瀏覽器不支援HTML5</audio>
+
+          <audio id='ap'></audio>
+
+          <!-- <script>
+              console.log('js is running');
+              let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/PaulHudson_2023S.mp3&lrc=https://abc.com/a.lrc';
+              let src=url.match(/player.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');
+              $('#ap').attr('src',src);
+          </script> -->
+
           <video id='vp'></video>
           <div id='infobox'>
             <div id='timebox'>00:00 / 00:00</div>
@@ -107,6 +121,11 @@
         <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span>
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
         <input type="file" id="browseText" onchange="browseText(this.value)">
+
+
+
+
+
       </div>
 
       <div id='srcWin'>
@@ -129,14 +148,27 @@
     </div>
   </div>
 </div>
-<script
+<!-- <script
   src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
   integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous"></script> -->
 <script src="https://evenbeiter.github.io/project/player.js"></script> 
+<!-- <script src="player.js"></script>  -->
 <script>
 progfilename='';
 txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
+<script>
+    console.log('js is running');
+    let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
+    let mediaSrc=url.match(/player.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');
+    let lrcSrc=url.match(/&lrc=[\s\S]*?.txt/g)[0].replace('&lrc=','');
+    $('#ap').attr('src',src);
+
+    let response = await fetch(lrcScr);
+    let str = await response.text();
+    putlrc(str);
+
+</script>
 </body>
 </html>
