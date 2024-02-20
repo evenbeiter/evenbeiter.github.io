@@ -167,7 +167,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
     async function getLrc() {
     console.log('calling');
-    let response = await fetch(lrcScr);
+    let response = await fetch(lrcSrc);
     let str = await response.text();
     console.log(str);
     putlrc(str);
