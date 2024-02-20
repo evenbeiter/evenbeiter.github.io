@@ -147,7 +147,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 <script>
     // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let url='https://evenbeiter.github.io/project/player.html?snd=https://py.tedcdn.com/consus/projects/00/18/95/006/products/2013g-julian-treasure-006-fallback-ac29472c1ff8963e8846a172e4f27d3d-1200k.mp43&lrc=https://evenbeiter.github.io/project/src/txt.txt';
+    let url='https://evenbeiter.github.io/project/player.html?snd=http://www.lukeduncan.co/oslo.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
     let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');console.log(mediaSrc);
     let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
     $('#ap').attr('src',mediaSrc);
