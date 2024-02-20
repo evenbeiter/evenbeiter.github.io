@@ -29,7 +29,7 @@
       <div id='playerblock'>
         <div id='playerwrap'>
 
-          <audio id='ap' controls></audio>
+          <audio id='ap' preload='auto'>HTML5 audio not supported.</audio>
 
           <!-- <script>
               console.log('js is running');
@@ -168,7 +168,6 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     async function getLrc() {
     let response = await fetch(lrcSrc);
     let str = await response.text();
-    console.log(str);
     putlrc(str);
     $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
