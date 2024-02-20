@@ -169,12 +169,16 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     $("#lrc").show();
     $("#txt").hide();
     }
+
+    function delayTime(){
+      delaySec=$('#delaySec').value;
+      console.log(delaySec);
+      getLtc();
+    }
 </script>
 
 <script>
-  function delayTime(){delaySec=$('#delaySec').value;
-  console.log(delaySec);
-  }
+
 </script>
 </body>
 </html>
