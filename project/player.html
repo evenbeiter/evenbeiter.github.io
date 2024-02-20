@@ -18,13 +18,12 @@
 <div id='pagewrap'>
   <div id='main'>
     <div id='content'>
-      <!-- <div id="title">
+      <div id="title">
         <h1>LRC Player</h1>
-      </div> -->
+      </div>
       <div id='playerblock'>
         <div id='playerwrap'>
-
-          <audio id='ap' preload='auto'>HTML5 audio not supported.</audio>
+          <audio id='ap'>HTML5 audio not supported.</audio>
           <video id='vp'></video>
           <div id='infobox'>
             <div id='timebox'>00:00 / 00:00</div>
@@ -105,13 +104,12 @@
         <button id='btnOpenMedia' onClick="$('#browseMedia').click()">mp3 / mp4</button>
         <span id='mediaName'>加載音頻(mp3)或視頻文件(mp4)</span> <br>
         <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
-        <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span>
+        <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span> <br>
         <span>Delay Time </span><input id="delaySec" type="number" value="0" />
         <button onclick="delayTime()">Go</button>
-        
+
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
         <input type="file" id="browseText" onchange="browseText(this.value)">
-
       </div>
 
       <div id='srcWin'>
@@ -134,7 +132,6 @@
     </div>
   </div>
 </div>
-
 <script
   src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
   integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
@@ -142,42 +139,24 @@
 </script>
 
 <script>
-  let delaySec = $('#delaySec').val();console.log(delaySec);
+    let delaySec = $('#delaySec').val();console.log(delaySec);
 </script>
+
 <script src="https://evenbeiter.github.io/project/player.js"></script> 
 <!-- <script src="player.js"></script>  -->
 <script>
 progfilename='';
 txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
-<script>
-    // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let url='https://evenbeiter.github.io/project/player.html?snd=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');console.log(mediaSrc);
-    let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
-    $('#ap').attr('src',mediaSrc);
-    getLrc();
-
-    async function getLrc() {
-    let response = await fetch(lrcSrc);
-    let str = await response.text();
-    putlrc(str);
-    $("#srcWin").show();
-    $("#tablrc").addClass("tabshow");
-    $("#tabtxt").removeClass("tabshow");
-    $("#lrc").show();
-    $("#txt").hide();
-    }
-
-    function delayTime(){
-      delaySec=Number($('#delaySec').val());
-      console.log(delaySec);
-      getLrc();
-    }
-</script>
 
 <script>
 
+  function delayTime(){
+    delaySec=Number($('#delaySec').val());
+    console.log(delaySec);
+    browseText($('#browseText').val());
+  }
 </script>
+
 </body>
 </html>
