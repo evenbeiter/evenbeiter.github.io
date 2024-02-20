@@ -110,7 +110,8 @@
         <button onclick="delayTime()">Go</button>
 
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
-        <input type="file" id="browseText" onchange="browseText(this.value)">
+        <!-- <input type="file" id="browseText" onchange="browseText(this.value)"> -->
+        <input type="file" id="browseText" onchange="delayTime()">
       </div>
 
       <div id='srcWin'>
@@ -151,8 +152,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 <script>
 
   function delayTime(){
-    delaySec=Number($('#delaySec').val());
-    console.log(delaySec);
+    let delaySec=Number($('#delaySec').val());
     browseText($('#browseText').val());
   }
 </script>
