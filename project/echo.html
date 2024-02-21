@@ -164,7 +164,7 @@ let dm='https://evenbeiter.github.io/project/src/';
     let i=url.slice(url.indexOf('=')+1);
     document.querySelector('title').textContent=data[i]["a"];
     let mediaSrc=data[i]["b"];
-    let lrcSrc=data[i]["a"]+'.txt';console.log(lrcSrc);
+    let lrcSrc='src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
     delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
     getLrc();
