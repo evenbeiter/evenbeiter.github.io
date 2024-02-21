@@ -158,8 +158,8 @@ let ted='https://www.ted.com/talks/julian_treasure_how_to_speak_so_that_people_w
 console.log(getTed(ted));
 
 async function getTed(ted) {
-let response = await fetch(ted);
-let str = await response.text();
+let response = await fetch(ted);console.log(ted);
+let str = await response.text();console.log(str);
 let filename=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace('</title>','.lrc');
 let raw=str.match(/transcriptData":[\s\S]*?video":{/g)[0].replace(/\\n/g,' ').replace('transcriptData":{"translation":','').replace(',"video":{','');
 let data=JSON.parse(raw);
