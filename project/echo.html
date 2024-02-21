@@ -156,35 +156,58 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 getData();
 
 async function getData(){
-    let response=await fetch('https://evenbeiter.github.io/project/list.json');
-    let str=await response.text();
-    let data=JSON.parse(str);console.log(data[0]);
+    var response=await fetch('https://evenbeiter.github.io/project/list.json');
+    var str=await response.text();
+    let data=JSON.parse(str);console.log(data);
     
     let url=window.location.href;
-    let i=url.slice(url.indexOf('=')+1);
+    let i=url.slice(url.indexOf('='));
     document.querySelector('title').textContent=data[i]["a"];
     let mediaSrc=data[i]["b"];
     let lrcSrc='src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
     delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
-    getLrc(lrcSrc);
-    delayTime();
 
-    async function getLrc(lrc) {
-    let response = await fetch(lrc);
-    let str = await response.text();
+    response = await fetch(lrcSrc);
+    str = await response.text();
     putlrc(str);
     $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
     $("#tabtxt").removeClass("tabshow");
     $("#lrc").show();
     $("#txt").hide();
-    }
+}
 
-    function delayTime(){
-      delaySec=Number($('#delaySec').val());
-      getLrc();
-    }
+// async function getData(){
+//     let response=await fetch('https://evenbeiter.github.io/project/list.json');
+//     let str=await response.text();
+//     let data=JSON.parse(str);console.log(data);
+    
+//     let url=window.location.href;
+//     let i=url.slice(url.indexOf('='));
+//     document.querySelector('title').textContent=data[i]["a"];
+//     let mediaSrc=data[i]["b"];
+//     let lrcSrc='src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
+//     delaySec=Number(data[i]["c"]);
+//     $('#ap').attr('src',mediaSrc);
+//     getLrc(lrcSrc);
+//     delayTime();
+
+//     async function getLrc(lrc) {
+//     let response = await fetch(lrc);
+//     let str = await response.text();
+//     putlrc(str);
+//     $("#srcWin").show();
+//     $("#tablrc").addClass("tabshow");
+//     $("#tabtxt").removeClass("tabshow");
+//     $("#lrc").show();
+//     $("#txt").hide();
+//     }
+
+//     function delayTime(){
+//       delaySec=Number($('#delaySec').val());
+//       getLrc();
+//     }
 
 }
 
