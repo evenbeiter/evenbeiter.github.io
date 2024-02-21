@@ -24,20 +24,19 @@
 
 // let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":0},{"a":"How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":2},{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":5}]
 
-let data=getData();console.log(data);console.log(data[0]);
-document.getElementById('data-list').innerHTML='';
-
-for(var i=0;i<data.length;i++){
-    var tr=document.createElement('tr');
-  //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-    tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/project/echo.html?id='+i+'" target="_blank">'+data[i]["a"]+'</td></tr>';
-    document.getElementById('data-list').appendChild(tr);console.log(i+' is done');
-}
-
 async function getData(){
     let response=await fetch('https://evenbeiter.github.io/project/list.json');
     let str=await response.text();
-    return JSON.parse(str);console.log(str);console.log(JSON.parse(str));
+    let data=JSON.parse(str);console.log(data[0]);
+    
+    document.getElementById('data-list').innerHTML='';
+
+    for(var i=0;i<data.length;i++){
+        var tr=document.createElement('tr');
+    //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
+        tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/project/echo.html?id='+i+'" target="_blank">'+data[i]["a"]+'</td></tr>';
+        document.getElementById('data-list').appendChild(tr);console.log(i+' is done');
+    }
 }
 
 </script>
