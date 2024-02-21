@@ -136,6 +136,7 @@
     </div>
   </div>
 </div>
+  <div id='error'></div>
 
 <script
   src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
@@ -153,7 +154,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 window.onerror = function(e){
-  document.getElementById('prompt').innerHTML = e.toString();
+  document.getElementById('error').innerHTML = e.toString();
 }
   
 let abc=getData();console.log(abc);
