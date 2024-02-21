@@ -161,7 +161,7 @@ async function getData(){
     let data=JSON.parse(str);console.log(data);
     
     let url=window.location.href;
-    let i=url.slice(url.indexOf('='));
+    let i=Number(url.slice(url.indexOf('=')));
     document.querySelector('title').textContent=data[i]["a"];
     let mediaSrc=data[i]["b"];
     let lrcSrc='src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
@@ -176,6 +176,11 @@ async function getData(){
     $("#tabtxt").removeClass("tabshow");
     $("#lrc").show();
     $("#txt").hide();
+}
+
+function delayTime(){
+    delaySec=Number($('#delaySec').val());
+    browseText($('#browseText').val());
 }
 
 // async function getData(){
