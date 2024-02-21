@@ -164,7 +164,7 @@ async function getData(){
     let i=url.slice(-url.length+url.indexOf('=')+1);
     document.querySelector('title').textContent=data[i]["a"];
     let mediaSrc=data[i]["b"];
-    let lrcSrc='src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
     delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
 
