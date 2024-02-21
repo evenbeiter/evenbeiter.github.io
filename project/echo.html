@@ -153,29 +153,33 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 
-let lrcSrc=getData();
-getLrc(lrcSrc);
+let abc=getData();console.log(abc);
+
+document.querySelector('title').textContent=abc["a"];
+let mediaSrc=abc["b"];
+$('#ap').attr('src',mediaSrc);
+
+let lrcSrc='https://evenbeiter.github.io/project/src/'+data["a"]+'.txt';console.log(lrcSrc);
+delaySec=Number(abc["c"]);
+
+//delaySec=Number($('#delaySec').val());
+//getLrc(lrcSrc);
+delayTime(lrcSrc);
 
 async function getData(){
-    var response=await fetch('https://evenbeiter.github.io/project/list.json');
-    var str=await response.text();
+    let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let str=await response.text();
     let data=JSON.parse(str);console.log(data);
     
     let url=window.location.href;
     let i=url.slice(-url.length+url.indexOf('=')+1);
-    document.querySelector('title').textContent=data[i]["a"];
-    let mediaSrc=data[i]["b"];
-
-    delaySec=Number(data[i]["c"]);
-    $('#ap').attr('src',mediaSrc);
-
-return 'https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
+    return data[i];
 }
 
-async function getLrc(lrcSrc){
-    let r = await fetch(lrcSrc);
-    let s = await r.text();console.log(s);
-    putlrc(s);
+async function getLrc(url){
+    let response = await fetch(url);
+    let str = await response.text();console.log(str);
+    putlrc(str);
     $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
     $("#tabtxt").removeClass("tabshow");
@@ -185,7 +189,7 @@ async function getLrc(lrcSrc){
 
 function delayTime(){
     delaySec=Number($('#delaySec').val());
-    browseText($('#browseText').val());
+    getLrc(lrcSrc);
 }
 
 // async function getData(){
