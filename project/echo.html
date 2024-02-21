@@ -152,7 +152,10 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 
 <script>
-
+window.onerror = function(e){
+  document.getElementById('prompt').innerHTML = e.toString();
+}
+  
 let abc=getData();console.log(abc);
 
 document.querySelector('title').textContent=abc["a"];
