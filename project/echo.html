@@ -153,7 +153,8 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 
-getData();
+let lrcSrc=getData();
+getLrc(lrcSrc);
 
 async function getData(){
     var response=await fetch('https://evenbeiter.github.io/project/list.json');
@@ -164,10 +165,14 @@ async function getData(){
     let i=url.slice(-url.length+url.indexOf('=')+1);
     document.querySelector('title').textContent=data[i]["a"];
     let mediaSrc=data[i]["b"];
-    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
+
     delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
 
+return 'https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
+}
+
+async function getLrc(lrcSrc){
     let r = await fetch(lrcSrc);
     let s = await r.text();console.log(s);
     putlrc(s);
