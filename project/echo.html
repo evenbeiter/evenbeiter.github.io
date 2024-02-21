@@ -169,7 +169,7 @@ async function getData(){
     $('#ap').attr('src',mediaSrc);
 
     let r = await fetch(lrcSrc);
-    let s = await response.text();console.log(s);
+    let s = await r.text();console.log(s);
     putlrc(s);
     $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
