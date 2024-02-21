@@ -152,10 +152,20 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 
 <script>
+
+let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":0},{"a":"How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":2},{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":5}]
+
+let dm='https://evenbeiter.github.io/project/src/';
+
+
     // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let url='https://evenbeiter.github.io/project/player.html?audio=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=src/txt.txt';
-    let mediaSrc=url.match(/player\.html\?audio=[\s\S]*?&lrc=/g)[0].replace('player.html?audio=','').replace('&lrc=','');console.log(mediaSrc);
-    let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
+    // let url='https://evenbeiter.github.io/project/player.html?audio=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=src/txt.txt';
+    let url='https://evenbeiter.github.io/project/player.html?id=0';
+    let i=url.slice(url.indexOf('=')+1);
+    document.querySelector('title').textContent=data[i]["a"];
+    let mediaSrc=data[i]["b"];
+    let lrcSrc=data[i]["a"]+'.txt';console.log(lrcSrc);
+    delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
     getLrc();
     delayTime();
