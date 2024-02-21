@@ -154,10 +154,13 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 window.onerror = function(e){
-  document.getElementById('error').innerHTML = e.toString();
+  document.getElementById('console').innerHTML = e.toString();
 }
   
 let abc=getData();console.log(abc);
+var div=document.createElement('div');
+div.innerHTML=abc;
+document.getElementById('console').appendChild(div);
 
 document.querySelector('title').textContent=abc["a"];
 let mediaSrc=abc["b"];
