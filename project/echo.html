@@ -168,9 +168,9 @@ async function getData(){
     delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
 
-    response = await fetch(lrcSrc);
-    str = await response.text();console.log(str);
-    putlrc(str);
+    let r = await fetch(lrcSrc);
+    let s = await response.text();console.log(s);
+    putlrc(s);
     $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
     $("#tabtxt").removeClass("tabshow");
