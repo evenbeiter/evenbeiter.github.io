@@ -150,9 +150,9 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
     // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let url='https://evenbeiter.github.io/project/player.html?snd=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    let mediaSrc=url.match(/player\.html\?snd=[\s\S]*?&lrc=/g)[0].replace('player.html?snd=','').replace('&lrc=','');console.log(mediaSrc);
-    let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
+    let url='https://evenbeiter.github.io/project/player.html?audio=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
+    let mediaSrc=url.match(/player\.html\?audio=[\s\S]*?&lrc=/g)[0].replace('player.html?audio=','').replace('&lrc=','');console.log(mediaSrc);
+    let lrcSrc=url.match(/mp3&lrc=[\s\S]*?\.txt/g)[0].replace('mp3&lrc=','');console.log(lrcSrc);
     $('#ap').attr('src',mediaSrc);
     getLrc();
 
