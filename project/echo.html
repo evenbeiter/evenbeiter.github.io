@@ -153,39 +153,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 
-let ted='https://www.ted.com/talks/julian_treasure_how_to_speak_so_that_people_want_to_listen?hasSummary=true&language=en';
-
-console.log(getTed(ted));
-
-async function getTed(ted) {
-let response = await fetch(ted);console.log(ted);
-let str = await response.text();console.log(str);
-let filename=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace('</title>','.lrc');
-let raw=str.match(/transcriptData":[\s\S]*?video":{/g)[0].replace(/\\n/g,' ').replace('transcriptData":{"translation":','').replace(',"video":{','');
-let data=JSON.parse(raw);
-
-var txt='';
-for(var i=0;i<data["paragraphs"].length;i++){
-  for(var j=0;j<data["paragraphs"][i].cues.length;j++){
-    var t=data["paragraphs"][i].cues[j]["time"];console.log(t+', '+(t+a));console.log(timestamp(t+a));
-    txt=txt+timestamp(t+a)+data["paragraphs"][i].cues[j]["text"]+'\r\n';
-  }
-}
-
-function timestamp(time){
-  let mm=Math.floor(time/1000/60);
-  let ss=Math.floor((time-mm*60000)/10)/100;
-  ss=ss.toFixed(2);
-  return '['+[("0"+mm).slice(-2),("0"+ss).slice(-5)].join(':')+']';
-}
-
-return txt;
-}
-
-
 let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":-41},{"a":"How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":2},{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":5}]
-
-
 
     // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
     // let url='https://evenbeiter.github.io/project/player.html?audio=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=src/txt.txt';
@@ -196,15 +164,13 @@ let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TE
     let lrcSrc='src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
     delaySec=Number(data[i]["c"]);
     $('#ap').attr('src',mediaSrc);
-    // getLrc(lrcSrc);
-    getLrc(getTed(ted));
+    getLrc(lrcSrc);
     delayTime();
 
-    async function getLrc(l) {
-    // let response = await fetch(l);
-    // let str = await response.text();
-    // putlrc(str);
-    putlrc(l);
+    async function getLrc(lrc) {
+    let response = await fetch(lrc);
+    let str = await response.text();
+    putlrc(str);
     $("#srcWin").show();
     $("#tablrc").addClass("tabshow");
     $("#tabtxt").removeClass("tabshow");
@@ -216,10 +182,6 @@ let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TE
       delaySec=Number($('#delaySec').val());
       getLrc();
     }
-
-
-
-
 
 </script>
 
