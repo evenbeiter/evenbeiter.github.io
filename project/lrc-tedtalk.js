@@ -2,6 +2,43 @@ javascript:(async()=>{
 
 let response = await fetch(window.location.href);
 let str = await response.text();
+let filename=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace('</title>','.txt');
+let raw=str.match(/transcriptData":[\s\S]*?video":{/g)[0].replace(/\\n/g,' ').replace('transcriptData":{"translation":','').replace(',"video":{','');
+let data=JSON.parse(raw);
+
+var txt='';
+for(var i=0;i<data["paragraphs"].length;i++){
+  for(var j=0;j<data["paragraphs"][i].cues.length;j++){
+    var t=data["paragraphs"][i].cues[j]["time"];console.log(t+', '+(t));console.log(timestamp(t));
+    txt=txt+timestamp(t)+data["paragraphs"][i].cues[j]["text"]+'\r\n';
+  }
+}
+txt=txt+filename;
+
+let el = document.createElement('textarea');
+document.body.appendChild(el);
+el.value = txt;
+el.select();
+document.execCommand('copy');
+
+function timestamp(time){
+  let mm=Math.floor(time/1000/60);
+  let ss=Math.floor((time-mm*60000)/10)/100;
+  ss=ss.toFixed(2);
+  return '['+[("0"+mm).slice(-2),("0"+ss).slice(-5)].join(':')+']';
+}
+
+})();
+
+
+
+
+
+
+javascript:(async()=>{
+
+let response = await fetch(window.location.href);
+let str = await response.text();
 let filename=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace('</title>','.lrc');
 let raw=str.match(/transcriptData":[\s\S]*?video":{/g)[0].replace(/\\n/g,' ').replace('transcriptData":{"translation":','').replace(',"video":{','');
 let data=JSON.parse(raw);
