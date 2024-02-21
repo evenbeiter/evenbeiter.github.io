@@ -153,10 +153,13 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 
-let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":-41},{"a":"How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":2},{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":5}]
+getData();
 
-    // let url='https://evenbeiter.github.io/project/player.html?snd=https://download.ted.com/talks/JulianTreasure_2013G.mp3&lrc=https://evenbeiter.github.io/project/src/txt.txt';
-    // let url='https://evenbeiter.github.io/project/player.html?audio=https://evenbeiter.github.io/project/src/JulianTreasure_2013G_VO_Intro.mp3&lrc=src/txt.txt';
+async function getData(){
+    let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let str=await response.text();
+    let data=JSON.parse(str);console.log(data[0]);
+    
     let url=window.location.href;
     let i=url.slice(url.indexOf('=')+1);
     document.querySelector('title').textContent=data[i]["a"];
@@ -182,6 +185,10 @@ let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TE
       delaySec=Number($('#delaySec').val());
       getLrc();
     }
+
+}
+
+
 
 </script>
 
