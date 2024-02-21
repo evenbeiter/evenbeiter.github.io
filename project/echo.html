@@ -154,7 +154,9 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 window.onerror = function(e){
-  document.getElementById('console').innerHTML = e.toString();
+  var div=document.createElement('div');
+  div.innerHTML = e.toString();
+  document.getElementById('console').appendChild(div);
 }
   
 let abc=getData();console.log(abc);
