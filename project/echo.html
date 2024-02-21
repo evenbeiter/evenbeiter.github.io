@@ -155,6 +155,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     let lrcSrc=url.match(/&lrc=[\s\S]*?\.txt/g)[0].replace('&lrc=','');console.log(lrcSrc);
     $('#ap').attr('src',mediaSrc);
     getLrc();
+    delayTime();
 
     async function getLrc() {
     let response = await fetch(lrcSrc);
