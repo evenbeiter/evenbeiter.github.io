@@ -24,6 +24,8 @@
 
 // let data=[{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":0},{"a":"How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":2},{"a":"Julian Treasure: How to speak so that people want to listen | TED Talk","b":"https://download.ted.com/talks/JulianTreasure_2013G.mp3","c":5}]
 
+getData();
+
 async function getData(){
     let response=await fetch('https://evenbeiter.github.io/project/list.json');
     let str=await response.text();
