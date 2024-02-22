@@ -178,12 +178,12 @@ async function getData(){
     let url=window.location.href;
     let i=Number(url.slice(-url.length+url.indexOf('=')+1));console.log(data[i]);
 
-    document.querySelector('title').textContent=data["a"];
-    let mediaSrc=data["b"];
+    document.querySelector('title').textContent=data[i]["a"];
+    let mediaSrc=data[i]["b"];
     $('#ap').attr('src',mediaSrc);
     
-    let lrcSrc='https://evenbeiter.github.io/project/src/'+data["a"]+'.txt';console.log(lrcSrc);
-    delaySec=Number(data["c"]);
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
+    delaySec=Number(data[i]["c"]);
     getLrc(lrcSrc);
 }
 
