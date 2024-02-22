@@ -11,7 +11,7 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th scope="col">Listen to Audio</th>
+                <th scope="col">Audio List</th>
             </tr>
         </thead>
         <tbody id="data-list">
@@ -34,7 +34,7 @@ async function getData(){
     for(var i=0;i<data.length;i++){
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-        tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/project/echo.html?id='+i+'" target="_blank">'+data[i][0]+'</td></tr>';
+        tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/project/echo.html?id='+i+'" target="_blank">'+data[i][0].replace('_',':')+'</td></tr>';
         document.getElementById('data-list').appendChild(tr);
     }
 }
