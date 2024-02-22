@@ -181,7 +181,7 @@ async function getData(){
     let data=JSON.parse(str);console.log(data);
     
     let url=window.location.href;
-    let i=url.slice(-url.length+url.indexOf('=')+1);
+    let i=Number(url.slice(-url.length+url.indexOf('=')+1));console.log(data[i]);
     return data[i];
 }
 
