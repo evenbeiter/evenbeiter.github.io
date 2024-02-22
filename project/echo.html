@@ -168,6 +168,8 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 //getLrc(lrcSrc);
 // delayTime(lrcSrc);
 
+getData();
+  
 async function getData(){
     let response=await fetch('https://evenbeiter.github.io/project/list.json');
     let str=await response.text();
