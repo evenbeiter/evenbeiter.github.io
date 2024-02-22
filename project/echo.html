@@ -154,6 +154,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 
+delaySec=Number($('#delaySec').val());console.log($('#lrc').val());
 getData();
   
 async function getData(){
@@ -169,7 +170,7 @@ async function getData(){
     $('#ap').attr('src',mediaSrc);
     
     let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
-    let delaySec=Number(data[i]["c"]);
+    delaySec=Number(data[i]["c"]);
     getLrc(lrcSrc);
 }
 
