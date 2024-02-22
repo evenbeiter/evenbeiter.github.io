@@ -163,13 +163,15 @@ async function getData(){
     
     let url=window.location.href;
     let i=Number(url.slice(-url.length+url.indexOf('=')+1));
-    srcNow=data[i]["a"]+'.mp3';
-    document.querySelector('title').textContent=data[i]["a"];
-    let mediaSrc=data[i]["b"];
+    let filename=data[i][0];
+    let name=filename.replace('_',':');
+    srcNow=name;
+    document.querySelector('title').textContent=name;
+    let mediaSrc='https://evenbeiter.github.io/project/src/'+filename+'.mp3';
     $('#ap').attr('src',mediaSrc);
 
-    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"].replace(':','_')+'.txt';
-    $('#delaySec').val(Number(data[i]["c"]));
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
+    $('#delaySec').val(Number(data[i][1]));
     delaySec=Number($('#delaySec').val())
     getLrc(lrcSrc);
 }
