@@ -153,27 +153,20 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 
 <script>
-window.onerror = function(e){
-  var div=document.createElement('div');
-  div.innerHTML = e.toString();
-  document.getElementById('console').appendChild(div);
-}
+// window.onerror = function(e){
+//   var div=document.createElement('div');
+//   div.innerHTML = e.toString();
+//   document.getElementById('console').appendChild(div);
+// }
   
-let abc=getData();console.log(abc);
-var div=document.createElement('div');
-div.innerHTML=abc;
-document.getElementById('console').appendChild(div);
-
-document.querySelector('title').textContent=abc["a"];
-let mediaSrc=abc["b"];
-$('#ap').attr('src',mediaSrc);
-
-let lrcSrc='https://evenbeiter.github.io/project/src/'+abc["a"]+'.txt';console.log(lrcSrc);
-delaySec=Number(abc["c"]);
+// let abc=getData();console.log(abc);
+// var div=document.createElement('div');
+// div.innerHTML=abc;
+// document.getElementById('console').appendChild(div);
 
 //delaySec=Number($('#delaySec').val());
 //getLrc(lrcSrc);
-delayTime(lrcSrc);
+// delayTime(lrcSrc);
 
 async function getData(){
     let response=await fetch('https://evenbeiter.github.io/project/list.json');
@@ -182,7 +175,14 @@ async function getData(){
     
     let url=window.location.href;
     let i=Number(url.slice(-url.length+url.indexOf('=')+1));console.log(data[i]);
-    return data[i];
+
+    document.querySelector('title').textContent=data["a"];
+    let mediaSrc=data["b"];
+    $('#ap').attr('src',mediaSrc);
+    
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+data["a"]+'.txt';console.log(lrcSrc);
+    delaySec=Number(data["c"]);
+    getLrc(lrcSrc);
 }
 
 async function getLrc(url){
