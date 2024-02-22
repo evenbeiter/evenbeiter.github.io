@@ -168,7 +168,7 @@ async function getData(){
     let mediaSrc=data[i]["b"];
     $('#ap').attr('src',mediaSrc);
 
-    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.lrc';
     $('#delaySec').val(Number(data[i]["c"]));
     delaySec=Number($('#delaySec').val())
     getLrc(lrcSrc);
