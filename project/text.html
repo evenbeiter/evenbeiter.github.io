@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="screen-orientation" content="portrait">
+<meta name="x5-orientation" content="portrait">
+<title>Daily</title>
+<link href="https://evenbeiter.github.io/project/player.css" rel="stylesheet"/>
+<!-- <link href="player.css" rel="stylesheet"/> -->
+</head>
+
+<body id='bdy'>
+
+<div id='pagewrap'>
+  <div id='main'>
+    <div id='content'>
+      <!-- <div id="title">
+        <h1>LRC Player</h1>
+      </div> -->
+      <div id='playerblock'>
+        <div id='playerwrap'>
+          <audio id='ap'>HTML5 audio not supported.</audio>
+          <video id='vp'></video>
+          <div id='infobox'>
+            <div id='timebox'>00:00 / 00:00</div>
+            <div id='srcname'></div>
+            <div style='clear: both;'></div>
+          </div>
+          <div id='slider'>
+            <div id="slider-frame">
+              <div id='slider-r'>
+                <div id='slider-play'></div>
+              </div>
+            </div>
+            <div id='lblB' class='lblAB'></div>
+            <div id='lblA' class='lblAB'></div>
+          </div>
+          <!-- <div id='btns'>
+            <button id='btnPlay' title="播放/暫停"></button>
+            <button id='btnStop' title="停止"></button>
+            <button id='btnBf' title="倒退3秒/倒退AB段"></button>
+            <button id='btnFf' title="前進3秒/前進AB段"></button> -->
+            <!-- <button id='btnLast'></button><button id='btnNext'></button>-->
+            <!-- <button id='btnX' title="變速">1.0</button>
+            <button id='btnP' title="複讀暫停时间"></button>
+            <button id='btnR' title="即時複讀5秒/取消"></button>
+            <button id='btnA' title="設置A點"></button>
+            <button id='btnB' title="設置B點"></button>
+            <button id='btnC' title="取消複讀並清除AB點"></button>
+          </div> -->
+          <!--lrc1-->
+          <!-- <div id='btnsTC'>
+            <button id='btnTCPlay' title='播放一行'></button>
+            <button id='btnTCStop' title='停止播放'></button>
+            <button id='btnTCBf' title='後退一行'></button>
+            <button id='btnTCFf' title='前進一行'></button>
+            <button id='btnTCRline' title='複讀一行'></button>
+            <button id='btnTCRlines' title='複讀多行'></button>
+            <button id='btnTCXRline' title='變速複讀一行'></button>
+            <button id='btnTCXRlines' title='變速複讀多行'></button>
+          </div> -->
+          <!--lrc2-->
+          <!-- <div id='promptbar'>  -->
+            <!-- <a id='usage' href='javascript:seeusage()'>播放器使用說明</a> -->
+            <!-- <div id='btn-usage' title='使用說明'></div>
+            <div id='btn-edit' title='打開/關閉編輯窗'></div>
+            <div id='btn-txt' title='打開/關閉原稿窗(TXT)'></div>
+            <div id='btn-lrc' title='打開/關閉原稿窗(LRC)'></div>
+          </div>
+          <div id='usagecontent'>
+            <div id='uc1'>
+              <div style='background-image: url(img/play.png)'>播放/暫停</div>
+              <div style='background-image: url(img/stop.png)'>停止</div>
+              <div style='background-image: url(img/bf.png)'>播放時:倒退3秒/複讀時:回退AB段</div>
+              <div style='background-image: url(img/ff.png)'>播放時:前進3秒/複讀時:前進AB段</div>
+              <div style='background-image: url(img/X.png)'>拖動:改變速度/點擊:恢復正常速度1.0</div>
+              <div style='background-image: url(img/clock.png)'>拖動改變複讀暫停時間</div>
+              <div style='background-image: url(img/R.png)'>點擊:複讀最近5秒/拖動:改變複讀次數</div>
+              <div style='background-image: url(img/A.png)'>設置A點</div>
+              <div style='background-image: url(img/B.png)'>設置B點</div>
+              <div style='background-image: url(img/C.png)'>取消復讀並清除AB点</div>
+            </div> -->
+            <!--uc21-->
+            <!-- <div id='uc2'>
+              <div style='background-image: url(img/[play].png)'>播放一行</div>
+              <div style='background-image: url(img/[stop].png)'>停止播放</div>
+              <div style='background-image: url(img/TC_left.png)'>後退一行</div>
+              <div style='background-image: url(img/TC_right.png)'>前進一行</div>
+              <div style='background-image: url(img/[R].png)'>複讀一行</div>
+              <div style='background-image: url(img/[R]...png);padding-left:36px'>複讀多行</div>
+              <div style='background-image: url(img/[R]~.png);padding-left:36px'>變速複讀一行</div>
+              <div style='background-image: url(img/[R]~...png);padding-left:36px'>變速複讀多行</div>
+            </div> -->
+            <!--uc22--> 
+          <!-- </div> -->
+        </div>
+        <div style='clear: both;'></div>
+      </div>
+      <div id='loadMediaArea'>
+        <button id='btnOpenMedia' onClick="$('#browseMedia').click()">mp3 / mp4</button>
+        <span id='mediaName'>加載音頻(mp3)或視頻文件(mp4)</span> <br>
+        <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
+        <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span> <br>
+        <span>Delay Time </span><input id="delaySec" type="number" value="0" />
+        <button onclick="delayTime()">Go</button>
+        
+        <button id='btnX' title="變速">1.0</button>
+        <button id='btnPlay' title="播放/暫停"></button>
+
+        <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
+        <input type="file" id="browseText" onchange="browseText(this.value)">
+      </div>
+
+      <div id='srcWin'>
+        <div id='srcWinBarBlock'>
+          <div id="srcWinBar">
+            <div id="srcWinbarTitle1">
+              <div id='tablrc'>LRC</div>
+              <div id='tabtxt'>TXT</div>
+            </div>
+            <div id="plus2" onclick="fontSize(event, 1, 1)">大字</div>
+            <div id="minus2" onclick="fontSize(event, 1, -1)">小字</div>
+            <!-- <div id="srcWinBarPart" onclick="$('#lrc').css({'height':'300px', 'overflowY':'scroll'})">滾動</div>
+            <div id="srcWinBarFull" onclick="$('#lrc').css({'height':'auto', 'overflowY':'visible'})">全頁</div> -->
+          </div>
+        </div>
+        <div id='lrc'></div>
+        <div id='txt'></div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  <div id='console'></div>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+  crossorigin="anonymous">
+</script>
+
+<script src="https://evenbeiter.github.io/project/echo.js"></script> 
+<!-- <script src="player.js"></script>  -->
+
+<script>
+progfilename='';
+txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
+</script> 
+
+<script>
+
+let delaySec=Number($('#delaySec').val());
+getData();
+  
+async function getData(){
+    let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let str=await response.text();
+    let data=JSON.parse(str);
+    
+    let url=window.location.href;
+    let i=Number(url.slice(-url.length+url.indexOf('=')+1));
+    srcNow=data[i]["a"]+'.mp3';
+    document.querySelector('title').textContent=data[i]["a"];
+    let mediaSrc=data[i]["b"];
+    $('#ap').attr('src',mediaSrc);
+
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.lrc';
+    $('#delaySec').val(Number(data[i]["c"]));
+    delaySec=Number($('#delaySec').val());
+    browseText($('#browseText').val(lrcSrc));
+    // getLrc(lrcSrc);
+}
+
+async function getLrc(url){
+    let response = await fetch(url);
+    let str = await response.text();
+    putlrc(str);
+    $("#srcWin").show();
+    $("#tablrc").addClass("tabshow");
+    $("#tabtxt").removeClass("tabshow");
+    $("#lrc").show();
+    $("#txt").hide();
+}
+
+function delayTime(){
+    delaySec=Number($('#delaySec').val());
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+document.querySelector('title').textContent+'.lrc';
+    getLrc(lrcSrc);
+}
+
+</script>
+
+</body>
+</html>
