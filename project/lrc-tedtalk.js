@@ -13,8 +13,8 @@ let data=JSON.parse(raw);
 var txt='';
 for(var i=0;i<data["paragraphs"].length;i++){
   for(var j=0;j<data["paragraphs"][i].cues.length;j++){
-    var t=data["paragraphs"][i].cues[j]["time"];console.log(t+', '+(t+a));console.log(timestamp(t+a));
-    txt=txt+timestamp(t+a)+data["paragraphs"][i].cues[j]["text"]+'\r\n';
+    var t=data["paragraphs"][i].cues[j]["time"];
+    txt=txt+timestamp(t)+data["paragraphs"][i].cues[j]["text"]+'\r\n';
   }
 }
 
