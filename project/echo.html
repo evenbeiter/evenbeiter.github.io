@@ -106,7 +106,7 @@
         <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
         <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span> <br>
         <span>Delay Time </span><input id="delaySec" type="number" value="0" />
-        <script>let delaySec = document.getElementById('delaySec').value;console.log(delaySec);</script>
+<!--         <script>let delaySec = document.getElementById('delaySec').value;console.log(delaySec);</script> -->
         <button onclick="delayTime()">Go</button>
         
         <button id='btnX' title="變速">1.0</button>
@@ -153,20 +153,6 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 </script> 
 
 <script>
-// window.onerror = function(e){
-//   var div=document.createElement('div');
-//   div.innerHTML = e.toString();
-//   document.getElementById('console').appendChild(div);
-// }
-  
-// let abc=getData();console.log(abc);
-// var div=document.createElement('div');
-// div.innerHTML=abc;
-// document.getElementById('console').appendChild(div);
-
-//delaySec=Number($('#delaySec').val());
-//getLrc(lrcSrc);
-// delayTime(lrcSrc);
 
 getData();
   
@@ -183,7 +169,7 @@ async function getData(){
     $('#ap').attr('src',mediaSrc);
     
     let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
-    delaySec=Number(data[i]["c"]);
+    let delaySec=Number(data[i]["c"]);
     getLrc(lrcSrc);
 }
 
@@ -199,7 +185,8 @@ async function getLrc(url){
 }
 
 function delayTime(){
-    delaySec=Number($('#delaySec').val());
+    
+    delaySec=Number($('#delaySec').val());console.log($('#lrc').val());
     getLrc(lrcSrc);
 }
 
