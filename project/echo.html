@@ -154,7 +154,7 @@ txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
 <script>
 
-delaySec=Number($('#delaySec').val());console.log($('#lrc').val());
+delaySec=Number($('#delaySec').val());
 getData();
   
 async function getData(){
@@ -168,9 +168,11 @@ async function getData(){
     document.querySelector('title').textContent=data[i]["a"];
     let mediaSrc=data[i]["b"];
     $('#ap').attr('src',mediaSrc);
+
+    $('#delaySec').val()=Number(data[i]["c"]);
     
     let lrcSrc='https://evenbeiter.github.io/project/src/'+data[i]["a"]+'.txt';console.log(lrcSrc);
-    delaySec=Number(data[i]["c"]);
+    delaySec=Number($('#delaySec').val())
     getLrc(lrcSrc);
 }
 
@@ -186,8 +188,8 @@ async function getLrc(url){
 }
 
 function delayTime(){
-    
     delaySec=Number($('#delaySec').val());console.log($('#lrc').val());
+    let lrcSrc='https://evenbeiter.github.io/project/src/'+document.querySelector('title').textContent+'.txt';
     getLrc(lrcSrc);
 }
 
