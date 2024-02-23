@@ -1,3 +1,23 @@
+
+
+///////////////////////////////////////////
+// GET TED JSON
+///////////////////////////////////////////
+
+javascript:(function(){
+let str=document.documentElement.innerHTML;
+let a=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','["').replace('</title>','","').replace(':','_');
+let b=str.match(/https:\/\/download.ted.com\/products[\s\S]*?\.mp4/g)[0].replace('.mp4','.mp4",0],');
+let el = document.createElement('textarea');
+document.body.appendChild(el);
+el.value = a+b;
+el.select();
+document.execCommand('copy');
+alert(a+b);
+})();
+
+
+
 ///////////////////////////////
 // DOWNLOAD TRANSCRIPT AS FILE
 ///////////////////////////////
