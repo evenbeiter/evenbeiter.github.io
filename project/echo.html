@@ -43,6 +43,19 @@
           </div>
 
           <div>
+            <div class='d-incline'>
+              <button id='btnOpenMedia' onClick="$('#browseMedia').click()">Media</button>
+              <button id='btnOpenText' onClick="$('#browseText').click()">LRC</button>
+            </div>
+
+            <div class="input-group mt-1 mb-1 d-inline-block w-50">
+              <span class="input-group-text d-inline-block">Delay</span>
+              <input id="delaySec" type="number" value="0" class="form-control d-inline-block" style='width:80%' aria-describedby="inputGroup-sizing-lg">
+            </div>
+
+            <!-- <span>Delay Time </span><input id="delaySec" type="number" style="width: 20px" value="0" /> -->
+            <div class='d-inline'><button class='btn btn-secondary' onclick="delayTime()">Go</button></div>
+
             <div id='btns' class='d-inline-block'>
               <button id='btnPlay' title="播放/暫停"></button>
               <!-- <button id='btnStop' title="停止"></button>
@@ -55,21 +68,6 @@
               <button id='btnA' title="設置A點"></button>
               <button id='btnB' title="設置B點"></button>
               <button id='btnC' title="取消複讀並清除AB點"></button> -->
-            </div>
-
-            <div class='d-inline-block'>
-
-              <div class="input-group mt-1 mb-1 d-inline-block w-25">
-                <span class="input-group-text d-inline-block">Delay</span>
-                <input id="delaySec" type="number" value="0" class="form-control d-inline-block" style='width:80%' aria-describedby="inputGroup-sizing-lg">
-              </div>
-  
-              <!-- <span>Delay Time </span><input id="delaySec" type="number" style="width: 20px" value="0" /> -->
-              <div class='d-inline'><button class='btn btn-secondary' onclick="delayTime()">Go</button></div>
-
-              <button id='btnOpenMedia' onClick="$('#browseMedia').click()">Media</button>
-              <button id='btnOpenText' onClick="$('#browseText').click()">LRC</button>
-  
             </div>
 
           </div>
