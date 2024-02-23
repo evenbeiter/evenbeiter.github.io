@@ -39,18 +39,24 @@
             <div id='lblB' class='lblAB'></div>
             <div id='lblA' class='lblAB'></div>
           </div>
-          <!-- <div id='btns'>
+          <div id='btns'>
             <button id='btnPlay' title="播放/暫停"></button>
-            <button id='btnStop' title="停止"></button>
+            <!-- <button id='btnStop' title="停止"></button>
             <button id='btnBf' title="倒退3秒/倒退AB段"></button>
-            <button id='btnFf' title="前進3秒/前進AB段"></button> -->
+            <button id='btnFf' title="前進3秒/前進AB段"></button> --> -->
             <!-- <button id='btnLast'></button><button id='btnNext'></button>-->
-            <!-- <button id='btnX' title="變速">1.0</button>
-            <button id='btnP' title="複讀暫停时间"></button>
+            <button id='btnX' title="變速">1.0</button>
+            <!-- <button id='btnP' title="複讀暫停时间"></button>
             <button id='btnR' title="即時複讀5秒/取消"></button>
             <button id='btnA' title="設置A點"></button>
             <button id='btnB' title="設置B點"></button>
-            <button id='btnC' title="取消複讀並清除AB點"></button>
+            <button id='btnC' title="取消複讀並清除AB點"></button> -->
+
+            <button id='btnOpenMedia' onClick="$('#browseMedia').click()">Media</button>
+            <button id='btnOpenText' onClick="$('#browseText').click()">LRC</button>
+            <span>Delay Time </span><input id="delaySec" type="number" style="width: 20px" value="0" />
+            <button onclick="delayTime()">Go</button>
+
           </div> -->
           <!--lrc1-->
           <!-- <div id='btnsTC'>
@@ -101,15 +107,12 @@
         <div style='clear: both;'></div>
       </div>
       <div id='loadMediaArea'>
-        <button id='btnOpenMedia' onClick="$('#browseMedia').click()">mp3 / mp4</button>
+        <!-- <button id='btnOpenMedia' onClick="$('#browseMedia').click()">mp3 / mp4</button>
         <span id='mediaName'>加載音頻(mp3)或視頻文件(mp4)</span> <br>
         <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
         <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span> <br>
         <span>Delay Time </span><input id="delaySec" type="number" value="0" />
-        <button onclick="delayTime()">Go</button>
-        
-        <button id='btnX' title="變速">1.0</button>
-        <button id='btnPlay' title="播放/暫停"></button>
+        <button onclick="delayTime()">Go</button> -->
 
         <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
         <input type="file" id="browseText" onchange="browseText(this.value)">
