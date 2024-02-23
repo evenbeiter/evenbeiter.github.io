@@ -41,7 +41,7 @@
             <div id='lblB' class='lblAB'></div>
             <div id='lblA' class='lblAB'></div>
           </div>
-          <div id='btns'>
+          <div id='btns' style='display: inline-block; width:48%'>
             <button id='btnPlay' title="播放/暫停"></button>
             <!-- <button id='btnStop' title="停止"></button>
             <button id='btnBf' title="倒退3秒/倒退AB段"></button>
@@ -53,12 +53,14 @@
             <button id='btnA' title="設置A點"></button>
             <button id='btnB' title="設置B點"></button>
             <button id='btnC' title="取消複讀並清除AB點"></button> -->
-
+          </div>
+          
+          <div style='display: inline-block; width:48%''>
             <button id='btnOpenMedia' class='btn btn-secondary' onClick="$('#browseMedia').click()">Media</button>
             <button id='btnOpenText' class='btn btn-secondary' onClick="$('#browseText').click()">LRC</button>
 
-            <div class="input-group input-group-lg">
-                <span class="input-group-text" id="inputGroup-sizing-lg">Delay Time</span>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Delay</span>
                 <input id="delaySec" type="number" value="0" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div>
 
