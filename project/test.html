@@ -187,10 +187,32 @@
 <!-- <script src="https://evenbeiter.github.io/project/echo.js"></script>  -->
 <script src="echo.js"></script> 
 
-<!-- <script>
-progfilename='';
-txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
-</script>  -->
+<script>
+// progfilename='';
+// txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
+
+getParam();
+
+async function getParam(){
+    let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let str=await response.text();
+    let data=JSON.parse(str);
+    
+    let url=window.location.href;
+    let i=Number(url.slice(-url.length+url.indexOf('=')+1));
+    let filename=data[i][0];
+    let name=filename.replace('_',':');
+    progfilename=name;
+    document.querySelector('title').textContent=name;
+    let mediaSrc=data[i][1];
+    if (mediaSrc.slice(-3)=='mp3'){
+      txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
+    } else {
+      is_v=' ';
+    }
+}
+
+</script> 
 
 <script>
 
@@ -211,11 +233,9 @@ async function getData(){
     let mediaSrc=data[i][1];
     if (mediaSrc.slice(-3)=='mp3'){
       $('#ap').attr('src',mediaSrc);
-      txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     } else {
       $('#vp').attr('src',mediaSrc);
       $('#vp').show();
-      txt='';lrc='';mp3='';tc=[];vf=[];
     }
 
     let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
