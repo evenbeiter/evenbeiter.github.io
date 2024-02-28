@@ -1,6 +1,7 @@
 
 
 
+
 javascript:(function(){
 
 let str=document.documentElement.innerHTML;
