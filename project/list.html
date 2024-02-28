@@ -34,7 +34,11 @@ async function getData(){
     for(var i=0;i<data.length;i++){
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-        tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/project/echo.html?id='+i+'" target="_blank">'+data[i][0].replace('_',':')+'</td></tr>';
+        if (data[i].length==1){
+          tr.innerHTML='<tr><td>'+data[i][0]+'</td></tr>';
+        } else {
+          tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/project/echo.html?id='+i+'" target="_blank">'+data[i][0].replace('_',':')+'</td></tr>';
+        }
         document.getElementById('data-list').appendChild(tr);
     }
 }
