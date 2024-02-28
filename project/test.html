@@ -187,10 +187,10 @@
 <!-- <script src="https://evenbeiter.github.io/project/echo.js"></script>  -->
 <script src="echo.js"></script> 
 
-<script>
+<!-- <script>
 progfilename='';
 txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
-</script> 
+</script>  -->
 
 <script>
 
@@ -211,9 +211,11 @@ async function getData(){
     let mediaSrc=data[i][1];
     if (mediaSrc.slice(-3)=='mp3'){
       $('#ap').attr('src',mediaSrc);
+      txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
     } else {
       $('#vp').attr('src',mediaSrc);
       $('#vp').show();
+      txt='';lrc='';mp3='';tc=[];vf=[];
     }
 
     let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
