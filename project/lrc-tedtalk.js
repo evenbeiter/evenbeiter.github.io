@@ -1,5 +1,35 @@
 
 
+
+javascript:(function(){
+
+let str=document.documentElement.innerHTML;
+let name=str.match(/<h1>[\s\S]*?<\/h1>/g)[0].replace(/<h1>[\s\S]*? /g,'').replace('</h1>','');
+
+let audio=str.match(/"http:\/\/api.frdic.com\/api\/v3\/media[\s\S]*?\?/g)[0].replace('?','"');
+
+let raw=str.match(/paragraphs":[\s\S]*?content_update_time/g)[0].replace(/\n/g,'').replace(/  /g,'').replace('paragraphs":','').replace(',"content_update_time','');
+
+let data=JSON.parse(raw);
+var txt='';
+for(var i=0;i<data.length;i++){
+  txt=txt+data[i].timestamps[0]+data[i].origintext+'\r\n';
+}
+
+let txtData = new Blob([txt], { type: 'data:text;charset=utf-8' });
+let txtUrl = URL.createObjectURL(txtData);
+let link = document.createElement('a');
+link.href = txtUrl;
+link.target = '_blank';
+link.download = name+'.txt';
+link.click();
+
+alert('["'+name+'",'+audio+',0],');
+
+})();
+
+
+
 ///////////////////////////////////////////
 // GET TED JSON
 ///////////////////////////////////////////
