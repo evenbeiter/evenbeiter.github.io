@@ -17,16 +17,8 @@
   <div class="p-3">
 
   <nav>
-    <ul class="pagination justify-content-center">
-      <li class="page-item disabled">
-        <a class="page-link" href="#" tabindex="-1">Previous</a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#">Next</a>
-      </li>
+    <ul id="pagination" class="pagination justify-content-center">
+
     </ul>
   </nav>
 
@@ -58,9 +50,39 @@ async function getData(){
 }
   
 async function getLrc(url){
+
+    let url=window.location.href;
+    let i=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
+  let nxtP=i+1;
+  
     let response=await fetch(url);
     let str=await response.text();
     let data=JSON.parse(str);
+    let pages=Math.ceil(data.length/100); console.log(pages);
+
+    document.getElementById('pagination').innerHTML='';
+
+  for (var p=1;p<pages+1;p++){
+    var li=document.createElement('li');
+    li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+p+'">'+p+'</a></li>';
+    document.getElementById('pagination').appendChild(li);
+  }
+
+    li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+nxtP+'">Next</a></li>';
+    document.getElementById('pagination').appendChild(li);
+
+  
+      //   <li class="page-item disabled">
+      //   <a class="page-link" href="#" tabindex="-1">Previous</a>
+      // </li>
+      // <li class="page-item"><a class="page-link" href="#">1</a></li>
+      // <li class="page-item"><a class="page-link" href="#">2</a></li>
+      // <li class="page-item"><a class="page-link" href="#">3</a></li>
+      // <li class="page-item">
+      //   <a class="page-link" href="#">Next</a>
+      // </li>
+
+  
     
     document.getElementById('data-list').innerHTML='';
 
@@ -69,14 +91,11 @@ async function getLrc(url){
 
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-        tr.innerHTML='<tr><td>'+i+'</td><td>'+data[i][0]+'</td><td><audio controls><source src="'+data[i][1]+'"/></audio></td></tr>';
+        let num=i+1;
+        tr.innerHTML='<tr><td>'+num+'</td><td>'+data[i][0]+'</td><td><audio controls preload="auto"><source src="'+data[i][1]+'"/></audio></td></tr>';
         document.getElementById('data-list').appendChild(tr);
     }
 }
-
-// var title='<td><p>[1] '+str.match(/og:title" content[\s\S]*?">/g)[0].replace('og:title" content="','').replace('">','</p></td>');
-// var video=str.match(/og:video:url" content[\s\S]*?.mp4/g)[0].replace('og:video:url" content=','<td><audio controls preload="auto"><source src=').replace('.mp4','.mp4"/></audio></td>');
-// content=content+'<tr>'+title+video+'</tr>';
 
   
 </script>
