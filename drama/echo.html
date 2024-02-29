@@ -102,8 +102,8 @@ async function getLrc(url,pg,nxtP){
 
 
  $(document).ready(function(){
-     $("table tbody tr").click(function() {
-       $(this).children(':last-child').children()[0].play();
+     $("table tbody tr td").click(function() {
+       $(this).parent().children(':last-child').children()[0].play();
       });
  });
 
