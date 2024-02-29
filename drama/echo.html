@@ -47,7 +47,7 @@
 getData();
 
 async function getData(){
-    let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let response=await fetch('https://evenbeiter.github.io/drama/list.json');
     let str=await response.text();
     let data=JSON.parse(str);    console.log(data);
     
