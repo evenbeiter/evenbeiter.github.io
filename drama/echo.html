@@ -69,10 +69,13 @@ async function getLrc(url,pg,nxtP){
   li.innerHTML='<li class="page-item"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
   document.getElementById('pagination').appendChild(li);  
   }
-  
-  for (var p=1;p<pages+1;p++){
+
+  let upper=4; let lower=1;
+  if (pg+3<pages+2){upper=pg+3;lower=pg}else{upper=pages+1;lower=pages-2};
+
+  for (var p=lower;p<upper;p++){
   li=document.createElement('li');
-  li.innerHTML=<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+p+'">'+p+'</a></li>';
+  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+p+'">'+p+'</a></li>';
   document.getElementById('pagination').appendChild(li);
   }
 
