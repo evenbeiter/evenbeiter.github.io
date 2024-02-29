@@ -17,7 +17,8 @@
   <div class="p-3">
 
   <nav>
-    <ul id="pagination" class="pagination justify-content-center">
+<!--     <ul id="pagination" class="pagination justify-content-center"> -->
+    <ul id="pagination">
 
     </ul>
   </nav>
@@ -75,6 +76,9 @@ async function getLrc(url,pg,nxtP){
 
     li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+nxtP+'">Next</a></li>';
     document.getElementById('pagination').appendChild(li);
+
+  let ul=document.getElementById('pagination');
+      ul.classList.add('pagination','justify-content-center');
 
   
       //   <li class="page-item disabled">
