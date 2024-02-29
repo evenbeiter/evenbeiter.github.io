@@ -46,15 +46,23 @@
 
 getData();
 
-async function getLrc(url){
-    let response = await fetch(url);
-    let str = await response.text();
-    putlrc(str);
+async function getData(){
+    let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let str=await response.text();
+    let data=JSON.parse(str);
+    
+    let url=window.location.href;
+    let i=Number(url.slice(-url.length+url.indexOf('=')+1));
+    let filename=data[i];
+    let name=filename.replace('_',':');
+    document.querySelector('title').textContent=name;
 
+    let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
+    getLrc(lrcSrc);
 }
   
-async function getData(){
-    let response=await fetch('https://evenbeiter.github.io/drama/The Devil Wears Prada (2006).txt');
+async function getLrc(url){
+    let response=await fetch(url);
     let str=await response.text();
     let data=JSON.parse(str);
     
