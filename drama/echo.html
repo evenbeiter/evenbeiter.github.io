@@ -61,9 +61,9 @@ async function getLrc(url,pg,nxtP){
   document.getElementById('pagination').innerHTML='';
 
   var li=document.createElement('li');
-  let preP=pg-1;
+  let preP=pg-1;  console.log(preP);
   if (preP!==0){
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+preP+'">Next</a></li>';
+  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+preP+'">Previous</a></li>';
   document.getElementById('pagination').appendChild(li);
   } else {
   li.innerHTML='<li class="page-item"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
