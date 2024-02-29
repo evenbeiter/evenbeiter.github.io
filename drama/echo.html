@@ -32,12 +32,12 @@
 
 <script>
 
-let url=window.location.href;
-let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
-let p=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
-let nxtP=p+1;
+// let url=window.location.href;
+// let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
+// let p=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
+// let nxtP=p+1;
 
-getData(i);
+getData(i,p);
 
 async function getData(i,p){
     let response=await fetch('https://evenbeiter.github.io/drama/list.json');
