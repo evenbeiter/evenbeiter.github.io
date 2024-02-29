@@ -32,10 +32,10 @@
 
 <script>
 
-// let url=window.location.href;
-// let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
-// let p=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
-// let nxtP=p+1;
+let url=window.location.href;
+let i=url.match(/\?id=[\s\S]*?&page/g)[0].replace('?id=','').replace('&page','');    console.log(i);
+let p=url.slice(-url.length+url.indexOf('=')+1);    console.log(p);
+let nxtP=p+1; console.log(nxtP);
 
 getData(i,p);
 
@@ -60,9 +60,9 @@ async function getLrc(url,nxtP){
   //   let i=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
   // let nxtP=i+1;
   
-    let response=await fetch(url);
-    let str=await response.text();
-    let data=JSON.parse(str);
+     response=await fetch(url);
+     str=await response.text();
+     data=JSON.parse(str);
     let pages=Math.ceil(data.length/100); console.log(pages);
 
     document.getElementById('pagination').innerHTML='';
