@@ -26,7 +26,7 @@ txt=txt+',\r\n['+title+video+']';
 
 next=str.match(/Next Clip" href="[\s\S]*?"/g)[0].replace('Next Clip" href="','https://getyarn.io').replace('"','');
 }
-while (title!=='""')
+while (str.match(/Next Clip" href="[\s\S]*?"/g)[0]!=='Next Clip" href="/yarn-clip/null/gif')
 
 txt=txt+']';
 
