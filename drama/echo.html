@@ -32,28 +32,33 @@
 
 <script>
 
-getData();
+let url=window.location.href;
+let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
+let p=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
+let nxtP=p+1;
 
-async function getData(){
+getData(i);
+
+async function getData(i,p){
     let response=await fetch('https://evenbeiter.github.io/drama/list.json');
     let str=await response.text();
     let data=JSON.parse(str);    console.log(data);
     
-    let url=window.location.href;
-    let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
+    // let url=window.location.href;
+    // let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
     let filename=data[i];     console.log(filename);
     let name=filename.replace('_',':'); console.log(name);
     document.querySelector('title').textContent=name;
 
     let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
-    getLrc(lrcSrc);
+    getLrc(lrcSrc,nxtP);
 }
   
-async function getLrc(url){
+async function getLrc(url,nxtP){
 
-    let url=window.location.href;
-    let i=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
-  let nxtP=i+1;
+  //   let url=window.location.href;
+  //   let i=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
+  // let nxtP=i+1;
   
     let response=await fetch(url);
     let str=await response.text();
@@ -87,7 +92,7 @@ async function getLrc(url){
     document.getElementById('data-list').innerHTML='';
 
     //for(var i=0;i<data.length;i++){
-    for(var i=0;i<100;i++){
+    for(var i=p*100-100;i<p*100;i++){
 
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
