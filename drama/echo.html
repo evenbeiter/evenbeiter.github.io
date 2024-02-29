@@ -34,7 +34,7 @@
 
 let url=window.location.href;
 let i=url.match(/\?id=[\s\S]*?&page/g)[0].replace('?id=','').replace('&page','');    console.log(i);
-let p=url.slice(-url.length+url.lastIndexOf('=')+1);    console.log(p);
+let p=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(p);
 let nxtP=p+1; console.log(nxtP);
 
 getData(i,p);
