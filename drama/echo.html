@@ -33,9 +33,9 @@
 <script>
 
 let url=window.location.href;
-let id=url.match(/\?id=[\s\S]*?&page/g)[0].replace('?id=','').replace('&page','');    console.log(id);
-let pg=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(pg);
-let nxtP=pg+1; console.log(nxtP);
+let id=url.match(/\?id=[\s\S]*?&page/g)[0].replace('?id=','').replace('&page','');
+let pg=Number(url.slice(-url.length+url.lastIndexOf('=')+1));
+let nxtP=pg+1;
 
 getData(id,pg);
 
