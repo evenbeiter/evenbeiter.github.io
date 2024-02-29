@@ -51,10 +51,10 @@ async function getData(i,p){
     document.querySelector('title').textContent=name;
 
     let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
-    getLrc(lrcSrc,nxtP);
+    getLrc(lrcSrc,p,nxtP);
 }
   
-async function getLrc(url,nxtP){
+async function getLrc(url,p,nxtP){
 
   //   let url=window.location.href;
   //   let i=Number(url.slice(-url.length+url.lastIndexOf('=')+1));    console.log(i);
@@ -96,7 +96,7 @@ async function getLrc(url,nxtP){
 
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-        let num=i+1;
+        let num=i+1; console.log(num);
         tr.innerHTML='<tr><td>'+num+'</td><td>'+data[i][0]+'</td><td><audio controls preload="auto"><source src="'+data[i][1]+'"/></audio></td></tr>';
         document.getElementById('data-list').appendChild(tr);
     }
