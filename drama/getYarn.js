@@ -8,7 +8,7 @@ var response=await fetch(window.location.href);
 var str=await response.text();
 
 let name=str.match(/videoTitle:"[\s\S]*?"/g)[0].replace('videoTitle:"','').replace('"','');
-
+console.log(name);
 var title=str.match(/og:title" content[\s\S]*?">/g)[0].replace('og:title" content=','').replace('>',',');
 var video=str.match(/og:video:url" content[\s\S]*?\?/g)[0].replace('og:video:url" content=','').replace('?','"');
 console.log('['+title+video+']');
@@ -19,7 +19,7 @@ var next=str.match(/Next Clip" href="[\s\S]*?"/g)[0].replace('Next Clip" href="'
 do {
 response=await fetch(next);
 str=await response.text();
-var title=str.match(/og:title" content[\s\S]*?">/g)[0].replace('og:title" content=','').replace('>',',');
+var title=str.match(/og:title" content[\s\S]*?">/g)[0].replace('og:title" content=','').replace('>',',').replace(/&quot;/g,'').replace(/&amp;/g,'&').replace(/&#x27;/g,'\'');
 var video=str.match(/og:video:url" content[\s\S]*?\?/g)[0].replace('og:video:url" content=','').replace('?','"');
 console.log('['+title+video+']');
 txt=txt+',\r\n['+title+video+']';
@@ -30,7 +30,7 @@ while (title!=='""')
 
 txt=txt+']';
 
-txt=txt.replace(/&quot;/g,'').replace(/&amp;/g,'&').replace(/&#x27;/g,'\'');
+// txt=txt.replace(/&quot;/g,'').replace(/&amp;/g,'&').replace(/&#x27;/g,'\'');
 
 console.log(txt);
 
