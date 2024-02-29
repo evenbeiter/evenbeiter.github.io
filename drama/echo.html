@@ -68,7 +68,7 @@ async function getLrc(url){
 
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-        tr.innerHTML='<tr><td>'+data[i][0]+'</td><td><audio controls><source src="'+data[i][1]+'/></audio></td></tr>';
+        tr.innerHTML='<tr><td>'+data[i][0]+'</td><td><audio controls><source src="'+data[i][1]+'"/></audio></td></tr>';
         document.getElementById('data-list').appendChild(tr);
     }
 }
