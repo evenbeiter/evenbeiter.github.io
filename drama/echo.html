@@ -61,20 +61,22 @@ async function getLrc(url,pg,nxtP){
   document.getElementById('pagination').innerHTML='';
 
   var li=document.createElement('li');
-  let preP=pg-1;  console.log(preP);
+  let preP=pg-1;
   if (preP!==0){
   li.innerHTML='<li class="page-item disabled"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+preP+'">Previous</a></li>';
   document.getElementById('pagination').appendChild(li);
-  } else {
+  } else {  console.log('preP==0');
   li.innerHTML='<li class="page-item"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
   document.getElementById('pagination').appendChild(li);  
   }
   
   for (var p=1;p<pages+1;p++){
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+p+'">'+p+'</a></li>';
+  li=document.createElement('li');
+  li.innerHTML=<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+p+'">'+p+'</a></li>';
   document.getElementById('pagination').appendChild(li);
   }
 
+  li=document.createElement('li');
   li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id=0&page='+nxtP+'">Next</a></li>';
   document.getElementById('pagination').appendChild(li);
 
