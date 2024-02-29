@@ -49,12 +49,12 @@ getData();
 async function getData(){
     let response=await fetch('https://evenbeiter.github.io/project/list.json');
     let str=await response.text();
-    let data=JSON.parse(str);
+    let data=JSON.parse(str);    console.log(data);
     
     let url=window.location.href;
-    let i=Number(url.slice(-url.length+url.indexOf('=')+1));
-    let filename=data[i];
-    let name=filename.replace('_',':');
+    let i=Number(url.slice(-url.length+url.indexOf('=')+1));    console.log(i);
+    let filename=data[i];     console.log(filename);
+    let name=filename.replace('_',':'); console.log(name);
     document.querySelector('title').textContent=name;
 
     let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
