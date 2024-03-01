@@ -1,182 +1,35 @@
 <!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="screen-orientation" content="portrait">
-<meta name="x5-orientation" content="portrait">
-<title>Daily</title>
-<!-- <link href="https://evenbeiter.github.io/project/player.css" rel="stylesheet"/> -->
-<link href="player.css" rel="stylesheet"/>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<!-- <link href="player.css" rel="stylesheet"/> -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Media Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>audio{margin-right:auto;margin-left:auto}.fixed-top{background-color:#FFF}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green;font-weight: bold;}.h{display:none}</style>
+    <!-- <style>table{margin-top:50px;}</style> -->
 </head>
+  <body>
 
-<body id='bdy'>
-
-<div id='pagewrap'>
-  <div id='main'>
-    <div id='content'>
-      <!-- <div id="title">
-        <h1>LRC Player</h1>
-      </div> -->
-      <div id='playerblock'>
-        <div id='playerwrap'>
-          <audio id='ap'>HTML5 audio not supported.</audio>
-          <video id='vp'></video>
-          <div id='infobox'>
-            <div id='timebox'>00:00 / 00:00</div>
-            <div id='srcname'></div>
-            <div style='clear: both;'></div>
-          </div>
-          <div id='slider'>
-            <div id="slider-frame">
-              <div id='slider-r'>
-                <div id='slider-play'></div>
-              </div>
-            </div>
-            <div id='lblB' class='lblAB'></div>
-            <div id='lblA' class='lblAB'></div>
-          </div>
-
-          <div class='d-inline'>
-            <div class='d-inline' style='padding:0px 2px 0px 10px'>
-              <button id='btnOpenMedia' onClick="$('#browseMedia').click()">Media</button>
-              <button id='btnOpenText' onClick="$('#browseText').click()">LRC</button>
-            </div>
-
-            <div class="input-group mt-1 mb-1 d-inline">
-              <input id="delaySec" type="number" value="0" class="form-control d-inline" style='width:50px'>
-              <div class="input-group-append d-inline">
-                <button class="btn btn-secondary mb-1" type="button" onclick="delayTime()">Delay</button>
-              </div>
-            </div>
-
-            <!-- <div class="input-group mt-1 mb-1 d-inline-block w-50">
-              <span class="input-group-text d-inline-block">Delay</span>
-              <input id="delaySec" type="number" value="0" class="form-control d-inline-block" style='width:70%' aria-describedby="inputGroup-sizing-lg">
-            </div>-->
-
-            <!-- <span>Delay Time </span><input id="delaySec" type="number" style="width: 20px" value="0" /> -->
-            <!-- <div class='d-inline'><button class='btn btn-secondary' onclick="delayTime()">Go</button></div> -->
-
-            <div id='btns' class='d-inline'>
-              <button id='btnPlay' title="播放/暫停"></button>
-              <!-- <button id='btnStop' title="停止"></button>
-              <button id='btnBf' title="倒退3秒/倒退AB段"></button>
-              <button id='btnFf' title="前進3秒/前進AB段"></button> --> -->
-              <!-- <button id='btnLast'></button><button id='btnNext'></button>-->
-              <button id='btnX' title="變速">1.0</button>
-              <!-- <button id='btnP' title="複讀暫停时间"></button>
-              <button id='btnR' title="即時複讀5秒/取消"></button>
-              <button id='btnA' title="設置A點"></button>
-              <button id='btnB' title="設置B點"></button>
-              <button id='btnC' title="取消複讀並清除AB點"></button> -->
-            </div>
-
-          </div>
-
-
-
-          <!-- <div style='display: inline-block; width:80%'>
-            <div style='display: inline-block'>
-              <button id='btnOpenMedia' style='display: inline-block' onClick="$('#browseMedia').click()">Media</button>
-              <button id='btnOpenText' style='display: inline-block' onClick="$('#browseText').click()">LRC</button>
-            </div>
-
-            <div class="input-group mb-3" style='display: inline-block;width:40%'>
-                <span class="input-group-text" id="inputGroup-sizing-default" style='display: inline-block;width:35%'>Delay</span>
-                <input id="delaySec" type="number" value="0" class="form-control" style='display: inline-block;width:60%;' aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
-            </div>
-
-            <div style='display: inline-block;'><button class='btn btn-secondary' onclick="delayTime()">Go</button></div>
-
-          </div> -->
-
-          <!--lrc1-->
-          <!-- <div id='btnsTC'>
-            <button id='btnTCPlay' title='播放一行'></button>
-            <button id='btnTCStop' title='停止播放'></button>
-            <button id='btnTCBf' title='後退一行'></button>
-            <button id='btnTCFf' title='前進一行'></button>
-            <button id='btnTCRline' title='複讀一行'></button>
-            <button id='btnTCRlines' title='複讀多行'></button>
-            <button id='btnTCXRline' title='變速複讀一行'></button>
-            <button id='btnTCXRlines' title='變速複讀多行'></button>
-          </div> -->
-          <!--lrc2-->
-          <!-- <div id='promptbar'>  -->
-            <!-- <a id='usage' href='javascript:seeusage()'>播放器使用說明</a> -->
-            <!-- <div id='btn-usage' title='使用說明'></div>
-            <div id='btn-edit' title='打開/關閉編輯窗'></div>
-            <div id='btn-txt' title='打開/關閉原稿窗(TXT)'></div>
-            <div id='btn-lrc' title='打開/關閉原稿窗(LRC)'></div>
-          </div>
-          <div id='usagecontent'>
-            <div id='uc1'>
-              <div style='background-image: url(img/play.png)'>播放/暫停</div>
-              <div style='background-image: url(img/stop.png)'>停止</div>
-              <div style='background-image: url(img/bf.png)'>播放時:倒退3秒/複讀時:回退AB段</div>
-              <div style='background-image: url(img/ff.png)'>播放時:前進3秒/複讀時:前進AB段</div>
-              <div style='background-image: url(img/X.png)'>拖動:改變速度/點擊:恢復正常速度1.0</div>
-              <div style='background-image: url(img/clock.png)'>拖動改變複讀暫停時間</div>
-              <div style='background-image: url(img/R.png)'>點擊:複讀最近5秒/拖動:改變複讀次數</div>
-              <div style='background-image: url(img/A.png)'>設置A點</div>
-              <div style='background-image: url(img/B.png)'>設置B點</div>
-              <div style='background-image: url(img/C.png)'>取消復讀並清除AB点</div>
-            </div> -->
-            <!--uc21-->
-            <!-- <div id='uc2'>
-              <div style='background-image: url(img/[play].png)'>播放一行</div>
-              <div style='background-image: url(img/[stop].png)'>停止播放</div>
-              <div style='background-image: url(img/TC_left.png)'>後退一行</div>
-              <div style='background-image: url(img/TC_right.png)'>前進一行</div>
-              <div style='background-image: url(img/[R].png)'>複讀一行</div>
-              <div style='background-image: url(img/[R]...png);padding-left:36px'>複讀多行</div>
-              <div style='background-image: url(img/[R]~.png);padding-left:36px'>變速複讀一行</div>
-              <div style='background-image: url(img/[R]~...png);padding-left:36px'>變速複讀多行</div>
-            </div> -->
-            <!--uc22--> 
-          <!-- </div> -->
-        </div>
-        <div style='clear: both;'></div>
-      </div>
-      <div id='loadMediaArea'>
-        <!-- <button id='btnOpenMedia' onClick="$('#browseMedia').click()">mp3 / mp4</button>
-        <span id='mediaName'>加載音頻(mp3)或視頻文件(mp4)</span> <br>
-        <button id='btnOpenText' onClick="$('#browseText').click()">txt / lrc</button>
-        <span id='textName'>加載文本(txt)或歌詞(lrc)文件</span> <br>
-        <span>Delay Time </span><input id="delaySec" type="number" value="0" />
-        <button onclick="delayTime()">Go</button> -->
-
-        <input type="file" id="browseMedia" onchange="browseMedia(this.value)">
-        <input type="file" id="browseText" onchange="browseText(this.value)">
-      </div>
-
-      <div id='srcWin'>
-        <div id='srcWinBarBlock'>
-          <div id="srcWinBar">
-            <div id="srcWinbarTitle1">
-              <div id='tablrc'>LRC</div>
-              <div id='tabtxt'>TXT</div>
-            </div>
-            <div id="plus2" onclick="fontSize(event, 1, 1)">大字</div>
-            <div id="minus2" onclick="fontSize(event, 1, -1)">小字</div>
-            <!-- <div id="srcWinBarPart" onclick="$('#lrc').css({'height':'300px', 'overflowY':'scroll'})">滾動</div>
-            <div id="srcWinBarFull" onclick="$('#lrc').css({'height':'auto', 'overflowY':'visible'})">全頁</div> -->
-          </div>
-        </div>
-        <div id='lrc'></div>
-        <div id='txt'></div>
-      </div>
-      
+    <div class="fixed-top">
+        <audio id="ap" controls></audio>
+        <video id="vp" controls></video>
+        <!-- <video id="vp" width="320" height="176" controls></video> -->
     </div>
-  </div>
-</div>
-  <div id='console'></div>
+
+    <div style='margin-top:60px'>
+    <div class="input-group mt-1 mb-1">
+        <input id="delaySec" type="number" value="0" class="form-control">
+        <button class="btn btn-outline-secondary" type="button" onclick="delayTime()">Delay</button>
+    </div>
+    </div>
+
+    <div class="p-3">
+        <table class="table table-hover">
+            <tbody id="lrc">
+
+            </tbody>
+        </table>
+    </div>
 
 <script
   src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
@@ -184,37 +37,17 @@
   crossorigin="anonymous">
 </script>
 
-<!-- <script src="https://evenbeiter.github.io/project/echo.js"></script>  -->
-<script src="echo.js"></script> 
-
 <script>
-// progfilename='';
-// txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
 
-getParam();
+$("#vp").hide();
 
-async function getParam(){
-    let response=await fetch('https://evenbeiter.github.io/project/list.json');
-    let str=await response.text();
-    let data=JSON.parse(str);
-    
-    let url=window.location.href;
-    let i=Number(url.slice(-url.length+url.indexOf('=')+1));
-    let filename=data[i][0];
-    let name=filename.replace('_',':');
-    progfilename=name;
-    document.querySelector('title').textContent=name;
-    let mediaSrc=data[i][1];
-    if (mediaSrc.slice(-3)=='mp3'){
-      txt='';lrc='';mp3='';mp4='';tc=[];vf=[];
-    } else {
-      is_v=' ';
-    }
+function timeMark(sec){
+    let mm=Math.floor(sec/60);
+    let ss=Math.floor((sec-mm*60));
+    ss=ss.toFixed(0);
+    return [("0"+mm).slice(-2),("0"+ss).slice(-2)].join(':');
 }
 
-</script> 
-
-<script>
 
 let delaySec=Number($('#delaySec').val());
 getData();
@@ -225,18 +58,13 @@ async function getData(){
     let data=JSON.parse(str);
     
     let url=window.location.href;
+    //let url='https://evenbeiter.github.io/project/echo.html?id=1';
     let i=Number(url.slice(-url.length+url.indexOf('=')+1));
     let filename=data[i][0];
     let name=filename.replace('_',':');
-    progfilename=name;
     document.querySelector('title').textContent=name;
     let mediaSrc=data[i][1];
-    if (mediaSrc.slice(-3)=='mp3'){
-      $('#ap').attr('src',mediaSrc);
-    } else {
-      $('#vp').attr('src',mediaSrc);
-      $('#vp').show();
-    }
+    $('#ap').attr('src',mediaSrc);
 
     let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
     $('#delaySec').val(Number(data[i][2]));
@@ -248,11 +76,6 @@ async function getLrc(url){
     let response = await fetch(url);
     let str = await response.text();
     putlrc(str);
-    $("#srcWin").show();
-    $("#tablrc").addClass("tabshow");
-    $("#tabtxt").removeClass("tabshow");
-    $("#lrc").show();
-    $("#txt").hide();
 }
 
 function delayTime(){
@@ -262,7 +85,78 @@ function delayTime(){
     getLrc(lrcSrc);
 }
 
+function putlrc(d) {
+    var c = d.split("\r\n");
+    loadLrc2Page(c);
+}
+
+function loadLrc2Page(l) {
+    var d, e, h = [],
+        k = "";
+    var j = 0;
+
+    for (var f = 0; f < l.length; f++) {
+        if (l[f].trim() == "") {    //f=length of lrc
+            continue;
+        }
+        if (/\[\d\d:\d\d\.\d\d\]/.test(l[f])) {
+            var g = l[f].indexOf("]");
+            d = l[f].substr(1, g - 1);
+            e = l[f].substr(g + 1);
+            var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
+            h.push(parseFloat(c));
+            k += '<tr><td>' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
+            
+        }
+    }
+
+    $("#lrc").html(k);
+
+}
+
+
+function s2n(a) {
+    n = a.split(":");
+    // n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    n = parseInt(n[0]) * 60 + parseFloat(n[1])+delaySec;
+    return n.toFixed(2);
+}
+
+
+$(function(){
+    $(document).on("click", "table tbody tr", function(e) {
+
+        let startTime=Number($(this).children(':nth-child(2)').text());
+        let endTime=Number($(this).next().children(':nth-child(2)').text());
+
+        startPlay(startTime,endTime);
+
+        async function startPlay(startTime,endTime){
+
+            let audio=$("#ap")[0];
+            let dr = audio.duration;
+
+            while (isNaN(dr)||dr===Infinity){
+            await new Promise(resolve=> setTimeout(resolve,200));
+            }
+            audio.currentTime=startTime;
+            audio.play();
+
+            setTimeout(()=>{
+                audio.pause();
+                audio.currentTime=startTime;
+            }, (endTime-startTime+0.1)*1000);
+        }
+
+    });
+});
+
+
+
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
 </html>
