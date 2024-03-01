@@ -62,7 +62,7 @@ async function getData(){
     let name=filename.replace('_',':');
     document.querySelector('title').textContent=name;
     let mediaSrc=data[i][1];
-    if (mediaSrc.slice(-3)='mp4'){
+    if (mediaSrc.slice(-3)=='mp4'){
       $('#vp').attr('src',mediaSrc);
       $('#vp').show();
       $('#ap').hide();
