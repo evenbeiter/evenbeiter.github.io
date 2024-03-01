@@ -12,7 +12,7 @@
 
     <div class="fixed-top px-3 py-3">
 <!--        <audio id="ap" controls class="media-document audio iPhone"></audio> -->
-        <video id="vp" controls webkit-playsinline playsinline></video>
+        <video id="vp" controls playsinline></video>
     </div>
 
     <div id='area'>
@@ -68,9 +68,12 @@ async function getData(){
      // $('#ap').hide();
       $('#area').css({'margin-top':'240px'});
       $('#vp').removeClass('media-document audio iPhone');
+      $('#vp')[0].playsinline='playsinline';
     } else {
      $('#area').css({'margin-top':'60px'});
+      $('#vp')[0].playsinline='';
       $('#vp').addClass('media-document audio iPhone');
+      
      // $('#ap').attr('src',mediaSrc);
      // $('#ap').show();
      // $('#vp').hide();
