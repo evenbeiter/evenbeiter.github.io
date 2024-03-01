@@ -106,12 +106,11 @@ async function getLrc(url,pg,nxtP){
 }
 
 
- $(document).ready(function(){
-     $("table tbody tr td").click(function() {
-       $(this).parent().children(':last-child').css({color:red});
-       $(this).parent().children(':last-child').children()[0].play();
-      });
- });
+$(function(){
+    $(document).on("click", "table tbody tr", function(e) {
+      $(this).children(':last-child').children()[0].play();
+    });
+});
 
   
 </script>
