@@ -16,15 +16,13 @@
         <!-- <video id="vp" width="320" height="176" controls></video> -->
     </div>
 
-    <div style='margin-top:60px'>
+    <div id='area' style='margin-top:60px'>
     <div class="input-group px-3 py-1">
         <input id="delaySec" type="number" value="0" class="form-control">
         <button class="btn btn-outline-secondary" type="button" onclick="delayTime()">Delay</button>
     </div>
-    </div>
 
-    <div class="p-3">
-        <table class="table table-hover">
+        <table class="p-3 table table-hover">
             <tbody id="lrc">
 
             </tbody>
@@ -66,6 +64,7 @@ async function getData(){
       $('#vp').attr('src',mediaSrc);
       $('#vp').show();
       $('#ap').hide();
+      $('#area').css({'margin-top':'240px'});
     } else {
       $('#ap').attr('src',mediaSrc);
       $('#ap').show();
