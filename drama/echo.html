@@ -108,6 +108,8 @@ async function getLrc(url,pg,nxtP){
 
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
+      $('tr').css({'color':''});
+      $(this).css({'color':'green'});
       $(this).children(':last-child').children()[0].play();
     });
 });
