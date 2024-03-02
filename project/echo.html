@@ -39,7 +39,7 @@ let delaySec=Number($('#delaySec').val());
 getData();
 
 function toggleMedia(){
-  if ($('#ap').show()){
+  if ($('#ap').is(":visible")){
     $('#ap').hide();$('#vp').show();
     $('#area').css({'margin-top':'240px'});
   } else {
@@ -121,10 +121,9 @@ $(function(){
         startPlay(startTime,endTime);
       
         async function startPlay(startTime,endTime){
-            if ($('#ap').is(":visible")){
-              let audio=$("#ap")[0];      
-            } else {
-              let audio=$("#vp")[0];
+            let audio=$("#ap")[0];      
+            if ($('#vp').is(":visible")){
+              audio=$("#vp")[0];      
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
