@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Media Player</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <style>audio{margin-right:auto;margin-left:auto;width:100%}video{margin-right:auto;margin-left:auto;width:100%}.sticky-top{background-color:#FFF}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green;}.h{display:none}</style>
+    <style>audio{margin-right:auto;margin-left:auto;width:100%}video{margin-right:auto;margin-left:auto;width:100%}.sticky-top{background-color:#FFF}.h{display:none}.s{font-size:0.7rem}</style>
+    <!--<style>.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green;}</style>-->
   </head>
   <body>
-    <div class="sticky-top px-3 py-3">
+    <div class="px-2 pt-2">
+      <div class="sticky-top py-3">
         <audio id="ap" controls class="media-document audio iPhone"></audio>
         <video id="vp" controls playsinline style="display:none"></video>
-    </div>
-    <div class="input-group px-3 py-1">
+      </div>
+      <div class="input-group pt-2">
         <input id="delaySec" type="number" value="0" class="form-control">
         <button class="btn btn-outline-secondary" type="button" onclick="delayTime()">Delay</button>
         <button class="btn btn-secondary" type="button" onclick="toggleMedia()">A/V</button>
-    </div>
-    <div class="p-3">
-        <table class="table table-hover">
-            <tbody id="lrc"></tbody>
-        </table>
+      </div>
+      <table class="table">
+        <tbody id="lrc"></tbody>
+      </table>
     </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
@@ -102,7 +103,7 @@ function loadLrc2Page(l) {
             e = l[f].substr(g + 1);
             var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
             //h.push(parseFloat(c));
-            k += '<tr><td class="fs-6 fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
+            k += '<tr><td class="s">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
         }
     }
     $("#lrc").html(k);
@@ -116,8 +117,8 @@ function s2n(a) {
 
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
-        $('tr').css({'color':''});
-        $(this).css({'color':'green'});
+        $('tr').css({'color':''},{'background-color':''});
+        $(this).css({'color':'green'},{'background-color':'platinum'});
         let startTime=Number($(this).children(':nth-child(2)').text());
         let endTime=Number($(this).next().children(':nth-child(2)').text());
         //let startTime=Math.floor(Number($(this).children(':nth-child(2)').text()));
