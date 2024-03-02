@@ -1,4 +1,56 @@
 
+
+
+////////////////
+////////////////
+
+
+javascript: (async()=>{
+  
+var txt='[';
+var response=await fetch(window.location.href);
+var str=await response.text();
+
+let name=str.match(/videoTitle:"[\s\S]*?"/g)[0].replace('videoTitle:"','').replace('"','');
+//console.log(name);
+var title=str.match(/og:title" content[\s\S]*?">/g)[0].replace('og:title" content=','').replace('>',',');
+var video=str.match(/og:video:url" content[\s\S]*?\?/g)[0].replace('og:video:url" content=','').replace('?','"');
+//console.log('['+title+video+']');
+txt=txt+'['+title+video+']';
+
+var next=str.match(/Next Clip" href="[\s\S]*?"/g)[0].replace('Next Clip" href="','https://getyarn.io').replace('"','');
+
+while (next!=='https://getyarn.io/yarn-clip/null/gif' && next!==undefined) {
+response=await fetch(next);
+str=await response.text();
+title=str.match(/og:title" content[\s\S]*?">/g)[0].replace('og:title" content=','').replace('>',',').replace(/&quot;/g,'').replace(/&amp;/g,'&').replace(/&#x27;/g,'\'');
+ // if(title=='""'){break;}
+video=str.match(/og:video:url" content[\s\S]*?\?/g)[0].replace('og:video:url" content=','').replace('?','"');
+//console.log('['+title+video+']');
+txt=txt+',\r\n['+title+video+']';
+
+next=str.match(/Next Clip" href="[\s\S]*?"/g)[0].replace('Next Clip" href="','https://getyarn.io').replace('"','');
+}
+//while (str.match(/Next Clip" href="[\s\S]*?"/g)[0]!=='Next Clip" href="/yarn-clip/null/gif')
+
+txt=txt+']';
+
+// txt=txt.replace(/&quot;/g,'').replace(/&amp;/g,'&').replace(/&#x27;/g,'\'');
+
+//console.log(txt);
+
+let txtData = new Blob([txt], { type: 'data:text;charset=utf-8' });
+let txtUrl = URL.createObjectURL(txtData);
+let link = document.createElement('a');
+link.href = txtUrl;
+link.target = '_blank';
+link.download = name+'.txt';
+link.click();
+
+})();
+
+
+
 ////////////////////////////
 // GET YARN LINES & VIDEOS
 ////////////////////////////
