@@ -11,10 +11,10 @@
   <body>
     <div class="px-2 pt-2">
       <div class="sticky-top py-3">
-        <audio id="ap" controls class="media-document audio iPhone"></audio>
+        <audio id="ap" controls class="pb-3 media-document audio iPhone"></audio>
         <video id="vp" controls playsinline style="display:none"></video>
       </div>
-      <div class="input-group pt-2">
+      <div class="input-group px-2 pt-2">
         <input id="delaySec" type="number" value="0" class="form-control">
         <button class="btn btn-outline-secondary" type="button" onclick="delayTime()">Delay</button>
         <button class="btn btn-secondary" type="button" onclick="toggleMedia()">A/V</button>
@@ -103,7 +103,7 @@ function loadLrc2Page(l) {
             e = l[f].substr(g + 1);
             var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
             //h.push(parseFloat(c));
-            k += '<tr><td class="s">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
+            k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
         }
     }
     $("#lrc").html(k);
@@ -117,8 +117,8 @@ function s2n(a) {
 
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
-        $('tr').css({'color':''},{'background-color':''});
-        $(this).css({'color':'green'},{'background-color':'platinum'});
+        $('tr').css({'color':'','background-color':''});
+        $(this).css({'color':'green','background-color':'platinum'});
         let startTime=Number($(this).children(':nth-child(2)').text());
         let endTime=Number($(this).next().children(':nth-child(2)').text());
         //let startTime=Math.floor(Number($(this).children(':nth-child(2)').text()));
