@@ -97,6 +97,7 @@ async function getLrc(url,pg,nxtP){
       tr.innerHTML='<tr><td class="s fw-lighter">'+num+'</td><td>'+data[i][0]+'</td><td class="h">'+data[i][1]+'</td></tr>';
       document.getElementById('data-list').appendChild(tr);
   }
+  $('#vp').attr('src',data[pg*100-100][1]);
 }
 
 $(function(){
