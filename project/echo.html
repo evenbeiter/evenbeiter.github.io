@@ -19,6 +19,7 @@
         <button class="btn btn-outline-secondary" type="button" onclick="delayTime()">Delay</button>
         <button class="btn btn-secondary" type="button" onclick="toggleMedia()">A/V</button>
       </div>
+      <p id="src" class="h"></p>
       <table class="table">
         <tbody id="lrc"></tbody>
       </table>
@@ -39,10 +40,13 @@ getData();
 
 function toggleMedia(){
   if ($('#ap').is(":visible")){
-    $('#ap').hide();$('#vp').show();stopMedia();
+    $('#ap').hide();$('#vp').show();
+    $('#vp').attr('src',$('#src').text());
+    stopMedia();
   } else {
-    $('#vp').hide();$('#ap').show();stopMedia();
-    //$('#area').css({'margin-top':'60px'});
+    $('#vp').hide();$('#ap').show();
+    $('#vp').attr('src','');
+    stopMedia();
   }
 }
 
@@ -65,7 +69,8 @@ async function getData(){
     document.querySelector('title').textContent=name;
     let mediaSrc=data[i][1];
     $('#ap').attr('src',mediaSrc);
-    $('#vp').attr('src',mediaSrc);
+    $('#src').text(mediaSrc);
+    //$('#vp').attr('src',mediaSrc);
     let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
     $('#delaySec').val(Number(data[i][2]));
     delaySec=Number($('#delaySec').val())
