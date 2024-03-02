@@ -121,7 +121,7 @@ $(function(){
         startPlay(startTime,endTime);
       
         async function startPlay(startTime,endTime){
-            if ($('#ap').show()){
+            if ($('#ap').is(":visible")){
               let audio=$("#ap")[0];      
             } else {
               let audio=$("#vp")[0];
