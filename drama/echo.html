@@ -101,158 +101,15 @@ async function getLrc(url,pg,nxtP){
 
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
-  
-  let filename=data[id];
-  let name=filename.replace('_',':');
-  document.querySelector('title').textContent=name;
-
-  let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
-  getLrc(lrcSrc,pg,nxtP);
-}
-  
-async function getLrc(url,pg,nxtP){
-  response=await fetch(url);
-  str=await response.text();
-  data=JSON.parse(str);
-  let pages=Math.ceil(data.length/100);
-
-  document.getElementById('pagination').innerHTML='';
-
-  var li=document.createElement('li');
-  let preP=pg-1;
-  if (preP!==0){
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+preP+'">Previous</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  } else {
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
-  document.getElementById('pagination').appendChild(li);  
-  }
-
-  let upper=4; let lower=1;
-  if (pg+3<pages+2){upper=pg+3;lower=pg}else{upper=pages+1;lower=pages-2};
-
-  for (var p=lower;p<upper;p++){
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+p+'">'+p+'</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  }
-
-  if (nxtP<pages+1){
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+nxtP+'">Next</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  } else {
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>';
-  document.getElementById('pagination').appendChild(li);  
-  }
-
-  document.getElementById('data-list').innerHTML='';
-
-  for(var i=pg*100-100;i<pg*100;i++){
-      var tr=document.createElement('tr');
-  //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-      let num=i+1;
-      tr.innerHTML='<tr><td class="fs-6 fw-lighter">'+num+'</td><td>'+data[i][0]+'</td><td class="h">'+data[i][1]+'</td></tr>';
-      document.getElementById('data-list').appendChild(tr);
-  }
-}
-
-$(function(){
-    $(document).on("click", "table tbody tr", function(e) {
       $('#vp').attr('src',$(this).children(':last-child').text());
       $('#vp')[0].play();
     });
 });
 
-  
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https:cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-  </body>
-</html>   
-  let filename=data[id];
-  let name=filename.replace('_',':');
-  document.querySelector('title').textContent=name;
-
-  let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
-  getLrc(lrcSrc,pg,nxtP);
-}
-  
-async function getLrc(url,pg,nxtP){
-  response=await fetch(url);
-  str=await response.text();
-  data=JSON.parse(str);
-  let pages=Math.ceil(data.length/100);
-
-  document.getElementById('pagination').innerHTML='';
-
-  var li=document.createElement('li');
-  let preP=pg-1;
-  if (preP!==0){
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+preP+'">Previous</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  } else {
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
-  document.getElementById('pagination').appendChild(li);  
-  }
-
-  let upper=4; let lower=1;
-  if (pg+3<pages+2){upper=pg+3;lower=pg}else{upper=pages+1;lower=pages-2};
-
-  for (var p=lower;p<upper;p++){
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+p+'">'+p+'</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  }
-
-  if (nxtP<pages+1){
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+nxtP+'">Next</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  } else {
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>';
-  document.getElementById('pagination').appendChild(li);  
-  }
-
-  document.getElementById('data-list').innerHTML='';
-
-  for(var i=pg*100-100;i<pg*100;i++){
-      var tr=document.createElement('tr');
-  //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-      let num=i+1;
-      tr.innerHTML='<tr><td class="fs-6 fw-lighter">'+num+'</td><td>'+data[i][0]+'</td><td class="h">'+data[i][1]+'</td></tr>';
-      document.getElementById('data-list').appendChild(tr);
-  }
-}
-
-$(function(){
-    $(document).on("click", "table tbody tr", function(e) {
-  
-      $(this).children(':last-child').children()[0].play();
-    });
-});
-
-  
-</script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https:cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-  </body>
-  </html>
-      $(this).children(':last-child').children()[0].play();
-    });
-});
-
-  
-</script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
   </body>
 </html>
