@@ -40,14 +40,19 @@ getData();
 
 function toggleMedia(){
   if ($('#ap').is(":visible")){
-    $('#ap').hide();$('#vp').show();
-    $('#area').css({'margin-top':'240px'});
+    $('#ap').hide();$('#vp').show();stopMedia();
+    $('#area').css({'margin-top':'230px'});
   } else {
-    $('#vp').hide();$('#ap').show();
+    $('#vp').hide();$('#ap').show();stopMedia();
     $('#area').css({'margin-top':'60px'});
   }
 }
 
+function stopMedia(){
+    $('#ap')[0].pause();$('#ap')[0].currentTime=0;
+    $('#vp')[0].pause();$('#vp')[0].currentTime=0;
+}
+  
 async function getData(){
     let response=await fetch('https://evenbeiter.github.io/project/list.json');
     let str=await response.text();
@@ -62,7 +67,6 @@ async function getData(){
     let mediaSrc=data[i][1];
     $('#ap').attr('src',mediaSrc);
     $('#vp').attr('src',mediaSrc);
-    //$('#vp').hide();
     let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
     $('#delaySec').val(Number(data[i][2]));
     delaySec=Number($('#delaySec').val())
