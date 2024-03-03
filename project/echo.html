@@ -128,9 +128,10 @@ function s2n(a) {
             }
 
   var startTime=0; var endTime=0;
-            audio.addEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
-            })
+            audio.addEventListener('timeupdate', //function(){
+              pauseMedia(startTime,endTime)
+            //}
+                                  )
           
             function pauseMedia(startTime,endTime){console.log(startTime+','+endTime);
               if (audio.currentTime > endTime){
@@ -145,9 +146,10 @@ function s2n(a) {
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
 
-                  audio.removeEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
-            })
+                  audio.removeEventListener('timeupdate', //function(){
+              pauseMedia(startTime,endTime)
+            //}
+                  )
       
         $('tr').css({'color':'','background-color':''});
         $(this).css({'color':'green','background-color':'#E5E4E2'});
@@ -169,13 +171,15 @@ $(function(){
             audio.currentTime=startTime;
             audio.play();
 
-            audio.addEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
-            })
+            audio.addEventListener('timeupdate', //function(){
+              pauseMedia(startTime,endTime)
+            //}
+                                  )
           
-            audio.removeEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
-            })
+            audio.removeEventListener('timeupdate', //function(){
+              pauseMedia(startTime,endTime)
+            //}
+                                     )
           
           
             // if(audio.readyState==4){console.log(audio.readyState);
