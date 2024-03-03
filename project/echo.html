@@ -12,7 +12,7 @@
     <div class="px-2">
       <div class="sticky-top py-3">
         <audio id="ap" controls class="py-3 media-document audio iPhone"></audio>
-        <video id="vp" controls playsinline style="display:none"></video>
+        <video id="vp" controls preload="auto" playsinline style="display:none"></video>
       </div>
       <div class="input-group px-2 py-3">
         <input id="delaySec" type="number" value="0" class="form-control">
@@ -141,14 +141,10 @@ $(function(){
             }
             audio.currentTime=startTime;
             audio.play();
-            if(audio.currentTime>endTime){
-              audio.pause();
-              audio.currentTime=startTime;
-              }
-            //setTimeout(()=>{
-            //    audio.pause();
-            //    audio.currentTime=startTime;
-            //}, (endTime-startTime+0.1)*1000);
+            setTimeout(()=>{
+                audio.pause();
+                audio.currentTime=startTime;
+            }, (endTime-startTime+0.1)*1000);
         }
     });
 });
