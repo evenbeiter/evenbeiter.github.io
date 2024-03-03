@@ -5,7 +5,6 @@
 ,["- Yeah, is this gonna take a while? - Yes.","https://y.yarn.co/60c525f2-dd8b-4d90-8cee-5edc750fe86c.mp4"]
 ,["Twenty-five years ago, before I was Dad, I had this whole other life.","https://y.yarn.co/86ff76ab-ba8d-4939-8b29-db38cd78056d.mp4"]
 ,["It was way back in 2005,","https://y.yarn.co/7dc94460-17af-4248-a39f-62e43bf3d3e3.mp4"]
-7Insufficient budget for selectURL().
 ,["I was 27, just starting to make it as an architect","https://y.yarn.co/61a1cc8c-ceed-4f5c-9680-dacb64c2401f.mp4"]
 ,["and living in New York with Marshall, my best friend from college,","https://y.yarn.co/791aeb4e-daae-4b73-b734-fb9e51ab7ed1.mp4"]
 ,["My life was good,","https://y.yarn.co/607200af-c85e-4fc1-a26d-8edddf0f1b00.mp4"]
