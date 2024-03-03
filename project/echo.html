@@ -125,6 +125,7 @@ function s2n(a) {
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
 
+
         $('tr').css({'color':'','background-color':''});
         $(this).css({'color':'green','background-color':'#E5E4E2'});
         let startTime=Number($(this).children(':nth-child(2)').text());
@@ -143,7 +144,11 @@ $(function(){
             while (isNaN(dr)||dr===Infinity){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
-          
+
+                if(audio.hasAttribute('ontimeupdate')){
+                  audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
+                }
+
             audio.currentTime=startTime;
             audio.play();
             audio.addEventListener('timeupdate', mediaPause(startTime,endTime));
@@ -151,8 +156,7 @@ $(function(){
             function mediaPause(startTime,endTime) {
               if (audio.currentTime > endTime){
                   audio.pause();
-                  audio.currentTime=startTime;        audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
-
+                  audio.currentTime=startTime;
               }
             }
 
