@@ -156,6 +156,9 @@ $(function(){
               }            
             }
 
+            audio.removeEventListener('timeupdate', function(){
+              pauseMedia(startTime,endTime);
+            })
           
             // audio.removeEventListener('timeupdate', function(){
             //   if (audio.currentTime > endTime){
