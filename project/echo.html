@@ -144,13 +144,13 @@ $(function(){
 
             audio.currentTime=startTime;
             audio.play();
-          audio.addEventListener('timeupdate', function () {
-    if (audio.currentTime > endTime)  {
-        audio.pause();
+          
+            audio.addEventListener('timeupdate', function () {
+              if (audio.currentTime > endTime)  {console.log('ct>et');
+                  audio.pause();
                   audio.currentTime=startTime;
-
-    }
-});
+              }
+            });
               
             // if(audio.readyState==4){console.log(audio.readyState);
             //   audio.currentTime=startTime;
