@@ -145,10 +145,12 @@ $(function(){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
 
-                if(audio.hasAttribute('ontimeupdate')){
+                if(audio.hasAttribute('ontimeupdate')){console.log('has attribute has event listerner');
                   audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
                 }
-
+                if(audio.ontimeupdate!==null){console.log('ontimeupdate has event listerner');
+                  audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
+                }
             audio.currentTime=startTime;
             audio.play();
             audio.addEventListener('timeupdate', mediaPause(startTime,endTime));
