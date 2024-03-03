@@ -100,10 +100,10 @@ async function getLrc(url,pg,nxtP){
       document.getElementById('data-list').appendChild(tr);
   }
   $('#vp').attr('src',data[pg*100-100][1]);
-  //let vw=$('#vp').videoWidth;
-  //let vh=$('#vp').videoHeight;
-  //let px=sw/vw*vh;
-  //$('#stick').css({'height':px,'background-color':'#E5E4E2'});
+  let vw=$('#vp').videoWidth;
+  let vh=$('#vp').videoHeight;
+  let px=sw/vw*vh;
+  $('#stick').css({'height':px+'px','background-color':'#E5E4E2'});
 }
 
 $(function(){
