@@ -141,13 +141,13 @@ $(function(){
             while (isNaN(dr)||dr===Infinity){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
-
+          
+            audio.currentTime=startTime;
+            audio.play();
+          
             audio.addEventListener('timeupdate', function () {
-              audio.currentTime=startTime;
-              audio.play();
               if (audio.currentTime > endTime){
                   audio.pause();
-                  audio.currentTime=startTime;console.log(audio.currentTime);
               }
             });
               
