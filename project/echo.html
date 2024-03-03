@@ -144,22 +144,10 @@ $(function(){
             }
 
             audio.currentTime=startTime;
-            audio.play();console.log(audio.currentTime);
+            audio.play();
             // audio.addEventListener('timeupdate', function(){
             //   pauseMedia(startTime,endTime); console.log(startTime+','+endTime);
             // })
-
- 
-        audio.addEventListener("timeupdate", Respond);
- 
-        function Respond() {
-              if (audio.currentTime > endTime){console.log(endTime);
-                  audio.pause();
-                  audio.currentTime=startTime;
-              }
-            audio.removeEventListener("timeupdate", Respond);
-        }
-
 
           
             // function pauseMedia(startTime,endTime){
@@ -172,13 +160,23 @@ $(function(){
             // audio.removeEventListener('timeupdate', function(){
             //   pauseMedia(startTime,endTime);
             // })
+
+            audio.addEventListener('timeupdate', function(){
+              if (audio.currentTime > endTime){
+                  audio.pause();
+                  audio.currentTime=startTime;
+
+            audio.removeEventListener('timeupdate', function(){
+              if (audio.currentTime > endTime){
+                  audio.pause();
+                  audio.currentTime=startTime;
+              }
+            })
+                
+              }
+            })
           
-            // audio.removeEventListener('timeupdate', function(){
-            //   if (audio.currentTime > endTime){
-            //       audio.pause();
-            //       audio.currentTime=startTime;
-            //   }
-            // })
+
           
             // if(audio.readyState==4){console.log(audio.readyState);
             //   audio.currentTime=startTime;
