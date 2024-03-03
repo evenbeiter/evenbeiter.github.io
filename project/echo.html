@@ -146,12 +146,17 @@ $(function(){
             audio.currentTime=startTime;
             audio.play();console.log(audio.currentTime);
             audio.addEventListener('timeupdate', function(){
+              pauseMedia(startTime,EndTime);
+            })
+
+            function pauseMedia(startTime,endTime){
               if (audio.currentTime > endTime){console.log(endTime);
                   audio.pause();
                   audio.currentTime=startTime;
-              }
-            })
+              }            
+            }
 
+          
             // audio.removeEventListener('timeupdate', function(){
             //   if (audio.currentTime > endTime){
             //       audio.pause();
