@@ -124,7 +124,6 @@ function s2n(a) {
 
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
-        audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
 
         $('tr').css({'color':'','background-color':''});
         $(this).css({'color':'green','background-color':'#E5E4E2'});
@@ -152,7 +151,8 @@ $(function(){
             function mediaPause(startTime,endTime) {
               if (audio.currentTime > endTime){
                   audio.pause();
-                  audio.currentTime=startTime;
+                  audio.currentTime=startTime;        audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
+
               }
             }
 
