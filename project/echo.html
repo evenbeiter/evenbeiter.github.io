@@ -153,17 +153,20 @@ $(function(){
                 // }
             audio.currentTime=startTime;
             audio.play();
-            audio.addEventListener('timeupdate', 
-                                   function(){
-                                   // mediaPause(startTime,endTime));
-
-            // function mediaPause(startTime,endTime) {
+            audio.addEventListener('timeupdate', function(){
               if (audio.currentTime > endTime){
                   audio.pause();
                   audio.currentTime=startTime;
               }
             })
 
+            audio.removeEventListener('timeupdate', function(){
+              if (audio.currentTime > endTime){
+                  audio.pause();
+                  audio.currentTime=startTime;
+              }
+            })
+          
             // if(audio.readyState==4){console.log(audio.readyState);
             //   audio.currentTime=startTime;
             //   audio.play();
