@@ -145,20 +145,33 @@ $(function(){
 
             audio.currentTime=startTime;
             audio.play();console.log(audio.currentTime);
-            audio.addEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime); console.log(startTime+','+endTime);
-            })
+            // audio.addEventListener('timeupdate', function(){
+            //   pauseMedia(startTime,endTime); console.log(startTime+','+endTime);
+            // })
 
-            function pauseMedia(startTime,endTime){
+ 
+        audio.addEventListener("timeupdate", Respond);
+ 
+        function Respond(startTime,endTime) {
               if (audio.currentTime > endTime){console.log(endTime);
                   audio.pause();
                   audio.currentTime=startTime;
-              }            
-            }
+              }
+            audio.removeEventListener("timeupdate", Respond);
+        }
 
-            audio.removeEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
-            })
+
+          
+            // function pauseMedia(startTime,endTime){
+            //   if (audio.currentTime > endTime){console.log(endTime);
+            //       audio.pause();
+            //       audio.currentTime=startTime;
+            //   }            
+            // }
+
+            // audio.removeEventListener('timeupdate', function(){
+            //   pauseMedia(startTime,endTime);
+            // })
           
             // audio.removeEventListener('timeupdate', function(){
             //   if (audio.currentTime > endTime){
