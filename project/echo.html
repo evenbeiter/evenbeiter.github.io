@@ -141,9 +141,12 @@ $(function(){
             while (isNaN(dr)||dr===Infinity){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
+
+              
             if(audio.readyState==4){console.log(audio.readyState);
               audio.currentTime=startTime;
               audio.play();
+                if (audio.currentTime!==startTime){console.log(audio.currentTime)};
               setTimeout(()=>{
                 audio.pause();
                 audio.currentTime=startTime;
