@@ -145,22 +145,24 @@ $(function(){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
 
-                if(audio.hasAttribute('ontimeupdate')){console.log('has attribute has event listerner');
-                  audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
-                }
-                if(audio.ontimeupdate!==null){console.log('ontimeupdate has event listerner');
-                  audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
-                }
+                // if(audio.hasAttribute('ontimeupdate')){console.log('has attribute has event listerner');
+                //   audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
+                // }
+                // if(audio.ontimeupdate!==null){console.log('ontimeupdate has event listerner');
+                //   audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
+                // }
             audio.currentTime=startTime;
             audio.play();
-            audio.addEventListener('timeupdate', mediaPause(startTime,endTime));
+            audio.addEventListener('timeupdate', 
+                                   function(){
+                                   // mediaPause(startTime,endTime));
 
-            function mediaPause(startTime,endTime) {
+            // function mediaPause(startTime,endTime) {
               if (audio.currentTime > endTime){
                   audio.pause();
                   audio.currentTime=startTime;
               }
-            }
+            })
 
             // if(audio.readyState==4){console.log(audio.readyState);
             //   audio.currentTime=startTime;
