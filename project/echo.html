@@ -140,14 +140,12 @@ $(function(){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
 
-            audio.addEventListener("canplaythrough", function(e){
+            audio.currentTime=startTime;
+            audio.play();
+            setTimeout(()=>{
+              audio.pause();
               audio.currentTime=startTime;
-              audio.play();
-              setTimeout(()=>{
-                audio.pause();
-                audio.currentTime=startTime;
-              }, (endTime-startTime+0.1)*1000);
-            });
+            }, (endTime-startTime+0.1)*1000);
         }
     });
 });
