@@ -141,10 +141,14 @@ $(function(){
             }
             audio.currentTime=startTime;
             audio.play();
-            setTimeout(()=>{
-                audio.pause();
-                audio.currentTime=startTime;
-            }, (endTime-startTime+0.1)*1000);
+            if(audio.currentTime>endTime){
+              audio.pause();
+              audio.currentTime=startTime;
+              }
+            //setTimeout(()=>{
+            //    audio.pause();
+            //    audio.currentTime=startTime;
+            //}, (endTime-startTime+0.1)*1000);
         }
     });
 });
