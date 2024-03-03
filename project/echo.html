@@ -152,7 +152,7 @@ $(function(){
  
         audio.addEventListener("timeupdate", Respond);
  
-        function Respond(startTime,endTime) {
+        function Respond() {
               if (audio.currentTime > endTime){console.log(endTime);
                   audio.pause();
                   audio.currentTime=startTime;
