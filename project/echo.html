@@ -134,6 +134,7 @@ function s2n(a) {
                                   )
           
             function pauseMedia(startTime,endTime){console.log(startTime+','+endTime);
+                                                   console.log('current' +audio.currentTime);
               if (audio.currentTime > endTime){
                   audio.pause();
                   audio.currentTime=startTime;
