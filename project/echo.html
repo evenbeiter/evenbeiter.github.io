@@ -149,8 +149,8 @@ $(function(){
               console.log(audio.currentTime);
               if (audio.currentTime > endTime)  {console.log('ct>et');
                   audio.pause();
-                  audio.currentTime=startTime;console.log(audio.currentTime);
               }
+              audio.currentTime=startTime;console.log(audio.currentTime);
             });
               
             // if(audio.readyState==4){console.log(audio.readyState);
