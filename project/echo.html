@@ -147,7 +147,7 @@ $(function(){
     $(document).on("click", "table tbody tr", function(e) {
 
                   audio.removeEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
+              pauseMedia(startTime,endTime);console.log('removed');
             })
       
         $('tr').css({'color':'','background-color':''});
