@@ -72,7 +72,7 @@ async function getData(){
     $('#src').text(mediaSrc);
     //$('#vp').attr('src',mediaSrc);
     //let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
-    let lrcSrc=filename+'.txt';
+    let lrcSrc='src/'+filename+'.txt';
     $('#delaySec').val(Number(data[i][2]));
     delaySec=Number($('#delaySec').val())
     getLrc(lrcSrc);
@@ -88,7 +88,7 @@ function delayTime(){
     delaySec=Number($('#delaySec').val());
     let title=document.querySelector('title').textContent;
     //let lrcSrc='https://evenbeiter.github.io/project/src/'+title.replace(':','_')+'.txt';
-    let lrcSrc=title.replace(':','_')+'.txt';
+    let lrcSrc='src/'+title.replace(':','_')+'.txt';
     getLrc(lrcSrc);
 }
 
