@@ -146,7 +146,7 @@ $(function(){
             audio.currentTime=startTime;
             audio.play();console.log(audio.currentTime);
             audio.addEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);
+              pauseMedia(startTime,endTime); console.log(startTime+','+endTime);
             })
 
             function pauseMedia(startTime,endTime){
