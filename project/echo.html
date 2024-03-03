@@ -142,9 +142,13 @@ $(function(){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
 
+            audio.currentTime=startTime;
+            audio.play();
           audio.addEventListener('timeupdate', function () {
     if (this.currentTime > endTime && !this.paused)  {
         this.pause();
+                  this.currentTime=startTime;
+
     }
 });
               
