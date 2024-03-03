@@ -126,8 +126,8 @@ $(function(){
     $(document).on("click", "table tbody tr", function(e) {
         $('tr').css({'color':'','background-color':''});
         $(this).css({'color':'green','background-color':'#E5E4E2'});
-        let startTime=Number($(this).children(':nth-child(2)').text());
-        let endTime=Number($(this).next().children(':nth-child(2)').text());
+        let startTime=Number($(this).children(':nth-child(2)').text());console.log(startTime);
+        let endTime=Number($(this).next().children(':nth-child(2)').text());console.log(endTime);
         //let startTime=Math.floor(Number($(this).children(':nth-child(2)').text()));
         //let endTime=Math.ceil(Number($(this).next().children(':nth-child(2)').text()));
         startPlay(startTime,endTime);
