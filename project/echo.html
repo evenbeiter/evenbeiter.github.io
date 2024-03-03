@@ -144,11 +144,11 @@ $(function(){
             }
 
             audio.currentTime=startTime;
-            audio.play();
+            audio.play();console.log(audio.currentTime);
             audio.addEventListener('timeupdate', function(){
-              if (audio.currentTime > endTime){
+              if (audio.currentTime > endTime){console.log(endTime);
                   audio.pause();
-                  // audio.currentTime=startTime;
+                  audio.currentTime=startTime;
               }
             })
 
