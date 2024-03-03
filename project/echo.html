@@ -145,7 +145,7 @@ $(function(){
             audio.currentTime=startTime;
             audio.play();
           
-            audio.addEventListener('timeupdate', function () {
+            audio.addEventListener('timeupdate', function (endTime) {
               if (audio.currentTime > endTime){
                   audio.pause();
               }
