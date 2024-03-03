@@ -144,13 +144,16 @@ $(function(){
           
             audio.currentTime=startTime;
             audio.play();
-          
-            audio.addEventListener('timeupdate', function (endTime) {
+            audio.addEventListener('timeupdate', mediaPause(startTime,endTime));
+            audio.removeEventListener('timeupdate', mediaPause(startTime,endTime));
+
+            function mediaPause(startTime,endTime) {
               if (audio.currentTime > endTime){
                   audio.pause();
+                  audio.currentTime=startTime;
               }
-            });
-              
+            }
+
             // if(audio.readyState==4){console.log(audio.readyState);
             //   audio.currentTime=startTime;
             //   audio.play();
