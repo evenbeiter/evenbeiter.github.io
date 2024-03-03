@@ -129,9 +129,9 @@ function s2n(a) {
 
   var startTime=0; var endTime=0;
             audio.addEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime); console.log(startTime+','+endTime);
+              pauseMedia(startTime,endTime);
             })
-
+ console.log('removed');
           
             function pauseMedia(startTime,endTime){
               if (audio.currentTime > endTime){console.log(endTime);
