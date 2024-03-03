@@ -131,7 +131,6 @@ function s2n(a) {
             audio.addEventListener('timeupdate', function(){
               pauseMedia(startTime,endTime);
             })
- console.log('removed');
           
             function pauseMedia(startTime,endTime){
               if (audio.currentTime > endTime){console.log(endTime);
@@ -147,7 +146,7 @@ $(function(){
     $(document).on("click", "table tbody tr", function(e) {
 
                   audio.removeEventListener('timeupdate', function(){
-              pauseMedia(startTime,endTime);console.log('removed');
+              pauseMedia(startTime,endTime);
             })
       
         $('tr').css({'color':'','background-color':''});
@@ -174,21 +173,11 @@ $(function(){
 
 
             audio.addEventListener('timeupdate', function(){
-              if (audio.currentTime > endTime){
-                  audio.pause();
-                  audio.currentTime=startTime;
-
-                
-              }
+              pauseMedia(startTime,endTime);
             })
           
-
-
             audio.removeEventListener('timeupdate', function(){
-              if (audio.currentTime > endTime){
-                  audio.pause();
-                  audio.currentTime=startTime;
-              }
+              pauseMedia(startTime,endTime);
             })
           
           
