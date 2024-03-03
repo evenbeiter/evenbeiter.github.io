@@ -122,24 +122,17 @@ function s2n(a) {
     return n.toFixed(2);
 }
 
-              var audio=$("#ap")[0];      
-            if ($('#vp').is(":visible")){
-              audio=$("#vp")[0];      
-            }
 
-  var startTime=0; var endTime=0;
-            audio.addEventListener('timeupdate', //function(){
-              pauseMedia(startTime,endTime)
-            //}
-                                  )
+
+
           
-            function pauseMedia(startTime,endTime){console.log(startTime+','+endTime);
-                                                   console.log('current' +audio.currentTime);
-              if (audio.currentTime > endTime){
-                  audio.pause();
-                  audio.currentTime=startTime;
-              }            
-            }
+            // function pauseMedia(startTime,endTime){console.log(startTime+','+endTime);
+            //                                        console.log('current' +audio.currentTime);
+            //   if (audio.currentTime > endTime){
+            //       audio.pause();
+            //       audio.currentTime=startTime;
+            //   }            
+            // }
 
 
 
@@ -147,20 +140,20 @@ function s2n(a) {
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
 
-                  audio.removeEventListener('timeupdate', //function(){
-              pauseMedia(startTime,endTime)
-            //}
-                  )
+            //       audio.removeEventListener('timeupdate', //function(){
+            //   pauseMedia(startTime,endTime)
+            // //}
+            //       )
       
         $('tr').css({'color':'','background-color':''});
         $(this).css({'color':'green','background-color':'#E5E4E2'});
-        startTime=Number($(this).children(':nth-child(2)').text());console.log(startTime);
-        endTime=Number($(this).next().children(':nth-child(2)').text());console.log(endTime);
+        let startTime=Number($(this).children(':nth-child(2)').text());console.log(startTime);
+        let endTime=Number($(this).next().children(':nth-child(2)').text());console.log(endTime);
         startPlay(startTime,endTime);
       
         async function startPlay(startTime,endTime){
 
-            var audio=$("#ap")[0];      
+            let audio=$("#ap")[0];      
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];      
             }
@@ -172,9 +165,15 @@ $(function(){
             audio.currentTime=startTime;
             audio.play();
 
-            audio.addEventListener('timeupdate', //function(){
-              pauseMedia(startTime,endTime)
-            //}
+            audio.ontimeupdate = function(){
+              if (audio.currentTime > endTime){
+                  audio.pause();
+                  audio.currentTime=startTime;
+              }  
+            }
+            // audio.addEventListener('timeupdate', //function(){
+            //   pauseMedia(startTime,endTime)
+            // //}
                                   )
           
             // audio.removeEventListener('timeupdate', //function(){
