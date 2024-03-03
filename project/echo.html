@@ -142,10 +142,11 @@ $(function(){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
 
-            audio.currentTime=startTime;
+            audio.currentTime=startTime;console.log(audio.currentTime);
             audio.play();
           
             audio.addEventListener('timeupdate', function () {
+              console.log(audio.currentTime);
               if (audio.currentTime > endTime)  {console.log('ct>et');
                   audio.pause();
                   audio.currentTime=startTime;
