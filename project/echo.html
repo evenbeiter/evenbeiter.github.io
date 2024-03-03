@@ -139,13 +139,14 @@ $(function(){
             while (isNaN(dr)||dr===Infinity){
             await new Promise(resolve=> setTimeout(resolve,200));
             }
-
-            audio.currentTime=startTime;
-            audio.play();
-            setTimeout(()=>{
-              audio.pause();
+            if(audio.readyState==4){
               audio.currentTime=startTime;
-            }, (endTime-startTime+0.1)*1000);
+              audio.play();
+              setTimeout(()=>{
+                audio.pause();
+                audio.currentTime=startTime;
+              }, (endTime-startTime+0.1)*1000);
+            }
         }
     });
 });
