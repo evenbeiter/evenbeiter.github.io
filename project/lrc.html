@@ -122,6 +122,7 @@ function hitEnter() {
 
             var newLrc=$('#lrc').html().replace('bbbbbb','</td></tr><tr><td>');
             $('#lrc').html(newLrc);
+            addId();
         }
     } 
 }
@@ -156,6 +157,13 @@ function timeMark(sec){
     let ss=sec-mm*60;
     ss=ss.toFixed(2);
     return '['+[("0"+mm).slice(-2),("0"+ss).slice(-5)].join(':')+']';
+}
+
+function addId(){
+    $('td').removeAttr('id');
+    $('td').each(function(i) {
+    $(this).attr('id', 'id' + i);
+    )}
 }
 
 $(function(){
