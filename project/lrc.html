@@ -13,6 +13,12 @@
     <div class="sticky-top p-3">
         <audio id="ap" controls preload="auto" class="pt-6 pb-3 media-document audio iPhone"></audio>
         <video id="vp" controls preload="auto" playsinline style="display:none"></video>
+        
+        <div class="form-check form-switch">
+          <input class="form-check-input" type="checkbox" id="edit">
+          <label class="form-check-label" for="flexSwitchCheckDefault">edit Content</label>
+        </div>
+        
         <div id="tools" class="row px-2 py-3" style="display:none">
             <!-- <div class="col border border-secondary p-3 text-center fw-bold" onclick="____()">D/L TXT</div>
             <div class="col border border-secondary p-3 text-center fw-bold" onclick="removeTS()">Remove TS</div>
@@ -46,8 +52,8 @@
     <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="brown" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg> -->
 
     <div class="p-3">
-        <table id="edit" class="table" contenteditable>
-            <tbody id="lrc"></tbody>
+        <table class="table">
+            <tbody id="lrc" contenteditable></tbody>
         </table>
     </div>
     <div style="height:100px" onclick="stampTime()"></div>
