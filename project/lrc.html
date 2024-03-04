@@ -10,9 +10,21 @@
 </head>
   <body>
 
-    <div class="sticky-top">
+    <div class="sticky-top p-3">
         <audio id="ap" controls preload="auto" class="py-3 media-document audio iPhone"></audio>
         <video id="vp" controls preload="auto" playsinline style="display:none"></video>
+        <div id="tools" class="row" style="display:none">
+            <!-- <div class="col border border-secondary p-3 text-center fw-bold" onclick="____()">D/L TXT</div>
+            <div class="col border border-secondary p-3 text-center fw-bold" onclick="removeTS()">Remove TS</div>
+            <div class="col border border-secondary p-3 text-center fw-bold" onclick="hitEnter()">New Line</div>
+            <div class="col border border-secondary p-3 text-center fw-bold" onclick="stampTime()">TIMESTAMP</div> -->
+
+            <button class="col btn btn-outline-secondary" type="button" onclick="____()">D/L TXT</button>
+            <button class="col btn btn-outline-secondary" type="button" onclick="removeTS()">Remove TS</button>
+            <button class="col btn btn-outline-secondary" type="button" onclick="hitEnter()">New Line</button>
+            <button class="col btn btn-outline-secondary" type="button" onclick="stampTime()">TIMESTAMP</button>
+
+        </div>
     </div>
 
     <div>
@@ -40,20 +52,9 @@
     </div>
     <div style="height:100px" onclick="stampTime()"></div>
 
-    <div class="fixed-bottom">
-        <div class="row">
-            <!-- <div class="col border border-secondary p-3 text-center fw-bold" onclick="____()">D/L TXT</div>
-            <div class="col border border-secondary p-3 text-center fw-bold" onclick="removeTS()">Remove TS</div>
-            <div class="col border border-secondary p-3 text-center fw-bold" onclick="hitEnter()">New Line</div>
-            <div class="col border border-secondary p-3 text-center fw-bold" onclick="stampTime()">TIMESTAMP</div> -->
 
-            <button class="col btn btn-outline-secondary" type="button" onclick="____()">D/L TXT</button>
-            <button class="col btn btn-outline-secondary" type="button" onclick="removeTS()">Remove TS</button>
-            <button class="col btn btn-outline-secondary" type="button" onclick="hitEnter()">New Line</button>
-            <button class="col btn btn-outline-secondary" type="button" onclick="stampTime()">TIMESTAMP</button>
 
-        </div>
-    </div>
+
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 
@@ -130,6 +131,7 @@ function hitEnter() {
 
 function tc2Tbl(){
     $('#input').hide();
+    $('#tools').show();
     var tc=$('#tc').val();
     var lines=tc.split(/[.?!]+/);
 
