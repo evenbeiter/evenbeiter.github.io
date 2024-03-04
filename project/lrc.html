@@ -100,8 +100,8 @@ function hitEnter() {
             // Range.createContextualFragment() would be useful here but is
             // non-standard and not supported in all browsers (IE9, for one)
             var el = document.createElement("div");
-            el.innerHTML = '<span>&lt;/td&gt;&lt;/tr&gt;</span>';
-            //el.innerHTML = '<span>&lt;\u002F\u0074\u0064&gt;&lt;\u002F\u0074\u0072&gt;</span>';
+            //el.innerHTML = '<span>&lt;/td&gt;&lt;/tr&gt;</span>';
+            el.innerHTML = '<span>&lt;\u002F\u0074\u0064&gt;&lt;\u002F\u0074\u0072&gt;</span>';
             // el.innerHTML = '<strong>HERE</strong>';
             var frag = document.createDocumentFragment(), node, lastNode;
             while ( (node = el.firstChild) ) {
