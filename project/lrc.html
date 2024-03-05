@@ -12,7 +12,8 @@
 
     <div class="sticky-top p-3">
         <div>
-            <audio id="ap" controls preload="auto" class="media-document audio iPhone"></audio>
+           // <audio id="ap" controls preload="auto" class="media-document audio iPhone"></audio>
+            <audio id="ap" controls preload="auto"></audio>
             <video id="vp" controls preload="auto" playsinline style="display:none"></video>
         </div>
 
@@ -245,6 +246,7 @@ function tc2Tbl(){
 }
 
 function browseText(j) {
+    $('#input').hide();
     var g = document.getElementById("browseText").files[0];
     var d = g.name;
     var e = g.size;
