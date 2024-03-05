@@ -236,15 +236,7 @@ function tc2Tbl(){
     //$('#tools').show();
     var tc=$('#tc').val();
     var lines=tc.split(/[.?!]+/);
-
-    var k='';var j=0;
-    for (var i=0;i<lines.length;i++) {
-        if (lines[i].trim() == "") {
-            continue;
-        }
-            k += '<tr><td id="s'+(++j)+'">' +lines[i] + '.</td></tr>';
-        }
-    $("#lrc").html(k);
+    loadLrc2Page(lines);
 }
 
 function browseText(j) {
@@ -258,10 +250,27 @@ function browseText(j) {
     var h;
     a.onload = function() {
         h = this.result;
-        putlrc(h);
+        var lines=h.split("\r\n");
+        loadLrc2Page(lines);
     };
 }
 
+function putlrc(d) {
+    var c = d.split("\r\n");
+    loadLrc2Page(c);
+}
+
+function loadLrc2Page(l) {
+    var k = ''; var j = 0;
+    for (var f = 0; f < l.length; f++) {
+        if (l[f].trim() == "") {    //f=length of lrc
+            continue;
+        }
+            k += '<tr><td id="s'+(++j)+'">' +l[f] + '.</td></tr>';       
+    }
+    $("#lrc").html(k);
+}
+  
 function timeMark(sec){
     let mm=Math.floor(sec/60);
     let ss=sec-mm*60;
