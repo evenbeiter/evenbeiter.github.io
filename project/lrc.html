@@ -17,7 +17,7 @@
         </div>
 
         
-        <div id="tools" class="row px-3 py-1" style="display:none">
+        <div id="tools" class="row px-3 py-1">
             <!-- <div class="col border border-secondary p-3 text-center fw-bold" onclick="____()">D/L TXT</div>
             <div class="col border border-secondary p-3 text-center fw-bold" onclick="removeTS()">Remove TS</div>
             <div class="col border border-secondary p-3 text-center fw-bold" onclick="hitEnter()">New Line</div>
@@ -25,7 +25,7 @@
 
             <div class="col-4 form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="edit" onclick="checkEdit()">
-                <label class="form-check-label" for="flexSwitchCheckDefault">Edit Content</label>
+                <label class="form-check-label" for="flexSwitchCheckDefault">Edit</label>
             </div>
 
             <button class="col btn btn-outline-secondary" type="button" onclick="rw5()">
@@ -51,7 +51,6 @@
 
             <input type="file" id="browseText" onchange="browseText(this.value)" style="display:none">
 
-
             <button class="col btn btn-outline-secondary" type="button" onclick="dlTxt()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
@@ -71,7 +70,6 @@
                     <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
                 </svg>
             </button>
-
         </div>
     </div>
 
@@ -130,12 +128,16 @@ function checkEdit(){
     }
 }
 
+var startPoint=[];
+  
 function stampTime(){
     for(var i=1;i<$("tr").length+1;i++){
         let el=$('#s'+i);
         let txt=el.text();
         if(txt.slice(0,1)!=='['){
-            el.text((timeMark($('#ap')[0].currentTime)+txt).replace('##:##.##',''));
+            var sp=$('#ap')[0].currentTime;
+            startPoint.push(sp);
+            el.text((timeMark(sp)+txt).replace('##:##.##','')).replace('] ',']');
             $('td').css({'color':'','background-color':''});
             el.css({'color':'green','background-color':'#E5E4E2'});
             // el=$('#s'+(++i));
@@ -162,6 +164,7 @@ function removeTS(){
             if (el.tagName=='TD'){ console.log('TD');//do only if click on lines
                 el.innerHTML=el.innerHTML.replace(/\[\d\d:\d\d\.\d\d\]/g,'<span class="text-danger fw-bold">##:##.##</span>');
                 var elId=el.id.substring(1);
+                startPoint.splice(elId-1);
                 var preEl=$('#s'+ (elId-1));
                 preEl.css({'color':'green','background-color':'#E5E4E2'});
 
@@ -230,7 +233,7 @@ function hitEnter() {
 
 function tc2Tbl(){
     $('#input').hide();
-    $('#tools').show();
+    //$('#tools').show();
     var tc=$('#tc').val();
     var lines=tc.split(/[.?!]+/);
 
@@ -249,28 +252,13 @@ function browseText(j) {
     var d = g.name;
     var e = g.size;
     var c = URL.createObjectURL(g);
-    $("#textName").text(d);
+    $("#textName").text(d); //can use
     var a = new FileReader();
     a.readAsText(g);
     var h;
     a.onload = function() {
-        $("#srcWin").show();
         h = this.result;
-        if (filelastname(d) == "txt") {
-            puttxt(h);
-            $("#tabtxt").addClass("tabshow");
-            $("#tablrc").removeClass("tabshow");
-            $("#txt").show();
-            $("#lrc").hide();
-        } else {
-            if (filelastname(d) == "lrc") {
-                putlrc(h);
-                $("#tablrc").addClass("tabshow");
-                $("#tabtxt").removeClass("tabshow");
-                $("#lrc").show();
-                $("#txt").hide();
-            }
-        }
+        putlrc(h);
     };
 }
 
