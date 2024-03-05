@@ -11,62 +11,88 @@
   <body>
 
     <div class="sticky-top p-3">
-        <audio id="ap" controls preload="auto" class="pt-6 pb-3 media-document audio iPhone"></audio>
-        <video id="vp" controls preload="auto" playsinline style="display:none"></video>
-        
-        <div class="form-check form-switch">
-          <input class="form-check-input" type="checkbox" id="edit">
-          <label class="form-check-label" for="flexSwitchCheckDefault">edit Content</label>
+        <div class="py-3">
+            <audio id="ap" controls preload="auto" class="media-document audio iPhone"></audio>
+            <video id="vp" controls preload="auto" playsinline style="display:none"></video>
         </div>
+
         
-        <div id="tools" class="row px-2 py-3" style="display:none">
+        <div id="tools" class="row px-3 py-1" style="display:none">
             <!-- <div class="col border border-secondary p-3 text-center fw-bold" onclick="____()">D/L TXT</div>
             <div class="col border border-secondary p-3 text-center fw-bold" onclick="removeTS()">Remove TS</div>
             <div class="col border border-secondary p-3 text-center fw-bold" onclick="hitEnter()">New Line</div>
             <div class="col border border-secondary p-3 text-center fw-bold" onclick="stampTime()">TIMESTAMP</div> -->
 
-            <button class="col btn btn-outline-secondary" type="button" onclick="____()">D/L TXT</button>
-            <button class="col btn btn-outline-secondary" type="button" onclick="removeTS()">Remove TS</button>
-            <button class="col btn btn-outline-secondary" type="button" onclick="hitEnter()">New Line</button>
-            <button class="col btn btn-outline-secondary" type="button" onclick="stampTime()">TIMESTAMP</button>
+            <div class="col-4 form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="edit" onclick="checkEdit()">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Edit Content</label>
+            </div>
+
+            <button class="col btn btn-outline-secondary" type="button" onclick="rw5()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rewind" viewBox="0 0 16 16">
+                    <path d="M9.196 8 15 4.633v6.734zm-.792-.696a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+                    <path d="M1.196 8 7 4.633v6.734zm-.792-.696a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+                </svg>
+            </button>
+
+            <button class="col btn btn-outline-secondary" type="button" onclick="fw5()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+                    <path d="M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                    <path d="M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                </svg>
+            </button>
+
+            <button class="col btn btn-outline-secondary" type="button" onclick="dlTxt()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                    <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                </svg>
+            </button>
+
+            <button class="col btn btn-outline-secondary" type="button" onclick="removeTS()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                </svg>
+            </button>
+
+            <button class="col btn btn-outline-secondary" type="button" onclick="stampTime()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                    <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z"/>
+                    <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
+                </svg>
+            </button>
 
         </div>
     </div>
 
     <div>
         <div class="input-group px-3 py-1">
-            <input id="mediaSrc" type="text" value="https://traffic.megaphone.fm/WSJ2860990505.mp3" class="form-control">
-            <!-- <button class="btn btn-outline-secondary" type="button" value="" onclick="loadMedia()">Upload</button> -->
+            <input id="mediaSrc" type="text" value="" class="form-control">
+            <!-- <input id="mediaSrc" type="text" value="https://traffic.megaphone.fm/WSJ2860990505.mp3" class="form-control"> -->
             <button class="btn btn-outline-secondary" type="button" onclick="loadMedia()">Upload</button>
             <button class="btn btn-secondary" type="button" onclick="playMedia()">PLAY</button>
         </div>
 
         <div id="input" class="input-group px-3 py-1">
-            <!-- <span class="input-group-text">With textarea</span> -->
             <textarea id="tc" type="text" value="" class="form-control"></textarea>
             <button class="btn btn-outline-secondary" type="button" onclick="tc2Tbl()">LRC</button>
         </div>
 
     </div>
 
-    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="brown" class="bi bi-play-circle-fill" viewBox="0 0 16 16"><path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/></svg> -->
-
     <div class="p-3">
         <table class="table">
-            <tbody id="lrc" contenteditable></tbody>
+            <tbody id="lrc"></tbody>
         </table>
     </div>
-    <div style="height:100px" onclick="stampTime()"></div>
-
-
-
+    <!-- <div style="height:100px"></div> -->
 
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 
 <script>
 
-$('#tc').val("Alex Ossola: Here's your TNB Tech Minute for Friday, March 1st. I'm Alex Ossola for the Wall Street Journal. Elon Musk has sued OpenAI and its CEO Sam Altman. In the lawsuit, Musk alleges that OpenAI and Altman broke the artificial intelligence company's founding agreement by giving priority to profit over the benefits to humanity. Musk who helped found OpenAI in 2015 claims the company's close relationship with Microsoft goes against the company's original commitment to public open source AI. OpenAI declined to comment. Musk didn't respond to a request for comment. We exclusively report that Reddit plans to target a price range of $31 to $34 per share in its IPO. That's according to people familiar with the matter. That valuation of between 6 and $6.5 billion is down from the $10 billion valuation Reddit notched in its most recent fundraising round in August 2021? It's partly a reflection of investors waning appetite for unprofitable companies. The company can still adjust the range before its roadshow to pitch investors or listing, both of which are expected in the coming weeks. And Meta says it won't enter into new deals with traditional news publishers in Australia and the US. The company noted that the number of people in those countries using a dedicated tab for news on Facebook dropped more than 80% last year. In a blog post, the social media giant said people will still be able to view links to news articles on Facebook and that publishers will continue to have access to their accounts where they can post links just as anyone else. For a deeper dive into what's happening in tech, check out Monday's Tech News Briefing Podcast.");
+// $('#tc').val("Alex Ossola: Here's your TNB Tech Minute for Friday, March 1st. I'm Alex Ossola for the Wall Street Journal. Elon Musk has sued OpenAI and its CEO Sam Altman. In the lawsuit, Musk alleges that OpenAI and Altman broke the artificial intelligence company's founding agreement by giving priority to profit over the benefits to humanity. Musk who helped found OpenAI in 2015 claims the company's close relationship with Microsoft goes against the company's original commitment to public open source AI. OpenAI declined to comment. Musk didn't respond to a request for comment. We exclusively report that Reddit plans to target a price range of $31 to $34 per share in its IPO. That's according to people familiar with the matter. That valuation of between 6 and $6.5 billion is down from the $10 billion valuation Reddit notched in its most recent fundraising round in August 2021? It's partly a reflection of investors waning appetite for unprofitable companies. The company can still adjust the range before its roadshow to pitch investors or listing, both of which are expected in the coming weeks. And Meta says it won't enter into new deals with traditional news publishers in Australia and the US. The company noted that the number of people in those countries using a dedicated tab for news on Facebook dropped more than 80% last year. In a blog post, the social media giant said people will still be able to view links to news articles on Facebook and that publishers will continue to have access to their accounts where they can post links just as anyone else. For a deeper dive into what's happening in tech, check out Monday's Tech News Briefing Podcast.");
 
 function loadMedia(){
     $('#ap').attr('src',$('#mediaSrc').val());
@@ -76,24 +102,93 @@ function playMedia(){
     $('#ap')[0].play();
 }
 
+
+
+function rw5() {
+    $('#ap')[0].currentTime = $('#ap')[0].currentTime-5;
+    $('#ap')[0].play();
+}
+
+function fw5() {
+    $('#ap')[0].currentTime = $('#ap')[0].currentTime+5;
+    $('#ap')[0].play();
+}
+
+function checkEdit(){
+    if ($('#edit').is(":checked")){
+        $('#lrc').attr('contenteditable','true');
+    } else {
+        $('#lrc').attr('contenteditable','false');
+    }
+}
+
 function stampTime(){
     for(var i=1;i<$("tr").length+1;i++){
-        let el=document.getElementById('s'+i);
-        let txt=el.textContent;
+        let el=$('#s'+i);
+        let txt=el.text();
         if(txt.slice(0,1)!=='['){
-            el.textContent=(timeMark($('#ap')[0].currentTime)+txt).replace('##:##.##','');
+            el.text((timeMark($('#ap')[0].currentTime)+txt).replace('##:##.##',''));
+            $('td').css({'color':'','background-color':''});
+            el.css({'color':'green','background-color':'#E5E4E2'});
+            // el=$('#s'+(++i));
+            // txt=el.html();
+            // el.html('<span class="text-danger fw-bold">##:##.##</span>'+txt);
             el=document.getElementById('s'+(++i));
-            txt=el.innerHTML;
-            el.innerHTML='<span class="text-danger fw-bold">##:##.##</span>'+txt;
+            if (el!==null){
+                el.innerHTML='<span class="text-danger fw-bold">##:##.##</span>'+el.innerHTML;
+                el.scrollIntoView(false);
+            }
             break;
         }
     }
 }
 
 function removeTS(){
+    $('td').css({'color':'','background-color':''});
+    var sel, range, el;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            el=range.commonAncestorContainer.parentElement;
+            if (el.tagName=='TD'){ console.log('TD');//do only if click on lines
+                el.innerHTML=el.innerHTML.replace(/\[\d\d:\d\d\.\d\d\]/g,'<span class="text-danger fw-bold">##:##.##</span>');
+                var elId=el.id.substring(1);
+                var preEl=$('#s'+ (elId-1));
+                preEl.css({'color':'green','background-color':'#E5E4E2'});
 
+                for (var i=Number(elId)+1;i<$('tr').length+1;i++){
+                document.getElementById('s'+i).innerHTML=document.getElementById('s'+i).innerHTML.replace('<span class="text-danger fw-bold">##:##.##</span>','').replace(/\[\d\d:\d\d\.\d\d\]/g,'');
+                }
+            }
+        }
+    } 
 }
 
+function dlTxt(){
+    var txt='';
+    var lrc=$('td');
+    for (var i=0;i<lrc.length;i++){
+        txt = txt + lrc[i].textContent+'\r\n';
+    }
+    var txtData = new Blob([txt], { type: 'data:text/csv;charset=utf-8' });
+    var txtUrl = URL.createObjectURL(txtData); 
+    let link = document.createElement('a');
+    link.href = txtUrl;
+    link.target = '_blank';
+    link.download = 'tc.txt';
+    link.click();
+}
+
+//break a line
+$(document).on('keypress', function(e){
+    if(e.which == 13){
+        if ($('#edit').is(":checked")){
+            e.preventDefault();
+            hitEnter();
+        }
+    }
+});
 
 function hitEnter() {
     var sel, range;
@@ -102,38 +197,27 @@ function hitEnter() {
         sel = window.getSelection();
         if (sel.getRangeAt && sel.rangeCount) {
             range = sel.getRangeAt(0);
-            range.deleteContents();
-
-            // Range.createContextualFragment() would be useful here but is
-            // non-standard and not supported in all browsers (IE9, for one)
-            var el = document.createElement("div");
-            el.innerHTML='bbbbbb';
-            //el.innerHTML = '<span>&lt;/td&gt;&lt;/tr&gt;</span>';
-            //el.innerHTML = '<span>&lt;\u002F\u0074\u0064&gt;&lt;\u002F\u0074\u0072&gt;</span>';
-            // el.innerHTML = '<strong>HERE</strong>';
-            var frag = document.createDocumentFragment(), node, lastNode;
-            while ( (node = el.firstChild) ) {
-                lastNode = frag.appendChild(node);
-            }
-            range.insertNode(frag);
             
-            // Preserve the selection
-            // if (lastNode) {
-            //     range = range.cloneRange();
-            //     range.setStartAfter(lastNode);
-            //     range.collapse(true);
-            //     sel.removeAllRanges();
-            //     sel.addRange(range);
-            // }
+            if (range.commonAncestorContainer.parentNode.tagName=='TD'){ //do only if click on lines
+                range.deleteContents();
 
-            var newLrc=$('#lrc').html().replace('bbbbbb','</td></tr><tr><td>');
-            $('#lrc').html(newLrc);
-            addId();
+                // Range.createContextualFragment() would be useful here but is
+                // non-standard and not supported in all browsers (IE9, for one)
+                var el = document.createElement("div");
+                el.innerHTML='bbbbbb';
+                var frag = document.createDocumentFragment(), node, lastNode;
+                while ( (node = el.firstChild) ) {
+                    lastNode = frag.appendChild(node);
+                }
+                range.insertNode(frag);
+
+                var newLrc=$('#lrc').html().replace('bbbbbb','</td></tr><tr><td>').replace('<span class="text-danger fw-bold">##:##.##</span>','');
+                $('#lrc').html(newLrc);
+                addId();
+            }
         }
     } 
 }
-
-
 
 
 function tc2Tbl(){
@@ -147,13 +231,9 @@ function tc2Tbl(){
         if (lines[i].trim() == "") {
             continue;
         }
-            // k += '<tr><td>' +lines[i] + '.</td></tr>';
-//             k += '<tr><td><span class="t border-0 shadow-none w-100 h-auto" contenteditable>' +lines[i] + '.</span></td></tr>';
             k += '<tr><td id="s'+(++j)+'">' +lines[i] + '.</td></tr>';
-
         }
     $("#lrc").html(k);
-
 }
 
 
@@ -168,90 +248,70 @@ function timeMark(sec){
 function addId(){
     $('td').removeAttr('id');
     $('td').each(function(i) {
-    $(this).attr('id', 'id' + i);
+    $(this).attr('id', 's'+(++i));
     })
 }
 
 $(function(){
     $(document).on("click", "table tbody tr", function(e) {
 
+        console.log( "Handler for click called." );
 
     });
 });
 
 
+$('table').on('dblclick', function() {
+    $('td').css({'color':'','background-color':''});
+    var sel, range, el;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            el=range.commonAncestorContainer.parentElement;
+            if (el.tagName=='TD'){  //do only if click on lines
+                let s=txt2s(el.innerHTML);
+                $('#ap')[0].currentTime = s;
+                $('#ap')[0].play();
+                var elId=el.id.substring(1);
+                var thisEl=$('#s'+ elId);
+                thisEl.css({'color':'green','background-color':'#E5E4E2'});
+            }
+        }
+    } 
+} );
 
-// getData();
-  
-// async function getData(){
-//     let response=await fetch('https://evenbeiter.github.io/project/list.json');
-//     let str=await response.text();
-//     let data=JSON.parse(str);
-    
-//     // let url=window.location.href;
-//     //let url='https://evenbeiter.github.io/project/echo.html?id=1';
-//     let i=Number(url.slice(-url.length+url.indexOf('=')+1));
-//     let filename=data[i][0];
-//     let name=filename.replace('_',':');
-//     document.querySelector('title').textContent=name;
-//     let mediaSrc=data[i][1];
-//     $('#ap').attr('src',mediaSrc);
 
-//     let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
-//     $('#delaySec').val(Number(data[i][2]));
-//     delaySec=Number($('#delaySec').val())
-//     getLrc(lrcSrc);
-// }
+function s2n(a) {
+    n = a.split(":");
+    n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    return n.toFixed(2);
+}
 
-// async function getLrc(url){
-//     let response = await fetch(url);
-//     let str = await response.text();
-//     putlrc(str);
-// }
 
-// function delayTime(){
-//     delaySec=Number($('#delaySec').val());
-//     let title=document.querySelector('title').textContent;
-//     let lrcSrc='https://evenbeiter.github.io/project/src/'+title.replace(':','_')+'.txt';
-//     getLrc(lrcSrc);
-// }
+function txt2s(text){
+    if (/\[\d\d:\d\d\.\d\d\]/.test(text)) {
+        var g = text.indexOf("]");
+        var d = text.substr(1, g - 1);
+        return s2n(d);
+    }
+}
 
-// function putlrc(d) {
-//     var c = d.split("\r\n");
-//     loadLrc2Page(c);
-// }
 
-// function loadLrc2Page(l) {
-//     var d, e, h = [],
-//         k = "";
-//     var j = 0;
-
-//     for (var f = 0; f < l.length; f++) {
-//         if (l[f].trim() == "") {    //f=length of lrc
-//             continue;
-//         }
-//         if (/\[\d\d:\d\d\.\d\d\]/.test(l[f])) {
-//             var g = l[f].indexOf("]");
-//             d = l[f].substr(1, g - 1);
-//             e = l[f].substr(g + 1);
-//             var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
-//             h.push(parseFloat(c));
-//             k += '<tr><td>' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
-            
+// $(document).on('change', function() {console.log('here');
+//     for(var i=1;i<$("tr").length+1;i++){
+//         let el=$('#s'+i);
+//         let txt=el.text();
+//         if (/\[\d\d:\d\d\.\d\d\]/.test(txt)) {
+//         var g = l[f].indexOf("]");
+//         var d = l[f].substr(1, g - 1);
+//         var c = s2n(d);
+//         $('#ap')[0].currentTime = c;
 //         }
 //     }
-
-//     $("#lrc").html(k);
-
-// }
+// })
 
 
-// function s2n(a) {
-//     n = a.split(":");
-//     // n = parseInt(n[0]) * 60 + parseFloat(n[1]);
-//     n = parseInt(n[0]) * 60 + parseFloat(n[1])+delaySec;
-//     return n.toFixed(2);
-// }
 
 
 // $(function(){
