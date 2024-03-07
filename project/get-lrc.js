@@ -13,7 +13,7 @@ let txtUrl = URL.createObjectURL(txtData);
 let link = document.createElement('a');
 link.href = txtUrl;
 link.target = '_blank';
-link.download = name+'.txt';
+link.download = name+'-0.txt';
 link.click();
 alert('["'+name+'",'+audio+',0],');
 })();
