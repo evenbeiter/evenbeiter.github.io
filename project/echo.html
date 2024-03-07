@@ -113,7 +113,7 @@ function delayTime(){
     delaySec=Number($('#delaySec').val());
     let title=document.querySelector('title').textContent;
     //let lrcSrc='https://evenbeiter.github.io/project/src/'+title.replace(':','_')+'.txt';
-    let lrcSrc='src/'+title.replace(':','_')+'.txt';
+    let lrcSrc='src/'+title.replace(/:/g,'_').replace(/\?/g+'.txt';
     getLrc(lrcSrc);
 }
 
