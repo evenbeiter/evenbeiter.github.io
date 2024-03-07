@@ -3,7 +3,7 @@
 
 javascript:(function(){
 let str=document.documentElement.innerHTML;
-let name=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace(' - WSJ Podcasts</title>','');
+let name=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace(' - WSJ Podcasts</title>','').replace(/[\:\?]/g,'').replace(/ /g,'_');
 let audio=str.match(/"https:\/\/m.wsj.net\/audio[\s\S]*?\.mp3"/g)[0];
 str = document.documentElement.innerText;
 str=str.match(/FULL TRANSCRIPT[\s\S]*?Looking for more episodes/g)[0].replace('FULL TRANSCRIPT','').replace('Looking for more episodes','');
@@ -13,7 +13,7 @@ let txtUrl = URL.createObjectURL(txtData);
 let link = document.createElement('a');
 link.href = txtUrl;
 link.target = '_blank';
-link.download = name.replace(/[\:\?]/g,'').replace(/ /g,'_')+'.txt';
+link.download = name+'.txt';
 link.click();
 alert('["'+name+'",'+audio+',0],');
 })();
@@ -23,7 +23,7 @@ alert('["'+name+'",'+audio+',0],');
 
 javascript:(function(){
 let str=document.documentElement.innerHTML;
-let name=str.match(/<h1>[\s\S]*?<\/h1>/g)[0].replace(/<h1>[\s\S]*? /g,'').replace('</h1>','');
+let name=str.match(/<h1>[\s\S]*?<\/h1>/g)[0].replace(/<h1>[\s\S]*? /g,'').replace('</h1>','').replace(/[\:\?]/g,'').replace(/ /g,'_');
 let audio=str.match(/"http:\/\/api.frdic.com\/api\/v3\/media[\s\S]*?\?/g)[0].replace('?','"');
 let raw=str.match(/paragraphs":[\s\S]*?content_update_time/g)[0].replace(/\n/g,'').replace(/  /g,'').replace('paragraphs":','').replace(',"content_update_time','');
 let data=JSON.parse(raw);
@@ -36,7 +36,7 @@ let txtUrl = URL.createObjectURL(txtData);
 let link = document.createElement('a');
 link.href = txtUrl;
 link.target = '_blank';
-link.download = name.replace(/ /g,'_')+'.txt';
+link.download = name+'.txt';
 link.click();
 alert('["'+name+'",'+audio+',0],');
 })();
@@ -49,7 +49,7 @@ alert('["'+name+'",'+audio+',0],');
 
 javascript:(function(){
 let str=document.documentElement.innerHTML;
-let a=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','["').replace('</title>','","');
+let a=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','["').replace('</title>','","').replace(/[\:\?]/g,'').replace(/ /g,'_');
 let b=str.match(/https:\/\/download.ted.com\/products[\s\S]*?\.mp4/g)[0].replace('.mp4','.mp4",3],');
 let el = document.createElement('textarea');
 document.body.appendChild(el);
