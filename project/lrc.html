@@ -343,17 +343,12 @@ function upCombine(){
     }
 } 
 
-
 function tc2Tbl(){
     $('#input').hide();
-    var tc=$('#tc').val();
-  var list=['.','?','!','."'];
-    var lines=tc.split(/[.?!]+/);
-
-  for(var i=0;i<array.length;i++){
-    array[i]="#"+array[i];
-}
-    loadLrc2Page(lines);
+    var tc=document.getElementById('tc').value;
+    tc='<tr><td>'+tc.replaceAll('."','".').replaceAll('.','.</td></tr><tr><td>').replaceAll('?','?</td></tr><tr><td>').replaceAll('!','!</td></tr><tr><td>').slice(0,-8);
+    $("#lrc").html(tc);
+    addId();
 }
 
 function browseText(j) {
