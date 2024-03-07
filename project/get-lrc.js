@@ -1,6 +1,31 @@
 
+//////WSJ
 
-//////
+javascript:(function(){
+
+let str=document.documentElement.innerHTML;
+let name=str.match(/<title>[\s\S]*?<\/title>/g)[0].replace('<title>','').replace(' - WSJ Podcasts</title>','');
+let audio=str.match(/"https:\/\/m.wsj.net\/audio[\s\S]*?\.mp3"/g)[0];
+str = document.documentElement.innerText;
+str=str.match(/FULL TRANSCRIPT[\s\S]*?Looking for more episodes/g)[0].replace('FULL TRANSCRIPT','').replace('Looking for more episodes','');
+let txt=str.replace(/\./g,'.\r\n').replace(/\?/g,'?\r\n').replace(/\."/g,'."\r\n');
+
+let txtData = new Blob([txt], { type: 'data:text;charset=utf-8' });
+let txtUrl = URL.createObjectURL(txtData);
+let link = document.createElement('a');
+link.href = txtUrl;
+link.target = '_blank';
+link.download = name+'.txt';
+link.click();
+
+alert('["'+name+'",'+audio+',0],');
+
+})();
+
+
+//////TED
+
+
 
 javascript:(async()=>{
 
