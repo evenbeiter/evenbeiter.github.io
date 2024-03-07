@@ -79,6 +79,7 @@
         </div>
 
         <div class="input-group px-3 py-1">
+            <input id="filename" type="text" value="" class="form-control">
             <textarea id="tc" type="text" value="" class="form-control"></textarea>
             <button class="btn btn-outline-secondary" type="button" onclick="tc2Tbl()">LRC</button>
         </div>
@@ -278,7 +279,7 @@ function dlTxt(){
     let link = document.createElement('a');
     link.href = txtUrl;
     link.target = '_blank';
-    link.download = 'tc.txt';
+    link.download = $('#filename').val()+'.txt';
     link.click();
 }
 
@@ -365,6 +366,11 @@ function browseText(j) {
     $('#input').hide();
     var g = document.getElementById("browseText").files[0];
     var d = g.name;
+    if(d.slice(-2)=='-0'){
+      document.getElementById("filename").value=d.slice(0,-2);
+    } else{
+      document.getElementById("filename").value=d;
+    }
     var e = g.size;
     var c = URL.createObjectURL(g);
     $("#textName").text(d); //can use
