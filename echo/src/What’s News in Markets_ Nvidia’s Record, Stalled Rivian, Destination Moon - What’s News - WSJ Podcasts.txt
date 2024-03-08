@@ -1,0 +1,64 @@
+[tool: LRC Maker https://lrc-maker.github.io]
+[00:24.34] This is What's News and Markets, our look at the biggest stock moves of the week and the news that drove them.
+[00:30.05] Let's get to it.
+[00:31.06] If you felt like Nvidia was the only stock that mattered this week, you're not totally wrong.
+[00:35.06] Thanks in large part to the company's monster earnings, the S&P 500 hit its 13th record of 2024 on Friday, closing at nearly 5,090.
+[00:45.63] And the Dow crossed 39,000 for the first time,
+[00:49.07] and by the end of the week, marked another record, its 14th of the year.
+[00:53.24] Now let's go back to Nvidia.
+[00:56.92] All eyes were on its quarterly results this week
+[00:59.53] since the chip maker is really the bellwether of the AI boom,
+[01:02.44] and to say that those results were great is a total understatement.
+[01:06.76] Nvidia's quarterly profit surged more than eightfold from a year earlier,
+[01:11.01] and its sales more than tripled.
+[01:12.55] For those of us who aren't too tech-savvy, the Cliff notes of why Nvidia matters so much is this.
+[01:18.26] Everyone is hungry for AI.
+[01:20.21] Businesses are spending massive amounts to build their own AI systems,
+[01:24.12] and Nvidia makes the chips that power those systems.
+[01:27.14] And businesses want to get their hands on these chips as fast as possible.
+[01:30.51] This is great for Nvidia and other chip makers because demand is straight up exploding,
+[01:36.21] so much in fact that it's exceeding Nvidia's manufacturing capacity leading to long-lasting shortages and production bottlenecks and other issues.
+[01:45.21] But that's less of a concern for investors clearly because Nvidia's stock has been red-hot.
+[01:50.20] Shares jumped 16% on the news Thursday, and that jump boosted Nvidia's market valuation by $277 billion,
+[01:58.29] the biggest one day increase ever for a US company.
+[02:01.32] Not to mention on Friday, its market value hit a whopping $2 trillion before dipping back below that mark.
+[02:08.28] The ripple effects spread far and wide,
+[02:10.35] and they lifted the stocks of other chip makers, tech firms and the broader market.
+[02:14.93] And let's not forget that Nvidia is in what's known as the Magnificent Seven.
+[02:19.10] So the jump in market value also gave that group of tech titans, Microsoft, Meta, Alphabet, Tesla, Apple, and Amazon, another big boost.
+[02:30.66] One stock that lost some of its electric charge, on the other hand, was Rivian Automotive.
+[02:36.88] Rivian is a high profile startup in the electric vehicle or EV space,
+[02:41.30] and its quarterly results were not the total blockbuster showstopper that Nvidia's were.
+[02:46.97] In fact, they came in weaker than Wall Street was expecting.
+[02:50.36] Rivian predicts that its output is going to be flat this year,
+[02:53.38] and it's laying off about 10% of its workers.
+[02:56.22] Sales growth of electric cars has been slowing down after a big frenzy a few years ago.
+[03:00.88] So it begs the question, what's the hangup for buyers?
+[03:03.44] It's money, really.
+[03:05.30] Higher interest rates are making monthly car payments more expensive,
+[03:09.04] the cost of living has gone up
+[03:10.54] and a lot of people are less willing to splurge on the high price of an electric car.
+[03:14.76] So these companies like Rivian, Tesla, et cetera, they've seen this and they're like,
+[03:19.28] "Okay, the price tag is too high? Let's cut it."
+[03:21.39] Rivian, for example, cut the starting price of its trucks by about $3,000 earlier this month down to the low, low price of 70 grand.
+[03:29.63] Now how did the stock do after that report?
+[03:32.20] It got smashed.
+[03:33.49] Rivian shares dropped more than 25% on Thursday and kept moving lower on Friday, reaching an all time low.
+[03:48.08] This last one is for all of the space nerds out there,
+[03:51.98] and who among us is not at least a little bit stoked that America is going back to the moon?
+[03:56.66] It's pretty cool.
+[03:57.44] The uncrewed Odysseus spacecraft landed on the moon Thursday,
+[04:01.30] the first time that the US has touched down in more than 50 years.
+[04:04.45] Historically, NASA has handled these moon missions in-house,
+[04:07.73] but Odysseus was the first spacecraft that was built by a private space exploration company.
+[04:12.82] That company is Intuitive Machines, and it's got one of my new favorite tickers.
+[04:17.12] It's LUNR, aka lunar. Get it? Lunar moon. It's great.
+[04:22.88] The stock jumped about 16% on Friday, and that was the stock's second-largest move after it jumped 50% at the start of the week.
+[04:30.07] Intuitive Machines really shot for the stars, or I should say the moon.
+[04:38.37] Now you know What's News and Markets this week.
+[04:40.67] You can read about more stocks that moved on the week's news in The Score, my column in The Wall Street Journal's Exchange section.
+[04:46.76] And for what's to come next week, check out WSJ's Take on the Week wherever you get your podcasts.
+[04:52.25] I'm Francesca Fontana.
+[04:53.69] Have a great weekend, and see you bright and early next Saturday morning.
+
+

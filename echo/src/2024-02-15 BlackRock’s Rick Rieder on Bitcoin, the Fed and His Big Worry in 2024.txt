@@ -1,0 +1,270 @@
+[tool: LRC Maker https://lrc-maker.github.io]
+[length: 25:12.18]
+[00:15.28] Dion Rabouin: What's good everybody?
+[00:18.76] I'm Dion Rabouin for the Wall Street Journal, and this is a special bonus episode of WSJ's Take On the Week, the show where we break down the most important things to watch in business and financial news.
+[00:32.37] We cut through the noise to get you ready for what matters.
+[00:36.22] Today we are joined by one of the most influential men on Wall Street.
+[00:40.72] If you don't know Rick Rieder, you should.
+[00:43.06] He leads the Global Asset Allocation Team at the world's largest asset manager, BlackRock, which oversees more than $10 trillion in assets for government pensions, retirement funds and individuals and organizations.
+[00:56.93] Rick himself manages $2.6 trillion of fixed income assets on behalf of clients.
+[01:03.63] To paraphrase rapper Cardi B, "Rick doesn't dance.
+[01:06.98] He makes money move, lots of it." He also has worked directly with the Federal Reserve and the US Treasury department as Vice Chairman of Treasury's Borrowing Committee and a member of the Fed's Investment Advisory Committee on Financial Markets.
+[01:21.44] Rick sat down with us for a wide-ranging conversation about how he sees the US economy when he expects the Fed to cut rates, why he likes Bitcoin, and what his biggest worry is right now.
+[01:35.10] Rick Rieder: You asked at the beginning, "What are you worried about for the next few months?" I'm not worried about it tomorrow, but I'm really worried about it longer term and the intermediate term.
+[01:46.31] Dion Rabouin: Without further ado, here's our one-on-one interview with Rick Rieder, BlackRock's, Chief Investment Officer of Global Fixed Income and head of its Global Allocation Team.
+[01:56.92] Let's get into it, Rick.
+[02:00.65] First question I have for you is just how are you looking at the markets right now?
+[02:05.90] I know that's a really broad, broad-based question.
+[02:08.32] Rick Rieder: I think the world has changed and changed in a way that, I think, we've reached this point of normalcy.
+[02:15.68] I think we're seeing an outbreak of normal, and if you go back the last two or three years, we've been in this mode of what I call a paranormal to the abnormal, meaning we went through a pandemic, we went through obviously a war going on in the Ukraine, and now it's actually much more normal.
+[02:33.19] We're going to have nominal GDP in this country of...
+[02:35.12] I think it's going to be 4% this year.
+[02:37.45] That's what it's been for decades.
+[02:39.33] Dion Rabouin: Oh, hold on. Hold on. Yo, wait, wait, wait. That's a hot take. 4%, 2024?
+[02:43.85] Rick Rieder: I think so. Let's break it down.
+[02:46.00] You got 2% real, 2%, 2.5% inflation.
+[02:50.42] Those numbers relative to where we used to be.
+[02:52.88] We were running 12% a couple of years ago, 7%, 12% back in '21, 7% in '22.
+[03:00.29] If you get back to four, that's what we've been used to for a couple of decades before massive monetary and fiscal stimulus.
+[03:07.70] So you got to recalibrate your brain a bit like normal.
+[03:11.18] I almost forget what normal feels like, but that's where we are.
+[03:14.71] Dion Rabouin: So you're expecting us to get back to around trend growth.
+[03:17.35] Rick Rieder: Totally.
+[03:17.78] And what that means is you can extinguish this constant, constant talk of soft landing, hard landing.
+[03:24.10] Economy's not landing, it's just we're operating at a really good level.
+[03:28.64] It's a service oriented economy that operates without any systemic shock, operates at a pretty good level.
+[03:33.96] Dion Rabouin: Okay, so let me ask you this then.
+[03:37.09] What's the biggest risk you see for investors right now?
+[03:40.32] Rick Rieder: I've done this 36 years.
+[03:43.45] I always think the risk that's always out there is the risk you don't know about.
+[03:46.77] And part of what I think of running portfolios, you got to build balance in your portfolio, durable portfolio because usually they don't tell you what the risk is going to be and that's what disrupts the system.
+[03:56.80] I know obviously the dynamics of the Mid East, US China relationship, those things are out there.
+[04:01.40] We're going to get in the second half of the year talk about election and maybe some disruption around what's going to happen from that.
+[04:08.53] But I think you'd be confident in the US economy, Europe is slowing, China's slowing.
+[04:13.27] The big risk is if you're an investor, think about normal, but prepare for abnormal.
+[04:20.07] Dion Rabouin: Now wait a second, Rick.
+[04:22.18] Now you're a bond guy and I'm hearing you say there's nothing you see going on out there that you feel like is a real risk to the markets right now.
+[04:29.79] We're talking really big assumptions for Fed rate cuts this year priced in the markets.
+[04:34.47] Market's really priced to perfection this year.
+[04:36.58] We're talking the 10-year up around 4%.
+[04:39.48] There's a lot of things that could go wrong.
+[04:42.00] You got the dollar really sky-high off to its best start since 2015.
+[04:46.12] None of that is signaling a risk to you?
+[04:48.36] Rick Rieder: First of all, I think the market's got a little overzealous on expecting the Fed to start cutting in March and Chairman Powell has been pretty good, that's not going to happen.
+[04:57.25] But you're now pricing in now, it's not that aggressive to get.
+[05:01.38] I still think the Fed's going to do three or four rate cuts this year and I think they'll cut 25 base points every other meeting starting in May or June.
+[05:08.54] So I'm not that concerned about that.
+[05:11.78] It's the unusual.
+[05:13.11] We're also in a very, very different point in time.
+[05:15.98] When you go through 0% interest rates for a couple of years, what happened?
+[05:21.41] Companies refinanced, people refinance their mortgages.
+[05:25.76] Generally the system is in pretty good shape and it's not over levered, it's not in a liquidity deficit.
+[05:32.03] So do markets get a little overzealous?
+[05:35.11] Dion Rabouin: Yeah. So if I can make sure I'm understanding you correctly.
+[05:38.52] You're saying companies have a lot of cash, they're not taking on a lot of extra debt, so you see them being in a good situation?
+[05:45.94] Rick Rieder: I always think about what is the maturity wall for companies?
+[05:49.16] You can't default unless you have a maturity in front of you.
+[05:52.62] And so what happened is when rates were at zeros, high yield companies, I think the stat is over 70% of high yield refinanced when the funds rate was under 1%.
+[06:00.94] When you push the maturity wall out, you're in pretty good shape.
+[06:05.54] Actually, corporate interest expense is still coming down, which is pretty remarkable given that rates moved up from where they were.
+[06:11.45] But it's because they termed their debt out and you don't have this big rollover financing risk.
+[06:17.05] So companies are pretty good.
+[06:18.45] And by the way, with an economy that's growing nominal GDP, their free cashflow generation, the cashflow generation is pretty good.
+[06:24.52] So this is a sweet spot.
+[06:26.19] I've been doing credit for 36 years and I've never seen a phenomena where companies were in better shape than they're in today.
+[06:33.98] And you look at where credit spreads are, they reflect that they're pretty tight, but they're in pretty good shape.
+[06:39.33] And the only reason they're borrowing at, the yields are borrowing at, is because the risk-free rate is high because the Fed has pushed interest rates to where they are today.
+[06:45.28] Dion Rabouin: So let me ask you about something you said a bit earlier.
+[06:47.70] You were talking about your expectations for rate cuts this year.
+[06:50.70] You were saying three to four.
+[06:52.11] The Fed has forecast three rate cuts, but even after that January meeting where Fed Chair Powell came out and said, "March is looking unlikely.
+[07:00.96] The market is still pricing in five rate cuts as opposed to six." And this is a lot like last year when the market was predicting rate cuts, even though the Fed said they weren't going to cut rates, and it's a lot like the year before when the market predicted the Fed wouldn't raise rates by as much as they did, even though the Fed said they were going to raise rates by about what they did.
+[07:19.80] Why is it, in your view, that the market doesn't believe the Fed and at what point do you think that happens this year?
+[07:28.68] Rick Rieder: I'd say two things.
+[07:30.15] I think the only reason I've had a career for a long time is markets can be wrong for a period of time.
+[07:35.63] Think about where we were a few weeks ago, where the markets were pricing in incredible amounts of rate cuts happening very quickly.
+[07:42.58] That has backed off dramatically.
+[07:44.24] So one, I think markets can be wrong.
+[07:46.43] Today though, I don't think it is that mis-priced anymore.
+[07:50.29] And you have to factor in one thing.
+[07:52.71] When the Fed tells you or they move towards a paradigm of they're going to be cutting rates, there's a premium you'd pay for front end interest rates.
+[08:01.36] Why is that?
+[08:02.07] Let's say there is that exogenous shock I talked about.
+[08:05.40] Let's say the Mid East gets worse, then the Fed would be cutting quickly and they'd be cutting, and if the economy there was a real problem in the economy.
+[08:13.41] So what happens is there tends to be a premium that people will pay for that.
+[08:18.26] And particularly you carry really well.
+[08:20.33] The income you generate from being in short end interest rates today is pretty attractive.
+[08:24.45] It's risk premia and carry that make it a pretty attractive asset today.
+[08:28.67] Dion Rabouin: Okay.
+[08:29.89] On the other side of that, I keep hearing from companies on these earnings reports and earnings calls, that consumers are pulling back, but then on the data side, we see us retail sales have continued to come in strong, jobs growth has been solid.
+[08:43.64] What do you make of the warnings we're hearing from executives on these earnings calls?
+[08:47.53] Rick Rieder: I think surveys, and I think opinion is less important than data.
+[08:52.85] I've said this for my whole career.
+[08:55.28] I think one of the shortfalls of the industry, people like to listen to surveys and opinions but data matters.
+[09:00.29] Dion Rabouin: But, Rick, I'm not talking about surveys and opinions.
+[09:02.00] We're talking about what we're hearing from executives who are talking about their company.
+[09:05.85] We're hearing Doug McMillon at Walmart. We're hearing Kroger.
+[09:08.70] We're hearing all these folks talking about consumers slowing down.
+[09:11.74] Rick Rieder: When you break down the consumer and you talk about the consumer is a very varied institution, today you look at different businesses, I would say lower income, and this is part of why high interest rates.
+[09:25.56] I think the Fed needs to bring down high interest rates.
+[09:27.62] It tends to be a pernicious impact on lower income.
+[09:31.09] Lower income, you're seeing a tangible movement to more use of coupons, promotions, changing the size of purchases they're making, et cetera.
+[09:39.29] So I do think that is real.
+[09:41.56] And your point about companies like Walmart, which are sensitive to that, you see that, but then you go across the whole rest of the consumption basket, particularly restaurants, leisure, travel, pretty good.
+[09:52.69] A consumer, as long as if you have a 3.7% unemployment rate with 4,5% wage growth and job prospects are good and the consumer generally brought down it's leverage because they've refinanced their mortgage, et cetera, consumer will continue to spend.
+[10:08.00] I feel very confident a consumer will continue at a good pace.
+[10:10.91] If you said to me, "Is the direction a bit slower because you're wearing down some of the savings that have built up through the fiscal spend?" Yes.
+[10:18.46] But when you look at the actual hard data, particularly for the areas that aren't the lowest in terms of the more budget oriented parts of the economy of consumption, it's still in aggregate.
+[10:30.51] I think it'll continue to be pretty good.
+[10:32.01] Dion Rabouin: But what about those low income folks?
+[10:34.61] Because you talked about that segment of the economy has been struggling.
+[10:38.96] We've seen savings levels coming down and actually folks are spending more than they're earning.
+[10:46.09] We're seeing these big pickups in credit cards, credit card usage.
+[10:49.86] We're seeing defaults rise.
+[10:51.10] And that does seem to be a lot of those lower income folks.
+[10:54.81] And those folks really do power the economy Because they're net consumers, what they get, they go out and they spend.
+[11:02.70] Whereas those higher income consumers tend to save a bit more and put more things away.
+[11:07.50] So why is it that that's not causing you more worry?
+[11:10.03] Rick Rieder: There's a couple aspects to that.
+[11:12.45] The first one is, this is part of why I think the Fed should bring rates down and quite frankly I didn't think should have raised them as much as they did, is it tends to be a regressive tax and people that borrow versus save, that is point one around consumption.
+[11:27.09] Second, is I think your point is right around parts of the economy where lower income tends to be a consumer, it tends to have a higher propensity to spend, which is totally fair.
+[11:37.60] But if you take aggregate consumption, it tends to be much more balanced.
+[11:42.18] In fact, much more skewed into middle income to a bit above that.
+[11:45.81] So I think the economy will continue to be in good shape.
+[11:49.18] And like I say, if the Fed brings rates down, I don't think you create an acceleration of inflation, but you will help, which I think is a big benefit.
+[11:56.01] You will help a lot of the lower income strata, that is, exactly as you described, having a harder time.
+[12:00.51] Dion Rabouin: That's interesting because the Fed has really shifted towards talking a lot more about those lower income folks, lower income workers, low income consumers, and said that they're trying to be more attuned to those folks.
+[12:15.75] Do you feel like the Fed is being a little too cautious about cutting rates?
+[12:19.82] Minneapolis Fed President, Neel Kashkari said in a recent blog post that he doesn't think monetary policy is actually that tight and he thinks the Fed has more time to wait.
+[12:29.00] And I think that gave investors the sense that, "Okay, the Fed is really putting the brakes on these rate cuts."
+[12:35.25] Rick Rieder: I would say on aggregate, the economy is in good shape and the economy's in good shape because the US economy is much, much less sensitive to interest rates than its ever been before.
+[12:45.17] 70% of the economy, consumption wise, is in services.
+[12:49.86] It's not really sensitive to interest rates.
+[12:51.85] The companies that spend today, the big tech companies that spend on CapEx research and development are not interest rate sensitive.
+[12:58.63] The interest rate tends to be a very, very blunt tool today that targets the specific areas that are interest rate sensitive, local banks, commercial real estate and lower income.
+[13:08.88] What I think should happen is I think we should bring the rate down because it's a pernicious impact when you keep the rate that high on targeted parts of the economy, while the aggregate economy moves along quite nicely.
+[13:21.97] The interest rate tool is the most blunt it's been in history.
+[13:26.11] And again, it tends to have a targeted impact on places.
+[13:26.20] Like you've seen commercial real estate that's having a really hard time today.
+[13:32.61] You've seen that play out in the news in the last couple of weeks.
+[13:34.90] That's going to be a hard sector for a while.
+[13:37.48] Dion Rabouin: Well, do you worry though that the Fed is being too cautious?
+[13:41.61] Fed Chair, Powell seems to be in no rush.
+[13:43.81] Like I said, Minneapolis, Fed President Kashkari, wrote this whole blog about how he thinks they have more time.
+[13:49.26] It doesn't seem like they're in any kind of a hurry to get rates down.
+[13:53.20] Rick Rieder: I've learned it's more important what you think they're going to do than what you would do.
+[13:57.89] I think they are going to be patient.
+[13:59.77] The real rate of interest, so if you take a funds rate that's five and three ACE and you take core PCE, the Fed's favorite measure, that's at two and three ACE or we think it's getting there.
+[14:10.42] So it's a little higher than that now we think.
+[14:12.09] So we're about 270 now, we think going to about 230, and the shorter term metrics are even lower than that.
+[14:16.91] Dion Rabouin: And sorry, wait, Rick.
+[14:17.86] Let me just make sure I understand.
+[14:19.68] You think that PCE inflation is going to go to about 2.3%?
+[14:23.72] Rick Rieder: Correct.
+[14:24.51] By the middle of the year, if not sooner than that.
+[14:29.16] And the run rate, when you look at the short term metrics, on some parts of it's actually getting closer to two.
+[14:35.39] So if that's right, you've got a five and three ACE fund rate.
+[14:39.12] You've got an economy that's slowly moderating.
+[14:41.91] I'm not arguing that Fed should be at this long-term funds rate, but at five and three ACE with inflation running at two, let's meet in the middle and say it's two and a half.
+[14:52.45] That's a very restrictive rate on those areas of the economy that are interest rate sensitive.
+[14:57.83] And so to me, the risk reward of bringing it down, the needle should move towards the side of bring it down slowly, pragmatically over a period of time and I think the benefits outweigh the costs.
+[15:11.45] Dion Rabouin: Yeah, but you talk to these guys, they listen to you Rick.
+[15:14.57] Have you told them that?
+[15:15.26] Have you got on the phone with Jay and been like, "Listen, Jay, JP, the funds rate is too high."
+[15:20.43] Rick Rieder: We give our opinions.
+[15:21.97] I think at the end of the day, the way you described it is right.
+[15:25.68] I think this Fed feels like they can be cautious or be patient, I should say.
+[15:29.12] And I think they're going to wait and I think they'll give it some time.
+[15:32.89] And there's not a tremendous amount of downside to giving it time.
+[15:37.59] I just think you'll benefit, particularly like played out local banks today.
+[15:42.67] If your net interest margin is suffering because your earning assets are not achieving, or are not high enough relative to your cost of funding, those are the lenders of small businesses, the individuals localized commercial real estate, you'd really benefit those institutions, create better velocity, durable velocity in the system if you had that rate down from where it is today.
+[16:03.96] Dion Rabouin: That was part one of our interview with the head of BlackRock's Global Allocation Investment Team, Rick Rieder.
+[16:11.14] In part two of our interview, I'll be talking with Rick about his expectations for the Fed, whether he sees another banking crisis and why he likes Bitcoin.
+[16:49.00] Thanks for sticking with us.
+[16:53.04] Let's get you back to our interview with Rick Rieder, BlackRock's Global Head of Asset Allocation.
+[16:58.31] You mentioned some of the issues with commercial real estate and we've seen this issue with New, York Community Bank Corp, their stock getting hit, and you know Treasury Secretary, Janet Yellen talked about this, Fed Chair, Jerome Powell talked about this.
+[17:12.87] This commercial real estate issue.
+[17:15.06] We're now seeing it play out at a particular company and maybe folks are starting to worry that this could be something like a repeat of what happened last year in March where this issue of unsecured deposits is what triggered folks moving out of some of those earlier banks and then eventually that sunk First Republic.
+[17:34.35] What are your thoughts about this commercial real estate issue and the way that's playing out now and some of the banks where they're very exposed to it, or at least they're more exposed to it than some of their peers and that's really hurting them?
+[17:47.05] Rick Rieder: There are a lot of banks in the US and what happens, it's a localized business in this country and in most of those banks are having a tough time and extending credit today.
+[17:59.20] We see it within our platform in terms of lending.
+[18:01.29] Those institutions have a hard time lending, given they've got to build capital, they've got to reduce their risk weighted assets.
+[18:08.36] That is a tricky thing today.
+[18:10.52] My sense is you're going to see more consolidation of the industry, but we're not going to go from 4,750 to 8,000, and that would be incredibly disruptive if it went there in a fast timeframe.
+[18:20.86] I think it's going to take some time.
+[18:22.42] I think you'll hear more stories of banks that have concentrated commercial real estate, particularly in office, and I think you'll see more headlines about it.
+[18:31.05] Dion Rabouin: Gotcha.
+[18:31.92] I want to ask you about Bitcoin and how you're thinking about investing in the digital currency space now that investors can access funds that hold Bitcoin without actually needing to hold cryptocurrency themselves.
+[18:44.78] Obviously BlackRock recently launched one of the most popular Bitcoin ETFs.
+[18:48.47] So, Rick, how are you thinking about Bitcoin?
+[18:50.38] Rick Rieder: We have small exposures in a couple of our funds, and I think that time will tell whether it's going to be a big part of the asset allocation framework.
+[19:00.91] I think over time people become more and more comfortable with it.
+[19:03.43] Today it's pretty volatile and we use it for when we think there's some upside potential, more of like an option on something because if there is more and more receptivity now we have more vehicles that people can utilize to get more comfortable with owning it and buying it and selling it and liquidating it.
+[19:21.78] So I think it's going to become more and more in the dialogue going forward.
+[19:25.61] People get higher level of comfortability with it, but as, "Gosh, this is part of my asset allocation framework," I still think it's got some time for maturing for most people.
+[19:36.19] Dion Rabouin: So are you putting in the funds that you manage?
+[19:39.12] Rick Rieder: Yeah, and very small size.
+[19:41.30] I have in a couple of funds.
+[19:42.34] We have very, very small positions in it and we've held them for a while.
+[19:46.31] And our view being that over time as you get more and more people that adopted as an asset that we think the upside potential is real and which has been recognized recently, but it's very relative to what we own in stocks and bonds.
+[20:01.44] It's hard to find it in the portfolio because it's pretty small, but I like it because it's got some upside to it.
+[20:09.67] Dion Rabouin: We have more to come with the head of BlackRock's Global Asset Team, Rick Rieder.
+[20:14.65] We'll be right back.
+[20:57.24] Rick, I want to ask how you're thinking about something else, and this is a potential risk, but maybe not.
+[21:04.01] The US national debt, $34 trillion now, and showing no real signs of retreating either.
+[21:12.38] Is that something you're worried about?
+[21:14.36] Rick Rieder: Yes.
+[21:15.22] You asked at the beginning, what are you worried about for the next few months?
+[21:18.63] Dion Rabouin: I did, yeah.
+[21:19.50] Rick Rieder: I don't know if you put a timeframe on it.
+[21:21.40] I assumed (inaudible)
+[21:22.15] Dion Rabouin: No, I just asked in general.
+[21:23.48] Rick Rieder: I'm not worried about it tomorrow, but I'm really worried about it longer term, in the intermediate term.
+[21:30.30] It's too big, the debt's too big.
+[21:31.80] And today, if the Fed's cutting interest rates, what happens is more and more people are willing to buy because the return is going to be significant in a declining rate environment.
+[21:42.28] So in that framework, the Treasury can place a lot of debt.
+[21:45.37] What I do worry about is not just the debt, it's the debt service.
+[21:49.52] We used to issue treasuries at zero or 1% and the treasuries could issue unlimited amounts 'cause it's a collateral that's utilized in the world.
+[21:58.04] So what happens is the cost of the Treasury just keeps growing and growing and growing, and the interest expense is going to eclipse military spend and it's going to eat up all the fiscal spend in the country.
+[22:08.46] It's too big, it's too big.
+[22:10.53] We have to bring it down.
+[22:12.00] And if you said to me over this year and next we're going to watch every Treasury auction that comes, particularly the long bonds, the 30-year auctions, and say, "Gosh, is the Treasury still placing the debt?" This year I think they will save.
+[22:25.75] You'll get a couple of auctions that don't go well.
+[22:28.01] But I think longer term it's going to be a problem.
+[22:31.72] We have to bring it down.
+[22:32.70] We talk about numbers of nominal GDP.
+[22:36.31] As long as the country grows, nominal GDP grows, the debt doesn't become as big a problem.
+[22:42.99] But we got to keep growing and we got to get the cost of the debt down.
+[22:45.83] And that's the only way this doesn't become a real problem for the economy going forward.
+[22:49.83] Dion Rabouin: Okay.
+[22:50.63] Rick, for people who were just starting their investing journey, in 2024, where would you tell them to start?
+[22:58.08] What's the first thing they should buy and what do you think is the most important thing they should watch in terms of economic data?
+[23:05.01] Rick Rieder: For 2024, it's more balance, more yielding assets that have some income because equities won't achieve the same sort of returns.
+[23:12.70] But then I'd start with any asset allocation.
+[23:15.40] Own some equities, particularly if you're long-term and you want to compound that growth over time.
+[23:20.11] That me is the biggest thing.
+[23:23.19] Dion Rabouin: Let's say I have a thousand dollars and I say, "You know what?
+[23:25.75] I'm going to put on Take On the Week, 'I want to open up this brokerage account tomorrow.
+[23:30.08] What should I buy?'" Rick Rieder, what should that person buy?
+[23:32.68] Rick Rieder: So again, it depends on your timeframe, but I'd buy, whether it's the S&P 500 or some precision around where you go.
+[23:39.22] But I would start there. And then to that, build-
+[23:41.38] Dion Rabouin: Like an S&P index fund.
+[23:42.95] Rick Rieder: Yeah, I think we run some good funds at our (inaudible).
+[23:45.81] Dion Rabouin: I was just going to say the BlackRock S&P 500 index fund.
+[23:48.04] Rick Rieder: Yeah.
+[23:49.08] We run a global allocation fund that allows for people to think about how we allocate more equities than bonds today and we think makes sense.
+[23:58.08] But we're more and more building income in our portfolios.
+[24:01.02] We've been doing some ETFs.
+[24:02.50] We launched an active ETF that gets you a six and a half yield, pretty darn attractive in today's environment.
+[24:08.08] So I'd start with my equity and then, (inaudible) equity to tech healthcare where you compound the growth today much faster and then build income into your portfolio.
+[24:17.99] And that to me is different than last year.
+[24:20.56] It was ride the equity wave, you had AI, et cetera.
+[24:23.85] This year I think it's going to be different.
+[24:25.40] Dion Rabouin: That was Rick Rieder.
+[24:28.80] He manages $2.6 trillion of fixed income assets at the world's largest asset manager, BlackRock.
+[24:35.30] Thanks for listening to this bonus episode of WSJ's Take On the Week.
+[24:40.52] This episode was produced by Charlotte Gartenberg, Jonathan Sanders is our booking producer.
+[24:45.27] Michael LaValle and Jessica Fenton are our sound designers, Michael also wrote our theme music, Melony Roy is our supervising producer, Aisha Al-Muslim is our development producer, Scott Saloway and Chris Zinsli are the deputy editors and Philana Patterson is the head of news audio for the Wall Street Journal.
+[25:02.75] For even more, head to wsj.com.
+[25:06.40] I'm Dion Rabouin.
+[25:07.72] Stay smart.
