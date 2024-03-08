@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Media Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>audio{margin-right:auto;margin-left:auto;width:100%}video{margin-right:auto;margin-left:auto;width:100%}.sticky-top, .fixed-bottom{background-color:#FFF}.disable-dbl-tap-zoom{touch-action:manipulation}.b-highlight{color:green;background-color:#E5E4E2}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}.h{display:none}.s{font-size:0.7rem}[contenteditable]{outline: 0px solid transparent;}
+    </style>
+</head>
+<body>
+
+<div class="p-3">
+    <div id="top" class="sticky-top"> <!-- media & input/tools -->
+        <div>
+            <audio id="ap" controls preload="auto"></audio>
+            <video id="vp" controls preload="auto" playsinline style="display:none"></video>
+        </div>
+
+        <div class="row py-3"> <!-- shared tools -->
+            <button class="col-2 btn btn-outline-secondary echo-lrc-btn-switch" type="button" onclick="switchTab()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
+                    <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
+                </svg>
+            </button>
+            <button class="col-2 btn btn-outline-secondary" type="button" onclick="$('#browseText').click()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cloud-upload" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383"/>
+                <path fill-rule="evenodd" d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z"/>
+                </svg>
+            </button>
+            <input type="file" id="browseText" onchange="browseText(this.value)" style="display:none">
+            <div id="echo-bar" class="col-8"> <!-- tools#1 -->
+                <div class="input-group">
+                    <input id="delaySec" type="number" value="0" class="form-control">
+                    <button class="btn btn-outline-secondary" type="button" onclick="delayTime()">Delay</button>
+    
+                    <input type="file" id="browseText" onchange="browseText(this.value)" style="display:none">
+                    <button class="btn btn-secondary" type="button" onclick="toggleMedia()">A/V</button>
+                </div>
+            </div>
+            <div id="tools" class="py-1 col-8"> <!-- tools#2 -->
+                <button class="col btn btn-outline-secondary echo-btn-disabled" type="button" onclick="dlTxt()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                    </svg>
+                </button>
+                <button class="col btn btn-outline-secondary echo-btn-disabled" type="button" onclick="upCombine()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-bar-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M3.646 11.854a.5.5 0 0 0 .708 0L8 8.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708M2.4 5.2c0 .22.18.4.4.4h10.4a.4.4 0 0 0 0-.8H2.8a.4.4 0 0 0-.4.4"/>
+                    </svg>
+                </button>
+                <button class="col btn btn-outline-secondary echo-btn-disabled" type="button" onclick="deleteLine()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                        <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+                    </svg>
+                </button>
+                <button class="col btn btn-outline-secondary echo-btn-disabled" type="button" onclick="removeTS()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                        <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708"/>
+                    </svg>
+                </button>
+            </div> <!-- end of #tool -->
+        </div> <!-- end of tool bar -->
+    </div> <!-- end of #top -->
+
+    <div id="echo" class=""> <!-- to switch with #lrc -->
+        <p id="src" class="h"></p>
+        <table class="table">
+            <tbody id="lines"></tbody>
+        </table>
+        <div style="height:100px"></div> <!-- end of .table -->
+    </div> <!-- end of #echo -->
+
+    <div id="lrc"> <!-- to switch with #echo -->
+        
+        <div id="input">
+            <div class="input-group py-1">
+                <span class="input-group-text">Name</span>
+                <input id="filename" type="text" val="" class="form-control">
+            </div>
+            <div class="input-group py-1">
+                <input id="mediaSrc" type="text" value="" class="form-control">
+                <!-- <input id="mediaSrc" type="text" value="https://traffic.megaphone.fm/WSJ2860990505.mp3" class="form-control"> -->
+                <button class="btn btn-outline-secondary" type="button" onclick="loadMedia()">Upload</button>
+                <button class="btn btn-secondary" type="button" onclick="playMedia()">PLAY</button>
+            </div>
+            <div class="input-group py-1">
+                <textarea id="tc" type="text" value="" class="form-control"></textarea>
+                <button class="btn btn-outline-secondary" type="button" onclick="tc2Tbl()">LRC</button>
+            </div>
+        </div> <!-- end of #input -->
+        <div class="py-3">
+            <table class="table">
+                <tbody id="data" class="" contenteditable="true"></tbody>
+            </table>
+        </div>
+        <div style="height:100px"></div> <!-- end of .table -->
+        <div id="bottom" class="py-1 row fixed-bottom disable-dbl-tap-zoom">
+            <div class="col-2 form-check form-switch">
+                <input class="form-check-input d-block" type="checkbox" id="edit" onclick="checkEdit()">
+                <label class="form-check-label d-block" for="flexSwitchCheckDefault"></label>
+            </div>
+            <button class="col-2 btn btn-outline-secondary" type="button" onclick="rw5()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rewind" viewBox="0 0 16 16">
+                    <path d="M9.196 8 15 4.633v6.734zm-.792-.696a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+                    <path d="M1.196 8 7 4.633v6.734zm-.792-.696a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+                </svg>
+            </button>
+            <button class="col-2 btn btn-outline-secondary" type="button" onclick="fw5()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+                    <path d="M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                    <path d="M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+                </svg>
+            </button>
+            <button class="col-2 btn btn-outline-secondary" id="btnPlay" type="button" onclick="playMedia()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+                </svg>
+            </button>
+            <button class="col-4 btn btn-outline-secondary disable-dbl-tap-zoom echo-btn-disabled" type="button" onclick="stampTime()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
+                    <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z"/>
+                    <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3"/>
+                </svg>
+            </button>
+        </div> <!-- end of #bottom -->   
+    </div> <!-- end of #lrc -->
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+<script>
+
+// $('#tc').val("Alex Ossola: Here's your TNB Tech Minute for Friday, March 1st. I'm Alex Ossola for the Wall Street Journal. Elon Musk has sued OpenAI and its CEO Sam Altman. In the lawsuit, Musk alleges that OpenAI and Altman broke the artificial intelligence company's founding agreement by giving priority to profit over the benefits to humanity. Musk who helped found OpenAI in 2015 claims the company's close relationship with Microsoft goes against the company's original commitment to public open source AI. OpenAI declined to comment. Musk didn't respond to a request for comment. We exclusively report that Reddit plans to target a price range of $31 to $34 per share in its IPO. That's according to people familiar with the matter. That valuation of between 6 and $6.5 billion is down from the $10 billion valuation Reddit notched in its most recent fundraising round in August 2021? It's partly a reflection of investors waning appetite for unprofitable companies. The company can still adjust the range before its roadshow to pitch investors or listing, both of which are expected in the coming weeks. And Meta says it won't enter into new deals with traditional news publishers in Australia and the US. The company noted that the number of people in those countries using a dedicated tab for news on Facebook dropped more than 80% last year. In a blog post, the social media giant said people will still be able to view links to news articles on Facebook and that publishers will continue to have access to their accounts where they can post links just as anyone else. For a deeper dive into what's happening in tech, check out Monday's Tech News Briefing Podcast.");
+
+var url=window.location.href;
+if(url.indexOf('?id')==-1){lrc()} else {echo()};
+
+function lrc(){
+    $('#lrc').show();$('#tools').show();$('#echo').hide();$('#echo-bar').hide();
+    $('.echo-btn-disabled').removeAttr('disabled');
+    $('.echo-lrc-btn-switch').html(svgHeadset);
+}
+
+function echo(){
+    $('#echo').show();$('#echo-bar').show();$('#lrc').hide();$('#tools').hide();
+    $('.echo-btn-disabled').attr('disabled','disabled');
+    $('.echo-lrc-btn-switch').html(svgPencilSquare);
+}
+
+var audio=$("#ap")[0];      
+if ($('#vp').is(":visible")){
+    audio=$("#vp")[0];      
+}
+
+function toggleMedia(){
+  if ($('#ap').is(":visible")){
+    $('#ap').hide();$('#vp').show();
+    $('#vp').attr('src',$('#src').text());
+    stopMedia();
+  } else {
+    $('#vp').hide();$('#ap').show();
+    $('#vp').attr('src','');
+    stopMedia();
+  }
+}
+
+function stopMedia(){
+    $('#ap')[0].pause();$('#ap')[0].currentTime=0;
+    $('#vp')[0].pause();$('#vp')[0].currentTime=0;
+}
+
+function switchTab(){
+    if ($('#echo').is(":visible")){lrc()} else {
+        if (url.indexOf('?id')!==-1){
+            echo();
+        } else {
+            var lrc=$('#data td');
+            loadLrc2Echo(lrc);
+            echo();
+        }
+    }
+}
+
+function svgHeadset(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16"><path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/></svg>';
+}
+
+function svgPencilSquare(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>';
+}
+
+
+let delaySec=Number($('#delaySec').val());
+getData();
+
+async function getData(){
+    //let response=await fetch('https://evenbeiter.github.io/project/list.json');
+    let response=await fetch('list.json');
+    let str=await response.text();
+    let data=JSON.parse(str);
+    
+    url=window.location.href;
+    //var url='https://evenbeiter.github.io/project/echo.html?id=1';
+    var i=Number(url.slice(-url.length+url.indexOf('=')+1));
+    var filename=data[i][0];
+    var name=filename.replace(/\_/g,' ');
+    document.querySelector('title').textContent=name;
+    var mediaSrc=data[i][1];
+    $('#ap').attr('src',mediaSrc);
+    $('#src').text(mediaSrc);
+    //$('#vp').attr('src',mediaSrc);
+    //let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
+    let lrcSrc='src/'+filename+'.txt';
+    $('#delaySec').val(Number(data[i][2]));
+    delaySec=Number($('#delaySec').val())
+    getLrc(lrcSrc);
+}
+
+async function getLrc(url){
+    let response = await fetch(url);
+    let str = await response.text();
+    // putlrc(str);
+    var c = str.split("\r\n");
+    loadLrc2Echo(c);
+    loadTC2Lrc(c);
+}
+
+// function putlrc(d) {
+//     var c = d.split("\r\n");
+//     loadLrc2Echo(c);
+// }
+
+//for ECHO >> load LRC to ECHO
+function loadLrc2Echo(l) {
+    var d, e, h = [], k = "";
+    var j = 0;
+    for (var f = 0; f < l.length; f++) {
+        if (l[f].trim() == "") {    //f=length of lrc
+            continue;
+        }
+        if (/\[\d\d:\d\d\.\d\d\]/.test(l[f])) {
+            var g = l[f].indexOf("]");
+            d = l[f].substr(1, g - 1);
+            e = l[f].substr(g + 1);
+            var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
+            //h.push(parseFloat(c));
+            k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
+        }
+    }
+    $("#lines").html(k);
+}
+
+$(function(){
+    // $(document).on("click", "table tbody tr", function(e) {
+    $(document).on("click", "#lines tr", function(e) {
+      
+        $('#lines tr').css({'color':'','background-color':''});
+        $(this).css({'color':'green','background-color':'#E5E4E2'});
+        let startTime=Number($(this).children(':nth-child(2)').text());console.log(startTime);
+        let endTime=Number($(this).next().children(':nth-child(2)').text());console.log(endTime);
+        startPlay(startTime,endTime);
+      
+        async function startPlay(startTime,endTime){
+
+            let audio=$("#ap")[0];      
+            if ($('#vp').is(":visible")){
+              audio=$("#vp")[0];      
+            }
+            let dr = audio.duration;
+            while (isNaN(dr)||dr===Infinity){
+            await new Promise(resolve=> setTimeout(resolve,200));
+            }
+
+            audio.currentTime=startTime;
+            audio.play();
+
+            audio.ontimeupdate = function(){
+              if (audio.currentTime > endTime){
+                  audio.pause();
+                  audio.currentTime=startTime;
+              }  
+            }
+        }
+    });
+});
+
+audio.ontimeupdate = function(){
+    for (var i=0;i<startPoint.length;i++){
+        if (startPoint[i+1]!==undefined){
+            if (audio.currentTime >= startPoint[i] && audio.currentTime < startPoint[i+1]){
+                // var el=$('#s'+i);
+                // el.css({'color':'green','background-color':'#E5E4E2'});
+                $('#data td').css({'color':'','background-color':''});
+                var el=document.getElementById('s'+(i+1));
+                el.style.color='green';
+                el.style.background='#E5E4E2';
+                el.scrollIntoView(false);
+                // var scrolledY=window.scrollY;console.log(scrolledY);
+                // if (scrolledY){
+                //     window.scroll(0,scrolledY);
+                }
+        }  
+    }
+}
+
+function loadMedia(){
+    $('#ap').attr('src',$('#mediaSrc').val());
+}
+
+function playMedia(){
+    if ($('#ap')[0].paused){
+        $('#ap')[0].play();
+        $('#btnPlay').html(svgPause());
+    } else {
+        $('#ap')[0].pause();
+        $('#btnPlay').html(svgPlay());
+    }
+}
+
+function svgPlay(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/></svg>';
+}
+
+function svgPause(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/></svg>';
+}
+  
+function rw5() {
+    $('#ap')[0].currentTime = $('#ap')[0].currentTime-5;
+    $('#ap')[0].play();
+    $('#btnPlay').html(svgPause());
+}
+
+function fw5() {
+    $('#ap')[0].currentTime = $('#ap')[0].currentTime+5;
+    $('#ap')[0].play();
+    $('#btnPlay').html(svgPause());
+}
+
+function checkEdit(){
+    if ($('#edit').is(":checked")){
+        $('#data').attr('contenteditable','true');
+    } else {
+        $('#data').attr('contenteditable','false');
+    }
+}
+
+var startPoint=[];
+  
+function stampTime(){
+    for(var i=1;i<$('#data tr').length+1;i++){
+        let el=$('#s'+i);
+        let txt=el.text();
+        if(txt.slice(0,1)!=='['){
+            var sp=$('#ap')[0].currentTime;
+            startPoint.push(sp);
+            el.text((timeMark(sp)+txt).replace('##:##.##','').replace('] ',']')); 
+            // $('#data td').removeClass('b-highlight');
+            // el.addClass('b-highlight');
+            $('#data td').css({'color':'','background-color':''});
+            el.css({'color':'green','background-color':'#E5E4E2'});
+            // el=$('#s'+(++i));
+            // txt=el.html();
+            // el.html('<span class="text-danger fw-bold">##:##.##</span>'+txt);
+            el=document.getElementById('s'+(++i));
+            if (el!==null){
+                el.innerHTML='<span class="text-danger fw-bold">##:##.##</span>'+el.innerHTML;
+                el.scrollIntoView(false);
+            }
+            break;
+        }
+    }
+}
+
+function deleteLine(){
+    $('#data td').css({'color':'','background-color':''});
+    var sel, range, el;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            el=range.commonAncestorContainer.parentElement.parentElement;
+            if (el.tagName=='TR'){ //do only if TR
+                el.remove();
+                addId();
+            }
+        }
+    } 
+}
+  
+function removeTS(){
+    $('#data td').css({'color':'','background-color':''});
+    var sel, range, el;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            el=range.commonAncestorContainer.parentElement;
+            if (el.tagName=='TD'){ 
+                //do only if click on data
+                el.innerHTML=el.innerHTML.replace(/\[\d\d:\d\d\.\d\d\]/g,'<span class="text-danger fw-bold">##:##.##</span>');
+                var elId=el.id.substring(1);
+                startPoint.splice(elId-1); 
+                var preEl=$('#s'+ (elId-1));
+                preEl.css({'color':'green','background-color':'#E5E4E2'});
+
+                for (var i=Number(elId)+1;i<$('#data tr').length+1;i++){
+                document.getElementById('s'+i).innerHTML=document.getElementById('s'+i).innerHTML.replace('<span class="text-danger fw-bold">##:##.##</span>','').replace(/\[\d\d:\d\d\.\d\d\]/g,'');
+                }
+            }
+        }
+    } 
+}
+
+function dlTxt(){
+    var txt='';
+    var lrc=$('#data td');
+    for (var i=0;i<lrc.length;i++){
+        txt = txt + lrc[i].textContent+'\r\n';
+    }
+    var txtData = new Blob([txt], { type: 'data:text/csv;charset=utf-8' });
+    var txtUrl = URL.createObjectURL(txtData); 
+    let link = document.createElement('a');
+    link.href = txtUrl;
+    link.target = '_blank';
+    // link.download = $('#filename').val()+'.txt';
+    link.download = document.getElementById('filename').value.replaceAll(' ','_')+'.txt';
+    link.click();
+}
+
+//break a line
+$(document).on('keypress', function(e){
+    if(e.which == 13){
+        if ($('#edit').is(":checked")){
+            e.preventDefault();
+            hitEnter();
+        }
+    }
+});
+
+function hitEnter() {
+    var sel, range;
+    if (window.getSelection) {
+        // IE9 and non-IE
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            
+            if (range.commonAncestorContainer.parentNode.tagName=='TD'){ //do only if click on data
+                range.deleteContents();
+
+                // Range.createContextualFragment() would be useful here but is
+                // non-standard and not supported in all browsers (IE9, for one)
+                var el = document.createElement("div");
+                el.innerHTML='bbbbbb';
+                var frag = document.createDocumentFragment(), node, lastNode;
+                while ( (node = el.firstChild) ) {
+                    lastNode = frag.appendChild(node);
+                }
+                range.insertNode(frag);
+
+                var newLrc=$('#data').html().replace('bbbbbb','</td></tr><tr><td>').replace('<span class="text-danger fw-bold">##:##.##</span>','');
+                $('#data').html(newLrc);
+                addId();
+            }
+        }
+    } 
+}
+
+function upCombine(){
+    $('#data td').css({'color':'','background-color':''});
+    var sel, range, el;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            el=range.commonAncestorContainer.parentElement;
+            if (el.tagName=='TD'){ ;//do only if click on data
+                var b='<tr>'+el.parentElement.innerHTML+'</tr>';
+                var elId=el.id.substring(1);
+                // startPoint.splice(elId-1); console.log(startPoint);
+                var preEl=document.getElementById('s'+ (elId-1));
+                var a='<tr>'+preEl.parentElement.innerHTML+'</tr>';
+                var newTR=(a+b).replace(/<\/td><\/tr><tr>[\s\S]*?\]/g,' ').replace(/<\/td><\/tr><tr>[\s\S]*?>/g,' ').replace('  ',' ');
+                var newLrc=$('#data').html().replace(a+b,newTR);
+                $('#data').html(newLrc);
+                addId();
+                $('#s'+ (elId-1)).css({'color':'green','background-color':'#E5E4E2'});
+
+                startPoint=[];
+                for (var i=1;i<$('#data tr').length+1;i++){
+                var txt=document.getElementById('s'+i).textContent;
+                    if (txt.slice(0,1)=='['){
+                        startPoint.push(txt2s(txt));
+                    }
+                }
+            }
+        }
+    }
+} 
+
+function tc2Tbl(){
+    $('#input').hide();
+    var tc=document.getElementById('tc').value;
+    tc='<tr><td>'+tc.replaceAll('."','".').replaceAll('.','.</td></tr><tr><td>').replaceAll('?','?</td></tr><tr><td>').replaceAll('!','!</td></tr><tr><td>').slice(0,-8);
+    $("#data").html(tc);
+    addId();
+}
+
+function browseText(j) {
+    $('#input').hide();
+    var g = document.getElementById("browseText").files[0];
+    var d = g.name;
+    if(d.slice(-2)=='-0'){
+      document.getElementById("filename").value=d.slice(0,-2).replaceAll(' ','_');
+    } else{
+      document.getElementById("filename").value=d.replaceAll(' ','_');
+    }
+    // var e = g.size;
+    var c = URL.createObjectURL(g);
+    // $("#textName").text(d); //can use
+    var a = new FileReader();
+    a.readAsText(g);
+    var h;
+    a.onload = function() {
+        h = this.result;
+        var lines=h.split("\r\n");
+
+        if ($('#lrc').is(":visible")){
+            loadTC2Lrc(lines);
+        } else {
+            loadLrc2Echo(lines);
+        }
+    };
+}
+
+//for LRC >> load transcript to LRC
+function loadTC2Lrc(l) {
+    var k = ''; var j = 0;
+    for (var f = 0; f < l.length; f++) {
+        if (l[f].trim() == "") {    //f=length of data
+            continue;
+        }
+        k += '<tr><td>' +l[f] + '</td></tr>';       
+    }
+    $("#data").html(k);
+    addId();
+}
+
+function txt2s(text){
+    if (/\[\d\d:\d\d\.\d\d\]/.test(text)) {
+        var g = text.indexOf("]");
+        var d = text.substr(1, g - 1);
+        return s2n(d);
+    }
+}
+
+function s2n(a) {
+    n = a.split(":");
+    if ($('#echo').is(":visible")){
+        n = parseInt(n[0]) * 60 + parseFloat(n[1])+delaySec;
+    } else {
+        n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    }
+    return n.toFixed(2);
+}
+
+function timeMark(sec){
+    let mm=Math.floor(sec/60);
+    let ss=sec-mm*60;
+    ss=ss.toFixed(2);
+    return '['+[("0"+mm).slice(-2),("0"+ss).slice(-5)].join(':')+']';
+}
+
+function addId(){
+    $('#data td').removeAttr('id');
+    $('#data td').each(function(i) {
+    $(this).attr('id', 's'+(++i));
+    })
+}
+
+$('#data').on('dblclick', function() {
+    $('#data td').css({'color':'','background-color':''});
+    var sel, range, el;
+    if (window.getSelection) {
+        sel = window.getSelection();
+        if (sel.getRangeAt && sel.rangeCount) {
+            range = sel.getRangeAt(0);
+            el=range.commonAncestorContainer.parentElement;
+            if (el.tagName=='TD'){  //do only if click on data
+                let s=txt2s(el.innerHTML);
+                $('#ap')[0].currentTime = s;
+                $('#ap')[0].play();
+                var elId=el.id.substring(1);
+                var thisEl=$('#s'+ elId);
+                thisEl.css({'color':'green','background-color':'#E5E4E2'});
+            }
+        }
+    } 
+} );
+
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+</html>
