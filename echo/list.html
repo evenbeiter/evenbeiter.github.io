@@ -35,7 +35,7 @@ async function getData(){
         var tr=document.createElement('tr');
     //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
         if (data[i].length==1){
-          tr.innerHTML='<tr><td>'+data[i][0]+'</td></tr>';
+          tr.innerHTML='<tr><td>'+data[i][0].replaceAll('_',' ')+'</td></tr>';
         } else {
           tr.innerHTML='<tr><td><a href="https://evenbeiter.github.io/echo/master.html?id='+i+'" target="_blank">'+data[i][0].replace('_',':')+'</td></tr>';
         }
