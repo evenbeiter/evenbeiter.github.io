@@ -17,7 +17,7 @@
             <video id="vp" controls preload="auto" playsinline style="display:none"></video>
         </div>
 
-        <div class="row py-3"> <!-- shared tools -->
+        <div class="row p-3"> <!-- shared tools -->
             <button class="col-2 btn btn-outline-secondary echo-lrc-btn-switch" type="button" onclick="switchTab()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-headset" viewBox="0 0 16 16">
                     <path d="M8 1a5 5 0 0 0-5 5v1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a6 6 0 1 1 12 0v6a2.5 2.5 0 0 1-2.5 2.5H9.366a1 1 0 0 1-.866.5h-1a1 1 0 1 1 0-2h1a1 1 0 0 1 .866.5H11.5A1.5 1.5 0 0 0 13 12h-1a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1h1V6a5 5 0 0 0-5-5"/>
@@ -98,7 +98,7 @@
             </table>
         </div>
         <div style="height:100px"></div> <!-- end of .table -->
-        <div id="bottom" class="py-1 row fixed-bottom disable-dbl-tap-zoom">
+        <div id="bottom" class="mx-3 py-1 row fixed-bottom disable-dbl-tap-zoom">
             <div class="col-2 form-check form-switch">
                 <input class="form-check-input d-block" type="checkbox" id="edit" onclick="checkEdit()">
                 <label class="form-check-label d-block" for="flexSwitchCheckDefault"></label>
@@ -138,7 +138,11 @@
 // $('#tc').val("Alex Ossola: Here's your TNB Tech Minute for Friday, March 1st. I'm Alex Ossola for the Wall Street Journal. Elon Musk has sued OpenAI and its CEO Sam Altman. In the lawsuit, Musk alleges that OpenAI and Altman broke the artificial intelligence company's founding agreement by giving priority to profit over the benefits to humanity. Musk who helped found OpenAI in 2015 claims the company's close relationship with Microsoft goes against the company's original commitment to public open source AI. OpenAI declined to comment. Musk didn't respond to a request for comment. We exclusively report that Reddit plans to target a price range of $31 to $34 per share in its IPO. That's according to people familiar with the matter. That valuation of between 6 and $6.5 billion is down from the $10 billion valuation Reddit notched in its most recent fundraising round in August 2021? It's partly a reflection of investors waning appetite for unprofitable companies. The company can still adjust the range before its roadshow to pitch investors or listing, both of which are expected in the coming weeks. And Meta says it won't enter into new deals with traditional news publishers in Australia and the US. The company noted that the number of people in those countries using a dedicated tab for news on Facebook dropped more than 80% last year. In a blog post, the social media giant said people will still be able to view links to news articles on Facebook and that publishers will continue to have access to their accounts where they can post links just as anyone else. For a deeper dive into what's happening in tech, check out Monday's Tech News Briefing Podcast.");
 
 var url=window.location.href;
-if(url.indexOf('?id')==-1){lrc()} else {echo()};
+if(url.indexOf('?id')==-1){lrc()} else {
+    let delaySec=Number($('#delaySec').val());
+    getData();
+    echo()
+};
 
 function lrc(){
     $('#lrc').show();$('#tools').show();$('#echo').hide();$('#echo-bar').hide();
@@ -193,10 +197,6 @@ function svgHeadset(){
 function svgPencilSquare(){
   return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16"><path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/><path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/></svg>';
 }
-
-
-let delaySec=Number($('#delaySec').val());
-getData();
 
 async function getData(){
     //let response=await fetch('https://evenbeiter.github.io/project/list.json');
