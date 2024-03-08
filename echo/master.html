@@ -162,6 +162,14 @@ if ($('#vp').is(":visible")){
     audio=$("#vp")[0];      
 }
 
+function delayTime(){
+    delaySec=Number($('#delaySec').val());
+    let title=document.querySelector('title').textContent;
+    //let lrcSrc='https://evenbeiter.github.io/project/src/'+title.replace(':','_')+'.txt';
+    let lrcSrc='src/'+title.replace(':','_').replaceAll(' ','_')+'.txt';
+    getLrc(lrcSrc);
+}
+
 function toggleMedia(){
   if ($('#ap').is(":visible")){
     $('#ap').hide();$('#vp').show();
