@@ -1,0 +1,249 @@
+
+This transcript was prepared by a transcription service.
+ This version may not be in its final form and may be updated.
+
+
+Dion Rabouin: What's good everybody?
+ I'm Dion Rabouin for the Wall Street Journal, and this is WSJ's Take On the Week, the show where we break down the most important things to watch in business and financial news.
+ We cut through the noise to get you ready for what matters.
+ The market's bulls have continued to drive up stock prices.
+ The S&P 500 ended higher again last week, rising for the 16th time in 18 weeks.
+ The last time we saw that was April 1971.
+ Now we look forward to the jobs report.
+ The labor market looks to be heating up again after last month's data showed the US added more than 350,000 jobs.
+ But there have also been some worrisome numbers that have caught economists and stock traders by surprise.
+ With inflation still holding above the Fed's target and some weakness in the latest durable goods and retail sales reports, this month's non-farm payrolls report will carry some extra weight.
+ To break it down for us, we've got Liz Ann Sonders and Kathy Jones from Schwab.
+ Kathy has been covering bonds for more than a decade at Schwab and previously held roles at Morgan Stanley and Prudential.
+ And Liz Ann has been named best market strategist by Kiplinger's Personal Finance and last year headlined Barron's list of 100 Most Influential Women in Finance.
+ They will both join us to talk through all things jobs.
+ We'll also be looking ahead to earnings reports from Target and Costco that we're expecting this week.
+ We're going to unpack what those two reports could tell us about the retail sector and the state of the economy.
+ And ahead of Super Tuesday, we'll talk through what investors need to know about the big day of primary election contests across the country and how those results could move markets.
+ But first, it's jobs week.
+ Last month, data showed that the US added 353,000 jobs to start the year, but the report also showed a decline in full-time employment and hundreds of thousands of people dropping out of the labor force.
+ That's been a trend going back to 2023 when Americans dropped out of the labor force in eight out of 12 months, leaving the US workforce with a net 694,000 fewer workers.
+ Wages, when adjusted for inflation, have also been pretty weak in recent months, suggesting a job market that is a lot more nuanced than the headline numbers might suggest.
+ To get a real understanding of the labor market and how this week's jobs report could move markets, I'm joined by the host of the New On Investing podcast, Liz Ann Sonders, she's the chief investment strategist at Charles Schwab, and Kathy Jones, Schwab's chief fixed income strategist.
+ So I'm going to jump in and start with you, Kathy.
+ This is an important week for the labor market.
+ Talk to me about the stakes for this week's non-farm payrolls report.
+
+
+Kathy Jones: The stakes are always high with the jobs report because we know that this is part of the Federal Reserve's dual mandate, right?
+ They're supposed to set policy to keep inflation low and to achieve full employment, meaning a low level of unemployment.
+ And recently, that's been going quite well, but any shift in the employment numbers could mean a shift in Fed policy.
+ So we've recently had very strong employment growth.
+ We've had low unemployment for two years, below 4%, so it's been really good news.
+ But that also keeps the Fed on hold from lowering rates because there's a tendency to think that if we're at full employment, there's no reason to loosen policy.
+
+
+Dion Rabouin: Liz Ann, you and I have talked about some of the hidden weakness that has been in some recent job reports.
+ We've seen a major pickup in the number of people dropping out of the labor force.
+ Talk to me, if you would, about that and about some of the other weakness you're seeing in the labor market overall.
+
+
+Liz Ann Sonders: Sure.
+ So the most recent jobs report that we got, which was the January jobs report released in early February, that was, for the most part, positive across most metrics other than another decline in household employment.
+ Now, the prior report, even though on the surface it looked okay, the details under the surface were much more negative, including for that December report, a huge plunge in household employment.
+ A lot of people don't realize, especially those that might just focus on the headline metrics and then not look further from that, there's another survey they conduct, which is the Household Survey.
+ And from the Household Survey, the unemployment rate is estimated.
+ There are times like the last couple of months where you can see pretty meaningful divergence in the case of two months ago with just a huge, huge, almost 700,000 plunge in household employment.
+ And sometimes the innards of those discrepancies and the innards of the Household Survey can send an important message too.
+ What we've seen in the Household Survey is that most of the gross gains have been in part-time employment.
+ And more than all the losses have been in full-time employment.
+ You can also pick up things like people holding multiple jobs.
+ So I think especially at this part in this cycle with any of these data releases, especially something like the jobs report, which has got a lot of meat on the bone beyond just the headlines, I think having sort of the fine-tooth comb in your back pocket to use to analyze the real story beyond just the headlines is important particularly in this very unique cycle.
+
+
+Dion Rabouin: Kathy, even with some of those issues bubbling underneath the surface and the jobs data, the bond market seems to be really excited.
+ I'm seeing commercial mortgage-backed, securities rallying, junk bonds rallying, all these kind of risky sectors of the bond market that are tied to parts the economy that are showing real weakness, and those are really outperforming this year.
+ Does that worry you?
+
+
+Kathy Jones: Well, it is a bit of an anomaly and it has concerned us, particularly when we look at high yield or bank loans, et cetera.
+ But I do think there's an explanation, and that is that there has been tremendous demand for bonds with good yields, meaning attractive yields-
+
+Dion Rabouin: High yields.
+
+
+Kathy Jones: And so there have been a lot of buyers for those high yield bonds.
+ Some of it also has to do with companies were able to term out their debt, meaning extend the maturities of their debt at low levels when rates were low.
+ And so I haven't really needed to refinance that much.
+ So the supply demand is such that there's a lot of demand, but you don't have as much supply perhaps as the market had anticipated.
+ And then third factor is, everyone expects the Fed to cut rates because the Fed's telling us they're going to cut rates.
+ But if the Fed is just cutting rates because inflation is coming down, it's sort of like the stock market.
+ The high yield market, all those riskier parts of the fixed income market are probably going to perform well just because you have an igniting of that demand side and perception that there's less downside risk as the Fed cuts rate going forward.
+
+
+Dion Rabouin: I want to talk a little bit about the consumer.
+ We've talked about the labor market and stock and bond markets, and I'm curious what you two have learned.
+ And I want to hear from both you.
+ Liz Ann, I guess I'll start with you.
+ What do you feel like we've learned about US consumers from the retail companies that have reported so far, and what are you still looking to hear from some of these earnings reports that we've got coming out?
+
+
+Liz Ann Sonders: Now I think we're in an environment where although the traditional metrics like the traditional savings rate would suggest a consumer that is either getting a or already is tapped out, there is still that excess savings.
+ And there's lots of debate as to how much that represents and less debate around the fact that it's biased up the income and wealth spectrum, that down the income and wealth spectrum, for the most part you are seeing a more tapped out consumer.
+ And that explains why there's increased credit card usage, there's increased credit card delinquencies, auto delinquencies not across the spectrum, but down in the lower income and the subprime areas.
+ So some cracks starting to form.
+ But I think the real underpinning for consumption for hanging in there to a much greater degree than what sentiment would suggest has been the strength of the labor market.
+ So that's key to watch to see if we start to see more obvious deterioration in the labor market, whether we quickly see that translate into some consumption restraint.
+ And we did get a weaker most recent retail sales report, but that followed a string of better than expected reports.
+ So those are the trends we're keeping an eye on.
+
+
+Dion Rabouin: Kathy?
+
+
+Kathy Jones: Yeah, I would just emphasize Liz Ann's point about the labor market being so important.
+ I don't think it's appreciated just how strong it's been for how long over the last couple of years.
+ And when you get the unemployment rate steady and holding below 4% for 24 consecutive months with job growth in the 150 to 250 per month range, that's 150,000 I should specify, that's a very strong labor market.
+ And when people have jobs, they tend to spend money.
+ It has been a labor market that has really benefited a lot of people at the low end of the spectrum.
+ So the unemployment rate, the underemployment rate, when you break it down by category, some of the biggest gains have been from those who in the past maybe haven't benefited as much from employment growth.
+ And the wage gains at the very low end have been among the strongest.
+ Now that being said, the challenge going forward is, that now the Fed's tightening, it does look like we're probably slowing down.
+ And that means the trajectory of the growth in those jobs is probably peaked and is going to soften, as will wage gains now that we've caught up after the pandemic.
+ The other challenge for consumers at the lower end will be some of the fiscal policies that were put in place in the pandemic ending.
+ So the extra Medicaid spending.
+ Many, many states now have reduced the number of people on Medicaid.
+ So you have a much larger number of people at the low end of the income spectrum who don't have access to healthcare or have greatly diminished access to healthcare.
+ I think looking forward both the fiscal and monetary policy changes are going to be more challenging, particularly for lower income folks, for people who have more difficulty getting a job or keeping a job.
+
+
+Dion Rabouin: That was Schwab Chief Investment, Strategist Liz Ann Sonders and Schwab Chief Fixed Income Strategist Kathy Jones.
+ Up Next, Target and Costco are expected to report earnings this week.
+ We'll talk about the way the two are starting to compete over price-sensitive shoppers and how that could affect their earnings in the future.
+ In 2023, Target had disappointed shareholders for much of the year.
+ But in November, the company's earnings report showed that despite bringing in less revenue, Target had managed to boost profits by 36% during the quarter.
+ The stock jumped by nearly 20% following the earnings report and has risen since then.
+ But even after that run, Target stock is still down more than 4% over the past 12 months.
+ Costco stock, on the other hand, has been a monster.
+ It has nearly doubled the return of the S&P 500 over the past year and is trading above the median analyst price target.
+ That shows how differently the market currently views these segments of the US retail landscape.
+ Wall Street has been bullish on Costco, which sells discounted groceries and home essentials, but bearish on Target, which is known for affordable fashion and home furnishings.
+ That perception could change for both companies based on what they have to say to investors this week.
+ To break down what that might be and what to look for, I'm joined by Sarah Nassauer who covers large retailers for the Journal.
+ Sarah, so we have both Target and Costco reporting earnings this week.
+ What are we expecting to learn about the US consumer from these reports?
+
+
+Sarah Nassauer: I think we'll get a good sense of how much people are spending on things they might want but not need.
+ Because what we've seen for the last year is a pretty consistent trend that people amongst higher prices and inflation, people are spending a lot on food, things they need, and a little bit less on wants, and that's been sort of the "post-pandemic" consumer trend.
+ People are spending, they're still spending, it's this confusing economic picture, but I think we'll get a sense on how that played out over the holidays and then heading into the beginning of this year.
+
+
+Dion Rabouin: But Sarah, I would say, the thing I've heard from a lot of analysts, asset managers, people who are not economists is they say, 'Yeah, that's what we're hearing from these company reports, but then we look at the economic data and it tells us something else.
+" So how does that play out?
+ Because we did see retail sales slow down for that January number.
+ We saw a negative retail sales report.
+ How is that changing the expectations for these companies?
+
+
+Sarah Nassauer: I think in some ways it won't be that different because what we have seen from a Costco to Target, is Target happens to sell more things that we want but don't need.
+ And that's hurt their sales for a year, right?
+ I don't think we'll see a dramatic shift in that phenomenon.
+ Costco has a value message for wealthier shoppers, but still a value message and they've done pretty well with that.
+ We saw Walmart earnings a little while ago, and that also is a pretty good read on the US consumer.
+ They were very strong, but they did note Walmart is a grocer, so they're selling a lot of food.
+ And they did note that people are still being a little.
+.
+.
+ They use the word chooseful.
+
+
+Dion Rabouin: Wait, did they actually use the word chooseful?
+
+
+Sarah Nassauer: They have always funny words about people being choosy.
+ And that means like big ticket discretionary items are still lagging.
+ Again, that is in line with what we've heard for about a year.
+
+
+Dion Rabouin: Along that theme, Target said in February that they're going to offer some products at prices starting less than a dollar.
+ Dealworthy is the name of their brand.
+ And that looks like they're going to be competing with Dollar Tree, Walmart, maybe even Costco.
+ Are you expecting to hear CEO Brian Cornell?
+ Talk about Dealworthy on this week's earnings call?
+ And what do you think investors want to hear about it?
+
+
+Sarah Nassauer: I think he'll definitely talk about it because he really wants people to buy it, so he'd like us to write about it.
+ Dealworthy actually replaces this other line that had a similar positioning called Smartly that also sold everyday essentials like hand soap and stuff like that that was simple packaging and lower prices.
+ This Dealworthy is sort of a relaunch of their private label concept in that price point with a little lower prices, a little bit more extensive product line.
+ They're not competing with dollar stores head on.
+ People don't go to dollar stores for the same reason they go to a Target.
+ They're in different locations, they have a different customer base.
+ It's not a head-to-head competition, but they want that message to get out there like, "You can come to us and still get a deal.
+" That's a big part of it.
+
+
+Dion Rabouin: I think the other interesting thing about that is Costco stock has really been killing it over the past year, overperforming the overall market.
+ So to take it just a step back, why do investors like Costco so much and what'll they be looking for in this week's earnings report to maintain that bullish momentum?
+
+
+Sarah Nassauer: I think they'll be looking for strength in their customer base.
+ They're going to want to know what's happening with membership and is that going up anytime soon?
+ That's been a repeated question for a year because Costco earns most of its profits through the membership, not through selling goods.
+ And that's why they have this value for shoppers.
+ Costco is one of the few retailers that still reports monthly sales.
+ So we actually know what their sales are already, and those have looked pretty strong.
+ Costco will give us a sense of for generally higher income shoppers, where are they moderating, do they continue to spend?
+ Well confirm this idea that overall things look pretty good on a macroeconomic sense.
+ Target will get a sense of, "Are we branching out and spending on things we don't really need, but we might want?
+" Shopping at Target is fun.
+ They want to engage people in that way.
+ And how are these new deal messages working?
+ Are they resonating with shoppers?
+
+
+Dion Rabouin: That was WSJ Retail Reporter Sarah Nassauer.
+ Up next, we're going to talk about how this year's US presidential election could move markets.
+ That doesn't mean you have to start reading your uncle's posts on Facebook, but November is getting close and I'll explain why this week could be something like a big deal when we come back.
+ One more thing before we get out of here.
+ I hate to do it, but I'm going to talk a little politics.
+
+
+Speaker 5: Oh man.
+
+
+Dion Rabouin: I know, but I keep hearing from investors and Wall Street analysts that the 2024 presidential election is going to start to matter to the market soon.
+ Super Tuesday is happening this week.
+ For Republicans, almost 1/3 of the 2,429 delegates needed to secure the party nomination for president will be up for grabs, including from the two most populous states in the country, California and Texas.
+ Many are watching to see if Donald Trump can secure the GOP nomination this week, setting him up for a rematch with President Joe Biden.
+ Investors haven't heard much about Trump's economic policy, but I spoke with Sam Stovall, chief investment strategist at CFRA Research, and he said there were a few things that the former president might bring with him that could be worrisome for the market.
+
+
+Sam Stovall: We are very concerned about geopolitical aspects right now.
+ Would a President Trump round 2 exacerbate the tensions between the US and China?
+ He has already broken off the ability for the US to monitor nuclear activities in Iran.
+ Would there be more things that could be done that would heighten the tensions geopolitically?
+ So I think that could end up being a very big concern that Wall Street would have to deal with.
+
+
+Dion Rabouin: On the flip side, Sam says there are some expected Trump economic policy plans that could get investors excited.
+
+
+Sam Stovall: Wall Street was pleased with how the market performed under his administration because his compound annual growth rate was actually 12.
+1%, which was second highest of all presidents going back to World War II, second only to President Clinton at 16.
+5%.
+ So I think investors would hope that we would get a similar kind of return for the stock market should he get reelected.
+ So possibly because of more laissez-faire kind of activities, removing restrictions, et cetera, that I think that business people would feel that they're not going to be having their hands tied in any way.
+
+
+Dion Rabouin: If Trump does lock up the Republican nomination on Tuesday, the market could start to pay more attention to things like geopolitics, tax policy, and the potential for a new Federal Reserve chair in 2025, so watch this space.
+ And that's everything you need to know to take on the week for Sunday, March 3rd.
+ This show is produced by Jess Jupiter.
+ Jonathan Sanders is our booking producer, Michael LaValle and Jessica Fenton are our sound designers.
+ Michael also wrote our theme music.
+ Melony Roy is our supervising producer.
+ Aisha al-Muslim is our development producer.
+ Scott Saloway and Chris Zinsli are the deputy editors.
+ And Philana Patterson is the head of News Audio for the Wall Street Journal.
+ For even more, head to wsj.
+com.
+ I'm Dion Rabouin.
+ Stay smart.
+
+
