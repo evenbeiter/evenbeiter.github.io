@@ -235,7 +235,7 @@ async function getLrc(url){
     let str = await response.text();
 
   if(str.slice(0,1)=='{'){
-    loadJson2Echo();
+    loadJson2Echo(str);
   } else {
     // putlrc(str);
     var c = str.split("\r\n");
@@ -244,7 +244,7 @@ async function getLrc(url){
   }
 }
 
-function loadJson2Echo(){
+function loadJson2Echo(str){
   var a=JSON.parse(str);
   var k='';var j=0;
   for (var f = 0; f < a.segments.length; f++) {
