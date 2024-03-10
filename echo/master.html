@@ -233,10 +233,24 @@ async function getData(){
 async function getLrc(url){
     let response = await fetch(url);
     let str = await response.text();
+
+  if(str.slice(0,1)=='{'){
+    loadJson2Echo();
+  } else {
     // putlrc(str);
     var c = str.split("\r\n");
     loadLrc2Echo(c);
     loadTC2Lrc(c);
+  }
+}
+
+function loadJson2Echo(){
+  var a=JSON.parse(str);
+  var k='';var j=0;
+  for (var f = 0; f < a.segments.length; f++) {
+      k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + a.segments[f].start +'</td><td>' + a.segments[f].text + '</td></tr>';
+  }
+  $("#lines").html(k);
 }
 
 // function putlrc(d) {
