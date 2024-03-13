@@ -2,7 +2,39 @@
 
 //////Youtube
 
-javascript:(function(){
+
+javascript:(async function(){
+const url=window.location.href;
+const response=await fetch('https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false',{
+  method:'POST',
+  body:'',
+  headers:{'Content-type':'application/json'}
+})
+.then((response)=>response.json());
+
+var start=[];
+var text=[];
+var segments=[];
+var data=response.actions[0].updateEngagementPanelAction.content.transcriptRenderer.content.transcriptSearchPanelRenderer.body.transcriptSegmentListRenderer.initialSegments;
+for (var i=0;i<data.length;i++){
+  start.push(data[i].transcriptSegmentRenderer.startMs);
+  text.push(data[i].transcriptSegmentRenderer.snippet.runs[0].text);
+}
+segments=start.map((start, i) => ({ start, text: text[i] }));
+var txt=JSON.stringify({segments:segments});
+let txtData = new Blob([txt], { type: 'data:text;charset=utf-8' });
+let txtUrl = URL.createObjectURL(txtData);
+let link = document.createElement('a');
+link.href = txtUrl;
+link.target = '_blank';
+link.download = 'txt.txt';
+link.click();
+alert(txt);
+//alert('["'+name+'",'+audio+',0],');
+})();
+
+
+javascript:(async function(){
 const url=window.location.href;
 const response=await fetch('https://www.youtube.com/youtubei/v1/get_transcript?prettyPrint=false',{
   method:'POST',
@@ -28,6 +60,7 @@ link.href = txtUrl;
 link.target = '_blank';
 link.download = 'txt.txt';
 link.click();
+alert(txt);
 //alert('["'+name+'",'+audio+',0],');
 })();
 
