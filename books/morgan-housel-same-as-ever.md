@@ -66,16 +66,14 @@ I once had lunch with a guy who’s close to Warren Buffett.
 我曾經和一個與華倫‧巴菲特關係密切的人共進午餐。
 ```
 
-<code>
-This guy—we’ll call him Jim (not his real name)—was driving around Omaha, Nebraska, with Buffett in late 2009. The global economy was crippled at this point, and Omaha was no exception. Stores were closed, businesses were boarded up.
+`This guy—we’ll call him Jim (not his real name)—was driving around Omaha, Nebraska, with Buffett in late 2009. The global economy was crippled at this point, and Omaha was no exception. Stores were closed, businesses were boarded up.
 
 2009 年末，這個人——我們稱他為吉姆（化名）——與巴菲特一起在內布拉斯加州奧馬哈行駛。當時全球經濟陷入癱瘓，奧馬哈也不例外。商店關門了，企業都用木板封起來。
 
 
 Jim said to Warren, “It’s so bad right now. How does the economy ever bounce back from this?”
 
-吉姆對華倫說：「現在情況太糟了。經濟如何從中反彈？”
-</code>
+吉姆對華倫說：「現在情況太糟了。經濟如何從中反彈？”`
 
 
 Warren said, “Jim, do you know what the bestselling candy bar was in 1962?”
