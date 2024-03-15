@@ -11,11 +11,13 @@
 > —Carl Jung 卡爾·榮格
 
 
+
 > The wise in all ages have always said the same thing, and the fools, who at all times form the immense majority, have in their way, too, acted alike, and done just the opposite.
 >
 > 古往今來，智者總是說同樣的話，而在任何時候都佔絕大多數的愚者，也都以自己的方式行事，卻做了相反的事情。
 > 
 > —Arthur Schopenhauer 阿瑟·叔本華
+
 
 
 > History never repeats itself; man always does.
@@ -25,6 +27,7 @@
 > —Voltaire 伏爾泰
 
 
+
 > I’ve learned an important trick: to develop foresight, you need to practice hindsight.
 >
 > 我學到了一個重要的技巧：要培養遠見，你需要練習事後諸葛亮。
@@ -32,11 +35,13 @@
 > —Jane McGonigal 簡‧麥格尼格爾
 
 
+
 > The dead outnumber the living . . . fourteen to one, and we ignore the accumulated experience of such a huge majority of mankind at our peril.
 >
 > 死者人數超過生者。 。 。十四比一，如果忽略絕大多數人類所累積的經驗，我們就會面臨危險。
 >
 > —Niall Ferguson 尼爾‧弗格森
+
 
 
 23 Little Stories about Things That Never Change
@@ -61,7 +66,7 @@ I once had lunch with a guy who’s close to Warren Buffett.
 我曾經和一個與華倫‧巴菲特關係密切的人共進午餐。
 ```
 
-:::warning
+<code>
 This guy—we’ll call him Jim (not his real name)—was driving around Omaha, Nebraska, with Buffett in late 2009. The global economy was crippled at this point, and Omaha was no exception. Stores were closed, businesses were boarded up.
 
 2009 年末，這個人——我們稱他為吉姆（化名）——與巴菲特一起在內布拉斯加州奧馬哈行駛。當時全球經濟陷入癱瘓，奧馬哈也不例外。商店關門了，企業都用木板封起來。
@@ -70,7 +75,7 @@ This guy—we’ll call him Jim (not his real name)—was driving around Omaha, 
 Jim said to Warren, “It’s so bad right now. How does the economy ever bounce back from this?”
 
 吉姆對華倫說：「現在情況太糟了。經濟如何從中反彈？”
-:::
+</code>
 
 
 Warren said, “Jim, do you know what the bestselling candy bar was in 1962?”
