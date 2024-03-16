@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Media Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>audio{margin-right:auto;margin-left:auto;width:100%}video{margin-right:auto;margin-left:auto;width:100%}.sticky-top, .fixed-bottom{background-color:#FFF}.disable-dbl-tap-zoom{touch-action:manipulation}.b-highlight{color:green;background-color:#E5E4E2}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}.h{display:none}.s{font-size:0.7rem}[contenteditable]{outline: 0px solid transparent;}
+    </style>
+</head>
+<body>
+
+<div class="m-3">
+    <div id="top" class="sticky-top"> <!-- media & input/tools -->
+        <div>
+            <audio id="ap" controls preload="auto"></audio>
+            <video id="vp" controls preload="auto" playsinline style="display:none"></video>
+        </div>
+    </div> <!-- end of #top -->
+
+    <div id="echo" class=""> <!-- to switch with #lrc -->
+        <p id="src" class="h"></p>
+        <table class="table">
+            <tbody id="lines"></tbody>
+        </table>
+        <div style="height:100px"></div> <!-- end of .table -->
+    </div> <!-- end of #echo -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+
+<script>
+getData();
+var audio=$("#ap")[0];
+
+async function getData(){
+
+    url=window.location.href;
+    //var url='https://evenbeiter.github.io/project/echo.html?id=1';
+    var i=Number(url.slice(-url.length+url.indexOf('=')+1));
+    var filename=data[i][0];
+    var name=filename.replace(/\_/g,' ');
+    document.querySelector('title').textContent=name;
+    var mediaSrc=data[i][1];
+    $('#ap').attr('src',mediaSrc);
+    $('#src').text(mediaSrc);
+    //$('#vp').attr('src',mediaSrc);
+    //let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
+    let lrcSrc='src/'+filename+'.txt';
+    $('#delaySec').val(Number(data[i][2]));
+    delaySec=Number($('#delaySec').val())
+    getLrc(lrcSrc);
+}
+
+async function getLrc(url){
+    let response = await fetch(url);
+    let str = await response.text();
+
+  if(str.slice(0,1)=='{'){
+    loadJson2Echo(str);
+  } else {
+    // putlrc(str);
+    var c = str.split("\r\n");
+    loadLrc2Echo(c);
+    loadTC2Lrc(c);
+  }
+}
+
+//for ECHO >> load LRC to ECHO
+function loadLrc2Echo(l) {
+    var d, e, h = [], k = "";
+    var j = 0;
+    for (var f = 0; f < l.length; f++) {
+        if (l[f].trim() == "") {    //f=length of lrc
+            continue;
+        }
+        if (/\[\d\d:\d\d\.\d\d\]/.test(l[f])) {
+            var g = l[f].indexOf("]");
+            d = l[f].substr(1, g - 1);
+            e = l[f].substr(g + 1);
+            var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
+            //h.push(parseFloat(c));
+            k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
+        }
+    }
+    $("#lines").html(k);
+}
+
+$(function(){
+    // $(document).on("click", "table tbody tr", function(e) {
+    $(document).on("click", "#lines tr", function(e) {
+      
+        $('#lines tr').css({'color':'','background-color':''});
+        $(this).css({'color':'green','background-color':'#E5E4E2'});
+        let startTime=Number($(this).children(':nth-child(2)').text());console.log(startTime);
+        let endTime=Number($(this).next().children(':nth-child(2)').text());console.log(endTime);
+        startPlay(startTime,endTime);
+      
+        async function startPlay(startTime,endTime){
+
+            let audio=$("#ap")[0];      
+            if ($('#vp').is(":visible")){
+              audio=$("#vp")[0];      
+            }
+            let dr = audio.duration;
+            while (isNaN(dr)||dr===Infinity){
+            await new Promise(resolve=> setTimeout(resolve,200));
+            }
+
+            audio.currentTime=startTime;
+            audio.play();
+
+            audio.ontimeupdate = function(){
+              if (audio.currentTime > endTime){
+                  audio.pause();
+                  audio.currentTime=startTime;
+              }  
+            }
+        }
+    });
+});
+
+
+
+function loadMedia(){
+    $('#ap').attr('src',$('#mediaSrc').val());
+}
+
+function txt2s(text){
+    if (/\[\d\d:\d\d\.\d\d\]/.test(text)) {
+        var g = text.indexOf("]");
+        var d = text.substr(1, g - 1);
+        return s2n(d);
+    }
+}
+
+function s2n(a) {
+    n = a.split(":");
+    if ($('#echo').is(":visible")){
+        n = parseInt(n[0]) * 60 + parseFloat(n[1])+delaySec;
+    } else {
+        n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    }
+    return n.toFixed(2);
+}
+
+function timeMark(sec){
+    let mm=Math.floor(sec/60);
+    let ss=sec-mm*60;
+    ss=ss.toFixed(2);
+    return '['+[("0"+mm).slice(-2),("0"+ss).slice(-5)].join(':')+']';
+}
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+</html>
