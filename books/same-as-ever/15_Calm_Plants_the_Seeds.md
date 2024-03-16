@@ -46,8 +46,9 @@ Then you accept good news.
 Then you assume good news is permanent.  
 那你就會認為好消息是永久的。
 
+> [!TIP]
 > And we’re back where we began. The cycle repeats.  
-我們又回到起點了。循環重複。
+> 我們又回到起點了。循環重複。
 
 Let’s dig deeper on why this cycle happens, and why it always will.  
 讓我們更深入地探討為什麼這個循環會發生，以及為什麼它總是會發生。
