@@ -11,25 +11,54 @@
 <body>
 
 <div class="m-3">
-    <div id="top" class="sticky-top"> <!-- media & input/tools -->
+    <div id="top" class="sticky-top">
         <div>
-            <audio id="ap" controls preload="auto"></audio>
-            <video id="vp" controls preload="auto" playsinline style="display:none"></video>
+            <audio id="ap" controls preload="auto"><source id="ap-src"></audio>
         </div>
-    </div> <!-- end of #top -->
+    </div>
 
-    <div id="echo" class=""> <!-- to switch with #lrc -->
+    <div id="echo" class="">
         <p id="src" class="h"></p>
         <table class="table">
             <tbody id="lines"></tbody>
         </table>
-        <div style="height:100px"></div> <!-- end of .table -->
-    </div> <!-- end of #echo -->
+    </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 
 <script>
+  var urlhead=window.location.href.slice(0,45);
+    var response = await fetch(window.location.href);
+    var str = await response.text();
+  var mediaSrc=urlhead+str.match(/audio id=[\s\S]*?.mp3/g)[0].replace('audio id="ap" src="','');
+  var lrcSrc=urlhead+str.match(/lrc" href[\s\S]*?.lrc/g)[0].replace('lrc" href="','');
+  document.getElementById("ap-src").src=mediaSrc;
+
+     response = await fetch(lrcSrc);
+     str = await response.text();
+      var l= str.split('\r\n');
+  var d, e, k = "";
+    var j = 0;
+    for (var f = 0; f < l.length; f++) {
+        if (l[f].trim() == "") {
+            continue;
+        }
+        if (/\[\d\d:\d\d\.\d\d\]/.test(l[f])) {
+            var g = l[f].indexOf("]");
+            d = l[f].substr(1, g - 1);
+            e = l[f].substr(g + 1);
+            var c = s2n(d);
+          var n = d.split(":");
+        n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    c= n.toFixed(2);     
+            k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
+        }
+    }
+
+ document.getElementById('lines').innerHTML=k;
+
+  
 getData();
 var audio=$("#ap")[0];
 
@@ -122,17 +151,6 @@ $(function(){
 
 
 
-function loadMedia(){
-    $('#ap').attr('src',$('#mediaSrc').val());
-}
-
-function txt2s(text){
-    if (/\[\d\d:\d\d\.\d\d\]/.test(text)) {
-        var g = text.indexOf("]");
-        var d = text.substr(1, g - 1);
-        return s2n(d);
-    }
-}
 
 function s2n(a) {
     n = a.split(":");
