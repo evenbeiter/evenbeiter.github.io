@@ -31,8 +31,10 @@
   var urlhead=window.location.href.slice(0,45);
     var response = await fetch(window.location.href);
     var str = await response.text();
-  var mediaSrc=urlhead+str.match(/audio id=[\s\S]*?.mp3/g)[0].replace('audio id="ap" src="','');
-  var lrcSrc=urlhead+str.match(/lrc" href[\s\S]*?.lrc/g)[0].replace('lrc" href="','');
+    var mediaSrc='https://www.listeningexpress.com/nce-a/book3/01 A Puma at Large.mp3';
+    var lrcSrc='https://www.listeningexpress.com/nce-a/book3/01 A Puma at Large.lrc';
+  //var mediaSrc=urlhead+str.match(/audio id=[\s\S]*?.mp3/g)[0].replace('audio id="ap" src="','');
+  //var lrcSrc=urlhead+str.match(/lrc" href[\s\S]*?.lrc/g)[0].replace('lrc" href="','');
   document.getElementById("ap-src").src=mediaSrc;
 
      response = await fetch(lrcSrc);
@@ -58,62 +60,9 @@
 
  document.getElementById('lines').innerHTML=k;
 
-  
-getData();
+
 var audio=$("#ap")[0];
 
-async function getData(){
-
-    url=window.location.href;
-    //var url='https://evenbeiter.github.io/project/echo.html?id=1';
-    var i=Number(url.slice(-url.length+url.indexOf('=')+1));
-    var filename=data[i][0];
-    var name=filename.replace(/\_/g,' ');
-    document.querySelector('title').textContent=name;
-    var mediaSrc=data[i][1];
-    $('#ap').attr('src',mediaSrc);
-    $('#src').text(mediaSrc);
-    //$('#vp').attr('src',mediaSrc);
-    //let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
-    let lrcSrc='src/'+filename+'.txt';
-    $('#delaySec').val(Number(data[i][2]));
-    delaySec=Number($('#delaySec').val())
-    getLrc(lrcSrc);
-}
-
-async function getLrc(url){
-    let response = await fetch(url);
-    let str = await response.text();
-
-  if(str.slice(0,1)=='{'){
-    loadJson2Echo(str);
-  } else {
-    // putlrc(str);
-    var c = str.split("\r\n");
-    loadLrc2Echo(c);
-    loadTC2Lrc(c);
-  }
-}
-
-//for ECHO >> load LRC to ECHO
-function loadLrc2Echo(l) {
-    var d, e, h = [], k = "";
-    var j = 0;
-    for (var f = 0; f < l.length; f++) {
-        if (l[f].trim() == "") {    //f=length of lrc
-            continue;
-        }
-        if (/\[\d\d:\d\d\.\d\d\]/.test(l[f])) {
-            var g = l[f].indexOf("]");
-            d = l[f].substr(1, g - 1);
-            e = l[f].substr(g + 1);
-            var c = s2n(d); //d=time; e=text; c=seconds; h=array of start time
-            //h.push(parseFloat(c));
-            k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td>' + e + '</td></tr>';
-        }
-    }
-    $("#lines").html(k);
-}
 
 $(function(){
     // $(document).on("click", "table tbody tr", function(e) {
