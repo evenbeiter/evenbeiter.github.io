@@ -10,17 +10,20 @@
 </head>
 <body>
 
-
+<div class="m-3">
 <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">Paste Youtube Transcript Here:</label>
   <textarea id="yt-transcript" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 </div>
-<button type="button" class="btn btn-secondary" onclick="getLrc()">>DOWNLOAD LRC</button>
-
+<button type="button" class="btn btn-secondary" onclick="getLrc()">DOWNLOAD LRC</button>
+</div>
+  
 <script>
 function getLrc(){
   var data=document.getElementById('yt-transcript').value;
-  console.log(data);
+  var lines= data.split('\r\n');
+  console.log(lines);
+
 }
 </script>
 
