@@ -11,11 +11,15 @@
 <body>
 
 <div class="m-3">
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Paste Youtube Transcript Here:</label>
-  <textarea id="yt-transcript" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-</div>
-<button type="button" class="btn btn-secondary" onclick="getLrc()">DOWNLOAD LRC</button>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">File Name:</label>
+    <input id="filename" type="text" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Paste Youtube Transcript Here:</label>
+    <textarea id="yt-transcript" class="form-control" rows="8"></textarea>
+  </div>
+  <button type="button" class="btn btn-secondary" onclick="getLrc()">DOWNLOAD LRC</button>
 </div>
   
 <script>
@@ -37,7 +41,7 @@ let txtUrl = URL.createObjectURL(txtData);
 let link = document.createElement('a');
 link.href = txtUrl;
 link.target = '_blank';
-link.download = 'txt.txt';
+link.download = document.getElementById('filename').value+'.txt';
 link.click();
 }
 </script>
