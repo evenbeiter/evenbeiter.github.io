@@ -24,11 +24,11 @@ function getLrc(){
   var lines= data.split('\n');
   var lrc=[];
   for (var i=0;i<lines.length;i++){
-    if (/\d:\d\d/.test(lines[i])){
+    if (lines[i].length<6 && /\d:\d\d/.test(lines[i])){
       if (lines[i].indexOf(":")==1){
-        lrc.push('[0'+lines[i]+'.00]'+lines[i+1]);
+        lrc.push('[0'+lines[i]+'.00]'+lines[i+1].replace(/\\/g,''));
       } else {
-      lrc.push('['+lines[i]+'.00]'+lines[i+1]);
+      lrc.push('['+lines[i]+'.00]'+lines[i+1].replace(/\\/g,''));
       }
     }
   }
