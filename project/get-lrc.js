@@ -1,6 +1,12 @@
 
 
+
 //////Youtube
+
+var str='';
+var lines=str.split('\r\n');
+if (/\d:\d\d\/.test(l[f]))
+
 
 
 javascript:(async function(){
