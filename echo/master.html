@@ -15,7 +15,7 @@
         <div>
             <audio id="ap" controls preload="auto"></audio>
             <video id="vp" controls preload="auto" playsinline style="display:none"></video>
-            <iframe id="ytvp" src="" style="display:none" width="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            <iframe id="ytvp" src="" style="display:none" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
             </iframe>
         </div>
         <div class="row mb-3">
@@ -304,7 +304,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];      
             } else if ($('#ytvp').is(":visible")){
-              audio=$('#ytvp')[0];
+              audio=$('#movie_player')[0];
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
