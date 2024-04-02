@@ -22,18 +22,23 @@
 function getLrc(){
   var data=document.getElementById('yt-transcript').value;
   var lines= data.split('\n');
-  var lrc=[];
+  var txt='';
   for (var i=0;i<lines.length;i++){
     if (lines[i].length<6 && /\d:\d\d/.test(lines[i])){
       if (lines[i].indexOf(":")==1){
-        lrc.push('[0'+lines[i]+'.00]'+lines[i+1].replace(/\\/g,''));
+        txt=txt+'[0'+lines[i]+'.00]'+lines[i+1]+'\r\n';
       } else {
-      lrc.push('['+lines[i]+'.00]'+lines[i+1].replace(/\\/g,''));
+      txt=txt+'['+lines[i]+'.00]'+lines[i+1]+'\r\n';
       }
     }
   }
-console.log(lrc);
-
+let txtData = new Blob([txt], { type: 'data:text;charset=utf-8' });
+let txtUrl = URL.createObjectURL(txtData);
+let link = document.createElement('a');
+link.href = txtUrl;
+link.target = '_blank';
+link.download = 'txt.txt';
+link.click();
 }
 </script>
 
