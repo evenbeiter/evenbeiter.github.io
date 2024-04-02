@@ -304,8 +304,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];      
             } else if ($('#ytvp').is(":visible")){
-              var iframe = document.getElementById("ytvp").contentWindow.document;
-              audio=iframe.getElementsByTagName("video")[0];
+              audio=$('#ytvp')[0];
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
