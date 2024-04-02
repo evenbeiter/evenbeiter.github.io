@@ -14,7 +14,9 @@
     <div id="top" class="sticky-top"> <!-- media & input/tools -->
         <div>
             <audio id="ap" controls preload="auto"></audio>
-            <video id="vp" controls preload="auto" playsinline style="display:none" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" ></video>
+            <video id="vp" controls preload="auto" playsinline style="display:none"></video>
+            <iframe id="ytvp" src="" style="display:none" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            </iframe>
         </div>
         <div class="row mb-3">
             <div class="col-4"> <!-- shared tools -->
@@ -136,8 +138,6 @@
 
 <script>
 
-// $('#tc').val("Alex Ossola: Here's your TNB Tech Minute for Friday, March 1st. I'm Alex Ossola for the Wall Street Journal. Elon Musk has sued OpenAI and its CEO Sam Altman. In the lawsuit, Musk alleges that OpenAI and Altman broke the artificial intelligence company's founding agreement by giving priority to profit over the benefits to humanity. Musk who helped found OpenAI in 2015 claims the company's close relationship with Microsoft goes against the company's original commitment to public open source AI. OpenAI declined to comment. Musk didn't respond to a request for comment. We exclusively report that Reddit plans to target a price range of $31 to $34 per share in its IPO. That's according to people familiar with the matter. That valuation of between 6 and $6.5 billion is down from the $10 billion valuation Reddit notched in its most recent fundraising round in August 2021? It's partly a reflection of investors waning appetite for unprofitable companies. The company can still adjust the range before its roadshow to pitch investors or listing, both of which are expected in the coming weeks. And Meta says it won't enter into new deals with traditional news publishers in Australia and the US. The company noted that the number of people in those countries using a dedicated tab for news on Facebook dropped more than 80% last year. In a blog post, the social media giant said people will still be able to view links to news articles on Facebook and that publishers will continue to have access to their accounts where they can post links just as anyone else. For a deeper dive into what's happening in tech, check out Monday's Tech News Briefing Podcast.");
-
 var url=window.location.href;
 if(url.indexOf('?id')==-1){lrc()} else {
     let delaySec=Number($('#delaySec').val());
@@ -172,12 +172,21 @@ function delayTime(){
 
 function toggleMedia(){
   if ($('#ap').is(":visible")){
-    $('#ap').hide();$('#vp').show();
+    if ($('#src').text().indexOf('youtube') !== -1){
+      $('#ap').hide();$('#vp').hide();$('#ytvp').show();
+      $('#vp').attr('src',$('#src').text());
+      $('#ytvp').attr('src',$('#src').text());
+      stopMedia();
+    } else {
+    $('#ap').hide();$('#vp').show();$('#ytvp').hide();
     $('#vp').attr('src',$('#src').text());
+    $('#ytvp').attr('src','');
     stopMedia();
+    }
   } else {
-    $('#vp').hide();$('#ap').show();
+    $('#vp').hide();$('#ytvp').hide();$('#ap').show();
     $('#vp').attr('src','');
+    $('#ytvp').attr('src','');
     stopMedia();
   }
 }
@@ -223,6 +232,7 @@ async function getData(){
     $('#ap').attr('src',mediaSrc);
     $('#src').text(mediaSrc);
     //$('#vp').attr('src',mediaSrc);
+    //$('#ytvp').attr('src',mediaSrc);
     //let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
     let lrcSrc='src/'+filename+'.txt';
     $('#delaySec').val(Number(data[i][2]));
