@@ -182,6 +182,7 @@ function toggleMedia(){
     if ($('#src').text().indexOf('youtube') !== -1){
       $('#ap').hide();$('#vp').hide();$('#player').show();$('#ytvp').show();
       $('#vp').attr('src',$('#src').text());
+      player = new Plyr('#player');
       $('#ytvp').attr('src',$('#src').text()+'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1');
       stopMedia();
     } else {
