@@ -179,18 +179,18 @@ function delayTime(){
 function toggleMedia(){
   if ($('#ap').is(":visible")){
     if ($('#src').text().indexOf('youtube') !== -1){
-      $('#ap').hide();$('#vp').hide();$('#ytvp').show();
+      $('#ap').hide();$('#vp').hide();$('#player').show();
       $('#vp').attr('src',$('#src').text());
       $('#ytvp').attr('src',$('#src').text()+'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1');
       stopMedia();
     } else {
-    $('#ap').hide();$('#vp').show();$('#ytvp').hide();
+    $('#ap').hide();$('#vp').show();$('#player').hide();
     $('#vp').attr('src',$('#src').text());
     $('#ytvp').attr('src','');
     stopMedia();
     }
   } else {
-    $('#vp').hide();$('#ytvp').hide();$('#ap').show();
+    $('#vp').hide();$('#player').hide();$('#ap').show();
     $('#vp').attr('src','');
     $('#ytvp').attr('src','');
     stopMedia();
