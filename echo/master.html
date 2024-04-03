@@ -15,7 +15,11 @@
         <div>
             <audio id="ap" controls preload="auto"></audio>
             <video id="vp" controls preload="auto" playsinline style="display:none"></video>
-            <iframe id="ytvp" src="" style="display:none" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+            <div class="plyr__video-embed" id="player">
+              <iframe id="ytvp" src="" style="display:none" frameborder="0" allowfullscreen allowtransparency allow="autoplay">
+            </div>
+            <!-- <iframe id="ytvp" src="" style="display:none" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> -->
+
             </iframe>
         </div>
         <div class="row mb-3">
@@ -135,6 +139,10 @@
 
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+<script>
+  const player = new Plyr('#player');
+</script>
 
 <script>
 
@@ -175,7 +183,7 @@ function toggleMedia(){
     if ($('#src').text().indexOf('youtube') !== -1){
       $('#ap').hide();$('#vp').hide();$('#ytvp').show();
       $('#vp').attr('src',$('#src').text());
-      $('#ytvp').attr('src',$('#src').text());
+      $('#ytvp').attr('src',$('#src').text()+'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1');
       stopMedia();
     } else {
     $('#ap').hide();$('#vp').show();$('#ytvp').hide();
