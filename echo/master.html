@@ -311,7 +311,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];console.log('wrong');
             } else if ($('#ytvp').is(":visible")){
-              audio = player;console.log('correct');
+              audio = player;console.log(player);
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
