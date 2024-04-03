@@ -312,7 +312,7 @@ $(function(){
             var audio=$("#ap")[0];console.log('wait');
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];console.log('wrong');
-            } else if ($('.plyr--video')[0].is(":visible")){
+            } else if ($('.plyr--video').first().is(":visible")){
               audio = player;console.log(player);
             }
             let dr = audio.duration;
