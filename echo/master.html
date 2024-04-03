@@ -304,7 +304,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];console.log('wrong');
             } else if ($('#ytvp').is(":visible")){
-              audio=document.getElementsByClassName('video-stream')[0];console.log('correct');console.log(audio.duration);
+              audio=document.getElementsByClassName('video-stream')[0];console.log('correct');console.log(audio);console.log(audio.duration);
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
