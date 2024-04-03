@@ -16,7 +16,7 @@
         <div>
             <audio id="ap" controls preload="auto"></audio>
             <video id="vp" controls preload="auto" playsinline style="display:none"></video>
-            <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="BEbVddOm2X8" style="display:none"></div>
+            <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="" style="display:none"></div>
             <iframe id="ytvp" style="display:none"></iframe>
             <!-- <div id="player" style="display:none">
               <iframe id="ytvp" src="" style="display:none" frameborder="0" allowfullscreen allowtransparency allow="autoplay">
@@ -166,7 +166,7 @@ function echo(){
 }
 
 var audio=$("#ap")[0];
-var player = new Plyr('#player');
+var player //= new Plyr('#player');
 if ($('#vp').is(":visible")){
     audio=$("#vp")[0];      
 }
@@ -181,9 +181,10 @@ function delayTime(){
 
 function toggleMedia(){
   if ($('#ap').is(":visible")){
-    if ($('#src').text().indexOf('youtube') !== -1){
+    if ($('#src').text().indexOf('http') !== -1){
       $('#ap').hide();$('#vp').hide();$('#player').show();//$('#ytvp').show();
       $('#vp').attr('src',$('#src').text());
+      player = new Plyr('#player');
       //$('#ytvp').attr('src',$('#src').text()+'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1');
       stopMedia();
     } else {
@@ -240,6 +241,9 @@ async function getData(){
     var mediaSrc=data[i][1];
     $('#ap').attr('src',mediaSrc);
     $('#src').text(mediaSrc);
+    if ($('#src').text().indexOf('http') !== -1){
+      $('#player').attr('data-plyr-embed-id',data[i][1]);
+    }
     //$('#vp').attr('src',mediaSrc);
     //$('#ytvp').attr('src',mediaSrc);
     //let lrcSrc='https://evenbeiter.github.io/project/src/'+filename+'.txt';
