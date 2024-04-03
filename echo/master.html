@@ -306,10 +306,10 @@ $(function(){
             } else if ($('#ytvp').is(":visible")){
               audio=document.getElementsByClassName('video-stream')[0];console.log('correct');
             }
-            let dr = audio.duration;
-            while (isNaN(dr)||dr===Infinity){
-            await new Promise(resolve=> setTimeout(resolve,200));
-            }
+            //let dr = audio.duration;
+            //while (isNaN(dr)||dr===Infinity){
+            //await new Promise(resolve=> setTimeout(resolve,200));
+            //}
 
             audio.currentTime=startTime;
             audio.play();
