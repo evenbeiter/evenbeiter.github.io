@@ -300,11 +300,11 @@ $(function(){
       
         async function startPlay(startTime,endTime){
 
-            let audio=$("#ap")[0];      
+            let audio=$("#ap")[0];console.log('wait');
             if ($('#vp').is(":visible")){
-              audio=$("#vp")[0];      
+              audio=$("#vp")[0];console.log('wrong');
             } else if ($('#ytvp').is(":visible")){
-              audio=document.getElementsByClassName('video-stream')[0];
+              audio=document.getElementsByClassName('video-stream')[0];console.log('correct');
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
