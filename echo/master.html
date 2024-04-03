@@ -16,9 +16,11 @@
         <div>
             <audio id="ap" controls preload="auto"></audio>
             <video id="vp" controls preload="auto" playsinline style="display:none"></video>
-            <div id="player" style="display:none">
+            <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="BEbVddOm2X8" style="display:none"></div>
+            <iframe id="ytvp"></iframe>
+            <!-- <div id="player" style="display:none">
               <iframe id="ytvp" src="" style="display:none" frameborder="0" allowfullscreen allowtransparency allow="autoplay">
-            </div>
+            </div> -->
             <!-- <iframe id="ytvp" src="" style="display:none" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen> -->
 
             </iframe>
@@ -180,21 +182,20 @@ function delayTime(){
 function toggleMedia(){
   if ($('#ap').is(":visible")){
     if ($('#src').text().indexOf('youtube') !== -1){
-      $('#ap').hide();$('#vp').hide();$('#player').show();$('#ytvp').show();
+      $('#ap').hide();$('#vp').hide();$('#player').show();//$('#ytvp').show();
       $('#vp').attr('src',$('#src').text());
-      player = new Plyr('#player');
-      $('#ytvp').attr('src',$('#src').text()+'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1');
+      //$('#ytvp').attr('src',$('#src').text()+'?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1');
       stopMedia();
     } else {
-    $('#ap').hide();$('#vp').show();$('#player').hide();$('#ytvp').hide();
+    $('#ap').hide();$('#vp').show();$('#player').hide();//$('#ytvp').hide();
     $('#vp').attr('src',$('#src').text());
-    $('#ytvp').attr('src','');
+    //$('#ytvp').attr('src','');
     stopMedia();
     }
   } else {
-    $('#vp').hide();$('#player').hide();$('#ap').show();$('#ytvp').hide();
+    $('#vp').hide();$('#player').hide();$('#ap').show();//$('#ytvp').hide();
     $('#vp').attr('src','');
-    $('#ytvp').attr('src','');
+    //$('#ytvp').attr('src','');
     stopMedia();
   }
 }
@@ -311,7 +312,7 @@ $(function(){
             var audio=$("#ap")[0];console.log('wait');
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];console.log('wrong');
-            } else if ($('#ytvp').is(":visible")){
+            } else if ($('#player').is(":visible")){
               audio = player;console.log(player);
             }
             let dr = audio.duration;
