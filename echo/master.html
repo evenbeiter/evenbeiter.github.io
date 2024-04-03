@@ -163,7 +163,8 @@ function echo(){
     $('.echo-lrc-btn-switch').html(svgPencilSquare);
 }
 
-var audio=$("#ap")[0];      
+var audio=$("#ap")[0];
+var player = new Plyr('#player');
 if ($('#vp').is(":visible")){
     audio=$("#vp")[0];      
 }
@@ -310,7 +311,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];console.log('wrong');
             } else if ($('#ytvp').is(":visible")){
-              audio = new Plyr('#player');
+              audio = player;console.log('correct');
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
