@@ -140,9 +140,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
-<script>
-  const player = new Plyr('#player');
-</script>
 
 <script>
 
@@ -312,7 +309,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];console.log('wrong');
             } else if ($('#ytvp').is(":visible")){
-              audio=document.getElementById('player');
+              audio = new Plyr('#player');
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
