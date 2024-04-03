@@ -304,7 +304,7 @@ $(function(){
             if ($('#vp').is(":visible")){
               audio=$("#vp")[0];      
             } else if ($('#ytvp').is(":visible")){
-              audio=$('#video-stream')[0];
+              audio=$('.video-stream')[0];
             }
             let dr = audio.duration;
             while (isNaN(dr)||dr===Infinity){
