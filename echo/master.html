@@ -327,12 +327,22 @@ $(function(){
             audio.currentTime=startTime;
             audio.play();
 
-            audio.ontimeupdate = function(){
+            //audio.ontimeupdate = function(){
+            //  if (audio.currentTime > endTime){
+            //      audio.pause();
+            //      audio.currentTime=startTime;
+            //  }  
+            //}
+
+
+          audio.on('timeupdate', (event) => {
               if (audio.currentTime > endTime){
                   audio.pause();
                   audio.currentTime=startTime;
               }  
-            }
+          });
+
+          
         }
     });
 });
