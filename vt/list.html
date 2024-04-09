@@ -56,7 +56,7 @@ async function getData(pg,nxtP){
   var li=document.createElement('li');
   let preP=pg-1;
   if (preP!==0){
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+preP+'">Previous</a></li>';
+  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+preP+'">Previous</a></li>';
   document.getElementById('pagination').appendChild(li);
   } else {
   li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
@@ -74,7 +74,7 @@ async function getData(pg,nxtP){
 
   if (nxtP<pages+1){
   li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+nxtP+'">Next</a></li>';
+  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+nxtP+'">Next</a></li>';
   document.getElementById('pagination').appendChild(li);
   } else {
   li=document.createElement('li');
