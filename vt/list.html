@@ -35,7 +35,12 @@
 <script>
 
 let url=window.location.href;
-let pg=Number(url.slice(-url.length+url.lastIndexOf('=')+1));
+var pg=1;
+if (url.indexOf('=')==-1){
+  pg=1;
+} else {
+  pg=Number(url.slice(-url.length+url.lastIndexOf('=')+1));
+}
 //let nxtP=pg+1;
 
 getData(pg,pg+1);
