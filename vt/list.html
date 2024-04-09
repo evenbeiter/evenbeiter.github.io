@@ -18,11 +18,11 @@
     <div class="sticky-top bg-white">
       <nav>
         <ul id="pagination" class="pagination justify-content-center">
-            <li class="page-item"><a id="pPre" class="page-link">Previous</a></li>
+            <!-- <li class="page-item"><a id="pPre" class="page-link">Previous</a></li>
             <li class="page-item"><a id="p1" class="page-link"></a></li>
             <li class="page-item"><a id="p2" class="page-link"></a></li>
             <li class="page-item"><a id="p3" class="page-link"></a></li>
-            <li class="page-item"><a id="pNxt" class="page-link">Next</a></li>
+            <li class="page-item"><a id="pNxt" class="page-link">Next</a></li> -->
         </ul>
       </nav>
     </div>
@@ -59,41 +59,41 @@ async function getData(pg,nxtP){
   var li=document.createElement('li');
   let preP=pg-1;
 
-  document.getElementById('p1').textContent=pg;
-  document.getElementById('p2').textContent=pg+1;
-  document.getElementById('p3').textContent=pg+2;
-  document.getElementById('pPre').href='https://evenbeiter.github.io/vt/list.html?page='+pg-1;
-  document.getElementById('p1').href='https://evenbeiter.github.io/vt/list.html?page='+pg;
-  document.getElementById('p2').href='https://evenbeiter.github.io/vt/list.html?page='+pg+1;
-  document.getElementById('p3').href='https://evenbeiter.github.io/vt/list.html?page='+pg+2;
-  document.getElementById('pNxt').href='https://evenbeiter.github.io/vt/list.html?page='+pg+1;
+  // document.getElementById('p1').textContent=pg;
+  // document.getElementById('p2').textContent=pg+1;
+  // document.getElementById('p3').textContent=pg+2;
+  // document.getElementById('pPre').href='https://evenbeiter.github.io/vt/list.html?page='+pg-1;
+  // document.getElementById('p1').href='https://evenbeiter.github.io/vt/list.html?page='+pg;
+  // document.getElementById('p2').href='https://evenbeiter.github.io/vt/list.html?page='+pg+1;
+  // document.getElementById('p3').href='https://evenbeiter.github.io/vt/list.html?page='+pg+2;
+  // document.getElementById('pNxt').href='https://evenbeiter.github.io/vt/list.html?page='+pg+1;
 
-  // if (preP!==0){
-  // li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+preP+'">Previous</a></li>';
-  // document.getElementById('pagination').appendChild(li);
-  // } else {
-  // li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
-  // document.getElementById('pagination').appendChild(li);  
-  // }
+  if (preP!==0){
+  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+preP+'">Previous</a></li>';
+  document.getElementById('pagination').appendChild(li);
+  } else {
+  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
+  document.getElementById('pagination').appendChild(li);  
+  }
 
-  // let upper=4; let lower=1;
-  // if (pg+3<pages+2){upper=pg+3;lower=pg}else{upper=pages+1;lower=pages-2};
+  let upper=4; let lower=1;
+  if (pg+3<pages+2){upper=pg+3;lower=pg}else{upper=pages+1;lower=pages-2};
 
-  // for (var p=lower;p<upper;p++){
-  // li=document.createElement('li');
-  // li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+p+'">'+p+'</a></li>';
-  // document.getElementById('pagination').appendChild(li);
-  // }
+  for (var p=lower;p<upper;p++){
+  li=document.createElement('li');
+  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+p+'">'+p+'</a></li>';
+  document.getElementById('pagination').appendChild(li);
+  }
 
-  // if (nxtP<pages+1){
-  // li=document.createElement('li');
-  // li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+nxtP+'">Next</a></li>';
-  // document.getElementById('pagination').appendChild(li);
-  // } else {
-  // li=document.createElement('li');
-  // li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>';
-  // document.getElementById('pagination').appendChild(li);  
-  // }
+  if (nxtP<pages+1){
+  li=document.createElement('li');
+  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/vt/list.html?page='+nxtP+'">Next</a></li>';
+  document.getElementById('pagination').appendChild(li);
+  } else {
+  li=document.createElement('li');
+  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>';
+  document.getElementById('pagination').appendChild(li);  
+  }
 
   document.getElementById('data-list').innerHTML='';
 
