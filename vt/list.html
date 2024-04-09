@@ -89,7 +89,7 @@ async function getData(pg,nxtP){
       var tr=document.createElement('tr');
   //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
       let num=i+1;
-      tr.innerHTML='<tr><td><img src="https://thumbnail.voicetube.com/w/480/h/270/'+data[i].youtubeId+'.jpg"></td><td><a href="https://tw.voicetube.com/videos/'+data[i].id+'" target="_blank">'+data[i].title+'</a><br><button type="button" class="btn btn-secondary btn-sm">'+data[i].cefrLevel+'</button><span>'+data[i].durationText+'</span></td></tr>';
+      tr.innerHTML='<tr><td><img src="https://thumbnail.voicetube.com/w/480/h/270/'+data[i].youtubeId+'.jpg"><br><span class"bg-secondary mr-2">'+data[i].cefrLevel+'</span><span class="ml-2">'+data[i].durationText+'</span></td><td><a href="https://tw.voicetube.com/videos/'+data[i].id+'" target="_blank">'+data[i].title+'</a></td></tr>';
       document.getElementById('data-list').appendChild(tr);
   }
 }
