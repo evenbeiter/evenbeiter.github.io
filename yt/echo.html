@@ -69,7 +69,7 @@ async function getData(){
     
     url=window.location.href;
     //var url='https://evenbeiter.github.io/yt/echo.html?id=1';
-    var i=Number(url.slice(indexOf('=')+1,lastIndexOf('=')-2));
+    var i=Number(url.slice(url.indexOf('=')+1,url.lastIndexOf('=')-2));
     var filename=data[i][0];
     var name=filename.replace(/\_/g,' ');
     document.querySelector('title').textContent=name;
