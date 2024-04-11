@@ -29,12 +29,14 @@
 
 <script>
 
+var mediaSrc=url.slice(-url.length+url.lastIndexOf('=')+1);
 var player, stopPlayAt=0, stopPlayTimer;
 
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         height: '390', 
         width: '640',
+        videoId: mediaSrc,
         events: {
             onStateChange: onPlayerStateChange
         }
@@ -61,22 +63,16 @@ function onPlayerStateChange(event){
 getData();
 
 async function getData(){
-    let response=await fetch('https://evenbeiter.github.io/yt/list.json');
-    //let response=await fetch('list.json');
+    //let response=await fetch('https://evenbeiter.github.io/yt/list.json');
+    let response=await fetch('list.json');
     let data=await response.json();
     
     url=window.location.href;
-    //var url='https://evenbeiter.github.io/project/echo.html?id=1';
-    var i=Number(url.slice(-url.length+url.indexOf('=')+1));
+    //var url='https://evenbeiter.github.io/yt/echo.html?id=1';
+    var i=Number(url.slice(indexOf('=')+1,lastIndexOf('=')-2));
     var filename=data[i][0];
     var name=filename.replace(/\_/g,' ');
     document.querySelector('title').textContent=name;
-    mediaSrc=data[i][1];
-    player = new YT.Player('video-placeholder', {
-        videoId: mediaSrc
-    });
-    $('#src').text(mediaSrc);
-
     let lrcSrc='src/'+filename+'.txt';
     getLrc(lrcSrc);
 }
