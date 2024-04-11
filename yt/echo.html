@@ -125,7 +125,7 @@ $(function(){
 function s2n(a) {
     n = a.split(":");
     if ($('#echo').is(":visible")){
-        n = parseInt(n[0]) * 60 + parseFloat(n[1])+delaySec;
+        n = parseInt(n[0]) * 60 + parseFloat(n[1]);
     } else {
         n = parseInt(n[0]) * 60 + parseFloat(n[1]);
     }
