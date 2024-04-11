@@ -54,7 +54,7 @@ function onPlayerStateChange(event){
     if (event.data == YT.PlayerState.PLAYING){
         time=player.getCurrentTime();
         if (time+.4<stopPlayAt){
-            rate=player.getPlabackRate();
+            rate=player.getPlaybackRate();
             remainingTime=(stopPlayAt-time)/rate;
             stopPlayTimer=setTimeout(pauseVideo, remainingTime*1000);
         }
