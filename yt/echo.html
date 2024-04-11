@@ -38,6 +38,9 @@ function onYouTubeIframeAPIReady() {
         height: '390', 
         width: '640',
         videoId: mediaSrc,
+        playerVars:{
+            rel:0
+        },
         events: {
             onStateChange: onPlayerStateChange
         }
@@ -112,8 +115,8 @@ $(function(){
       
         $('#lines tr').css({'color':'','background-color':''});
         $(this).css({'color':'green','background-color':'#E5E4E2'});
-        let startTime=Number($(this).children(':nth-child(2)').text());console.log(startTime);
-        let endTime=Number($(this).next().children(':nth-child(2)').text());console.log(endTime);
+        let startTime=Number($(this).children(':nth-child(2)').text());
+        let endTime=Number($(this).next().children(':nth-child(2)').text());
 
         stopPlayAt=endTime;
         player.seekTo(startTime);
