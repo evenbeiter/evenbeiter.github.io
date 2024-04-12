@@ -20,10 +20,12 @@
     <textarea id="yt-transcript" class="form-control" rows="8"></textarea>
   </div>
   <button type="button" class="btn btn-secondary" onclick="getLrc()">DOWNLOAD LRC</button>
+  <button type="button" class="btn btn-secondary" onclick="copy()">COPY</button>
 </div>
   
 <script>
-function getLrc(){
+
+function getTxt(){
   var data=document.getElementById('yt-transcript').value;
   var lines= data.split('\n');
   var txt='';
@@ -36,6 +38,10 @@ function getLrc(){
       }
     }
   }
+  return txt
+}
+
+function dl(txt){
 let txtData = new Blob([txt], { type: 'data:text;charset=utf-8' });
 let txtUrl = URL.createObjectURL(txtData);
 let link = document.createElement('a');
@@ -43,6 +49,17 @@ link.href = txtUrl;
 link.target = '_blank';
 link.download = document.getElementById('filename').value+'.txt';
 link.click();
+}
+  
+function getLrc(){
+  var txt = getTxt();
+  dl(txt);
+}
+
+async function copy(){
+  var txt= getTxt();
+    const copyContent = await navigator.clipboard.writeText(text);
+    console.log('Content copied to clipboard');
 }
 </script>
 
