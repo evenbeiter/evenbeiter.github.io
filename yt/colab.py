@@ -19,7 +19,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 whisper_model = whisper.load_model("small", device=device)
 
 
-=============================
+#=============================
 
 
 def video_to_audio(video_URL, destination, final_filename):
