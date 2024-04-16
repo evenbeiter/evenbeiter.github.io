@@ -1,4 +1,6 @@
-var captionLines=window.__NUXT__.data[0].video.captionLines;
+
+let url=window.dataLayer[0]["gtm.videoUrl"];
+let captionLines=window.__NUXT__.data[0].video.captionLines;
 var startAt=0;
 var originalText='';
 var translatedText='';
