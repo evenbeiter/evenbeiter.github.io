@@ -1,0 +1,96 @@
+[00:01.28]The small town of Weßling in Bavaria has  a long history in the aerospace industry,  
+[00:06.12]so it’s fitting that it’s  where Lilium set-up shop.
+[00:10.58]Established by four university students in 2015,  
+[00:13.72]the group is now one of Europe’s  leading eVTOL companies.
+[00:17.60]Klaus Roewe is Lilium’s CEO.
+[00:20.96]We want to revolutionize aviation.
+[00:23.76]Revolutionize means make it  absolutely zero emission.
+[00:26.96]We want to make a regional plane  that has a decent transport capacity
+[00:30.96]to have a meaningful effect  on CO2 emission reduction.
+[00:33.92]And tell us a bit about Lilium's business model.
+[00:36.60]We have lots of orders already from the premium  market, but also from airline type of customers.
+[00:41.94]We will start delivering the first one to two years
+[00:44.56]into the so-called premium market.
+[00:45.44]But over time we will come out with a  six-seater version wih higher density seating,
+[00:51.28]lower operating costs per pax/kilometre and this  
+[00:53.15]is what we believe is 85%  of the market afterwards.
+[00:57.36]Lilium might be aiming to make its jet  affordable, but for now costs are high.
+[01:02.00]If you buy the premium version, it's about $9 million; the shuttle version is about $7 million.
+[01:07.80]Who will be driving, then, a Lilium jet?
+[01:09.20]It can be flown by any certified, qualified pilot.
+[01:13.24]You can start off being a helicopter  pilot or fixed-wing pilot,  
+[01:16.28]and then you will have to do a so-called  transition training into the Lilium jet,  
+[01:19.44]which takes about two weeks.  It's extremely easy to fly.
+[01:23.44]Could I do it?
+[01:24.28]You could definitively do it,  you're looking like a pilot.
+[01:29.77]That was my cue to hop onboard.
+[01:31.04]Klaus, these seats are quite comfy, interesting inside.
+[01:35.40]What's the overall vision  for the internal experience?
+[01:39.64]It will be very silent, so the internal noise level
+[01:42.12]will be like in a high-class car, not comparable with helicopters at all.
+[01:47.96]And for sure, then you can  configure the aircraft as you like.
+[01:50.56]So, you can basically  customise everything you want.
+[01:52.12]What's the charging time like?
+[01:54.88]Full recharge when you have flown the  longest mission is about 45 minutes.
+[01:58.72]So, if the battery was flat, almost?
+[01:59.48]It will never be really flat.
+[02:01.88]So, the battery when you land and  when you have basically emptied it,  
+[02:04.24]it will still have some 25 to 30% state of charge,
+[02:08.72]because you need to hold reserves.
+[02:09.24]Like when you land with a conventional aircraft, the tanks are never empty.
+[02:13.06]For more on the jet’s features and capabilities, I caught up with co-founder, Daniel Wiegard.
+[02:19.84]So here we are in our 175,000  square foot manufacturing facility.
+[02:24.00]Here we can do still dirty  work, like drilling, etcetera,
+[02:27.36]on the structure before we then later move into the final assembly line.
+[02:32.40]Right now, what is next to me here is  our MSN1, our first production aircraft.
+[02:39.04]It's the world's first electric jet airplane  that is in commercial certification.
+[02:45.96]And it also features the largest cabin in the  vertical take-off and landing eVTOL segment.
+[02:51.40]How is this different from some of  the other competitors on the market?
+[02:56.54]Most of our peers are using propellers.
+[02:59.56]These propellers have the advantage  that they're a bit simpler to design
+[03:03.60]and they need less power in take-off and landing  but they're less efficient in the cruise flight.
+[03:08.40]So, since we are focused on regional flights,  
+[03:11.16]we have picked the jet technology  because it yields longer range.
+[03:20.68]Talk to me a bit about how  these vehicles are powered.
+[03:23.64]It is a lithium-ion battery with a  high content of silicon in the anode,  
+[03:27.16]and this helps us to increase the  power and the energy capability.
+[03:31.96]How many stages of testing typically  do eVTOLs need to go through?
+[03:35.20]Well, there is a number of testing stages,  thousands of test points to be completed.
+[03:41.56]So, you are starting to test on  the very low component levels,  
+[03:44.28]such as a cell, for example, or a  unit of the engine or compressor.
+[03:49.20]And then the last level is on the full aircraft,  
+[03:52.96]where you at first have ground testing,  and then the full aircraft flight test.
+[03:57.68]In 2019, Lilium was awarded one  of the world’s most prestigious  
+[04:00.28]design accolades, the Red Dot Award.
+[04:03.36]I caught up with Alberto Caruso,  Head of Design and Brand.
+[04:07.20]Thank you for having CNBC here. What goes on here at the design studio?
+[04:11.16]This is actually the mock-up area,
+[04:12.44]so where we shape customer  experience of our product.
+[04:16.68]So, you've got here a lot of physical  models we are building up in real scale.
+[04:22.60]And we've seen a few sketches behind us.
+[04:24.76]What’s inspired the design  choice for the Lilium jet?
+[04:29.70]It's a perfect combination of the best  of both worlds from helicopter and jet.
+[04:35.88]So, it's a really unique design,  it's really something innovative.
+[04:39.24]What are some of the materials  that you're using on the jet?
+[04:42.28]The exterior is actually very high-tech materials.
+[04:45.56]So, we are using a lot of carbon  fibre to get really lightweight.
+[04:48.28]Obviously the exterior can be  customised with different liveries.
+[04:51.76]We're going to start with our branded livery,  that more or less is going to look like this.
+[04:54.48]It's a very high-tech fresh look.
+[04:57.80]My time at Lilium nearly over, I couldn’t  resist trying a fully immersive experience.
+[05:02.08]It feels pretty incredible.
+[05:04.84]I'm not gonna lie, my heart's beating quite fast.
+[05:06.32]I flew over some of London's landmarks
+[05:09.76]I'm just gonna fly towards the Shard.
+[05:11.36]Piloted in the rain.
+[05:13.92]Very realistic weather, that's for sure.
+[05:15.76]And even spotted CNBC's offices.
+[05:17.44]There's Fleet Place!
+[05:21.92]You've been in the aviation industry for three  decades or so, how has the industry evolved,  
+[05:26.40]how is it evolving and what  role is technology playing?
+[05:30.72]There was a lot of efficiency gained by the  structure, by the systems, notably by the engines,  
+[05:36.44]however you can see it's now coming to a kind of  plateau so getting another 20-30% out in terms  
+[05:42.76]of CO2 production is very very difficult, so you  have to make a leapfrog in terms of technology.
+[05:47.12]This could be hydrogen, it  could be battery, electric,  
+[05:50.96]SAF, but SAF we know is not the ideal solution.
+[05:53.48]The most radical solution is clearly  what we are doing; that's why I'm here.
