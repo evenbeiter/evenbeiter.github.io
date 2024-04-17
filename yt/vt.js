@@ -1,62 +1,56 @@
-
 javascript:(function(){
 
-const code0=`<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Media Player</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <style>.sticky-top, .fixed-bottom{background-color:#FFF}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}.h{display:none}.s{font-size:0.7rem}
-    </style>
-</head>
+  const code0=`<!doctype html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Media Player</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+      <style>.sticky-top, .fixed-bottom{background-color:#FFF}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}.h{display:none}.s{font-size:0.7rem}
+      </style>
+  </head>
+  
+  <body>
+  
+  <div id="container" class="m-2">
+      <div id="top" class="sticky-top">
+          <div id="video-placeholder"></div>
+      </div>
+      <div id="echo" class="">
+          <p id="src" class="h"></p>
+          <table class="table">
+              <tbody id="lines">`;
 
-<body>
-
-<div id="container" class="m-2">
-    <div id="top" class="sticky-top">
-        <div id="video-placeholder"></div>
-    </div>
-    <div id="echo" class="">
-        <p id="src" class="h"></p>
-        <table class="table">
-            <tbody id="lines">`;
-
-//txt
-
-const code1=`</tbody>
-        </table>
-    </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
-<script src="https://www.youtube.com/iframe_api"></script>`;
-
-let data=window.__NUXT__.data[0];
-//let title=data.video.title;
-let mediaSrc=data.video.youtubeId;
-let captionLines=data.video.captionLines;
-var startAt=0;
-var originalText='';
-var translatedText='';
-var txt='';
-var j=0;
-if (data.analytics.properties.video_translated==true){
-  for (var i=0;i<captionLines.length;i++){
-    startAt=captionLines[i].startAt;
-    originalText=captionLines[i].originalText.text;
-    translatedText=captionLines[i].translatedText.text;
-    txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText+'<br>'+translatedText + '</td></tr>';
-  }
-} else {
+  let data=window.__NUXT__.data[0];
+  let mediaSrc=data.video.youtubeId;
+  let captionLines=data.video.captionLines;
+  var startAt=0;
+  var originalText='';
+  var translatedText='';
+  var txt='';
+  var j=0;
+  if (data.analytics.properties.video_translated==true){
     for (var i=0;i<captionLines.length;i++){
-    startAt=captionLines[i].startAt;
-    originalText=captionLines[i].originalText.text;
-    txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText+ '</td></tr>';
+      startAt=captionLines[i].startAt;
+      originalText=captionLines[i].originalText.text;
+      translatedText=captionLines[i].translatedText.text;
+      txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText+'<br>'+translatedText + '</td></tr>';
+    }
+  } else {
+      for (var i=0;i<captionLines.length;i++){
+      startAt=captionLines[i].startAt;
+      originalText=captionLines[i].originalText.text;
+      txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText+ '</td></tr>';
+    }
   }
-}
 
+  const code1=`</tbody>
+  </table>
+</div>
+</div>
+<script src="https://www.youtube.com/iframe_api"></script>`;
 
 const code2=`<script>
 
@@ -68,9 +62,7 @@ function onYouTubeIframeAPIReady() {
         width: '100%',
         videoId: '`;
 
-//mediaSrc
-
-const code3=`',
+        const code3=`',
         playerVars:{
             rel:0
         },
@@ -97,19 +89,26 @@ function onPlayerStateChange(event){
     }
 }
 
-$(function(){
-  $(document).on("click", "#lines tr", function(e) {
-      console.log('clicked');
-      $('#lines tr').css({'color':'','background-color':''});
-      $(this).css({'color':'green','background-color':'#E5E4E2'});
-      let startTime=Number($(this).children(':nth-child(2)').text());
-      let endTime=Number($(this).next().children(':nth-child(2)').text());
+document.getElementById('lines').addEventListener('click', function (e) {
+  if(e.target.nodeName === 'TD') {
+      var selectedRow = e.target.parentElement;
+      if (selectedRow) {
+        var tr=document.querySelectorAll('tr');
+        for (var i=0;i<tr.length;i++){
+            tr[i].style.color='';
+            tr[i].style.backgroundColor='';
+        }
+          selectedRow.style.color='green';
+          selectedRow.style.backgroundColor='#E5E4E2';
 
-      stopPlayAt=endTime;
-      player.seekTo(startTime);
-      player.playVideo();
-      
-  });
+          let startTime=Number(e.target.parentElement.children[1].textContent);
+          let endTime=Number(e.target.parentElement.nextElementSibling.children[1].textContent);
+    
+          stopPlayAt=endTime;
+          player.seekTo(startTime);
+          player.playVideo();
+      }
+  }
 });
 
 </script>
