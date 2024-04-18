@@ -47,6 +47,8 @@ translatedText=await translate(originalText);
     }
   }
 
+txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
+
 async function translate(a){
 var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=en&tl=zh-TW&q='+a.replaceAll('%','%25');
 var res=await fetch(url);
@@ -115,7 +117,7 @@ document.getElementById('lines').addEventListener('click', function (e) {
 
           let startTime=Number(e.target.parentElement.children[1].textContent);
           let endTime=Number(e.target.parentElement.nextElementSibling.children[1].textContent);
-    
+
           stopPlayAt=endTime;
           player.seekTo(startTime);
           player.playVideo();
