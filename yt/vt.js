@@ -1,4 +1,4 @@
-javascript:(function(){
+javascript: (async()=>{
 
   const code0=`<!doctype html>
   <html lang="en">
@@ -42,9 +42,21 @@ javascript:(function(){
       for (var i=0;i<captionLines.length;i++){
       startAt=captionLines[i].startAt;
       originalText=captionLines[i].originalText.text;
-      txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText+ '</td></tr>';
+translatedText=await translate(originalText);
+      txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText+'<br>'+translatedText + '</td></tr>';
     }
   }
+
+async function translate(a){
+var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=en&tl=zh-TW&q='+a;
+var res=await fetch(url);
+var raw=await res.json();
+var ts='';
+for (var j=0;j<raw[0].length;j++){
+    ts=ts+raw[0][j][0];
+} 
+    return ts
+}
 
   const code1=`</tbody>
   </table>
