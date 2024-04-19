@@ -32,10 +32,10 @@ const tsraw=window.cuesAry;
 var ts=[];
 var txt='';
 var j=0;
-for (var i;i<en.length;i++){
+for (var i=0;i<en.length;i++){
   ts.push(tsraw[i].split(',')[0]/1000);
 }
-for (l=0;l<ts.length;l++){
+for (l=0;l<en.length;l++){
   txt += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + ts[l] +'</td><td>' + en[l]+ '<br>'+ zh[l] + '</td></tr>';
 }
 
@@ -76,6 +76,7 @@ document.getElementById('lines').addEventListener('click', function (e) {
       }
   }
 });
+document.close();
 
 </script>
 
@@ -86,5 +87,5 @@ document.getElementById('lines').addEventListener('click', function (e) {
 </html>`;
 
 win=window.open('','','');void(win.document.write(code0+txt+code1));
-document.close();
+
 })();
