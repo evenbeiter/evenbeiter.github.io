@@ -36,6 +36,7 @@ for (var i=0;i<data.length;i++){
     txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p[j].time/1000 +'</td><td>' + p[j].text + '<br>'+ r + '</td></tr>';
   }
 }
+txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
 
 async function translate(a){
   var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=en&tl=zh-TW&q='+a.replaceAll('%','%25');
