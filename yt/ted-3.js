@@ -65,8 +65,8 @@ document.getElementById('lines').addEventListener('click', function (e) {
           selectedRow.style.color='green';
           selectedRow.style.backgroundColor='#E5E4E2';
 
-          let startTime=Number(e.target.parentElement.children[1].textContent)+4;
-          let endTime=Number(e.target.parentElement.nextElementSibling.children[1].textContent)+4;
+          let startTime=Number(e.target.parentElement.children[1].textContent)+2;
+          let endTime=Number(e.target.parentElement.nextElementSibling.children[1].textContent)+2;
 
           startPlay(startTime,endTime);
       }
