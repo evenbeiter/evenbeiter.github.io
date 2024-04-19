@@ -38,7 +38,7 @@ for (var i=0;i<en.length;i++){
 for (l=0;l<en.length;l++){
   txt += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + ts[l] +'</td><td>' + en[l]+ '<br>'+ zh[l] + '</td></tr>';
 }
-
+txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
 
   const code1=`</tbody>
   </table>
