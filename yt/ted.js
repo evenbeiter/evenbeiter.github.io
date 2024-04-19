@@ -1,4 +1,4 @@
-javascript:(async()=>{
+javascript:(function(){
 
   const title=window.__NEXT_DATA__.props.pageProps.videoData.title;
   var url=JSON.parse(window.__NEXT_DATA__.props.pageProps.videoData.playerData).resources.h264[0].file;
@@ -31,23 +31,10 @@ var c=0;
 const data=window.__NEXT_DATA__.props.pageProps.transcriptData.translation.paragraphs;
 for (var i=0;i<data.length;i++){
   var p=data[i].cues;
-  for (var j=0;j<p.length;j++){
-    var r=await translate(p[j].text);
-    txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p[j].time/1000 +'</td><td>' + p[j].text + '<br>'+ r + '</td></tr>';
+  for (var j=0;j<p.length;j++){txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p[j].time/1000 +'</td><td>' + p[j].text + '</td></tr>';
   }
 }
 txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
-
-async function translate(a){
-  var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=en&tl=zh-TW&q='+a.replaceAll('%','%25');
-  var res=await fetch(url);
-  var raw=await res.json();
-  var ts='';
-  for (var j=0;j<raw[0].length;j++){
-      ts=ts+raw[0][j][0];
-  } 
-      return ts
-  }
 
   const code1=`</tbody>
   </table>
