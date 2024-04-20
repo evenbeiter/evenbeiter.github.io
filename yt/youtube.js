@@ -40,7 +40,7 @@ for (var k=0;k<raw.length;k++){
 
 for (var i=0;i<data.length;i++){
   var p=data[i].transcriptSegmentRenderer;
-  txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p.startMs/1000 +'</td><td>' + p.snippet.runs[0].text + '</td></tr>';
+  txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p.startMs/1000 +'</td><td class="tl">' + p.snippet.runs[0].text + '</td></tr>';
   }
 
 txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
