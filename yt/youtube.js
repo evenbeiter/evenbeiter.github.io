@@ -28,7 +28,15 @@ var txt='';
 var c=0;
 var url=window.location.href;
 var mediaSrc=url.slice(-url.length+url.indexOf('=')+1);
-const data=window.ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.transcriptRenderer.content.transcriptSearchPanelRenderer.body.transcriptSegmentListRenderer.initialSegments;
+var data=[];
+const raw=window.ytInitialData.engagementPanels;
+for (var k=0;k<raw.length;k++){
+    if (raw[k].engagementPanelSectionListRenderer.panelIdentifier!==undefined){
+        if (raw[k].engagementPanelSectionListRenderer.panelIdentifier=='engagement-panel-searchable-transcript'){
+          data=raw[k].engagementPanelSectionListRenderer.content.transcriptRenderer.content.transcriptSearchPanelRenderer.body.transcriptSegmentListRenderer.initialSegments;
+        }
+    }
+}
 
 for (var i=0;i<data.length;i++){
   var p=data[i].transcriptSegmentRenderer;
