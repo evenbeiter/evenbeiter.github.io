@@ -1,8 +1,5 @@
 javascript:(function(){
 
-  var url=window.location.href;
-  var mediaSrc=url.slice(-url.length+url.indexOf('=')+1);
-
   const code0=`<!doctype html>
   <html lang="en">
     <head>
@@ -26,24 +23,25 @@ javascript:(function(){
           <table class="table">
               <tbody id="lines">`;
 
-//await document.querySelector('[aria-label="Show transcript"]').click();
+
 var txt='';
 var c=0;
+var url=window.location.href;
+var mediaSrc=url.slice(-url.length+url.indexOf('=')+1);
 const data=window.ytInitialData.engagementPanels[3].engagementPanelSectionListRenderer.content.transcriptRenderer.content.transcriptSearchPanelRenderer.body.transcriptSegmentListRenderer.initialSegments;
 
 for (var i=0;i<data.length;i++){
   var p=data[i].transcriptSegmentRenderer;
   txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p.startMs/1000 +'</td><td>' + p.snippet.runs[0].text + '</td></tr>';
   }
-txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
 
 const code1=`</tbody>
   </table>
 </div>
 </div>
-<script src="https://www.youtube.com/iframe_api"></script>`;
+<script src="https://www.youtube.com/iframe_api"></script>
 
-const code2=`<script>
+<script>
 
 var player, stopPlayAt=0, stopPlayTimer;
 
@@ -51,9 +49,7 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
         height: '200', 
         width: '100%',
-        videoId: '`;
-
-        const code3=`',
+        videoId: '`+mediaSrc+`',
         playerVars:{
             rel:0
         },
@@ -110,6 +106,6 @@ document.close();
 </body>
 </html>`;
 
-win=window.open('','','');void(win.document.write(code0+txt+code1+code2+mediaSrc+code3));
+win=window.open('','','');void(win.document.write(code0+txt+code1));
 
 })();
