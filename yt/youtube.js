@@ -43,6 +43,8 @@ for (var i=0;i<data.length;i++){
   txt += '<tr><td class="s fw-lighter">' + (++c) + '</td><td class="h">' + p.startMs/1000 +'</td><td>' + p.snippet.runs[0].text + '</td></tr>';
   }
 
+txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
+
 const code1=`</tbody>
   </table>
 </div>
