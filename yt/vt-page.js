@@ -42,7 +42,7 @@ javascript:(function(){
       for (var i=0;i<captionLines.length;i++){
       startAt=captionLines[i].startAt;
       originalText=captionLines[i].originalText.text;
-      txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td>' + originalText + '</td></tr>';
+      txt=txt+'<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + startAt +'</td><td class="tl">' + originalText + '</td></tr>';
     }
   }
 
