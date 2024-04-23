@@ -16,7 +16,7 @@ const code0=`<!doctype html>
     <div id="top" class="sticky-top">
         <div id="video-placeholder"></div>
     </div>
-    <div id="echo">
+    <div id="echo" class="mx-2">
         <table class="table">
             <tbody id="lines">`;
 
@@ -58,7 +58,6 @@ const code1=`</tbody>
 var player, stopPlayAt=0, stopPlayTimer;
 function onYouTubeIframeAPIReady() {
     player = new YT.Player('video-placeholder', {
-        height: '200', 
         width: '100%',
         videoId: '`+mediaSrc+`',
         playerVars:{
