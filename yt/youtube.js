@@ -26,8 +26,8 @@ javascript:(function(){
 
 var txt='';
 var c=0;
-var url=window.location.href;
-var mediaSrc=url.slice(-url.length+url.indexOf('=')+1);
+var mediaSrc=window.ytInitialPlayerResponse.videoDetails.videoId;
+
 var data=[];
 const raw=window.ytInitialData.engagementPanels;
 for (var k=0;k<raw.length;k++){
