@@ -27,13 +27,15 @@ javascript:(async()=>{
 var txt='';
 var c=0;
 var en='';
+var ct=[];
 var mediaSrc=window.ytInitialPlayerResponse.videoDetails.videoId;
-var ct=window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.captionTracks;
-ct=ct.filter(item => item.vssId=='.en' || item.vssId=='.zh-TW' || item.vssId=='a.en');
-if(ct.find(item => item.vssId == '.en')){
-  en=ct.find(item => item.vssId == '.en').baseUrl;
-} else {
-  en=ct.find(item => item.vssId == 'a.en').baseUrl;
+if (window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.captionTracks!==undefined){
+  ct=window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.captionTracks;
+}
+if(ct.find(item=>item.vssId=='.en')){
+  en=ct.find(item=>item.vssId=='.en').baseUrl;
+} else if (ct.find(item=>item.vssId=='a.en')){
+  en=ct.find(item=>item.vssId=='a.en').baseUrl;
 }
 
 let response=await fetch(en);
