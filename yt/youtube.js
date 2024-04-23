@@ -12,12 +12,11 @@ const code0=`<!doctype html>
     </style>
 </head>
 <body>
-<div id="container" class="m-2">
+<div id="container" class="my-2 mx-auto align-content-center" style="max-width:500px">
     <div id="top" class="sticky-top">
         <div id="video-placeholder"></div>
     </div>
-    <div id="echo" class="">
-        <p id="src" class="h"></p>
+    <div id="echo">
         <table class="table">
             <tbody id="lines">`;
 
