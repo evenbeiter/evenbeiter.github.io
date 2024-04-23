@@ -16,7 +16,7 @@ const code0=`<!doctype html>
     <div id="top" class="sticky-top">
         <div id="video-placeholder"></div>
     </div>
-    <div id="echo">
+    <div id="echo" class="mx-2">
         <table class="table">
             <tbody id="lines">`;
 
