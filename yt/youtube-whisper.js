@@ -1,4 +1,4 @@
-javascript:(async()=>{
+javascript:(function(){
 
 const code0=`<!doctype html>
 <html lang="en">
@@ -26,10 +26,8 @@ var mediaSrc=window.ytInitialPlayerResponse.videoDetails.videoId;
 let lrc = prompt("Please enter LRC.");
 txt=getLrc(lrc);
 
-async function getLrc(url){
-    let response = await fetch(url);
-    let str = await response.text();
-    str=str.replace(/ \-\> \d\d\:\d\d\.\d\d\d\]  /g,']');
+function getLrc(a){
+    let str=a.replace(/ \-\> \d\d\:\d\d\.\d\d\d\]  /g,']');
     var l = str.split("\n");
     var d, e; var k='';
     var j = 0;
@@ -50,12 +48,8 @@ async function getLrc(url){
 
 function s2n(a) {
     n = a.split(":");
-    if ($('#echo').is(":visible")){
-        n = parseInt(n[0]) * 60 + parseFloat(n[1]);
-    } else {
-        n = parseInt(n[0]) * 60 + parseFloat(n[1]);
-    }
-    return n.toFixed(2);
+    n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    return n.toFixed(3);
 }
   
 txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
