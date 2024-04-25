@@ -28,16 +28,16 @@ txt=getLrc(lrc);
 
 function getLrc(a){
     let str=a.replace(/ \-\> \d\d\:\d\d\.\d\d\d\]  /g,']');
-    var l = str.split("\n");
+    var l = str.split("[");
     var d, e; var k='';
     var j = 0;
     for (var f = 0; f < l.length; f++) {
         if (l[f].trim() == "") {
             continue;
         }
-        if (/\[\d\d:\d\d\.\d\d\d\]/.test(l[f])) {
+        if (/\d\d:\d\d\.\d\d\d\]/.test(l[f])) {
             var g = l[f].indexOf("]");
-            d = l[f].substr(1, g - 1);
+            d = l[f].substr(0, g);
             e = l[f].substr(g + 1);
             var c = s2n(d);
             k += '<tr><td class="s fw-lighter">' + (++j) + '</td><td class="h">' + c +'</td><td class="tl">' + e + '</td></tr>';
