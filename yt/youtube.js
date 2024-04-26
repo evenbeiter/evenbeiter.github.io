@@ -30,6 +30,8 @@ if (window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.capt
 }
 if(ct.find(item=>item.vssId=='.en')){
   en=ct.find(item=>item.vssId=='.en').baseUrl;
+} else if (ct.find(item=>item.vssId=='.en-GB')){
+  en=ct.find(item=>item.vssId=='.en-GB').baseUrl;
 } else if (ct.find(item=>item.vssId=='a.en')){
   en=ct.find(item=>item.vssId=='a.en').baseUrl;
 }
