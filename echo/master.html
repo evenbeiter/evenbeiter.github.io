@@ -261,7 +261,7 @@ async function getLrc(url){
     loadJson2Echo(str);
   } else {
     // putlrc(str);
-    var c = str.split("\r\n");
+    var c = str.split("\n");
     loadLrc2Echo(c);
     loadTC2Lrc(c);
   }
