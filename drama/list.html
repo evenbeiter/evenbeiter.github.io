@@ -90,7 +90,8 @@ async function getPage(video,data){
   const code1=`</tbody>
     </table>
   </div>
-  </div><script>
+  </div>
+  <script>
   document.getElementById('lines').addEventListener('click', function (e) {
     if(e.target.nodeName === 'TD') {
         var selectedRow = e.target.parentElement;
@@ -112,10 +113,10 @@ async function getPage(video,data){
   audio.ontimeupdate = function(){
     if (audio.currentTime > endTime){
       audio.pause();
-                }  
-              }
-        }
-    }
+    }  
+  }
+ }
+}
   });
 </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
