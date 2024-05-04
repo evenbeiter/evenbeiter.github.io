@@ -29,7 +29,7 @@ document.getElementById('data-list').innerHTML='';
 
 for(var i=0;i<files.length;i++){
     var tr=document.createElement('tr');
-tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+video[i]+'\',\''+files[i][0]+'\');return false;\">'+files[i][0]+'</a></td></tr>';
+tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+video[i]+'\',\''+files[i][1]+'\');return false;\">'+files[i][0]+'</a></td></tr>';
       document.getElementById('data-list').appendChild(tr);
 
 }
