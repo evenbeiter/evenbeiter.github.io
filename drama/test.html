@@ -1,122 +1,96 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="screen-orientation" content="portrait">
-<meta name="x5-orientation" content="portrait">
-<title>Drama</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-<style>audio {float:right;max-width:50px;}.fixed-top{background-color:#FFF}table{margin-top:50px;}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}</style>
+
+
+
+async function getPage(video,data){
+  
+let url='https://y.yarn.co/200103_nn.mp4';
+const code0=`<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Media Player</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>.sticky-top, .fixed-bottom{background-color:#FFF}.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}.h{display:none}.s{font-size:0.7rem}video{margin-right:auto;margin-left:auto;width:100%}
+    </style>
 </head>
-
 <body>
-  <div class="p-3">
-    <div class="fixed-top">
-      <nav>
-        <ul id="pagination" class="pagination justify-content-center">
-    
-        </ul>
-      </nav>
+<div id="container" class="my-2 mx-auto align-content-center" style="max-width:500px">
+    <div id="top" class="sticky-top">
+        <video id="vp" controls preload="auto" playsinline src="`+url+`"></video>
     </div>
-    
-    <table class="table table-hover">
-      <tbody id="data-list">
-  
-      </tbody>
-    </table>
-  </div>
-  
-<script
-  src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
-  integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
-  crossorigin="anonymous">
-</script>
+    <div id="echo" class="mx-2">
+        <table class="table">
+            <tbody id="lines">`;
+
+var response=await fetch('https://raw.githubusercontent.com/wuzhiguocarter/English-Learning-Tool/master/subtitles/himym/s01/How%20I%20Met%20Your%20Mother%20-%201x07%20-%20Matchmaker.en.srt');
+var str=await response.text();
+var data=str.split('\n');
+var txt='<tr>';
+var c=1;
+for (var i=0;i<data.length-12;i++){
+if(data[i]==c){
+  txt+='<td class="s fw-lighter">' + data[i] + '</td>';
+  c=c+1;
+} else if (/\d\d\:\d\d\:/.test(data[i])){
+  txt+='<td class="h">' +s2n(data[i].slice(0,12).replace(',','.'))+'</td><td class="tl">';
+} else if (data[i]==''){}
+else {
+  txt+=data[i];
+  if (data[i+1]==''){txt+='</td></tr>'}
+} 
+
+}
+txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
+
+function s2n(a) {
+    n = a.split(":");
+    n = parseInt(n[0]) * 3600 + parseFloat(n[1])*60+parseFloat(n[2])+1.5;
+    return n.toFixed(3);
+}
+
+const code1=`</tbody>
+  </table>
+</div>
+</div>
+
 <script>
+document.getElementById('lines').addEventListener('click', function (e) {
+  if(e.target.nodeName === 'TD') {
+      var selectedRow = e.target.parentElement;
+      if (selectedRow) {
+        var tr=document.querySelectorAll('tr');
+        for (var i=0;i<tr.length;i++){
+            tr[i].style.color='';
+            tr[i].style.backgroundColor='';
+        }
+          selectedRow.style.color='green';
+          selectedRow.style.backgroundColor='#E5E4E2';
 
-let url=window.location.href;
-let id=url.match(/\?id=[\s\S]*?&page/g)[0].replace('?id=','').replace('&page','');
-let pg=Number(url.slice(-url.length+url.lastIndexOf('=')+1));
-let nxtP=pg+1;
+          let startTime=Number(e.target.parentElement.children[1].textContent);
+          let endTime=Number(e.target.parentElement.nextElementSibling.children[1].textContent);
 
-getData(id,pg);
-
-async function getData(id,pg){
-  let response=await fetch('https://evenbeiter.github.io/drama/list.json');
-  let str=await response.text();
-  let data=JSON.parse(str);
-  
-  let filename=data[id];
-  let name=filename.replace('_',':');
-  document.querySelector('title').textContent=name;
-
-  let lrcSrc='https://evenbeiter.github.io/drama/src/'+filename+'.txt';
-  getLrc(lrcSrc,pg,nxtP);
-}
-  
-async function getLrc(url,pg,nxtP){
-  response=await fetch(url);
-  str=await response.text();
-  data=JSON.parse(str);
-  let pages=Math.ceil(data.length/100);
-
-  document.getElementById('pagination').innerHTML='';
-
-  var li=document.createElement('li');
-  let preP=pg-1;
-  if (preP!==0){
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+preP+'">Previous</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  } else {
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>';
-  document.getElementById('pagination').appendChild(li);  
+let audio=document.getElementById('vp');
+audio.currentTime=startTime;
+audio.play();
+audio.ontimeupdate = function(){
+  if (audio.currentTime > endTime){
+    audio.pause();
+              }  
+            }
+      }
   }
-
-  let upper=4; let lower=1;
-  if (pg+3<pages+2){upper=pg+3;lower=pg}else{upper=pages+1;lower=pages-2};
-
-  for (var p=lower;p<upper;p++){
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+p+'">'+p+'</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  }
-
-  if (nxtP<pages+1){
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item"><a class="page-link" href="https://evenbeiter.github.io/drama/echo.html?id='+id+'&page='+nxtP+'">Next</a></li>';
-  document.getElementById('pagination').appendChild(li);
-  } else {
-  li=document.createElement('li');
-  li.innerHTML='<li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Next</a></li>';
-  document.getElementById('pagination').appendChild(li);  
-  }
-
-  document.getElementById('data-list').innerHTML='';
-
-  for(var i=0;i<pg*3;i++){
-      var tr=document.createElement('tr');
-  //   tr.classList.add('p-3','mb-1','bg-secondary','bg-gradient','text-white','fw-bold','text-uppercase');
-      let num=i+1;
-      tr.innerHTML='<tr><td>'+num+'</td><td>'+data[i][0]+'</td><td><audio controls preload="auto"><source src="'+data[i][1]+'"/></audio></td></tr>';
-      document.getElementById('data-list').appendChild(tr);
-  }
-}
-
-$(function(){
-    $(document).on("click", "table tbody tr", function(e) {
-      // $('tr').css({'color':''});
-      // $(this).css({'color':'green'});
-      $(this).children(':last-child').children()[0].play();
-    });
 });
-
+document.close();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</body>
+</html>`;
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-  </body>
-</html>
+win=window.open('','','');void(win.document.write(code0+txt+code1));
+
+};
+
