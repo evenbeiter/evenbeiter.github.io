@@ -32,7 +32,7 @@ for(var i=0;i<data.length;i++){
       if (data[i].length==1){
         tr.innerHTML='<tr><td>'+data[i][0]+'</td></tr>';
       } else {
-        tr.innerHTML='<tr><td>'+data[i][0]+'<a href="" onclick="await getPage(\''+video[i]+'\',\''+data[i][0]+'\')\"></td></tr>';
+        tr.innerHTML='<tr><td><a href="" onclick="await getPage(\''+video[i]+'\',\''+data[i][0]+'\')\">'+data[i][0]+'</a></td></tr>';
       document.getElementById('data-list').appendChild(tr);
       }
 }
