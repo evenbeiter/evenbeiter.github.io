@@ -33,7 +33,7 @@ var v=video[i]+'_nn.mp4';
 if (video[i].length>6){v=video[i]+'.mp4'};
 var delaySec=1.5;
 if (files[i].length==3){delaySec=files[i][2]};
-tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+video[i]+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
+tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
       document.getElementById('data-list').appendChild(tr);
 
 }
@@ -41,7 +41,7 @@ tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+video[i]+'\',\''+files[i]
 
   
 async function getPage(video,data,sec){
-  let url='https://y.yarn.co/'+video+'_nn.mp4';
+  let url='https://y.yarn.co/'+video;
   const code0=`<!doctype html>
   <html lang="en">
     <head>
