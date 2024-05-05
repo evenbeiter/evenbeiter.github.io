@@ -30,7 +30,7 @@ document.getElementById('data-list').innerHTML='';
 for(var i=0;i<files.length;i++){
     var tr=document.createElement('tr');
 var v=video[i].toString()+'_nn.mp4';
-if (video[i].length>6){v=video[i]+'.mp4'};
+if (video[i].toString().length>6){v=video[i]+'.mp4'};
 var delaySec=1.5;
 if (files[i].length==3){delaySec=files[i][2]};
 tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
