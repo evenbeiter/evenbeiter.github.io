@@ -34,7 +34,7 @@ if (video[i].toString().length>6){v=video[i]+'.mp4'} else {
   v=video[i]+'_nn.mp4'};
 if (files[i].length==3){delaySec=files[i][2]}else{
   delaySec=1.5};
-txt+='<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
+txt=txt+'<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
 }
 document.getElementById('data-list').innerHTML=txt;
   
