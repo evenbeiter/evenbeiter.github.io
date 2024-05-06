@@ -27,16 +27,15 @@ let files=[["1x01 - Pilot","subtitles/himym/s01/How I Met Your Mother - 1x01 - P
 
 
 var txt='';
-for(var i=0;i<files.length;i++){
 var v='';
-if (video[i].toString().length>6){v=video[i]+'.mp4'} else {
-  v=video[i]+'_nn.mp4'}
 var delaySec=1.5;
-if (files[i].length==3){delaySec=files[i][2]};
+for(var i=0;i<files.length;i++){
+if (video[i].toString().length>6){v=video[i]+'.mp4'} else {
+  v=video[i]+'_nn.mp4'};
+if (files[i].length==3){delaySec=files[i][2]}else{
+  delaySec=1.5};
 txt+='<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
 }
-
-txt=txt+'<tr class="h"><td></td><td>36000</td><td></td></tr>';
 document.getElementById('data-list').innerHTML=txt;
   
 async function getPage(video,data,sec){
