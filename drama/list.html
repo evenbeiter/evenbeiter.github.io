@@ -30,13 +30,14 @@ var txt='';
 var v='';
 var delaySec=1.5;
 for(var i=0;i<files.length;i++){
+var tr=document.createElement('tr');
 if (video[i].toString().length>6){v=video[i]+'.mp4'} else {
   v=video[i]+'_nn.mp4'};
 if (files[i].length==3){delaySec=files[i][2]}else{
   delaySec=1.5};
-txt=txt+'<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
+tr.innerHTML='<tr><td><a href="#" onclick="getPage(\''+v+'\',\''+files[i][1]+'\','+delaySec+');return false;\">'+files[i][0]+'</a></td></tr>';
+document.getElementById('data-list').appendChild(tr);
 }
-document.getElementById('data-list').innerHTML=txt;
   
 async function getPage(video,data,sec){
   let url='https://y.yarn.co/'+video;
