@@ -32,8 +32,8 @@ if (window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.capt
 if(ct.find(item=>item.vssId=='.kr')){
   kr=ct.find(item=>item.vssId=='.kr').baseUrl;
 } 
-if (ct.find(item=>item.vssId=='.en')){
-  en=ct.find(item=>item.vssId=='.en').baseUrl;
+else if (ct.find(item=>item.vssId=='a.kr')){
+  kr=ct.find(item=>item.vssId=='a.kr').baseUrl;
 }
 
 let response=await fetch(kr);
