@@ -29,11 +29,11 @@ var mediaSrc=window.ytInitialPlayerResponse.videoDetails.videoId;
 if (window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.captionTracks!==undefined){
   ct=window.ytInitialPlayerResponse.captions.playerCaptionsTracklistRenderer.captionTracks;
 }
-if(ct.find(item=>item.vssId=='.kr')){
-  kr=ct.find(item=>item.vssId=='.kr').baseUrl;
+if(ct.find(item=>item.vssId=='.ko')){
+  kr=ct.find(item=>item.vssId=='.ko').baseUrl;
 } 
-else if (ct.find(item=>item.vssId=='a.kr')){
-  kr=ct.find(item=>item.vssId=='a.kr').baseUrl;
+else if (ct.find(item=>item.vssId=='a.ko')){
+  kr=ct.find(item=>item.vssId=='a.ko').baseUrl;
 }
 
 let response=await fetch(kr);
