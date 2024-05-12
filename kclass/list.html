@@ -30,7 +30,7 @@ async function getData(){
 
     for(var i=0;i<data.length;i++){
         var tr=document.createElement('tr');
-        tr.innerHTML='<tr><td><a href="#" onclick="getPage(i);return false;\">'+data[i].title+'</a><br>'+data[i].focus+'</td></tr>';
+        tr.innerHTML='<tr><td><a href="#" onclick="getPage('+i+');return false;\">'+data[i].title+'</a><br>'+data[i].focus+'</td></tr>';
         document.getElementById('data-list').appendChild(tr);
     }
 }
