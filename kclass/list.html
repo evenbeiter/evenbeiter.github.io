@@ -21,19 +21,10 @@
 
 
 <script>
-
-var data=getData();
-getList(data);
-
+getData();
 async function getData(){
-  var response=await fetch('nb-details.json');
-  var data=await response.json();
-  return data
-}
-
-async function getList(data){
-    //let response=await fetch('nb-details.json');
-    //let data=await response.json();
+    let response=await fetch('nb-details.json');
+    let data=await response.json();
     
     document.getElementById('data-list').innerHTML='';
 
@@ -45,8 +36,8 @@ async function getList(data){
 }
 
 async function getPage(i){
-  //let response=await fetch('nb-details.json');
-  //let data=await response.json();
+  let response=await fetch('nb-details.json');
+  let data=await response.json();
   
   const code0=`<!doctype html>
   <html lang="en">
