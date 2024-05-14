@@ -18,9 +18,13 @@
 
 
 <script>
+
+var url=window.location.href;
+var level=url.slice(url.indexOf('=')-url.length+1);
+
 getData();
 async function getData(){
-    let response=await fetch('nb-details.json');
+    let response=await fetch(level+'-details.json');
     let data=await response.json();
     
     document.getElementById('data-list').innerHTML='';
@@ -33,7 +37,7 @@ async function getData(){
 }
 
 async function getPage(i){
-  let response=await fetch('nb-details.json');
+  let response=await fetch(level+'-details.json');
   let data=await response.json();
   
   const code0=`<!doctype html>
@@ -60,7 +64,7 @@ win=window.open('','','');void(win.document.write(code0+txt+code1));
 }
 
 async function go2Dialogue(i){
-  let response=await fetch('nb-details.json');
+  let response=await fetch(level+'-details.json');
   let data=await response.json();
   
   const code0=`<!doctype html>
