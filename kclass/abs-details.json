@@ -448,5 +448,456 @@
         "title": "Is There Anything You Cannot Do with Korean?",
         "url": "/lesson/absolute-beginner-25-is-there-anything-you-cannot-do-with-korean?lp=113",
         "src": "https://mdn.illops.net/koreanclass101/ABS_S1L25_062110_kclass101.mp3"
+    },
+    
+    {
+        "duration": 838,
+        "entityType": "Lesson",
+        "focus": "Learn how to ask politely for something you want ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 794,
+        "lessonNumber": 1,
+        "thumbnail": null,
+        "title": "Can You Get What You Want in Korea?",
+        "url": "/lesson/absolute-beginner-s2-1-a-brave-man-wanting-to-visit-korea?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L1_070510_kclass101.mp3"
+    },
+    {
+        "duration": 801,
+        "entityType": "Lesson",
+        "focus": "Learn how to use the two Korean words that mean \"and\"",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 812,
+        "lessonNumber": 2,
+        "thumbnail": null,
+        "title": "Tell Me about Your Hobbies in Korean",
+        "url": "/lesson/absolute-beginner-s2-7-tell-me-about-your-hobbies-in-korean?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L2_071210_kclass101.mp3"
+    },
+    {
+        "duration": 845,
+        "entityType": "Lesson",
+        "focus": "Learn how to use pure Korean numbers",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 813,
+        "lessonNumber": 3,
+        "thumbnail": null,
+        "title": "Can You Fit Me into Your Busy Korean Schedule?",
+        "url": "/lesson/absolute-beginner-s2-8-can-you-fit-me-into-your-busy-korean-schedule?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L3_071910_kclass101.mp3"
+    },
+    {
+        "duration": 951,
+        "entityType": "Lesson",
+        "focus": "Learn basic Korean greetings that you can use when meeting someone for the first time",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 800,
+        "lessonNumber": 4,
+        "thumbnail": null,
+        "title": "Let Me Introduce Myself in Korean",
+        "url": "/lesson/absolute-beginner-s2-2-let-me-introduce-myself?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L4_072610_kclass101.mp3"
+    },
+    {
+        "duration": 737,
+        "entityType": "Lesson",
+        "focus": "Learn a very important Korean grammar rule",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 801,
+        "lessonNumber": 5,
+        "thumbnail": null,
+        "title": "What's the subject in Korean",
+        "url": "/lesson/absolute-beginner-s2-3-whats-the-subject-in-korean?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L5_080210_kclass101.mp3"
+    },
+    {
+        "duration": 895,
+        "entityType": "Lesson",
+        "focus": "Learn how to mark the objects of your verbs with special Korean particles",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 804,
+        "lessonNumber": 6,
+        "thumbnail": null,
+        "title": "What's the object in Korean",
+        "url": "/lesson/absolute-beginner-s2-4-whats-the-object-in-korean?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L6_080910_kclass101.mp3"
+    },
+    {
+        "duration": 828,
+        "entityType": "Lesson",
+        "focus": "Learn how to ask questions starting with \"how is\" and \"how about\" ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 810,
+        "lessonNumber": 7,
+        "thumbnail": null,
+        "title": "How Can I Try This Korean Dish If I Can't Even Say Its Name?",
+        "url": "/lesson/absolute-beginner-s2-5-how-can-i-try-this-korean-dish-if-i-cant-even-say-its-name?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L7_081610_kclass101.mp3"
+    },
+    {
+        "duration": 720,
+        "entityType": "Lesson",
+        "focus": "Learn how to show possession using possessive-marking adjectives ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 811,
+        "lessonNumber": 8,
+        "thumbnail": null,
+        "title": "Did Someone Steal My Korean Shoes?",
+        "url": "/lesson/absolute-beginner-s2-6-did-someone-steal-my-korean-shoes?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L8_082310_kclass101.mp3"
+    },
+    {
+        "duration": 914,
+        "entityType": "Lesson",
+        "focus": "Learn how to use a Korean suffix that means \"using\" with certain tools and instruments",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 826,
+        "lessonNumber": 9,
+        "thumbnail": null,
+        "title": "By Hook or By Crook, I'll See You at the Korean Pool",
+        "url": "/lesson/absolute-beginner-s2-9-by-hook-or-by-crook-ill-see-you-at-the-korean-pool?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L9_083010_kclass101.mp3"
+    },
+    {
+        "duration": 986,
+        "entityType": "Lesson",
+        "focus": "Learn how to use Sino-Korean numbers",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 828,
+        "lessonNumber": 10,
+        "thumbnail": null,
+        "title": "Counting Down the Minutes in Korean",
+        "url": "/lesson/absolute-beginner-s2-10-counting-down-the-minutes-in-korean?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L10_090610_kclass101.mp3"
+    },
+    {
+        "duration": 1024,
+        "entityType": "Lesson",
+        "focus": "Learn the counting units used with pure Korean numbers",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 832,
+        "lessonNumber": 11,
+        "thumbnail": null,
+        "title": "You Can Count on This Lesson Boosting Your Korean Knowledge!",
+        "url": "/lesson/absolute-beginner-s2-11-you-can-count-on-this-lesson-boosting-your-korean-knowledge?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L11_091310_kclass101.mp3"
+    },
+    {
+        "duration": 1076,
+        "entityType": "Lesson",
+        "focus": "Learn how the Korean counting units you should use with certain Korean numbers",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 833,
+        "lessonNumber": 12,
+        "thumbnail": null,
+        "title": "I Can Eat As Much Korean Food As I Want!",
+        "url": "/lesson/absolute-beginner-s2-12-you-can-count-on-this-lesson-boosting-your-korean-knowledge?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L12_092010_kclass101.mp3"
+    },
+    {
+        "duration": 854,
+        "entityType": "Lesson",
+        "focus": "Learn how to say that you want to travel from one place to another place ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 839,
+        "lessonNumber": 13,
+        "thumbnail": null,
+        "title": "Why You Should Think Twice about Driving a Car in Korea",
+        "url": "/lesson/absolute-beginner-s2-13-why-you-should-think-twice-about-driving-a-car-in-korea?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L13_092710_kclass101.mp3"
+    },
+    {
+        "duration": 920,
+        "entityType": "Lesson",
+        "focus": "Learn how to say the time when something starts and ends ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 840,
+        "lessonNumber": 14,
+        "thumbnail": null,
+        "title": "How Long Can the Good Times Last in Korea?",
+        "url": "/lesson/absolute-beginner-s2-14-how-long-can-the-good-times-last-in-korea?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L14_100410_kclass101.mp3"
+    },
+    {
+        "duration": 1024,
+        "entityType": "Lesson",
+        "focus": "Learn a simple way to form a question ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 841,
+        "lessonNumber": 15,
+        "thumbnail": null,
+        "title": "Is That Enough to Break the Korean Bank?",
+        "url": "/lesson/absolute-beginner-s2-15-is-that-enough-to-break-the-korean-bank?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L15_101110_kclass101.mp3"
+    },
+    {
+        "duration": 1063,
+        "entityType": "Lesson",
+        "focus": "Learn how to use the preposition we use when talking about time ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 846,
+        "lessonNumber": 16,
+        "thumbnail": null,
+        "title": "There's No Time Like the Present in Korea!",
+        "url": "/lesson/absolute-beginner-s2-16-preposition-of-e-at-in?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L16_101810_kclass101.mp3"
+    },
+    {
+        "duration": 826,
+        "entityType": "Lesson",
+        "focus": "Learn the particle we use to mark the location of an action or to mark a point of departure ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 848,
+        "lessonNumber": 17,
+        "thumbnail": null,
+        "title": "Where to Find the Best Shopping in Korea",
+        "url": "/lesson/absolute-beginner-s2-17-where-to-find-the-best-shopping-in-korea?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L17_102510_kclass101.mp3"
+    },
+    {
+        "duration": 829,
+        "entityType": "Lesson",
+        "focus": "Learn how to express that you like or don't like something ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 849,
+        "lessonNumber": 18,
+        "thumbnail": null,
+        "title": "Of Course I Want Sundae (or Does That Mean Something Else in Korean)?",
+        "url": "/lesson/absolute-beginner-s2-18-to-like-not-to-like?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L18_110110_kclass101.mp3"
+    },
+    {
+        "duration": 1009,
+        "entityType": "Lesson",
+        "focus": "Learn the Korean phrases you'll need to know when you want to negotiate over a price in Korea",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 850,
+        "lessonNumber": 19,
+        "thumbnail": null,
+        "title": "Let's Find Out How Low You Can Go in Korean!",
+        "url": "/lesson/absolute-beginner-s2-19-can-you-take-off-the-price?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L19_110810_kclass101.mp3"
+    },
+    {
+        "duration": 910,
+        "entityType": "Lesson",
+        "focus": "Learn the lyrics of the Korean song \"The Three Bears\"",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 851,
+        "lessonNumber": 20,
+        "thumbnail": null,
+        "title": "You're Never Too Old for a Korean Children's Song",
+        "url": "/lesson/absolute-beginner-s2-20-a-fairy-tale-three-bears?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L20_111510_kclass101.mp3"
+    },
+    {
+        "duration": 863,
+        "entityType": "Lesson",
+        "focus": "Learn the Korean words that mean \"also\" and \"too\"",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 852,
+        "lessonNumber": 21,
+        "thumbnail": null,
+        "title": "I Love Learning Korean Too!",
+        "url": "/lesson/absolute-beginner-s2-21-i-love-learning-korean-too?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L21_112210_kclass101.mp3"
+    },
+    {
+        "duration": 806,
+        "entityType": "Lesson",
+        "focus": "Learn how to ask whether someone is feeling well ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 853,
+        "lessonNumber": 22,
+        "thumbnail": null,
+        "title": "Please Tell Me You're Feeling All Right in Korean",
+        "url": "/lesson/absolute-beginner-s2-22-please-tell-me-youre-feeling-all-right-in-korean?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L22_112910_kclass101.mp3"
+    },
+    {
+        "duration": 801,
+        "entityType": "Lesson",
+        "focus": "Learn how to say the body parts where you're experiencing pain ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 854,
+        "lessonNumber": 23,
+        "thumbnail": null,
+        "title": "Tell Me Where It Hurts In Korean",
+        "url": "/lesson/absolute-beginner-s2-23-tell-me-where-it-hurts-in-korean?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L23_120610_kclass101.mp3"
+    },
+    {
+        "duration": 843,
+        "entityType": "Lesson",
+        "focus": "Learn how to use \"because\" to indicate a reason or a cause ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 855,
+        "lessonNumber": 24,
+        "thumbnail": null,
+        "title": "Because Of You, I Love Korean",
+        "url": "/lesson/absolute-beginner-s2-24-learning-about-the-usage-of-because-of?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L24_121310_kclass101.mp3"
+    },
+    {
+        "duration": 890,
+        "entityType": "Lesson",
+        "focus": "Learn how to say goodbye ",
+        "images": {
+            "98": null,
+            "176": null
+        },
+        "isCompleted": false,
+        "isLocked": true,
+        "layoutType": "Audio",
+        "lessonId": 856,
+        "lessonNumber": 25,
+        "thumbnail": null,
+        "title": "Farewell For Now, But We'll See You Again Soon in Korea",
+        "url": "/lesson/absolute-beginner-s2-25-farewell-goodbye?lp=114",
+        "src": "https://mdn.illops.net/koreanclass101/ABS_S2L25_122010_kclass101.mp3"
     }
 ]
