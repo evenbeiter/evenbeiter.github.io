@@ -53,8 +53,7 @@ el.innerHTML=`
   </div>
 
   <div id="myplot"></div>
-  <script src="https://cdn.jsdelivr.net/npm/d3@7"><\/script>
-  <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6"><\/script>
+
 
 </div>
 <div id="fade" class="black_overlay"></div>
@@ -125,6 +124,17 @@ async function chart(){
   }
 }
 
+function insertAfter(newNode, existingNode) {
+  existingNode.parentNode.insertBefore(newNode, existingNode.nextSibling);
+}
+
+var script2=document.createElement('script');
+script2.src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6";
+document.body.prepend(script2);
+
+var script1=document.createElement('script');
+script1.src="https://cdn.jsdelivr.net/npm/d3@7";
+document.body.prepend(script1);
 
 const plot = Plot.rectY({length: 10000}, Plot.binX({y: "count"}, {x: Math.random})).plot();
 const div = document.querySelector("#myplot");
