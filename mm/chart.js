@@ -30,41 +30,32 @@ javascript:(async()=>{
 		</button>
 	  </div>
 
-	  <div class="m-2">
-		<div class="input-group">
-			<input id="ticker_1" type="text" value="" class="form-control" list="datalist_1" onkeyup="ac(this.value, this)">
-			<datalist id="datalist_1"></datalist>
-			<div class="btn-group">
-				<button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
-				<ul class="dropdown-menu dropdown-menu-end">
-					<li><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-						<option selected>Open this select menu</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-						</select></li>
-					<li><select class="form-select form-select-sm" aria-label=".form-select-sm example">
-						<option selected>Open this select menu</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-						</select></li>
-				</ul>
-			</div>
-		</div>
+    <div id="stat_list" class="m-2">
+    <div style="display:grid">
+      <div class="input-group">
+        <input id="ticker_1" type="text" value="" class="form-control" list="datalist_1" onkeyup="ac(this.value, this)">
+        <datalist id="datalist_1"></datalist>
+        <button id="btn_1" type="button" class="btn btn-outline-secondary" onclick="showOption(this.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+          </svg>
+        </button>
+        <button id="add_1" type="button" class="btn btn-outline-secondary" onclick="addSeries(this.id)">+</button>
+        <button id="delete_1" type="button" class="btn btn-outline-secondary" onclick="deleteSeries(this.id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+            <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+          </svg>
+        </button>
+      </div>
+      <div id="option_1" style="display:none"></div>
+    </div>
 
-		<div class="input-group"><input id="ticker_2" type="text" value="" class="form-control" list="datalist_2" onkeyup="ac(this.value, this)">
-		<datalist id="datalist_2"></datalist><select id="color_2" class="form-select"></select></div>
-		<div class="input-group"><input id="ticker_3" type="text" value="" class="form-control" list="datalist_3" onkeyup="ac(this.value, this)">
-		<datalist id="datalist_3"></datalist><select id="color_3" class="form-select"></select></div>
-		<div class="input-group"><input id="ticker_4" type="text" value="" class="form-control" list="datalist_4" onkeyup="ac(this.value, this)">
-		<datalist id="datalist_4"></datalist><select id="color_4" class="form-select"></select></div>
 	  </div>
   
 	  <div class="m-2">
 		<div id="title" class="p-2 fw-bold"></div>
-		<div id="des" class="p-2"></div>
 		<div id="container" class="m-2"></div>
+		<div id="des" class="p-2"></div>
 	  </div>
 	
 	</div>
@@ -86,9 +77,65 @@ javascript:(async()=>{
 	for (let i=0;i<idGetChart.length;i++){
 	  idGetChart[i].addEventListener('keydown', onKeyDown);
 	  function onKeyDown(e) {
-		if(e.key == 'Enter'){console.log(e.key);getMMChart()};
+		if(e.key == 'Enter'){
+      if (this.id.slice(0,1)=='c'){document.getElementById('stat_id').value=''} else {document.getElementById('chart_id').value=''}
+      getMMChart(this.id);
+    };
 	  }
-	}
+  }
+  
+  function showOption(btnid){
+    if(document.getElementById('option_'+btnid.slice(-1)).style.display=='none'){
+      var options=document.querySelectorAll('[id^=option]');
+      options.forEach((opt)=>opt.style.display='none');
+      document.getElementById('option_'+btnid.slice(-1)).style.display='block';
+    } else {
+      document.getElementById('option_'+btnid.slice(-1)).style.display='none';
+    }
+  }
+
+  function addSeries(btnid){
+    if (typeof(btnid)=='string'){var i=Number(btnid.slice(btnid.indexOf('_')+1))+1}else{var i=btnid};
+    var div=document.createElement('div');
+    div.innerHTML=`<div style="display:grid">
+    <div class="input-group">
+      <input id="ticker_`+i+`" type="text" value="" class="form-control" list="datalist_`+i+`" onkeyup="ac(this.value, this)">
+      <datalist id="datalist_`+i+`"></datalist>
+      <button id="btn_`+i+`" type="button" class="btn btn-outline-secondary" onclick="showOption(this.id)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+        </svg>
+      </button>
+      <button id="add_`+i+`" type="button" class="btn btn-outline-secondary" onclick="addSeries(this.id)">+</button>
+      <button id="delete`+i+`" type="button" class="btn btn-outline-secondary" onclick="deleteSeries(this.id)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+          <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5"/>
+        </svg>
+      </button>
+      </div>
+    <div id="option_`+i+`" style="display:none"></div>
+    </div>`;
+    document.getElementById('stat_list').appendChild(div);
+    optionPanel();
+  }
+
+  function deleteSeries(btnid){
+    document.getElementById(btnid).parentElement.parentElement.remove();
+  }
+
+  
+  function optionPanel(){
+    var option = document.querySelectorAll('[id^=option]');
+    for (let n=0;n<option.length;n++){
+      if (option[n].innerHTML.indexOf('background')==-1){
+      option[n].innerHTML='<div>';
+      for (let i=0;i<all_colors.length;i++){
+        option[n].innerHTML+='<button type="button" id="c'+(n+1)+'c'+i+'" class="btn" style="background-color:'+all_colors[i]+'" onclick="changeColor(this.id)"></button>';
+      }
+      option[n].innerHTML+='</div>';
+      }
+    }
+  }
 
 	var tags=await getList();
 
@@ -128,63 +175,253 @@ javascript:(async()=>{
 	  }
 	}
 
-	const colors=['rgba(110,141,176,1)','rgba(173,174,176,1)','rgba(55,81,114,1)','rgba(95,130,137,1)','rgba(110,178,189,1)','rgba(220,181,150,1)'];
-	const strong_colors=['rgba(192,109,89,1)'];
-	var all_colors=[];
-	all_colors.push(...colors);
-	all_colors.push(...strong_colors);
+	// const colors=['rgba(110,141,176,1)','rgba(173,174,176,1)','rgba(55,81,114,1)','rgba(95,130,137,1)','rgba(110,178,189,1)','rgba(220,181,150,1)'];
+	// const strong_colors=['rgba(192,109,89,1)','rgba(70,70,70,1)'];
+	var all_colors=[ "#6E8DB0" , "#ADAEB0" , "#375172" , "#5f8289" , "#6eb2bd" , "#dcb596" , "#c06d59" , "#67707A" , "#4CB4E7" , "#A6A97B" , "#f1e1d5" , "#9db6bb" , "#ffb837" , "#dd3d41" , "#1a8a4d" , "#464646"];
+	// all_colors.push(...colors);
+	// all_colors.push(...strong_colors);
   
-	var color_select = document.querySelectorAll('[id^=color]');
-	for (let i=0;i<all_colors.length;i++){
-		select.options[select.options.length] = new Option(all_colors[i], '0')
-	}
+
   
-	for (let i = 0; i < all_colors.length; i++) {
-	  var node = document.createElement('option');
-	  var val = document.createTextNode(all_colors[i]);
-	  node.appendChild(val);
-	  node.style.backgroundColor=all_colors[i];
-	  document.getElementById('color_'+i).appendChild(node);
-	}
-  
-	async function getMMChart(){
-	  var chart_id=document.getElementById('chart_id').value;
+  var highchart;
+
+
+	async function getMMChart(field_id){
+
+    var toClear=document.querySelectorAll('[id^=ticker]');
+    for (let i=0;i<toClear.length;i++){
+      toClear[i].value='';
+      if (i>0){toClear[i].parentElement.parentElement.remove()}
+    }
+
+	  var chart_id=document.getElementById(field_id).value;
 	  var key=document.getElementById('token').value;
-	  var response=await fetch('https://www.macromicro.me/charts/data/'+chart_id,{
+	  var response=await fetch('https://www.macromicro.me/'+field_id.slice(0,field_id.indexOf('_'))+'s/data/'+chart_id,{
 		method:'GET',
 		headers:{'Content-type':'application/json','Authorization':'Bearer '+key}
 	  });
 	  var str=await response.text();
-	  var raw=JSON.parse(str).data['c:'+chart_id]; console.log(raw);
+	  var raw=JSON.parse(str).data[field_id.slice(0,1)+':'+chart_id]; console.log(raw);
   
 	  document.getElementById('title').innerText=raw.info.name_tc;
 	  document.getElementById('des').innerText=raw.info.description_tc;
-  
-	  var series=[];
+
+    var series=[];
+
 	  for (let i=0;i<raw.series.length;i++){
+      if (i>0){addSeries(i+1)}
+
 		s=raw.info.chart_config.seriesConfigs[i];
-		document.getElementById('ticker_'+(i+1)).value='s'+s.stats[0].stat_id+' '+s.name_tc+' '+s.name_en;
-		series.push({index: s.yoppo, type: s.lineType, name: s.name_tc, color: colors[i], lineWidth: Number(s.line_width), data: raw.series[i].map((x) => [Date.parse(x[0]),parseFloat(x[1])])});
-	  }
+    document.getElementById('ticker_'+(i+1)).value='s'+s.stats[0].stat_id+' '+s.name_tc+' '+s.name_en;
+		series.push({_i: i, zIndex: zi(s.lineType), type: s.lineType, yAxis: s.yoppo, name: s.name_tc, color: all_colors[i], lineWidth: Number(s.line_width), data: raw.series[i].map((x) => [Date.parse(x[0]),parseFloat(x[1])])});
+    }
 	  console.log(series);
   
-	  Highcharts.chart("container", {
+    function zi(lineType){
+      if (lineType=='column'){return 2} else {return 10};
+    }
+
+    optionPanel();
+
+    highchart=Highcharts.setOptions({
+      credits: {
+        enabled: !1
+      },
+      langOptions: {
+        numericSymbols: ["K", "M", "B", "T", "P", "E"],
+        thousandsSep: ","
+      },
+      tooltipOptions: {
+        shared: !0
+      },
+      exporting: {
+        button: {
+          contextButton: {
+            enabled: !1
+          }
+        }
+      },
+      navigation: {
+        buttonOptions: {
+          enabled: !1
+        }
+      },
+      chart: {
+        backgroundColor: "transparent",
+        zooming: {
+          type: "xy",
+          mouseWheel: {
+            enabled: !1
+          }
+        }
+      },
+      legend: {
+        enabled: !0
+      },
+      plotOptions: {
+        series: {
+          lineWidth: 2,
+          marker: {
+            enabled: !1
+          },
+          states: {
+            inactive: {
+              enabled: !1
+            },
+            hover: {
+              enabled: !1
+            }
+          }
+        }
+      },
+      rangeSelector: {
+        enabled: !0,
+        inputEnabled: !0,
+        dropdown: "responsive",
+        inputPosition: {align:'right'},
+        buttons: [{
+          type: "month",
+          count: 6,
+          text: "6m"
+        }, {
+          type: "ytd",
+          text: "YTD"
+        }, {
+          type: "year",
+          count: 1,
+          text: "1y"
+        }, {
+          type: "year",
+          count: 3,
+          text: "3y"
+        }, {
+          type: "year",
+          count: 5,
+          text: "5y"
+        }, {
+          type: "all",
+          text: "All"
+        }],
+        buttonSpacing: 0,
+        buttonTheme: {
+          fill: "none",
+          style: {
+            color: "#666666"
+          },
+          states: {
+            select: {
+              fill: "#ADAEB0",
+              style: {
+                color: "#333333"
+              }
+            }
+          }
+        }
+      },
+      tooltip: {
+        split: !1,
+        shared: !0,
+        dateTimeLabelFormats: {
+          millisecond: "%b %e, %Y",
+          second: "%b %e, %Y",
+          minute: "%b %e, %Y",
+          hour: "%b %e, %Y",
+          day: "%b %e, %Y",
+          week: "%b %e, %Y",
+          month: "%B %Y",
+          year: "%Y"
+        }
+      },
+      xAxis: {
+        labels: {
+          style: {
+            fontSize: "11px",
+            color: "#666"
+          }
+        },
+        title: {
+          style: {
+            fontSize: "12px",
+            color: "#666"
+          }
+        },
+        lineColor: "#d8d8d8",
+        tickColor: "#d8d8d8",
+        type: "datetime",
+        minTickInterval: 864e5,
+        crosshair: !0
+      },
+      yAxis: {
+        labels: {
+          style: {
+            fontSize: "11px",
+            color: "#666"
+          }
+        },
+        title: {
+          style: {
+            fontSize: "12px",
+            color: "#666"
+          }
+        }
+      }
+    });
+
+	  highchart=Highcharts.chart("container", {
 		title: {text: raw.info.name_tc},
-		subtitle: {text: null},
+    subtitle: {text: null},
+    plotOptions: {
+      series: {
+          animation: false
+      }
+    },
 		yAxis: [{
-		  title: {
-			text: ""
-		  }
-		}],
-		xAxis: {type:'datetime'},
+		  title: {text: ""}
+    },{
+      opposite: true,
+		  title: {text: ""}
+    }
+    ],
+		xAxis: {
+      type:'datetime',
+      plotBands: [{"color":"rgba(231,231,231,0.5)","from":-2124921600000,"to":-2061849600000},{"color":"rgba(231,231,231,0.5)","from":-1977782400000,"to":-1940976000000},{"color":"rgba(231,231,231,0.5)","from":-1893456000000,"to":-1827792000000},{"color":"rgba(231,231,231,0.5)","from":-1798761600000,"to":-1735776000000},{"color":"rgba(231,231,231,0.5)","from":-1622678400000,"to":-1601769600000},{"color":"rgba(231,231,231,0.5)","from":-1577923200000,"to":-1528070400000},{"color":"rgba(231,231,231,0.5)","from":-1472860800000,"to":-1433376000000},{"color":"rgba(231,231,231,0.5)","from":-1364947200000,"to":-1328227200000},{"color":"rgba(231,231,231,0.5)","from":-1275523200000,"to":-1159920000000},{"color":"rgba(231,231,231,0.5)","from":-1031011200000,"to":-994291200000},{"color":"rgba(231,231,231,0.5)","from":-786240000000,"to":-762739200000},{"color":"rgba(231,231,231,0.5)","from":-667958400000,"to":-636508800000},{"color":"rgba(231,231,231,0.5)","from":-520819200000,"to":-494640000000},{"color":"rgba(231,231,231,0.5)","from":-391910400000,"to":-368409600000},{"color":"rgba(231,231,231,0.5)","from":-307756800000,"to":-278985600000},{"color":"rgba(231,231,231,0.5)","from":-2678400000,"to":28771200000},{"color":"rgba(231,231,231,0.5)","from":120960000000,"to":165456000000},{"color":"rgba(231,231,231,0.5)","from":315532800000,"to":333849600000},{"color":"rgba(231,231,231,0.5)","from":362793600000,"to":407462400000},{"color":"rgba(231,231,231,0.5)","from":646790400000,"to":670377600000},{"color":"rgba(231,231,231,0.5)","from":983404800000,"to":1007078400000},{"color":"rgba(231,231,231,0.5)","from":1196467200000,"to":1246320000000},{"color":"rgba(231,231,231,0.5)","from":1580515200000,"to":1588291200000}]
+    },
 		series: series
 	  })
   
 	  let logo_img=document.getElementsByTagName('image');
 	  for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[i])};
-	  let logo_text=document.getElementsByClassName('highcharts-subtitle');
-	  for (let i=0;i<logo_text.length;i++){logo_text[i].parentNode.removeChild(logo_text[i])}
+	  // let logo_text=document.getElementsByClassName('highcharts-subtitle');
+	  // for (let i=0;i<logo_text.length;i++){logo_text[i].parentNode.removeChild(logo_text[i])}
   
-	}
+  }
+
+  function changeColor(id){
+    var n=Number(id.slice(1,2));
+    var c=Number(id.slice(3));
+    highchart.series[n-1].update({color:all_colors[c]});
+    console.log(highchart.series[0].name);
+  }
+  
+  function comp(v1, v2) {
+    console.log(v1[1] - v2[1]);
+    return v1[1] - v2[1];
+  }
+
+  function reorder(arr,n){
+    var toMove = arr[arr.length-1];
+    if (n==1){
+        var newArr = [
+        toMove,
+      ...arr.slice(0,arr.length-1)
+    ]
+    } else {
+    var newArr = [
+      ...arr.slice(0, n-1),
+        toMove,
+      ...arr.slice(n-1,arr.length-1)
+    ]}
+    return newArr;
+  }
   
   })();
