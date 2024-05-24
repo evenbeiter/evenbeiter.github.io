@@ -1,4 +1,4 @@
-javascript:(async()=>{
+//javascript:(async()=>{
 
 	document.body.innerHTML='';
 	
@@ -460,4 +460,4 @@ javascript:(async()=>{
 
   }
   
-  })();
+//  })();
