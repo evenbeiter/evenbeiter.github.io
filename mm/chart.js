@@ -8,17 +8,22 @@ javascript:(async()=>{
 	el.innerHTML=`
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	
-	<div>
-	  <div class="input-group m-2">
+  <div>
+    <div style="display:grid">
+	  <div class="input-group input-group-sm m-2">
 		<button class="btn btn-secondary" type="button" onclick="getToken()">
 		  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-incognito" viewBox="0 0 16 16">
 			<path fill-rule="evenodd" d="m4.736 1.968-.892 3.269-.014.058C2.113 5.568 1 6.006 1 6.5 1 7.328 4.134 8 8 8s7-.672 7-1.5c0-.494-1.113-.932-2.83-1.205l-.014-.058-.892-3.27c-.146-.533-.698-.849-1.239-.734C9.411 1.363 8.62 1.5 8 1.5s-1.411-.136-2.025-.267c-.541-.115-1.093.2-1.239.735m.015 3.867a.25.25 0 0 1 .274-.224c.9.092 1.91.143 2.975.143a30 30 0 0 0 2.975-.143.25.25 0 0 1 .05.498c-.918.093-1.944.145-3.025.145s-2.107-.052-3.025-.145a.25.25 0 0 1-.224-.274M3.5 10h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5m-1.5.5q.001-.264.085-.5H2a.5.5 0 0 1 0-1h3.5a1.5 1.5 0 0 1 1.488 1.312 3.5 3.5 0 0 1 2.024 0A1.5 1.5 0 0 1 10.5 9H14a.5.5 0 0 1 0 1h-.085q.084.236.085.5v1a2.5 2.5 0 0 1-5 0v-.14l-.21-.07a2.5 2.5 0 0 0-1.58 0l-.21.07v.14a2.5 2.5 0 0 1-5 0zm8.5-.5h2a.5.5 0 0 1 .5.5v1a1.5 1.5 0 0 1-3 0v-1a.5.5 0 0 1 .5-.5"/>
 		  </svg>
 		</button>
-		<input id="token" type="text" value="" class="form-control">
+    <input id="token" type="text" value="" class="form-control">
+    <button class="btn btn-secondary" type="button" onclick="getCollections()">Collections</button>
 	  </div>
-  
-	  <div class="input-group m-2">
+    <div id="collection_list" style="display:none"></div>
+    <div id="collection_charts" style="display:none"><table><tbody id="collection_charts_list"></tbody></table></div>
+    </div>
+
+	  <div class="input-group input-group-sm m-2">
 		<span class="input-group-text">Chart ID</span>
 		<input id="chart_id" type="text" value="" class="form-control">
 		<span class="input-group-text">Stat ID</span>
@@ -32,7 +37,7 @@ javascript:(async()=>{
 
     <div id="stat_list" class="m-2">
     <div style="display:grid">
-      <div class="input-group">
+      <div class="input-group input-group-sm">
         <input id="ticker_1" type="text" value="" class="form-control" list="datalist_1" onkeyup="ac(this.value, this)">
         <datalist id="datalist_1"></datalist>
         <button id="btn_1" type="button" class="btn btn-outline-secondary" onclick="showOption(this.id)">
@@ -71,8 +76,49 @@ javascript:(async()=>{
 	  var str=await res.text();
 	  str=str.match(/data-stk="[\s\S]*?"/g)[0].replace('data-stk="','').replace('"','');
 	  document.getElementById('token').value=str;
-	}
-	
+  }
+  
+  async function getCollections(){
+    if (document.getElementById('collection_list').style.display=='none'){
+      var res=await fetch('https://evenbeiter.github.io/mm/collections.json');
+      var raw=await res.json();
+      var countryName=['美國','中國','歐洲','日本','亞洲','台灣','新興市場'];
+      var el=document.getElementById('collection_list');
+      el.innerHTML='';
+      countryName.forEach((c)=>{
+        el.innerHTML+='<button type="button" class="btn btn-secondary btn-sm mx-2" onclick="getCollectionCharts(this.innerText)">'+c+'</button>';
+      })
+      document.getElementById('collection_list').style.display='block';
+    } else {
+      document.getElementById('collection_list').style.display='none';
+    }
+  }
+  
+  async function getCollectionCharts(c){
+    if (document.getElementById('collection_charts').style.display=='none'){
+      var res=await fetch('https://evenbeiter.github.io/mm/collections.json');
+      var raw=await res.json();
+      var cols=raw.filter((r) => r.country==c);
+      cols.forEach((col)=>{
+        var chartList=col.charts;
+        chartList.forEach((chart)=>{
+          var tr=document.createElement('tr');
+          tr.innerHTML='<tr><td><a href="#" onclick="getMMCollectionChart('+chart[0]+');return false;\">'+chart[1]+'</a></td></tr>';
+          document.getElementById('collection_charts_list').appendChild(tr);
+        })
+      })
+      document.getElementById('collection_charts').style.display='block';
+    } else {
+    document.getElementById('collection_charts').style.display='none';
+    }
+  }
+
+  function getMMCollectionChart(id){
+    document.getElementById('collection_charts_list').style.display='none';
+    document.getElementById('chart_id').value=id;
+    getMMChart('chart_id');
+  }
+
 	var idGetChart=document.querySelectorAll('[id*="_id"]');
 	for (let i=0;i<idGetChart.length;i++){
 	  idGetChart[i].addEventListener('keydown', onKeyDown);
@@ -98,7 +144,7 @@ javascript:(async()=>{
     if (typeof(btnid)=='string'){var i=Number(btnid.slice(btnid.indexOf('_')+1))+1}else{var i=btnid};
     var div=document.createElement('div');
     div.innerHTML=`<div style="display:grid">
-    <div class="input-group">
+    <div class="input-group input-group-sm">
       <input id="ticker_`+i+`" type="text" value="" class="form-control" list="datalist_`+i+`" onkeyup="ac(this.value, this)">
       <datalist id="datalist_`+i+`"></datalist>
       <button id="btn_`+i+`" type="button" class="btn btn-outline-secondary" onclick="showOption(this.id)">
@@ -181,10 +227,20 @@ javascript:(async()=>{
 	// all_colors.push(...colors);
 	// all_colors.push(...strong_colors);
   
+  function zi(lineType){
+    if (lineType=='column'){return 2} else {return 10};
+  }
 
-  
+  function changeColor(id){
+    var n=Number(id.slice(1,2));
+    var c=Number(id.slice(3));
+    highchart.series[n-1].update({color:all_colors[c]});
+    console.log(highchart.series[0].name);
+  }
+
+
+
   var highchart;
-
 
 	async function getMMChart(field_id){
 
@@ -207,6 +263,7 @@ javascript:(async()=>{
 	  document.getElementById('des').innerText=raw.info.description_tc;
 
     var series=[];
+    var ybaselines;
 
 	  for (let i=0;i<raw.series.length;i++){
       if (i>0){addSeries(i+1)}
@@ -215,11 +272,8 @@ javascript:(async()=>{
     document.getElementById('ticker_'+(i+1)).value='s'+s.stats[0].stat_id+' '+s.name_tc+' '+s.name_en;
 		series.push({_i: i, zIndex: zi(s.lineType), type: s.lineType, yAxis: s.yoppo, name: s.name_tc, color: all_colors[i], lineWidth: Number(s.line_width), data: raw.series[i].map((x) => [Date.parse(x[0]),parseFloat(x[1])])});
     }
+    if (s.ybaselines!==''){ybaselines=s.ybaselines};
 	  console.log(series);
-  
-    function zi(lineType){
-      if (lineType=='column'){return 2} else {return 10};
-    }
 
     optionPanel();
 
@@ -299,6 +353,10 @@ javascript:(async()=>{
           count: 5,
           text: "5y"
         }, {
+          type: "year",
+          count: 10,
+          text: "10y"
+        }, {
           type: "all",
           text: "All"
         }],
@@ -347,6 +405,7 @@ javascript:(async()=>{
         },
         lineColor: "#d8d8d8",
         tickColor: "#d8d8d8",
+        tickLength: 3,
         type: "datetime",
         minTickInterval: 864e5,
         crosshair: !0
@@ -376,7 +435,14 @@ javascript:(async()=>{
       }
     },
 		yAxis: [{
-		  title: {text: ""}
+      title: {text: ""},
+      plotLines: [{
+        value: ybaselines,
+        dashStyle: 'Dash',
+        width: 2,
+        zIndex: 5,
+        color: '#999999'
+      }]
     },{
       opposite: true,
 		  title: {text: ""}
@@ -391,37 +457,7 @@ javascript:(async()=>{
   
 	  let logo_img=document.getElementsByTagName('image');
 	  for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[i])};
-	  // let logo_text=document.getElementsByClassName('highcharts-subtitle');
-	  // for (let i=0;i<logo_text.length;i++){logo_text[i].parentNode.removeChild(logo_text[i])}
-  
-  }
 
-  function changeColor(id){
-    var n=Number(id.slice(1,2));
-    var c=Number(id.slice(3));
-    highchart.series[n-1].update({color:all_colors[c]});
-    console.log(highchart.series[0].name);
-  }
-  
-  function comp(v1, v2) {
-    console.log(v1[1] - v2[1]);
-    return v1[1] - v2[1];
-  }
-
-  function reorder(arr,n){
-    var toMove = arr[arr.length-1];
-    if (n==1){
-        var newArr = [
-        toMove,
-      ...arr.slice(0,arr.length-1)
-    ]
-    } else {
-    var newArr = [
-      ...arr.slice(0, n-1),
-        toMove,
-      ...arr.slice(n-1,arr.length-1)
-    ]}
-    return newArr;
   }
   
   })();
