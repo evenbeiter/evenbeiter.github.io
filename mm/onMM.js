@@ -109,24 +109,16 @@ function enlargeFontSize(style) {
 
 oChart.update({
 	xAxis: {
-		title: {
-			style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].title.style)}
-		},
-		labels: {
-			style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].labels.style)}
-		}
+		title: {style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].title.style)}},
+		labels: {style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].labels.style)}}
 	}
 });
 
 var yAxes = oChart.yAxis;
 yAxes.forEach((yAxis, index) => {
 	yAxis.update({
-		title: {
-			style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].title.style)}
-		},
-		labels: {
-			style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].labels.style)}
-		}
+		title: {style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].title.style)}},
+		labels: {style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].labels.style)}}
 	});
 });
 
@@ -144,24 +136,16 @@ function enlargeFontSize(style) {
 
 oChart.update({
 	xAxis: {
-		title: {
-			style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].title.style)}
-		},
-		labels: {
-			style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].labels.style)}
-		}
+		title: {style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].title.style)}},
+		labels: {style: {fontSize: enlargeFontSize(oChart.options.xAxis[0].labels.style)}}
 	}
 });
 
 var yAxes = oChart.yAxis;
 yAxes.forEach((yAxis, index) => {
 	yAxis.update({
-		title: {
-			style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].title.style)}
-		},
-		labels: {
-			style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].labels.style)}
-		}
+		title: {style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].title.style)}},
+		labels: {style: {fontSize: enlargeFontSize(oChart.options.yAxis[index].labels.style)}}
 	});
 });
 	
