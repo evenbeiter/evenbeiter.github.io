@@ -6,6 +6,9 @@ for (var ad of ads){ad.remove()};
 var xbtn=document.querySelectorAll('#close-btn');
 for (var btn of xbtn){btn.remove()};
 
+var stats=document.getElementsByClassName('stat-name');
+for (let s of stats){s.innerHTML=s.innerHTML+'<span style="font-size:0.7rem;color:grey">s'+s.firstChild.href.match(/series\/[\s\S]*?\//g)[0].replace('series/','').replace('\/','')+'</span>'};
+	
 var oChart=Highcharts.charts[Highcharts.charts.length-1];
 oChart.update({
     chart: {
