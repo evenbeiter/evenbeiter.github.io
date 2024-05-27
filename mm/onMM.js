@@ -9,9 +9,14 @@ var nav=document.querySelectorAll('.navbar');
 for (var n of nav){n.remove()};
 var eba=document.querySelectorAll('.mm-eyebrow-alert');
 for (var a of eba){a.remove()};
+var pbtn=document.querySelectorAll('.btn-primary');
+for (var b of pbtn){b.style.backgroundColor='grey';b.style.border='grey'};
 
 var stats=document.getElementsByClassName('stat-name');
-for (let s of stats){s.innerHTML=s.innerHTML+'<span style="font-size:0.7rem;color:grey"> s'+s.firstChild.href.match(/series\/[\s\S]*?\//g)[0].replace('series/','').replace('\/','')+'</span>'};
+for (let s of stats){
+	if (s.firstChild.href!==undefined){
+		var stat_id=' s'+s.firstChild.href.match(/series\/[\s\S]*?\//g)[0].replace('series/','').replace('\/','')} else {var stat_id=''};
+	s.innerHTML=s.innerHTML+'<span style="font-size:0.7rem;color:grey">'+stat_id+'</span>'};
 	
 var oChart=Highcharts.charts[Highcharts.charts.length-1];
 oChart.update({
