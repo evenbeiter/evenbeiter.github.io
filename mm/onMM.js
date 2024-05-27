@@ -5,6 +5,10 @@ var ads=document.getElementsByClassName('ad');
 for (var ad of ads){ad.remove()};
 var xbtn=document.querySelectorAll('#close-btn');
 for (var btn of xbtn){btn.remove()};
+var nav=document.querySelectorAll('.navbar');
+for (var n of nav){n.remove()};
+var eba=document.querySelectorAll('.mm-eyebrow-alert');
+for (var a of eba){a.remove()};
 
 var stats=document.getElementsByClassName('stat-name');
 for (let s of stats){s.innerHTML=s.innerHTML+'<span style="font-size:0.7rem;color:grey"> s'+s.firstChild.href.match(/series\/[\s\S]*?\//g)[0].replace('series/','').replace('\/','')+'</span>'};
