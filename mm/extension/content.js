@@ -131,10 +131,20 @@ function reduceAxisFontSize() {
   changeFontSize(false);
 }
 
-// Execute addBtn() after the page is fully loaded
-if (window.location.href.match(/:\/\/.*\.macromicro\.me\//)) {
-  window.addEventListener('load', () => {
+function checkHighchartsAndAddBtn() {
+  if (typeof Highcharts !== 'undefined' && Highcharts.charts.length > 0) {
     addBtn();
+    observer.disconnect(); // Stop observing once Highcharts is available
+  }
+}
+
+const observer = new MutationObserver(checkHighchartsAndAddBtn);
+
+// Execute addBtn() after the page is fully loaded and Highcharts is available
+if (window.location.href.match(/:\/\/.*\.macromicro\.com\//)) {
+  window.addEventListener('load', () => {
+    observer.observe(document, { childList: true, subtree: true });
+    checkHighchartsAndAddBtn(); // Initial check in case Highcharts is already loaded
   });
 }
 
