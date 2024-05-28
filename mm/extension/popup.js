@@ -1,23 +1,20 @@
-document.getElementById('btnAdd').addEventListener('click', () => {
-  chrome.tabs.executeScript({
-    code: 'addBtn();'
+document.addEventListener('DOMContentLoaded', function () {
+  document.getElementById('btnAdd').addEventListener('click', () => {
+    sendMessageToContentScript({ action: 'addBtn' });
   });
-});
+  document.getElementById('btnChangeColor').addEventListener('click', () => {
+    sendMessageToContentScript({ action: 'changeColor' });
+  });
+  document.getElementById('btnEnlargeFont').addEventListener('click', () => {
+    sendMessageToContentScript({ action: 'enlargeAxisFontSize' });
+  });
+  document.getElementById('btnReduceFont').addEventListener('click', () => {
+    sendMessageToContentScript({ action: 'reduceAxisFontSize' });
+  });
 
-document.getElementById('btnChangeColor').addEventListener('click', () => {
-  chrome.tabs.executeScript({
-    code: 'changeColor();'
-  });
-});
-
-document.getElementById('btnEnlargeFont').addEventListener('click', () => {
-  chrome.tabs.executeScript({
-    code: 'enlargeAxisFontSize();'
-  });
-});
-
-document.getElementById('btnReduceFont').addEventListener('click', () => {
-  chrome.tabs.executeScript({
-    code: 'reduceAxisFontSize();'
-  });
+  function sendMessageToContentScript(message) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      chrome.runtime.sendMessage({ action: message.action, tabId: tabs[0].id });
+    });
+  }
 });
