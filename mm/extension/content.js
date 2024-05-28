@@ -131,9 +131,11 @@ function reduceAxisFontSize() {
   changeFontSize(false);
 }
 
-// Inject initial function call if on the specified site
+// Execute addBtn() after the page is fully loaded
 if (window.location.href.match(/:\/\/.*\.macromicro\.me\//)) {
-  addBtn();
+  window.addEventListener('load', () => {
+    addBtn();
+  });
 }
 
 // Listen for messages from the popup
