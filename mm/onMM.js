@@ -14,6 +14,9 @@ for (var a of eba){a.remove()};
 var pbtn=document.querySelectorAll('.btn-primary');
 for (var b of pbtn){b.style.backgroundColor='grey';b.style.border='grey'};
 
+var spans=document.querySelectorAll('span');
+spans.forEach(s=>{if (s.style.fontSize==='0.7rem'){s.remove()}});
+
 var stats=document.getElementsByClassName('stat-name');
 for (let s of stats){
 	if (s.firstChild.href!==undefined){
