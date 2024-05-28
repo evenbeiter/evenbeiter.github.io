@@ -132,7 +132,7 @@ function reduceAxisFontSize() {
 }
 
 // Inject initial function call if on the specified site
-if (window.location.href.match(/:\/\/.*\.macromicro\.me\//)) {
+if (window.location.href.match(/:\/\/.*\.macromicro\.com\//)) {
   addBtn();
 }
 
