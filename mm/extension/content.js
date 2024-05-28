@@ -1,6 +1,8 @@
 function addBtn(){
 var walls=document.getElementsByClassName('wall');
 for (var wall of walls){wall.remove()};
+var alt=document.querySelectorAll('.alertify');
+for (var a of alt){a.remove()};
 var ads=document.getElementsByClassName('ad');
 for (var ad of ads){ad.remove()};
 var xbtn=document.querySelectorAll('#close-btn');
