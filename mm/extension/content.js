@@ -2,6 +2,7 @@ function addBtn() {
   const elementsToRemove = [
     ...document.getElementsByClassName('wall'),
     ...document.getElementsByClassName('ad'),
+    ...document.getElementsByClassName('alertify'),
     ...document.querySelectorAll('#close-btn'),
     ...document.querySelectorAll('.navbar'),
     ...document.querySelectorAll('.mm-eyebrow-alert')
