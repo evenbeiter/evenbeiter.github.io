@@ -5,7 +5,7 @@
   "description": "Enhance MacroMicro website by adding buttons for various functionalities.",
   "permissions": [
     "activeTab",
-    "https://*.macromicro.com/*"
+    "https://*.macromicro.me/*"
   ],
   "background": {
     "scripts": ["background.js"],
@@ -17,7 +17,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.macromicro.com/*"],
+      "matches": ["*://*.macromicro.me/*"],
       "js": ["content.js"],
       "run_at": "document_idle"
     }
