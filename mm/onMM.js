@@ -1,4 +1,9 @@
 javascript:(()=>{
+var ss=document.querySelectorAll('script');
+for (let s of ss){
+  if (s.src=='https://www.googletagmanager.com/gtag/js?id=G-4CS94JJY2M'){s.remove()};
+  if (s.innerHTML.indexOf('下次再說')!==-1){s.remove()};
+}
 var walls=document.getElementsByClassName('wall');
 for (var wall of walls){wall.remove()};
 var alt=document.querySelectorAll('.alertify');
