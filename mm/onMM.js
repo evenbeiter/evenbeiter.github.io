@@ -4,18 +4,20 @@ for (let s of ss){
   if (s.src=='https://www.googletagmanager.com/gtag/js?id=G-4CS94JJY2M'){s.remove()};
   if (s.innerHTML.indexOf('下次再說')!==-1){s.remove()};
 }
-var walls=document.getElementsByClassName('wall');
-for (var wall of walls){wall.remove()};
-var alt=document.querySelectorAll('.alertify');
-for (var a of alt){a.remove()};
-var ads=document.getElementsByClassName('ad');
-for (var ad of ads){ad.remove()};
-var xbtn=document.querySelectorAll('#close-btn');
-for (var btn of xbtn){btn.remove()};
-var nav=document.querySelectorAll('.navbar');
-for (var n of nav){n.remove()};
-var eba=document.querySelectorAll('.mm-eyebrow-alert');
-for (var a of eba){a.remove()};
+
+const el2Remove = [
+...document.querySelectorAll('.wall'),
+...document.querySelectorAll('.ad'),
+...document.querySelectorAll('.alertify'),
+...document.querySelectorAll('#close-btn'),
+...document.querySelectorAll('.navbar'),
+...document.querySelectorAll('.mm-eyebrow-alert')
+];
+
+for (const el of el2Remove) {
+el.remove();
+}
+
 var pbtn=document.querySelectorAll('.btn-primary');
 for (var b of pbtn){b.style.backgroundColor='grey';b.style.border='grey'};
 
@@ -28,7 +30,9 @@ for (let s of stats){
 		var stat_id=' s'+s.firstChild.href.match(/series\/[\s\S]*?\//g)[0].replace('series/','').replace('\/','')} else {var stat_id=''};
 	s.innerHTML=s.innerHTML+'<span style="font-size:0.7rem;color:grey">'+stat_id+'</span>'};
 	
-var oChart=Highcharts.charts[Highcharts.charts.length-1];
+var oCharts=Highcharts.charts;
+for (let oChart of oCharts){
+	if (oChart !== undefined){
 oChart.update({
     chart: {
         animation: false
@@ -39,68 +43,39 @@ oChart.update({
         inputEnabled: !0,
         dropdown: "responsive",
         inputPosition: {align:'right'},
-        buttons: [{
-          type: "month",
-          count: 1,
-          text: "1m"
-        }, {
-          type: "month",
-          count: 3,
-          text: "3m"
-        }, {
-          type: "month",
-          count: 6,
-          text: "6m"
-        }, {
-          type: "ytd",
-          text: "YTD"
-        }, {
-          type: "year",
-          count: 1,
-          text: "1y"
-        }, {
-          type: "year",
-          count: 3,
-          text: "3y"
-        }, {
-          type: "year",
-          count: 5,
-          text: "5y"
-        }, {
-          type: "year",
-          count: 10,
-          text: "10y"
-        }, {
-          type: "year",
-          count: 20,
-          text: "20y"
-        }, {
-          type: "all",
-          text: "All"
-        }],
+        buttons: [
+          {type: "month",count: 1,text: "1m"}, 
+          {type: "month",count: 3,text: "3m"}, 
+          {type: "month",count: 6,text: "6m"}, 
+          {type: "ytd",text: "YTD"}, 
+          {type: "year",count: 1,text: "1y"}, 
+          {type: "year",count: 3,text: "3y"}, 
+          {type: "year",count: 5,text: "5y"}, 
+          {type: "year",count: 10,text: "10y"}, 
+          {type: "year",count: 20,text: "20y"}, 
+          {type: "all",text: "All"}
+        ],
         selected: 9,
         buttonSpacing: 0,
         buttonTheme: {
           fill: "none",
-          style: {
-            color: "#666666"
-          },
+          style: {color: "#666666"},
           states: {
             select: {
               fill: "#ADAEB0",
-              style: {
-                color: "#333333"
-              }
+              style: {color: "#333333"}
             }
           }
         }
 	  },
-
     xAxis: {tickLength: 3}
-});
-let logo_img=document.getElementsByTagName('image');
+})
+}};
+let logo_img=document.querySelectorAll('image');
 for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[i])};
 })();
+
+
 
 javascript:(()=>{
 var walls=document.getElementsByClassName('wall');
