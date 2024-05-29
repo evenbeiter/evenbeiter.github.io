@@ -141,7 +141,7 @@ function checkHighchartsAndAddBtn() {
 const observer = new MutationObserver(checkHighchartsAndAddBtn);
 
 // Execute addBtn() after the page is fully loaded and Highcharts is available
-if (window.location.href.match(/:\/\/.*\.macromicro\.com\//)) {
+if (window.location.href.match(/:\/\/.*\.macromicro\.me\//)) {
   window.addEventListener('load', () => {
     observer.observe(document, { childList: true, subtree: true });
     checkHighchartsAndAddBtn(); // Initial check in case Highcharts is already loaded
