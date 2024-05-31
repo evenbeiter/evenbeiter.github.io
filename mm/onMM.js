@@ -86,12 +86,13 @@ var xbtn=document.querySelectorAll('#close-btn');
 for (var btn of xbtn){btn.remove()};
 
 var all_colors=[ "#6E8DB0" , "#ADAEB0" , "#375172" , "#5f8289" , "#6eb2bd" , "#dcb596" , "#c06d59" , "#67707A" , "#4CB4E7" , "#A6A97B" , "#f1e1d5" , "#9db6bb" , "#ffb837" , "#dd3d41" , "#1a8a4d" , "#464646"];
-var oChart=Highcharts.charts[Highcharts.charts.length-1];
+var highcharts=Highcharts.charts;
+for (let oChart of highcharts){
 for (var n=0;n<oChart.series.length;n++){
 	oChart.series[n].update({
 		color: all_colors[n]
 	});
-}
+}}
 })();
 
 
