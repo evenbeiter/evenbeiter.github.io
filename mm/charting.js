@@ -1,3 +1,23 @@
+res=await fetch('https://evenbeiter.github.io/mm/collections.json');
+raw=await res.json();
+var countryName=['美國','中國','歐洲','日本','亞洲','台灣','新興市場'];
+var el=document.getElementById('container');
+el.innerHTML='';
+countryName.forEach((c)=>{
+  el.innerHTML+='<button type="button" class="btn btn-outline-secondary btn-sm mx-1" onclick="getCollectionCharts(this.innerText)">'+c+'</button>';
+})
+el.innerHTML+='<br>';
+
+function getCollectionCharts(){
+  
+}
+
+
+
+
+
+
+
 
 javascript:(async()=>{
 
