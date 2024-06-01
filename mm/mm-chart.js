@@ -12,13 +12,23 @@ var el = document.createElement('div');
 document.body.appendChild(el);
 el.outerHTML=`
 <style>p{margin-bottom:0 !important}p a{color:grey;text-decoration:none}.fs-7{font-size:0.9rem}.fs-8{font-size:0.7rem;}.g{color:grey;}.te{text-align:right}</style>
+<div id="nav" class="sticky-top bg-white p-2"></div>
 <div id="container" class="my-2 mx-auto" style="max-width:1200px">
 
 </div>
 <script>document.close()</script>
 `;
 
-var ids=[444,2,666];
+res=await fetch('https://evenbeiter.github.io/mm/collections.json');
+var ids=await res.json();
+var cats=[];
+for (let id of ids){cats.push(id.cat)};
+var nav=document.getElementById('nav');
+nav.innerHTML='';
+for (var i=0;i<cats.length;i++){
+  nav.innerHTML+=`<button type="button" id="btn_${i+1}" class="btn btn-outline-secondary btn-sm mx-1" onclick="getCollectionCharts(${i})">${cats[i]}</button>`;
+}
+
 var highchart;
 
 highchart=Highcharts.setOptions({
@@ -123,7 +133,11 @@ highchart=Highcharts.setOptions({
   }
 });
 
-for (let id of ids){
+getCollectionCharts(0);
+  
+async function getCollectionCharts(i){
+  document.getElementById('container').innerHTML='';
+for (let id of ids[i].c){
   var div=document.createElement('div');
   document.getElementById('container').appendChild(div);
   div.innerHTML=`
@@ -131,17 +145,18 @@ for (let id of ids){
   <div class="row mt-2">
   <div id="chart_${id}" class="col-9"></div>
   <div id="info_${id}" style="height:600px" class="col-3 overflow-auto bg-body-tertiary p-2 fs-7"><div id="stats_${id}"></div><div id="des_${id}"></div></div>
-  </div><br>
+  </div>
   `;
-
-  var response=await fetch('https://www.macromicro.me/charts/data/'+id,{
+  var type, suf;
+  if (id.slice(0,1)=='s'){type='stats'}else{type='charts'};
+  var response=await fetch('https://www.macromicro.me/'+type+'/data/'+id.slice(1),{
   method:'GET',
   headers:{'Content-type':'application/json','Authorization':'Bearer '+key}
   });
   var str=await response.text();
-  var raw=JSON.parse(str).data['c:'+id]; console.log(raw);
+  var raw=JSON.parse(str).data[`${id.slice(0,1)}:${id.slice(1)}`]; console.log(raw);
   
-  document.getElementById('title_'+id).innerHTML=`<p>${raw.info.name_tc} <a href="https://www.macromicro.me/charts/${id}/${raw.info.slug}">c${id}</a></p>`;
+  document.getElementById('title_'+id).innerHTML=`<p>${raw.info.name_tc} <a href="https://www.macromicro.me/${type}/${id.slice(1)}/${raw.info.slug}">${id}</a></p>`;
   document.getElementById('des_'+id).innerText=raw.info.description_tc;
 
   var series=[];
@@ -153,8 +168,8 @@ for (let id of ids){
   document.getElementById('stats_'+id).innerHTML+=`
   <p>${s.name_tc}<a href="https://www.macromicro.me/series/${s.stats[0].stat_id}"> s${s.stats[0].stat_id}</a></p>
   <p class="fs-8 g">${raw.series[i].slice(-1)[0][0]}</p>
-  <p class="fs-7 te">最新：${raw.series[i].slice(-1)[0][1]}</p>
-  <p class="fs-7 te g">前值：${raw.series[i].slice(-2)[0][1]}</p><br>
+  <p class="fs-7 te">最新：${formatNumber(Number(raw.series[i].slice(-1)[0][1]))}</p>
+  <p class="fs-7 te g">前值：${formatNumber(Number(raw.series[i].slice(-2)[0][1]))}</p><hr>
   `;
 
   series.push({_i: i, zIndex: zi(s.lineType), type: s.lineType, yAxis: s.yoppo, name: s.name_tc, color: s.color, lineWidth: Number(s.line_width), data: raw.series[i].map((x) => [Date.parse(x[0]),parseFloat(x[1])])});
@@ -186,12 +201,29 @@ for (let id of ids){
     series: series
     });
   
-}
-
 let logo_img=document.querySelectorAll('image');
 for (let img of logo_img){img.parentNode.removeChild(img)};
+}
+}
 
 function zi(lineType){
   if (lineType=='column'){return 2} else {return 10};
 }
+
+function formatNumber(number) {
+  if (!isFinite(number)) {
+      return number.toString();
+  }
+  let numberString = number.toString();
+  let [integerPart, decimalPart] = numberString.split('.');
+  integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+  if (decimalPart) {
+    if (decimalPart.length > 3) {
+        decimalPart = decimalPart.slice(0, 3);
+    }
+  }
+  return decimalPart ? `${integerPart}.${decimalPart}` : integerPart;
+}
+
 })();
