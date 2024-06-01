@@ -13,7 +13,11 @@ function getCollectionCharts(){
 }
 
 
-
+var ids=[];
+for (let chart of charts){
+    ids.push('c'+chart.id)
+}
+console.log(JSON.stringify(ids))
 
 
 
