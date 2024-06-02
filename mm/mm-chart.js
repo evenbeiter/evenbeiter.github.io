@@ -11,14 +11,19 @@ link.outerHTML='<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/cs
 var el = document.createElement('div');
 document.body.appendChild(el);
 el.outerHTML=`
-<style>p{margin-bottom:0 !important}p a{color:grey;text-decoration:none}.fs-7{font-size:0.9rem}.fs-8{font-size:0.7rem;}.g{color:grey;}.te{text-align:right}</style>
-<div id="nav" class="sticky-top bg-white p-2"></div>
-<div id="container" class="my-2 mx-auto" style="max-width:1200px">
-
+<style>#nav{position:fixed;top:0;width:100%;height:85px;z-index:1030}p{margin-bottom:0 !important}p a{color:grey;text-decoration:none}#side a{color:#333333;font-weight:normal;text-decoration:none}.fs-7{font-size:0.9rem}.fs-8{font-size:0.7rem;}.g{color:grey;}.te{text-align:right}</style>
+<div id="nav" class="bg-white p-2 overflow-auto"></div>
+<div class="row mx-2" style="margin-top:85px;display:flex;flex-wrap:nowrap;height:calc(100vh - 85px)">
+<div id="side" class="col-3 py-4 px-1 overflow-auto" style="height:100%"></div>
+<div id="container" class="col-9 my-2 overflow-auto"></div>
 </div>
 <script>document.close()</script>
 `;
 
+   
+  
+//document.getElementById('side').style.height=(window.innerHeight-85)+'px';
+  
 res=await fetch('https://evenbeiter.github.io/mm/collections.json');
 var ids=await res.json();
 var cats=[];
@@ -26,7 +31,7 @@ for (let id of ids){cats.push(id.cat)};
 var nav=document.getElementById('nav');
 nav.innerHTML='';
 for (var i=0;i<cats.length;i++){
-  nav.innerHTML+=`<button type="button" id="btn_${i+1}" class="btn btn-outline-secondary btn-sm mx-1" onclick="getCollectionCharts(${i})">${cats[i]}</button>`;
+  nav.innerHTML+=`<button type="button" id="btn_${i+1}" class="btn btn-outline-secondary btn-sm m-1" onclick="getCollectionCharts(${i})">${cats[i]}</button>`;
 }
 
 var highchart;
@@ -136,17 +141,19 @@ highchart=Highcharts.setOptions({
 getCollectionCharts(0);
   
 async function getCollectionCharts(i){
+  document.getElementById('side').innerHTML='';
   document.getElementById('container').innerHTML='';
 for (let id of ids[i].c){
   var div=document.createElement('div');
   document.getElementById('container').appendChild(div);
   div.innerHTML=`
   <div id="title_${id}" class="bg-secondary-subtle fw-bold p-3"></div>
-  <div class="row mt-2">
+  <div class="row p-2">
   <div id="chart_${id}" class="col-9"></div>
   <div id="info_${id}" style="height:600px" class="col-3 overflow-auto bg-body-tertiary p-2 fs-7"><div id="stats_${id}"></div><div id="des_${id}"></div></div>
   </div>
   `;
+
   var type, suf;
   if (id.slice(0,1)=='s'){type='stats'}else{type='charts'};
   var response=await fetch('https://www.macromicro.me/'+type+'/data/'+id.slice(1),{
@@ -156,9 +163,13 @@ for (let id of ids[i].c){
   var str=await response.text();
   var raw=JSON.parse(str).data[`${id.slice(0,1)}:${id.slice(1)}`]; console.log(raw);
   
-  document.getElementById('title_'+id).innerHTML=`<p>${raw.info.name_tc} <a href="https://www.macromicro.me/${type}/${id.slice(1)}/${raw.info.slug}">${id}</a></p>`;
+  document.getElementById('title_'+id).innerHTML=`<p>${raw.info.name_tc} <a href="https://www.macromicro.me/${type}/${id.slice(1)}/${raw.info.slug}" target="_blank">${id}</a></p>`;
   document.getElementById('des_'+id).innerText=raw.info.description_tc;
+  
+  document.getElementById('side').innerHTML+=`<a href="#title_${id}">${raw.info.name_tc}</a><hr>`;
 
+  var cType='';
+  var t=raw.info.type; if (t=='1'){cType='line'}else if (t=='2'){cType='bar'};
   var series=[];
   var ybaselines;
 
@@ -178,6 +189,7 @@ for (let id of ids[i].c){
   console.log(series);
 
   highchart=Highcharts.chart("chart_"+id, {
+    type: cType,
     title: {text: raw.info.name_tc},
     subtitle: {text: null},
     yAxis: [{
