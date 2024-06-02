@@ -19,10 +19,6 @@ el.outerHTML=`
 </div>
 <script>document.close()</script>
 `;
-
-   
-  
-//document.getElementById('side').style.height=(window.innerHeight-85)+'px';
   
 res=await fetch('https://evenbeiter.github.io/mm/collections.json');
 var ids=await res.json();
