@@ -2,11 +2,15 @@
 ///////////////////////
 // GET COLLECTION JSON
 ///////////////////////
+
+javascript:(()=>{
 var ids=[];
 for (let chart of charts){
     ids.push('c'+chart.id)
 }
-console.log(`{"cat":"${collection.name}","c":${JSON.stringify(ids)}},`)
+console.log(`{"cat":"${collection.name}","c":${JSON.stringify(ids)}},`);
+alert(`{"cat":"${collection.name}","c":${JSON.stringify(ids)}},`)
+})();
 
 ///////////////////////
 
