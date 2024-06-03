@@ -1,3 +1,15 @@
+
+///////////////////////
+// GET COLLECTION JSON
+///////////////////////
+var ids=[];
+for (let chart of charts){
+    ids.push('c'+chart.id)
+}
+console.log(`{"cat":"${collection.name}","c":${JSON.stringify(ids)}},`)
+
+///////////////////////
+
 res=await fetch('https://evenbeiter.github.io/mm/collections.json');
 raw=await res.json();
 var countryName=['美國','中國','歐洲','日本','亞洲','台灣','新興市場'];
@@ -13,11 +25,6 @@ function getCollectionCharts(){
 }
 
 
-var ids=[];
-for (let chart of charts){
-    ids.push('c'+chart.id)
-}
-console.log(JSON.stringify(ids))
 
 
 
