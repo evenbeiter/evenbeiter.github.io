@@ -33,6 +33,7 @@ for (let s of stats){
 var oCharts=Highcharts.charts;
 for (let oChart of oCharts){
 	if (oChart !== undefined){
+oChart.setSize(948,460);
 oChart.update({
     chart: {
         animation: false
@@ -68,7 +69,9 @@ oChart.update({
           }
         }
 	  },
-    xAxis: {tickLength: 3}
+    xAxis: {tickLength: 3, title:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}, labels:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}},
+    yAxis: {title:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}, labels:{fontFamily:"Arial Narrow, sans-serif", style:{fontSize:"13px"}}},
+    legend: {enabled:!1}
 })
 }};
 let logo_img=document.querySelectorAll('image');
