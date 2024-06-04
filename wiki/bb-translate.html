@@ -16,20 +16,21 @@
     <textarea id="bb-transcript" class="form-control" rows="8"></textarea>
   </div>
   <button type="button" class="btn btn-secondary" onclick="getTranslate()">TRANSLATE</button>
+  
+  <div id="output" class="m-3"></div>  
 </div>
   
-<div id="output" class="m-3">
-</div>
+
   
 <script>
 
-function getTranslate(){
+async function getTranslate(){
   document.getElementById('output').innerHTML='';
   var data=document.getElementById('bb-transcript').value;
   var lines= data.split('\n');
   for (let line of lines){
-    if (line!==''){
-      document.getElementById('output').innerHTML+=`<p>${line}<br>${translate(line)}</p>`;
+    if (line!=='' && /\d\d:\d\d/.test(line)==false){
+      document.getElementById('output').innerHTML+=`<p>${line}<br>${await translate(line)}</p>`;
     }
   }
 }
