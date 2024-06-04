@@ -29,7 +29,9 @@ async function getTranslate(){
   var data=document.getElementById('bb-transcript').value;
   var lines= data.split('\n');
   for (let line of lines){
-    if (line!=='' && /\d\d:\d\d/.test(line)==false){
+    if (/\d\d:\d\d/.test(line)==false){
+      document.getElementById('output').innerHTML+=`<p>${line}</p>`;
+    } else if (line!==''){    
       document.getElementById('output').innerHTML+=`<p>${line}<br>${await translate(line)}</p>`;
     }
   }
