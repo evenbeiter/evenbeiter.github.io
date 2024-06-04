@@ -14,8 +14,8 @@ el.outerHTML=`
 <style>#nav{position:fixed;top:0;width:100%;height:85px;z-index:1030}p{margin-bottom:0 !important}p a{color:grey;text-decoration:none}#side a{color:#333333;font-weight:normal;text-decoration:none}.fs-7{font-size:0.9rem}.fs-8{font-size:0.7rem;}.g{color:grey;}.te{text-align:right}</style>
 <div id="nav" class="bg-white p-2 overflow-auto"></div>
 <div class="row mx-2" style="margin-top:85px;display:flex;flex-wrap:nowrap;height:calc(100vh - 85px)">
-<div id="side" class="col-2 py-4 px-1 overflow-auto" style="height:100%"></div>
-<div id="container" class="col-10 my-2 overflow-auto"></div>
+<div id="side" class="col-2 py-4 px-1 overflow-auto"></div>
+<div id="container" class="col-10 my-1 overflow-auto"></div>
 </div>
 <script>document.close()</script>
 `;
