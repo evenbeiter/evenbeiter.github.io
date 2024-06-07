@@ -16,6 +16,7 @@
     <textarea id="bb-transcript" class="form-control" rows="8"></textarea>
   </div>
   <button type="button" class="btn btn-secondary" onclick="getTranslate()">TRANSLATE</button>
+  <button type="button" class="btn btn-secondary" onclick="clearText()">CLEAR</button>
   
   <div id="output" class="m-3"></div>  
 </div>
@@ -24,6 +25,11 @@
   
 <script>
 
+function clearText(){
+  document.getElementById('bb-transcript').value='';
+  document.getElementById('output').innerHTML='';
+}
+  
 async function getTranslate(){
   document.getElementById('output').innerHTML='';
   var data=document.getElementById('bb-transcript').value;
@@ -32,7 +38,14 @@ async function getTranslate(){
     if (/\d\d:\d\d/.test(line)==false){
       document.getElementById('output').innerHTML+=`<p>${line}</p>`;
     } else if (line!==''){    
-      document.getElementById('output').innerHTML+=`<p>${line}<br>${await translate(line)}</p>`;
+      document.getElementById('output').innerHTML+=`<p class="tl">${line}</p>`;
+    }
+  }
+  let all=document.body.querySelectorAll('.tl');
+  for (var i=0;i<all.length;i++){
+    if (all[i].innerText!==''){
+    var t=await translate(all[i].textContent);
+    all[i].innerHTML=all[i].innerHTML+'<br>'+t;
     }
   }
 }
