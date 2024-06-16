@@ -70,8 +70,7 @@
                     console.log(jsonOutput);
                     for (let c of jsonOutput.chapters){
                         if (c.id!=='cover' && c.id!=='chapter_0'){
-                            //document.getElementById('output').innerHTML += c.content.replaceAll(' xmlns="http://www.w3.org/1999/xhtml"','').replace('<h1',`<h1 id="${c.id}" onclick="getContent('${c.id}_content')" `).replace('</h1>',`</h1><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none">`).replaceAll('<p>','<p class="tl">')+'</div><hr>';
-                            document.getElementById('output').innerHTML += c.content;
+                            document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replace('<title>',`<h1 id="${c.id}" onclick="getContent('${c.id}_content')">`).replace('</title>',`</h1><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none">`).replaceAll('<p>','<p class="tl">')+'</div><hr>';
                         }
                     }
                     document.querySelector('.ad_h1').remove();
