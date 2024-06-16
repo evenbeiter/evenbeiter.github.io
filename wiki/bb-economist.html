@@ -81,8 +81,8 @@
                         l.nextElementSibling.style.display='none';
                     }
 
-                    var hAll=document.querySelectorAll('h1.tl');
-                    hAll.push(...document.querySelectorAll('h3.tl'));
+                    var hAll=document.querySelectorAll('h1.tl');console.log(hAll);
+                    hAll.push(...document.querySelectorAll('h3.tl'));console.log(hAll);
                     for (let a of hAll){
                     if (a.innerText!==''){
                         var t=await translate(a.textContent);
