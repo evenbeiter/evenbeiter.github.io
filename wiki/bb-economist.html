@@ -70,7 +70,7 @@
                     console.log(jsonOutput);
                     for (let c of jsonOutput.chapters){
                         if (c.id!=='chapter_1' && c.id!=='chapter_2' && c.id!=='chapter_3'){
-                            document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replace('<h1 class="te_article_title">',`<div id="${c.id}" onclick="getContent('${c.id}_content')"><h1 class="tl te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replaceAll('<p>','<p class="tl">')+'</div><hr>';
+                            document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replaceAll('<p>','<p class="tl">')+'</div><hr>';
                         }
                     }
                     // document.querySelector('.ad_h1').remove();
@@ -81,15 +81,8 @@
                         l.nextElementSibling.style.display='none';
                     }
 
-                    var hAll=document.querySelectorAll('h1.tl');
+                    var hAll=document.querySelectorAll('div.tl');
                     for (let a of hAll){
-                        if (a.innerText!==''){
-                            var t=await translate(a.textContent);
-                            a.innerHTML=a.innerHTML+'<br>'+t;
-                        }
-                    }
-                    var h3All=document.querySelectorAll('h3.tl');
-                    for (let a of h3All){
                         if (a.innerText!==''){
                             var t=await translate(a.textContent);
                             a.innerHTML=a.innerHTML+'<br>'+t;
