@@ -84,7 +84,9 @@
                     var hAll=document.querySelectorAll('div.tl');
                     for (let a of hAll){
                         if (a.innerText!==''){
-                            var t=await translate(a.textContent);
+                            var bb=a.innerText.split('\n');
+                            for (let b of bb){
+                            var t=await translate(b);
                             a.innerHTML=a.innerHTML+'<br>'+t;
                         }
                     }
