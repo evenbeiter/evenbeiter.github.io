@@ -86,7 +86,7 @@
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
                             var t=await translate(b);
-                            a.innerHTML=a.innerHTML+'<br>'+t;
+                            a.innerHTML+='<br>'+t;
                         }
                     }
                     }
@@ -108,7 +108,7 @@
                 }
             }else{
                 el.style.display='none';
-                el.previousElementSibling.scrollIntoView()
+                el.previousElementSibling.previousElementSibling.scrollIntoView()
             }
         }
 
