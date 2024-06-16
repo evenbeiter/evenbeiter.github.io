@@ -54,12 +54,14 @@
                 };
 
                 let spineItems = book.spine.spineItems;
+                var i=0;
                 for (let item of spineItems) {
+                    i=i+1;
                     let chapter = await item.load(book.load.bind(book));
                     let content = await item.render(); // Render the chapter to get its content
 
                     jsonOutput.chapters.push({
-                        id: item.id,
+                        id: 'chapter_'+i,
                         href: item.href,
                         title: item.title,
                         content: content // Store the rendered content
