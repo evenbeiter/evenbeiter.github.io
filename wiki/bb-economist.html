@@ -10,6 +10,7 @@
     .section_index_title{display:none}
     h1,h2,h3.h4,h5,h6{font-size:1.2rem;color:#3B2D20 !important;font-weight:bold;text-wrap:wrap;}
     h1,h2,h3.h4,h5,h6,p,ul,li{text-wrap: wrap;font-family: 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC', sans-serif !important}
+    p{font-size:1.1rem}
     .sepia{background-color:#F4ECD8;color:#5B4636}
     .sepia-contrast{background-color:#3B2D20;color:#F4ECD8}
     .te_article_rubric{font-size:1.2rem;font-weight:bold;font-family: 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC', sans-serif !important}
@@ -73,8 +74,6 @@
                             document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replaceAll('<p>','<p class="tl">')+'</div><hr>';
                         }
                     }
-                    // document.querySelector('.ad_h1').remove();
-                    // document.querySelector('.ad_div').remove();
                     let ul=document.getElementsByClassName('sec_index_ul');
                     for (let l of ul){
                         l.style.display='none';
@@ -87,7 +86,7 @@
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
                             var t=await translate(b);
-                            a.innerHTML=a.innerHTML+t+'<br>';
+                            a.innerHTML=a.innerHTML+'<br>'+t;
                         }
                     }
                     }
