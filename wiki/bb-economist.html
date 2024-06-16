@@ -81,14 +81,20 @@
                         l.nextElementSibling.style.display='none';
                     }
 
-                    var hAll=document.querySelectorAll('h1.tl');console.log(hAll);
-                    hAll.push(...document.querySelectorAll('h3.tl'));console.log(hAll);
+                    var hAll=document.querySelectorAll('h1.tl');
                     for (let a of hAll){
-                    if (a.innerText!==''){
-                        var t=await translate(a.textContent);
-                        a.innerHTML=a.innerHTML+'<br>'+t;
+                        if (a.innerText!==''){
+                            var t=await translate(a.textContent);
+                            a.innerHTML=a.innerHTML+'<br>'+t;
+                        }
                     }
-                }
+                    var h3All=document.querySelectorAll('h3.tl');
+                    for (let a of h3All){
+                        if (a.innerText!==''){
+                            var t=await translate(a.textContent);
+                            a.innerHTML=a.innerHTML+'<br>'+t;
+                        }
+                    }
             };
 
             reader.readAsArrayBuffer(file);
