@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EPUB to JSON Converter</title>
+    <style>
+        .chapter {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 20px;
+        }
+        .chapter-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .chapter-content img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="output"></div>
+
+    <script>
+(async () => {
+    async function fetchAndProcessEPUB(epubUrl) {
+        const response = await fetch(epubUrl);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch EPUB file: ${response.statusText}`);
+        }
+        const arrayBuffer = await response.arrayBuffer();
+        const zip = await JSZip.loadAsync(arrayBuffer);
+
+        const containerFile = zip.file("META-INF/container.xml");
+        if (!containerFile) {
+            throw new Error("container.xml not found in EPUB file");
+        }
+
+        const containerXml = await containerFile.async("text");
+        const containerDom = new DOMParser().parseFromString(containerXml, "application/xml");
+        const rootfileElement = containerDom.querySelector("rootfile");
+        const rootfilePath = rootfileElement.getAttribute("full-path");
+
+        const packageFile = zip.file(rootfilePath);
+        if (!packageFile) {
+            throw new Error(`Package file not found at path: ${rootfilePath}`);
+        }
+
+        const packageXml = await packageFile.async("text");
+        const packageDom = new DOMParser().parseFromString(packageXml, "application/xml");
+
+        const jsonOutput = {
+            metadata: {},
+            chapters: []
+        };
+
+        const manifestItems = packageDom.querySelectorAll("manifest > item");
+        const spineItems = packageDom.querySelectorAll("spine > itemref");
+
+        // Extract images
+        const images = {};
+        const imageFiles = Array.from(manifestItems).filter(item => item.getAttribute("media-type").startsWith("image/"));
+        for (let imageFile of imageFiles) {
+            const href = imageFile.getAttribute("href");
+            const imgFile = zip.file(href);
+            if (imgFile) {
+                const imgBlob = await imgFile.async("blob");
+                const imgUrl = URL.createObjectURL(imgBlob);
+                images[href] = imgUrl;
+            }
+        }
+
+        // Process each chapter
+        for (let spineItem of spineItems) {
+            const idref = spineItem.getAttribute("idref");
+            const manifestItem = Array.from(manifestItems).find(item => item.getAttribute("id") === idref);
+            if (!manifestItem) {
+                console.warn(`Manifest item not found for idref: ${idref}`);
+                continue;
+            }
+
+            const href = manifestItem.getAttribute("href");
+            const contentFile = zip.file(href);
+            if (!contentFile) {
+                console.warn(`Content file not found for href: ${href}`);
+                continue;
+            }
+
+            const contentFileText = await contentFile.async("text");
+            const chapterDom = new DOMParser().parseFromString(contentFileText, "application/xhtml+xml");
+
+            // Replace image paths in chapter content
+            const chapterImages = chapterDom.querySelectorAll("img");
+            chapterImages.forEach(img => {
+                const src = img.getAttribute("src");
+                if (images[src]) {
+                    img.setAttribute("src", images[src]);
+                }
+            });
+
+            const chapterContent = chapterDom.body.innerHTML;
+            jsonOutput.chapters.push({
+                id: idref,
+                href: href,
+                title: manifestItem.getAttribute("title") || "",
+                content: chapterContent
+            });
+        }
+
+        return jsonOutput;
+    }
+
+    // Example usage
+    const epubUrl = 'https://github.com/hehonghui/awesome-english-ebooks/raw/master/01_economist/te_2024.06.15/TheEconomist.2024.06.15.epub'; // Replace with your EPUB URL
+    try {
+        const jsonOutput = await fetchAndProcessEPUB(epubUrl);
+        displayOutput(jsonOutput); // Display the output in HTML
+    } catch (error) {
+        console.error('Error:', error.message);
+    }
+
+    function displayOutput(jsonOutput) {
+        const outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = ''; // Clear previous content
+
+        jsonOutput.chapters.forEach(chapter => {
+            const chapterDiv = document.createElement('div');
+            chapterDiv.classList.add('chapter');
+
+            const titleElem = document.createElement('div');
+            titleElem.classList.add('chapter-title');
+            titleElem.textContent = chapter.title;
+            chapterDiv.appendChild(titleElem);
+
+            const contentElem = document.createElement('div');
+            contentElem.classList.add('chapter-content');
+            contentElem.innerHTML = chapter.content;
+            chapterDiv.appendChild(contentElem);
+
+            outputDiv.appendChild(chapterDiv);
+        });
+    }
+})();
+
+
+    </script>
+</body>
+</html>
