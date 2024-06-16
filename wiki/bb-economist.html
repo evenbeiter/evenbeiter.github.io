@@ -101,7 +101,7 @@
                 el.style.display='block';
                 var all=el.querySelectorAll('.tl');
                 for (let a of all){
-                    if (a.innerText!==''){
+                    if (a.innerText!=='' && cnTest(a.innerText)!==true){
                         var t=await translate(a.textContent);
                         a.innerHTML=a.innerHTML+'<br>'+t;
                     }
@@ -122,6 +122,13 @@
         }
             return ts
         }
+
+function cnTest(str) {
+    // Regular expression to match Chinese characters
+    const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
+
+    return chineseCharRegex.test(str);
+}
 
     </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
