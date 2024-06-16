@@ -70,7 +70,7 @@
                     console.log(jsonOutput);
                     for (let c of jsonOutput.chapters){
                         if (c.id!=='cover' && c.id!=='chapter_0'){
-                            document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replace('<h1',`<h1 id="${c.id}" onclick="getContent('${c.id}_content')" `).replace('</h1>',`</h1><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none">`).replaceAll('<p>','<p class="tl">')+'</div><hr>';
+                            document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replace('<h1 class="',`<h1 id="${c.id}" onclick="getContent('${c.id}_content')" class="tl `).replace('</h3><br',`</h3><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><br`).replaceAll('<p>','<p class="tl">')+'</div><hr>';
                         }
                     }
                     document.querySelector('.ad_h1').remove();
@@ -80,6 +80,14 @@
                         l.style.display='none';
                         l.nextElementSibling.style.display='none';
                     }
+
+                    var hAll=document.querySelectorAll('h1.tl');
+                    for (let a of hAll){
+                    if (a.innerText!==''){
+                        var t=await translate(a.textContent);
+                        a.innerHTML=a.innerHTML+'<br>'+t;
+                    }
+                }
             };
 
             reader.readAsArrayBuffer(file);
