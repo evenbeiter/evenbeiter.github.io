@@ -106,7 +106,10 @@
                         a.innerHTML=a.innerHTML+'<br>'+t;
                     }
                 }
-            }else{el.style.display='none'}
+            }else{
+                el.style.display='none';
+                el.previousElementSibling.scrollIntoView()
+            }
         }
 
         async function translate(a){
