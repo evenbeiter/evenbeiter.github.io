@@ -9,7 +9,7 @@
     body {background-color:#F4ECD8;color:#5B4636;font-size:1.2rem;}
     .section_index_title{display:none}
     h1,h2{font-size:1.2rem;color:#3B2D20 !important;font-weight:bold;text-wrap:wrap;}
-    h1,h2,h3,h4,h5,h6,p,ul,li,a,p a{text-wrap: wrap;font-family: 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC', sans-serif !important}
+    h1,h2,h3,h4,h5,h6,p,ul,li,a,btn,p a{text-wrap: wrap;font-family: 'PingFang TC', 'Hiragino Sans TC', 'Noto Sans TC', sans-serif !important}
     p,h3{font-size:1.2rem;font-weight:bold}
     .sepia{background-color:#F4ECD8;color:#5B4636}
     .sepia-contrast{background-color:#3B2D20;color:#F4ECD8}
@@ -21,9 +21,7 @@
 <body>
     <div class="m-3">
         <div id="nav" class="sticky-top sepia-contrast">
-            <a href="https://github.com/hehonghui/awesome-english-ebooks/raw/master/01_economist/te_2024.06.15/TheEconomist.2024.06.15.epub">
-                <button class="btn sepia">Download the Latest</button>
-            </a>
+            <button class="btn m-2 sepia" onclick="dlEpub">Download the Latest</button><br>
             <input type="file" id="fileInput" class="btn" onchange="openBook()"/>
         </div>
     <pre id="output"></pre>
@@ -32,6 +30,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
     <script>
+        function dlEpub(){
+            var date = prompt('Issue Date:');
+            date=date.replace(/(\d{4})(\d{2})(\d{2})/g, '$1.$2.$3');
+            var link = document.createElement('a');
+            link.href = `https://github.com/hehonghui/awesome-english-ebooks/raw/master/01_economist/te_${date}/TheEconomist.${date}.epub`;
+            link.target = '_blank';
+            link.download = `TheEconomist.${date}.epub`;
+            link.click();
+            link.remove();
+        }
         async function openBook(){
             document.getElementById('nav').style.display='none';
             const fileInput = document.getElementById('fileInput');
@@ -108,19 +116,21 @@
                 }
             }else{
                 el.style.display='none';
-                el.previousElementSibling.previousElementSibling.scrollIntoView()
+                el.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView()
             }
         }
 
         async function translate(a){
-        var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=auto&tl=zh-TW&q='+encodeURIComponent(a);
-        var res=await fetch(url);
-        var raw=await res.json();
-        var ts='';
-        for (var j=0;j<raw[0].length;j++){
-            ts=ts+raw[0][j][0];
-        }
-            return ts
+            try{
+                var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=auto&tl=zh-TW&q='+encodeURIComponent(a);
+                var res=await fetch(url);
+                var raw=await res.json();
+                var ts='';
+                for (var j=0;j<raw[0].length;j++){
+                    ts=ts+raw[0][j][0];
+                }
+                return ts
+            }catch (error) {console.error(error)}
         }
 
         function cnTest(str) {
