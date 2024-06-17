@@ -21,15 +21,15 @@
 <body>
     <div class="m-3">
         <div id="nav" class="sticky-top sepia-contrast">
+            <a href="https://github.com/hehonghui/awesome-english-ebooks/raw/master/01_economist/te_2024.06.15/TheEconomist.2024.06.15.epub">
+                <button class="btn sepia">Download the Latest</button>
+            </a>
             <input type="file" id="fileInput" class="btn" onchange="openBook()"/>
-<!--             <button id="convertButton" class="btn sepia">Read</button> -->
         </div>
     <pre id="output"></pre>
     </div>
 
-    <!-- Include JSZip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <!-- Include epub.js -->
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
     <script>
         async function openBook(){
@@ -86,7 +86,7 @@
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
                                 var t=await translate(b);
-                                a.innerHTML+='<br>'+t;
+                                a.innerHTML+=t+'<br>';
                             }
                         }
                     }
