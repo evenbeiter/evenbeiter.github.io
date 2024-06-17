@@ -21,7 +21,7 @@
 <body>
     <div class="m-3">
         <div id="nav" class="sticky-top sepia-contrast">
-            <input type="file" id="fileInput" class="btn" onchange=""/>
+            <input type="file" id="fileInput" class="btn" onchange="openBook"/>
 <!--             <button id="convertButton" class="btn sepia">Read</button> -->
         </div>
     <pre id="output"></pre>
@@ -32,7 +32,7 @@
     <!-- Include epub.js -->
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
     <script>
-        async function getBook(){
+        async function openBook(){
             document.getElementById('nav').style.display='none';
             const fileInput = document.getElementById('fileInput');
             if (fileInput.files.length === 0) {
