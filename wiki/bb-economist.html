@@ -112,7 +112,7 @@
                 for (let a of all){
                     if (a.innerText!=='' && cnTest(a.innerText)!==true){
                         var t=await translate(a.textContent);
-                        if (t!==''){a.innerHTML+=`<p>${t}</p>`};
+                        if (t!==''){a.outerHTML+=`<p>${t}</p>`};
                     }
                 }
             }else{
