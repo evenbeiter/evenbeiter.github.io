@@ -107,6 +107,7 @@
             var el=document.getElementById(id);
             if (el.style.display=='none'){
                 el.style.display='block';
+                if (el.innerText!=='' && cnTest(el.innerText)!==true){
                 var all=el.querySelectorAll('.tl');
                 for (let a of all){
                     if (a.innerText!=='' && cnTest(a.innerText)!==true){
@@ -114,7 +115,7 @@
                         if (t!==''){a.outerHTML+=`<p>${t}</p>`};
                     }
                 }
-            }else{
+            }}else{
                 el.style.display='none';
                 el.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView()
             }
