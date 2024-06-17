@@ -92,12 +92,10 @@
                     for (let a of hAll){
                         if (a.innerText!==''){
                             var bb=a.innerText.split('\n');
-                            a.innerHTML+='<p>';
                             for (let b of bb){
                                 var t=await translate(b);
-
-                                if (t!=='' && t!==undefined && t!=='undefined'){a.innerHTML+=`${t}<br>`};
-                            } a.innerHTML+='</p>';
+                                if (t!=='' && t!==undefined && t!=='undefined'){a.outerHTML+=`<p>${t}</p>`};
+                            } 
                         }
                     }
             };
