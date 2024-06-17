@@ -127,7 +127,7 @@
                 var raw=await res.json();
                 var ts='';
                 for (var j=0;j<raw[0].length;j++){
-                    if (raw[0][j][0]){ts=ts+raw[0][j][0]}else{ts=ts}
+                    if (raw[0][j][0]!==null && raw[0][j][0]!==undefined && raw[0][j][0]!=='undefined'){ts=ts+raw[0][j][0]}else{ts=ts}
                 }
                 return ts
             }catch (error) {console.error(error)}
