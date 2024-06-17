@@ -94,7 +94,7 @@
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
                                 var t=await translate(b);
-                                a.innerHTML+=t+'<br>';
+                                if (t!==''){a.innerHTML+=`<p>${t}</p>`};
                             }
                         }
                     }
@@ -111,7 +111,7 @@
                 for (let a of all){
                     if (a.innerText!=='' && cnTest(a.innerText)!==true){
                         var t=await translate(a.textContent);
-                        a.innerHTML=a.innerHTML+'<br>'+t;
+                        if (t!==''){a.innerHTML+=`<p>${t}</p>`};
                     }
                 }
             }else{
