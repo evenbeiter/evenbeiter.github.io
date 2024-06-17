@@ -94,7 +94,7 @@
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
                                 var t=await translate(b);
-                                if (t!=='' && t!==undefined && t!=='undefined'){a.outerHTML+=`<p>${t}</p>`};
+                                if (t!=='' && t!==undefined && t!=='undefined'){a.innerHTML+=`<p>${t}</p>`};
                             } 
                         }
                     }
