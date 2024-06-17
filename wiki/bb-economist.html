@@ -21,8 +21,8 @@
 <body>
     <div class="m-3">
         <div id="nav" class="sticky-top sepia-contrast">
-            <input type="file" id="fileInput" class="btn"/>
-            <button id="convertButton" class="btn sepia">Read</button>
+            <input type="file" id="fileInput" class="btn" onchange=""/>
+<!--             <button id="convertButton" class="btn sepia">Read</button> -->
         </div>
     <pre id="output"></pre>
     </div>
@@ -32,7 +32,7 @@
     <!-- Include epub.js -->
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
     <script>
-        document.getElementById('convertButton').addEventListener('click', async () => {
+        async function getBook(){
             document.getElementById('nav').style.display='none';
             const fileInput = document.getElementById('fileInput');
             if (fileInput.files.length === 0) {
@@ -85,15 +85,15 @@
                         if (a.innerText!==''){
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
-                            var t=await translate(b);
-                            a.innerHTML+='<br>'+t;
+                                var t=await translate(b);
+                                a.innerHTML+='<br>'+t;
+                            }
                         }
-                    }
                     }
             };
 
             reader.readAsArrayBuffer(file);
-        });
+        };
 
         async function getContent(id){
             var el=document.getElementById(id);
@@ -123,12 +123,10 @@
             return ts
         }
 
-function cnTest(str) {
-    // Regular expression to match Chinese characters
-    const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
-
-    return chineseCharRegex.test(str);
-}
+        function cnTest(str) {
+            const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
+            return chineseCharRegex.test(str);
+        }
 
     </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
