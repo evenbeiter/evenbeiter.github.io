@@ -91,11 +91,12 @@
                     var hAll=document.querySelectorAll('div.tl');
                     for (let a of hAll){
                         if (a.innerText!==''){
+                            a.innerHTML+='<p>';
                             var bb=a.innerText.split('\n');
                             for (let b of bb){
                                 var t=await translate(b);
-                                if (t!=='' && t!==undefined && t!=='undefined'){a.innerHTML+=`<p>${t}</p>`};
-                            } 
+                                if (t!=='' && t!==null && t!==undefined && t!=='undefined'){a.innerHTML+=`${t}<br>`};
+                            } a.innerHTML+='</p>';
                         }
                     }
             };
