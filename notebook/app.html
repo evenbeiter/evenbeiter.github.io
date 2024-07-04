@@ -44,6 +44,7 @@
         <div class="input-container">
             <textarea id="messageInput" class="form-control" rows="1" placeholder="Type a message..."></textarea>
             <button id="submitBtn" class="btn btn-primary">Send</button>
+            <button id="imageInputTrigger" class="btn btn-secondary">Add Image</button>
             <input type="file" id="imageInput" style="display: none;" accept="image/*">
         </div>
     </div>
@@ -56,6 +57,7 @@
             const $messageInput = $('#messageInput');
             const $imageInput = $('#imageInput');
             const $submitBtn = $('#submitBtn');
+            const $imageInputTrigger = $('#imageInputTrigger');
 
             function scrollToBottom() {
                 $messages.scrollTop($messages[0].scrollHeight);
@@ -110,7 +112,7 @@
                 }
             });
 
-            $('#imageInputTrigger').on('click', function() {
+            $imageInputTrigger.on('click', function() {
                 $imageInput.click();
             });
         });
