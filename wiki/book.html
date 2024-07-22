@@ -54,7 +54,7 @@
                     chapters: []
                 };
 
-                let spineItems = book.spine.spineItems;console.log(spineItems);
+                let spineItems = book.spine.spineItems;
                 var i=0;
                 for (let item of spineItems) {
                     i=i+1;
@@ -70,48 +70,25 @@
                 }
                     console.log(jsonOutput);
                     for (let c of jsonOutput.chapters){
-                        if (c.id!=='chapter_1' && c.id!=='chapter_2' && c.id!=='chapter_3'){
-                            document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replace(/<p><i>For subscribers only[\s\S]*?<\/p>/g,'').replace(/<p>This article was downloaded by[\s\S]*?<\/p>/g,'').replaceAll('<p>','<p class="tl">')+'</div><hr>';
-                        }
-                    }
-                    let ul=document.getElementsByClassName('sec_index_ul');
-                    for (let l of ul){
-                        l.style.display='none';
-                        l.nextElementSibling.style.display='none';
+                        document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','<hr>');
                     }
 
-                    var hAll=document.querySelectorAll('div.tl');
-                    for (let a of hAll){
-                        if (a.innerText!==''){
-                            var bb=a.innerText.split('\n');
-                            for (let b of bb){
-                                var t=await translate(b);
-                                if (t!=='' && t!==null && t!==undefined && t!=='undefined'){a.innerHTML+=`<h3 class="zh">${t}</h3>`};
-                            }
+                let tags=['h1','h2','h3','h4','h5','h6','p','li'];
+                for (k=0;k<tags.length;k++){
+                let all=document.body.querySelectorAll(tags[k]);
+                for (var i=0;i<all.length;i++){
+                    var a=all[i].innerText;
+                        if(a!==''){
+                            var t=await translate(a);
+                            all[i].innerHTML=all[i].innerHTML+'<br>'+t;
                         }
                     }
+                }
+
             };
 
             reader.readAsArrayBuffer(file);
         };
-
-        async function getContent(id){
-            var el=document.getElementById(id);
-            if (el.style.display=='none'){
-                el.style.display='block';
-                if (el.innerText!=='' && cnTest(el.innerText)!==true){
-                var all=el.querySelectorAll('.tl');
-                for (let a of all){
-                    if (a.innerText!=='' && cnTest(a.innerText)!==true){
-                        var t=await translate(a.textContent);
-                        if (t!==''){a.outerHTML+=`<p class="zh">${t}</p>`};
-                    }
-                }
-            }}else{
-                el.style.display='none';
-                el.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView()
-            }
-        }
 
         async function translate(a){
             try{
@@ -124,11 +101,6 @@
                 }
                 return ts
             }catch (error) {console.error(error)}
-        }
-
-        function cnTest(str) {
-            const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
-            return chineseCharRegex.test(str);
         }
 
     </script>
