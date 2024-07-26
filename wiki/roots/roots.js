@@ -45,3 +45,15 @@ link.href = csvUrl;
 link.target = '_blank';
 link.download = 'roots.txt';
 link.click();
+
+
+
+///////////////////////////
+
+var response=await fetch('https://www.visualthesaurus.com/browse/definition.json',{
+  method:'POST',
+  body: 'word=vocabulary',
+  headers:{'Content-type':'application/x-www-form-urlencoded; charset=UTF-8'}
+});
+var str=await response.json();
+console.log(str.result);
