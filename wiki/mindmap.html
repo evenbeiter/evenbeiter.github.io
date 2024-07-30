@@ -44,7 +44,7 @@ var img=[["考研英語常用詞根ef","https://pic.shutu.cn/shutu/static/2022/1
     
 for (let h of img){
     document.getElementById('list').innerHTML+=`
-    <p class="title" onclick="getContent(this.id,'${h[1].slice(45,51)}')">${h[0]}</p><div id="${h[1].slice(45,51)}" class="content" onclick="getContent(this.id,'${h[1].slice(45,51)}')"></div><hr>
+    <p class="title" onclick="getContent(this.id,'${h[1].slice(45,51)}')">${h[0]}</p><div id="${h[1].slice(45,51)}" class="content" onclick="getContent(this.id,'${h[1].slice(45,51)}')"><img src="${h[1]}"></div><hr>
     `;
 }
 
