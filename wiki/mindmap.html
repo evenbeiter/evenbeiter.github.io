@@ -29,7 +29,7 @@
     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
   </svg>
 </button>
-  <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast">`+btn+`
+  <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast">
   </form>
 <div id="list" class="mx-3 pt-3">
 
@@ -51,14 +51,13 @@ function getContent(clickedId,id){
   var cEl=document.getElementById(id);
   if (cEl.style.display=='none' || cEl.style.display==''){
     cEl.style.display='block';
-    }
   } else {
     if (clickedId==''){cEl.style.display='none';
       cEl.previousElementSibling.previousElementSibling.scrollIntoView()
     }
-    }
   }
 }
+
     
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
