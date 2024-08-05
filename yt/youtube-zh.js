@@ -32,6 +32,8 @@ if(ct.find(item=>item.vssId=='.zh-Hant')){
   zh=ct.find(item=>item.vssId=='.zh-Hant').baseUrl;
 } else if (ct.find(item=>item.vssId=='.zh')){
   zh=ct.find(item=>item.vssId=='.zh').baseUrl;
+} else if (ct.find(item=>item.vssId=='.zh-Hans')){
+  zh=ct.find(item=>item.vssId=='.zh-Hans').baseUrl;
 } else if (ct.find(item=>item.vssId=='.en')){
   zh=ct.find(item=>item.vssId=='.en').baseUrl;
 }
