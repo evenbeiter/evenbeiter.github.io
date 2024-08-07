@@ -51,7 +51,7 @@ async function getBook(b,c){
   var data=await res.json();
   var ct=data.content[c];
   var n=c+1;
-  document.getElementsByTagName('title')[0].text=b;
+  document.title=b;
   document.getElementById('list').style.display='none';
   document.getElementById('content').innerHTML=`
   <h1>${ct.h}</h1>
