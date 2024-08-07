@@ -38,7 +38,7 @@ var books=['大債危機'];
 if (window.location.href.indexOf('?')!==-1){
   var b=url.slice(url.indexOf('?b=')+3,url.indexOf('&c='));
   var c=url.slice(url.indexOf('&c=')+3);
-  await getBook(b,c);
+  getBook(b,c);
 } else {
   for (let b of books){
     document.getElementById('list').innerHTML+=`<h1 onclick="getBook('${b}',0)">${b}</h1><hr>`;
