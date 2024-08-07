@@ -74,7 +74,11 @@ function openOptions(){
   var options=document.getElementById('btn-group');
     if (options.style.display=='none'){
     options.style.display='block';
-  }else{options.style.display='none'}
+    document.getElementById('content').style.display='none';
+  }else{
+    options.style.display='none';
+    document.getElementById('content').style.display='block';
+    }
 }
 
 async function getTOC(b){
