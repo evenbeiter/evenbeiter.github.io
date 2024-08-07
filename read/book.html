@@ -46,20 +46,17 @@ if (window.location.href.indexOf('?')!==-1){
 }
   
 async function getBook(b,c){
-  var url='https://evenbeiter.github.io/read/book.html';
-  url=`${url}?b=${b}&c=${c}`;
   var res=await fetch(`https://evenbeiter.github.io/read/${b}.json`);
   var data=await res.json();
-  var ct=data.content[0];
+  var ct=data.content[c];
   document.getElementsByTagName('title')[0].text=b;
   document.getElementById('list').style.display='none';
   document.getElementById('content').innerHTML=`
   <h1>${ct.h}</h1>
   ${ct.c}
   <br>
-  <p class="text-end"><a href="${url}?b=${b}&c=${c+1}">下一章</a></p><br>
+  <p class="text-end"><a href="https://evenbeiter.github.io/read/book.html?b=${b}&c=${c+1}">下一章</a></p><br>
   `;
-  
 }
 
 
