@@ -51,7 +51,7 @@ async function getBook(b,c){
   var res=await fetch(`https://evenbeiter.github.io/read/${b}.json`);
   var data=await res.json();
   var ct=data.content[0];
-  document.getElementsByTag('title')[0].text=b;
+  document.getElementsByTagName('title')[0].text=b;
   document.getElementById('list').style.display='none';
   document.getElementById('content').innerHTML=`
   <h1>${ct.h}</h1>
