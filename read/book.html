@@ -92,11 +92,18 @@ async function getTOC(b){
   var i=0;
   for (let c of ct){
     document.getElementById('btn-group').innerHTML+=`
-    <h1 onclick="getBook('${b}','${i}')">${c.h}</h1>
+    <h1 href="https://evenbeiter.github.io/read/book.html?b=${b}&c=${Number(c)}")">${c.h}</h1>
     <hr>
     `;
     i=i+1;
   }
+  // for (let c of ct){
+  //   document.getElementById('btn-group').innerHTML+=`
+  //   <h1 onclick="getBook('${b}','${i}')">${c.h}</h1>
+  //   <hr>
+  //   `;
+  //   i=i+1;
+  // }
 }
   
 </script>
