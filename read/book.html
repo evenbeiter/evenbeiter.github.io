@@ -55,6 +55,7 @@ if (url.indexOf('?')!==-1){
 getTOC(b);
   
 async function getBook(b,c){
+  window.location.href=`https://evenbeiter.github.io/read/book.html?b=${b}&c=${c}`;
   var res=await fetch(`https://evenbeiter.github.io/read/${b}.json`);
   var data=await res.json();
   var ct=data.content[c];
