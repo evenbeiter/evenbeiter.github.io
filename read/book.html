@@ -47,15 +47,14 @@ if (url.indexOf('?')!==-1){
   var b=url.slice(url.indexOf('?b=')+3,url.indexOf('&c='));
   var c=url.slice(url.indexOf('&c=')+3);
   getBook(b,c);
+  getTOC(b);
 } else {
   for (let b of books){
     document.getElementById('list').innerHTML+=`<h1 onclick="getBook('${b}',0)">${b}</h1><hr>`;
   }
 }
-getTOC(b);
   
 async function getBook(b,c){
-//  window.location.href=`https://evenbeiter.github.io/read/book.html?b=${b}&c=${c}`;
   var res=await fetch(`https://evenbeiter.github.io/read/${b}.json`);
   var data=await res.json();
   var ct=data.content[c];
