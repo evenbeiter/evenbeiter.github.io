@@ -275,9 +275,9 @@ document.getElementById('chart-area').innerHTML='';
 getTickers();
 
 async function getTickers(){
-  // var res=await fetch('https://evenbeiter.github.io/charts/ticker.json');
-  // var tickers=await res.json();
-  var tickers=[{"id":"DXY","ticker":{"s":"$USD","b":"DXY"}},{"id":"EUR","ticker":{"s":"$EURUSD","b":"EURUSD"}},{"id":"GBP","ticker":{"s":"$GBPUSD","b":"GBPUSD"}}];
+  var res=await fetch('https://evenbeiter.github.io/charts/ticker.json');
+  var tickers=await res.json();
+  // var tickers=[{"id":"DXY","ticker":{"s":"$USD","b":"DXY"}},{"id":"EUR","ticker":{"s":"$EURUSD","b":"EURUSD"}},{"id":"GBP","ticker":{"s":"$GBPUSD","b":"GBPUSD"}}];
 
   for (let t of tickers){
     if (t.id=='--'){
