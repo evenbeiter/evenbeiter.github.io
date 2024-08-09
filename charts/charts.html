@@ -1,0 +1,338 @@
+
+<!doctype html>
+<html>
+<head>
+  <!-- Required meta tags -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="utf-8">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <title>Charts</title>
+
+    <style>
+        /* Move down content because we have a fixed navbar that is 50px tall */
+        body {
+            padding-top: 50px;
+        }
+
+        /*
+        * Global add-ons
+        */
+
+        .sub-header {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /*
+        * Top navigation
+        * Hide default border to remove 1px line.
+        */
+        .navbar-fixed-top {
+            border: 0;
+        }
+
+        /*
+        * Sidebar
+        */
+
+        /* Hide for mobile, show later */
+        .sidebar {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+
+            .sidebar {
+                position: fixed;
+                top: 51px;
+                bottom: 0;
+                left: 0;
+                z-index: 1000;
+                display: block;
+                padding: 20px;
+                overflow-x: hidden;
+                overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+                background-color: #f5f5f5;
+                border-right: 1px solid #eee;
+                width: 8em;
+            }
+        }
+
+        /* Sidebar navigation */
+        .nav-sidebar {
+            margin-right: -21px; /* 20px padding + 1px border */
+            margin-bottom: 20px;
+            margin-left: -20px;
+        }
+        .nav-sidebar > li > a {
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+        .nav-sidebar > .active > a,
+        .nav-sidebar > .active > a:hover,
+        .nav-sidebar > .active > a:focus {
+            color: #fff;
+            background-color: #428bca;
+        }
+
+
+        /*
+        * Main content
+        */
+/*         .main {
+            padding: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .main {
+                padding-right: 40px;
+                padding-left: 220px;
+            }
+        }
+        .main .page-header {
+            margin-top: 0;
+        } */
+
+        @media (min-width: 768px) {
+            .main {
+                padding-left: 180px;
+            }
+        }
+
+        /*
+        * Placeholder dashboard ideas
+        */
+
+        .placeholders {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .placeholders h4 {
+            margin-bottom: 0;
+        }
+        .placeholder {
+            margin-bottom: 20px;
+        }
+        .placeholder img {
+            display: inline-block;
+            border-radius: 50%;
+        }
+      
+        .charts{
+      float: left;
+      position: relative;
+      padding-top: 80px;
+      width: 680px;
+      height: 600px;
+    }
+
+    .charts img{
+      width: 100%;
+      height: 100%;
+      -webkit-user-select: none;
+      display: block;
+      margin: auto;
+    }
+
+    /* for user input stock chart */
+    .black_overlay {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.6;
+            opacity: .60;
+            filter: alpha(opacity=66);
+        }
+
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 8%;
+            left: 5%;
+            width: 1400px;
+            height: 680px;
+            padding: 3px;
+            border: 1px solid gray;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="#DXY">CURRENCY</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="#Gold">COMMODITY</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="#UST10">RATES</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="#SPX">EQUITY</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="#NVDA">STOCKS</a></li>
+                <li><a href="http://www.stockq.org" class="nav-link px-2 text-white" target="_blank">StockQ</a></li>
+                <li><a href="http://stockcharts.com/freecharts/perf.php?[SECT]" class="nav-link px-2 text-white" target="_blank">Sector</a></li>
+                <li><a href="https://sslecal2.forexprostools.com/?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&features=datepicker,timezone&countries=25,32,6,37,72,22,17,39,14,10,35,43,56,36,110,11,26,12,4,5&calType=week&timeZone=86&lang=1" class="nav-link px-2 text-white" target="_blank">Calendar</a></li>
+                <li><a href="https://www.franklin.com.tw/Upload/RegularComment-Monthly/month.pdf" class="nav-link px-2 text-white" target="_blank">Monthly</a></li>
+                <li><a href="https://www.franklin.com.tw/Upload/RegularComment-Weekly/weekly.pdf" class="nav-link px-2 text-white" target="_blank">Weekly</a></li>
+                <li><a href="https://www.franklin.com.tw/dailynews/Daily_A.html" class="nav-link px-2 text-white" target="_blank">Daily</a></li>
+              </ul>
+              <form class="d-flex">
+                <input id="stkCode" class="form-control me-2" type="search" placeholder="Ticker" aria-label="Ticker">
+                <button class="btn btn-outline-light" type="button" onclick="getChart()">GO</button>
+              </form>
+        </div>
+      </div>
+    </nav>
+  
+
+<!-- for user input single stock STARTS -->
+  <div id="light" class="white_content">
+    <p style='text-align: right'><a href="javascript:void(0)" onclick="closeChart()">CLOSE</a>
+    </p>
+
+    <!-- stock chart STARTS -->
+    <div id="stock" class="carousel slide" data-ride="carousel" data-interval="false">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="d-block w-100">
+                    <div class="charts" style="padding-top: 30px"><img id="daily"></div>
+                    <div class="charts" style="padding-top: 30px"><img id="weekly"></div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="d-block w-100">
+                    <div class="charts" style="padding-top: 30px"><img id="monthly"></div>
+                    <div class="charts" style="padding-top: 30px"><img id="quarterly"></div>
+                </div>
+            </div>
+        </div><a class="carousel-control-prev" href="#stock" role="button" data-slide="prev"></a><a
+            class="carousel-control-next" href="#stock" role="button" data-slide="next"></a>
+    </div>
+    <!-- stock chart ENDS -->
+
+</div>
+<div id="fade" class="black_overlay"></div>
+<!-- for user input single stock ENDS -->
+
+
+<!-- TOP ICON -->
+<button id="top" type="button" class="btn btn-light" style="z-index:5; position:fixed; bottom:5px; right:5px;">
+    <a href="#">
+      <svg class="bi" width="20" height="20" fill="currentColor">
+      <path fill-rule="evenodd" d="M8 10a.5.5 0 0 0 .5-.5V3.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 3.707V9.5a.5.5 0 0 0 .5.5zm-7 2.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5z"></path>
+      </svg>
+    </a>
+</button>
+
+<!-- LIST & CHART AREA -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="sidebar">
+      <ul id="list" class="nav nav-sidebar nav-pills flex-column mb-auto" style="line-height:0.7em"></ul>
+    </div>
+    
+    <div class="col-sm-12 main">
+      <div id="chart-area" class="row"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script>
+
+document.getElementById('list').innerHTML='';
+document.getElementById('chart-area').innerHTML='';
+
+getTickers();
+
+async function getTickers(){
+  var res=await fetch('https://evenbeiter.github.io/charts/ticker.json');
+  var tickers=await res.json();
+  for (let t of tickers){
+    document.getElementById('list').innerHTML+=`
+    <li><a class="nav-link link-dark" href="#${t.id}">${t.id}</a></li>
+    `;
+
+    if (t.ticker.s !==""){
+      var dm=`
+      <div class="charts"><img src="https://stockcharts.com/c-sc/sc?s=${t.ticker.s}&p=D&yr=1&mn=0&dy=0&id=p20291452394"></div>
+      <div class="charts"><img src="https://stockcharts.com/c-sc/sc?s=${t.ticker.s}&p=W&yr=5&mn=0&dy=0&id=p20291452394"></div>
+      `;
+    } else {
+      var dm=`
+      <div class="charts"><img src="https://api.wsj.net/api/kaavio/charts/big.chart?symb=${t.ticker.b}&type=4&size=4&freq=1&time=8&ma=4&maval=20,50,200&lf=1&lf2=2&lf3=4"></div>
+      <div class="charts"><img src="https://api.wsj.net/api/kaavio/charts/big.chart?symb=${t.ticker.b}&type=4&size=4&freq=2&time=12&ma=4&maval=20,50,200&lf=1&lf2=2&lf3=4"></div>      
+      `;
+    }
+    document.getElementById('chart-area').innerHTML+=`
+    <div id="${t.id}" class="carousel slide" data-ride="carousel" data-interval="false">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-block w-100">
+          `+dm+`
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="d-block w-100">
+          <div class="charts"><img src="https://api.wsj.net/api/kaavio/charts/big.chart?symb=${t.ticker.b}&type=4&size=4&freq=3&time=13&ma=4&maval=24,60,120&lf=1&lf2=2&lf3=4"></div>
+          <div class="charts"><img src="https://api.wsj.net/api/kaavio/charts/big.chart?symb=${t.ticker.b}&type=4&size=4&freq=4&time=20&ma=4&maval=24,60,120&lf=1&lf2=2&lf3=4"></div>
+        </div>
+      </div>
+    </div>
+  
+    <a class="carousel-control-prev" href="#${t.id}" role="button" data-slide="prev">
+      <!-- <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span> -->
+    </a>
+    <a class="carousel-control-next" href="#${t.id}" role="button" data-slide="next">
+      <!-- <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span> -->
+    </a>
+  
+    </div>
+    `;
+  }
+}
+
+// for user input single stock
+function getChart() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+
+  document.getElementById('light').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+
+  var stkCode = document.getElementById("stkCode").value;
+  document.getElementById("daily").src = "https://stockcharts.com/c-sc/sc?s=" + stkCode + "&p=D&yr=1&mn=0&dy=0&id=p20291452394";
+  document.getElementById("weekly").src = "https://stockcharts.com/c-sc/sc?s=" + stkCode + "&p=W&yr=5&mn=0&dy=0&id=p20291452394";
+  document.getElementById("monthly").src = "https://api.wsj.net/api/kaavio/charts/big.chart?&symb=" + stkCode + "&type=4&size=4&freq=3&time=13&ma=4&maval=24,60,120&lf=1&lf2=2&lf3=4";
+  document.getElementById("quarterly").src = "https://api.wsj.net/api/kaavio/charts/big.chart?&symb=" + stkCode + "&type=4&size=4&freq=4&time=20&ma=4&maval=24,60,120&lf=1&lf2=2&lf3=4";
+  document.getElementById("stkCode").value = "";
+}
+
+function closeChart() {
+  document.getElementById('light').style.display = 'none';
+  document.getElementById('fade').style.display = 'none';
+}
+
+</script>
+
+<script src="https://getbootstrap.com/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
