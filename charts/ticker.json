@@ -84,13 +84,9 @@
 {"id":"VLGR","ticker":{"s":"$RUJ:$RUO","b":""}},
 {"id":"BEQU","ticker":{"s":"SPHB:SPHQ","b":""}},
 {"id":"NVDA","ticker":{"s":"NVDA","b":"NVDA"}},
-{"id":"TSMC","ticker":{"s":"","b":"TW:2330"}},
 {"id":"AMZN","ticker":{"s":"AMZN","b":"AMZN"}},
 {"id":"META","ticker":{"s":"META","b":"META"}},
 {"id":"ARM","ticker":{"s":"ARM","b":"ARM"}},
-{"id":"Advantest","ticker":{"s":"","b":"JP:8658"}},
-{"id":"SK Hynix","ticker":{"s":"","b":"KR:000660"}},
-{"id":"MediaTek","ticker":{"s":"","b":"TW:2454"}},
 {"id":"Broadcom","ticker":{"s":"AVGO","b":"AVGO"}},
 {"id":"MSFT","ticker":{"s":"MSFT","b":"MSFT"}},
 {"id":"AAPL","ticker":{"s":"AAPL","b":"AAPL"}},
@@ -99,5 +95,11 @@
 {"id":"MU","ticker":{"s":"MU","b":"MU"}},
 {"id":"AMD","ticker":{"s":"AMD","b":"AMD"}},
 {"id":"ORCL","ticker":{"s":"ORCL","b":"ORCL"}},
-{"id":"SMCI","ticker":{"s":"SMCI","b":"SMCI"}}
+{"id":"SMCI","ticker":{"s":"SMCI","b":"SMCI"}},
+{"id":"TSLA","ticker":{"s":"TSLA","b":"TSLA"}},
+{"id":"NFLX","ticker":{"s":"NFLX","b":"NFLX"}},
+{"id":"TSMC","ticker":{"s":"","b":"TW:2330"}},
+{"id":"MediaTek","ticker":{"s":"","b":"TW:2454"}},
+{"id":"Advantest","ticker":{"s":"","b":"JP:6857"}},
+{"id":"SK Hynix","ticker":{"s":"","b":"KR:000660"}}
 ]
