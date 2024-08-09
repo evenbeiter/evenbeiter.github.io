@@ -38,6 +38,7 @@
 {"id":"SPX","ticker":{"s":"$SPX","b":"SPX"}},
 {"id":"INDU","ticker":{"s":"$INDU","b":"DJIA"}},
 {"id":"CCMP","ticker":{"s":"$COMPQ","b":"COMP"}},
+{"id":"SOX","ticker":{"s":"$SOX","b":"SOX"}},
 {"id":"IWM","ticker":{"s":"IWM","b":"IWM"}},
 {"id":"REIT","ticker":{"s":"$RMZ","b":"XX:REIT"}},
 {"id":"FNER","ticker":{"s":"","b":"XX:FNER"}},
