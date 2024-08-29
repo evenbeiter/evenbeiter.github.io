@@ -1,3 +1,265 @@
+
+
+
+
+
+javascript:(()=>{
+
+var ss=document.querySelectorAll('script');
+for (let s of ss){
+  if (s.src=='https://www.googletagmanager.com/gtag/js?id=G-4CS94JJY2M'){s.remove()};
+  if (s.innerHTML.indexOf('下次再說')!==-1){s.remove()};
+}
+
+const el2Remove = [
+...document.querySelectorAll('.wall'),
+...document.querySelectorAll('.ad'),
+...document.querySelectorAll('.alertify'),
+...document.querySelectorAll('#close-btn'),
+...document.querySelectorAll('.mm-eyebrow-alert')
+];
+
+for (const el of el2Remove) {
+el.remove();
+}
+
+if (Highcharts.charts[0] !==undefined){
+var oCharts=Highcharts.charts;
+for (let oChart of oCharts){
+	if (oChart !== undefined){
+oChart.setSize(948,460);
+oChart.update({
+    chart: {
+        animation: false
+    },
+    subtitle: {text: ""},
+    rangeSelector: {
+        enabled: !0,
+        inputEnabled: !0,
+        dropdown: "responsive",
+        inputPosition: {align:'right'},
+        buttons: [
+          {type: "month",count: 1,text: "1m"}, 
+          {type: "month",count: 3,text: "3m"}, 
+          {type: "month",count: 6,text: "6m"}, 
+          {type: "ytd",text: "YTD"}, 
+          {type: "year",count: 1,text: "1y"}, 
+          {type: "year",count: 3,text: "3y"}, 
+          {type: "year",count: 5,text: "5y"}, 
+          {type: "year",count: 10,text: "10y"}, 
+          {type: "year",count: 20,text: "20y"}, 
+          {type: "all",text: "All"}
+        ],
+        selected: 9,
+        buttonSpacing: 0,
+        buttonTheme: {
+          fill: "none",
+          style: {color: "#666666"},
+          states: {
+            select: {
+              fill: "#ADAEB0",
+              style: {color: "#333333"}
+            }
+          }
+        }
+	  },
+    xAxis: {tickLength: 3, title:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}, labels:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}},
+    yAxis: {title:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}, labels:{fontFamily:"Arial Narrow, sans-serif", style:{fontSize:"13px"}}},
+    legend: {enabled:!1}
+})
+}};
+let logo_img=document.querySelectorAll('image');
+for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[i])};
+
+
+} else {
+	
+getChart();
+
+function zi(lineType){
+  if (lineType=='column'){return 2} else {return 10};
+}
+
+
+
+var highchart;
+
+highchart=Highcharts.setOptions({
+  credits: {enabled:!1},
+  chart: {animation:!1},
+  langOptions: {
+    numericSymbols: ["K", "M", "B", "T", "P", "E"],
+    thousandsSep: ","
+  },
+  tooltipOptions: {shared: !0},
+  exporting: {
+    button: {
+      contextButton: {enabled: !0}
+    }
+  },
+  navigation: {
+    buttonOptions: {enabled: !1}
+  },
+  chart: {
+    backgroundColor: "transparent",
+    zooming: {
+      type: "xy",
+      mouseWheel: {enabled: !1}
+    }
+  },
+  legend: {enabled: !0},
+  plotOptions: {
+    series: {
+      lineWidth: 2,
+      marker: {enabled: !1},
+      states: {
+        inactive: {enabled: !1},
+        hover: {enabled: !1}
+      }
+    }
+  },
+  rangeSelector: {
+    enabled: !0,
+    inputEnabled: !0,
+    dropdown: "responsive",
+    inputPosition: {align:'right'},
+    buttons: [
+      {type: "month",count: 1,text: "1m"}, 
+      {type: "month",count: 3,text: "3m"}, 
+      {type: "month",count: 6,text: "6m"}, 
+      {type: "ytd",text: "YTD"}, 
+      {type: "year",count: 1,text: "1y"}, 
+      {type: "year",count: 3,text: "3y"}, 
+      {type: "year",count: 5,text: "5y"}, 
+      {type: "year",count: 10,text: "10y"}, 
+      {type: "year",count: 20,text: "20y"}, 
+      {type: "all",text: "All"}
+    ],
+    selected: 9,
+    buttonSpacing: 0,
+    buttonTheme: {
+      fill: "none",
+      style: {color: "#666666"},
+      states: {
+        select: {
+          fill: "#ADAEB0", 
+          style: {color: "#333333"}
+        }
+      }
+    }
+  },
+  tooltip: {
+    split: !1,
+    shared: !0,
+    dateTimeLabelFormats: {
+      millisecond: "%b %e, %Y",
+      second: "%b %e, %Y",
+      minute: "%b %e, %Y",
+      hour: "%b %e, %Y",
+      day: "%b %e, %Y",
+      week: "%b %e, %Y",
+      month: "%B %Y",
+      year: "%Y"
+    }
+  },
+  xAxis: {
+    labels: {
+      style: {fontSize: "11px", color: "#666"}
+    },
+    title: {
+      style: {fontSize: "12px",color: "#666"}
+    },
+    lineColor: "#d8d8d8",
+    tickColor: "#d8d8d8",
+    tickLength: 3,
+    type: "datetime",
+    minTickInterval: 864e5,
+    crosshair: !0
+  },
+  yAxis: {
+    labels: {
+      style: {fontSize: "11px", color: "#666"}
+    },
+    title: {
+      style: {fontSize: "12px", color: "#666"}
+    }
+  }
+});
+
+
+let logo_img=document.querySelectorAll('image');
+for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[i]); if (logo_img[i].href.indexOf('watermark')>0){logo_img[i].remove()}};
+
+}
+
+async function getChart(){
+	var url=window.location.href;
+var id=url.slice(url.lastIndexOf('/',url.lastIndexOf('/')-1)+1,url.lastIndexOf('/'));
+	
+	var res=await fetch('https://www.macromicro.me/trader-insights');
+var str=await res.text();
+var key=str.match(/data-stk="[\s\S]*?"/g)[0].replace('data-stk="','').replace('"','');
+  var type, suf;
+  var response=await fetch('https://www.macromicro.me/charts/data/'+id,{
+  method:'GET',
+  headers:{'Content-type':'application/json','Authorization':'Bearer '+key}
+  });
+  var str=await response.text();
+  var raw=JSON.parse(str).data['c:'+id]; console.log(raw);
+
+  var cType='';
+  var t=raw.info.type; if (t=='1'){cType='line'}else if (t=='2'){cType='bar'};
+  var series=[];
+  var ybaselines;
+
+  for (let i=0;i<raw.series.length;i++){
+
+  s=raw.info.chart_config.seriesConfigs[i];
+
+  series.push({_i: i, zIndex: zi(s.lineType), type: s.lineType, yAxis: s.yoppo, name: s.name_tc, color: s.color, lineWidth: Number(s.line_width), data: raw.series[i].map((x) => [Date.parse(x[0]),parseFloat(x[1])])});
+  }
+  if (s.ybaselines!==''){ybaselines=s.ybaselines};
+  console.log(series);
+
+  highchart=Highcharts.chart('c2-'+id, {
+    type: cType,
+    title: {text: raw.info.name_tc},
+    subtitle: {text: null},
+    yAxis: [{
+      title: {text: ""},
+      plotLines: [{
+        value: ybaselines,
+        dashStyle: 'Dash',
+        width: 2,
+        zIndex: 5,
+        color: '#999999'
+      }]
+    },{
+      opposite: true,
+      title: {text: ""}
+    }
+    ],
+    xAxis: {
+      type:'datetime',
+      plotBands: [{"color":"rgba(231,231,231,0.5)","from":-2124921600000,"to":-2061849600000},{"color":"rgba(231,231,231,0.5)","from":-1977782400000,"to":-1940976000000},{"color":"rgba(231,231,231,0.5)","from":-1893456000000,"to":-1827792000000},{"color":"rgba(231,231,231,0.5)","from":-1798761600000,"to":-1735776000000},{"color":"rgba(231,231,231,0.5)","from":-1622678400000,"to":-1601769600000},{"color":"rgba(231,231,231,0.5)","from":-1577923200000,"to":-1528070400000},{"color":"rgba(231,231,231,0.5)","from":-1472860800000,"to":-1433376000000},{"color":"rgba(231,231,231,0.5)","from":-1364947200000,"to":-1328227200000},{"color":"rgba(231,231,231,0.5)","from":-1275523200000,"to":-1159920000000},{"color":"rgba(231,231,231,0.5)","from":-1031011200000,"to":-994291200000},{"color":"rgba(231,231,231,0.5)","from":-786240000000,"to":-762739200000},{"color":"rgba(231,231,231,0.5)","from":-667958400000,"to":-636508800000},{"color":"rgba(231,231,231,0.5)","from":-520819200000,"to":-494640000000},{"color":"rgba(231,231,231,0.5)","from":-391910400000,"to":-368409600000},{"color":"rgba(231,231,231,0.5)","from":-307756800000,"to":-278985600000},{"color":"rgba(231,231,231,0.5)","from":-2678400000,"to":28771200000},{"color":"rgba(231,231,231,0.5)","from":120960000000,"to":165456000000},{"color":"rgba(231,231,231,0.5)","from":315532800000,"to":333849600000},{"color":"rgba(231,231,231,0.5)","from":362793600000,"to":407462400000},{"color":"rgba(231,231,231,0.5)","from":646790400000,"to":670377600000},{"color":"rgba(231,231,231,0.5)","from":983404800000,"to":1007078400000},{"color":"rgba(231,231,231,0.5)","from":1196467200000,"to":1246320000000},{"color":"rgba(231,231,231,0.5)","from":1580515200000,"to":1588291200000}]
+    },
+    series: series
+    });
+	
+}
+	
+})();
+
+
+
+
+
+///////////////////////////
+// OLD VERSION
+///////////////////////////
+
+
+
 javascript:(()=>{
 var ss=document.querySelectorAll('script');
 for (let s of ss){
