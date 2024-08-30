@@ -1,6 +1,6 @@
 
 
-
+oChart.setSize(948,460);
 
 
 javascript:(()=>{
@@ -23,11 +23,11 @@ for (const el of el2Remove) {
 el.remove();
 }
 
-if (Highcharts.charts[0] !==undefined){
+if (Highcharts.charts[Highcharts.charts.length-1] !==undefined){
 var oCharts=Highcharts.charts;
 for (let oChart of oCharts){
 	if (oChart !== undefined){
-oChart.setSize(948,460);
+
 oChart.update({
     chart: {
         animation: false
@@ -65,7 +65,7 @@ oChart.update({
 	  },
     xAxis: {tickLength: 3, title:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}, labels:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}},
     yAxis: {title:{style:{fontFamily:"Arial Narrow, sans-serif", fontSize:"13px"}}, labels:{fontFamily:"Arial Narrow, sans-serif", style:{fontSize:"13px"}}},
-    legend: {enabled:!1}
+    legend: {enabled:!0}
 })
 }};
 let logo_img=document.querySelectorAll('image');
@@ -193,10 +193,10 @@ for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[
 }
 
 async function getChart(){
-	var url=window.location.href;
+var url=window.location.href;
 var id=url.slice(url.lastIndexOf('/',url.lastIndexOf('/')-1)+1,url.lastIndexOf('/'));
 	
-	var res=await fetch('https://www.macromicro.me/trader-insights');
+var res=await fetch('https://www.macromicro.me/trader-insights');
 var str=await res.text();
 var key=str.match(/data-stk="[\s\S]*?"/g)[0].replace('data-stk="','').replace('"','');
   var type, suf;
@@ -208,7 +208,7 @@ var key=str.match(/data-stk="[\s\S]*?"/g)[0].replace('data-stk="','').replace('"
   var raw=JSON.parse(str).data['c:'+id]; console.log(raw);
 
   var cType='';
-  var t=raw.info.type; if (t=='1'){cType='line'}else if (t=='2'){cType='bar'};
+  var t=raw.info.type; if (t=='1'){cType='line'}else if (t=='2'){cType='bar'}else if (t=='20'){cType='column'};
   var series=[];
   var ybaselines;
 
@@ -295,7 +295,7 @@ for (let s of stats){
 var oCharts=Highcharts.charts;
 for (let oChart of oCharts){
 	if (oChart !== undefined){
-oChart.setSize(948,460);
+
 oChart.update({
     chart: {
         animation: false
