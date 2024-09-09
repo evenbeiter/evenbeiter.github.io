@@ -2,13 +2,18 @@
 javascript:(function(){
 var item=[];
 var data=[];
+var title='';
 var n=Highcharts.charts.length;
 var series=Highcharts.charts[n-1].series;
 var url=window.location.href;
+if (url.indexOf('/series/')>0){
+  title=document.title.slice(0,document.title.indexOf(' |'));
+	item.push(title);
+} else {title=Highcharts.charts[n-1].title.textStr}
 var id=url.slice(url.lastIndexOf('/',url.lastIndexOf('/')-1)+1,url.lastIndexOf('/'));
-var filename=id+' '+Highcharts.charts[n-1].title.textStr;
+var filename=id+' '+title;
 for (let s of series){
-	item.push(s.name);
+	if (s.name!==undefined){item.push(s.name)};
 	var d=[];
 	var x=s.processedXData;
 	var y=s.processedYData;
