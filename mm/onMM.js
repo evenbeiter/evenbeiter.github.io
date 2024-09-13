@@ -69,7 +69,7 @@ oChart.update({
 })
 }};
 let logo_img=document.querySelectorAll('image');
-for (let i=0;i<logo_img.length;i++){logo_img[i].parentNode.removeChild(logo_img[i])};
+for (let i=0;i<logo_img.length;i++){logo_img[i].remove()};
 
 
 } else {
