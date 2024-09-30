@@ -1,10 +1,11 @@
 [
 {"country":"US","items":[
-["Markets"],
+{"cat":"Markets","list":[
 ["Currency","s=dxy","https://tradingeconomics.com/united-states/currency"],
 ["Government Bond 10Y","s=usgg10yr","https://tradingeconomics.com/united-states/government-bond-yield"],
-["Stock Market","s=spx","https://tradingeconomics.com/united-states/stock-market"],
-["GDP"],
+["Stock Market","s=spx","https://tradingeconomics.com/united-states/stock-market"]
+]},
+{"cat":"GDP","list":[
 ["Full Year GDP Growth","s=usafygg","https://tradingeconomics.com/united-states/full-year-gdp-growth"],
 ["GDP","s=wgdpus","https://tradingeconomics.com/united-states/gdp"],
 ["GDP Annual Growth Rate","s=gdp+cyoy","https://tradingeconomics.com/united-states/gdp-growth-annual"],
@@ -24,8 +25,9 @@
 ["Gross Fixed Capital Formation","s=unitedstagrofixcapfo","https://tradingeconomics.com/united-states/gross-fixed-capital-formation"],
 ["Gross National Product","s=unitedstagronatpro","https://tradingeconomics.com/united-states/gross-national-product"],
 ["Real Consumer Spending","s=usarcs","https://tradingeconomics.com/united-states/real-consumer-spending"],
-["Weekly Economic Index","s=usawei","https://tradingeconomics.com/united-states/weekly-economic-index"],
-["Labor"],
+["Weekly Economic Index","s=usawei","https://tradingeconomics.com/united-states/weekly-economic-index"]
+]},
+{"cat":"Labor","list":[
 ["ADP Employment Change","s=unitedstaadpempcha","https://tradingeconomics.com/united-states/adp-employment-change"],
 ["Average Hourly Earnings MoM","s=unitedstaavehouear","https://tradingeconomics.com/united-states/average-hourly-earnings"],
 ["Average Hourly Earnings YoY","s=usaahey","https://tradingeconomics.com/united-states/average-hourly-earnings-yoy"],
@@ -65,8 +67,9 @@
 ["Wage Growth","s=unitedstawaggro","https://tradingeconomics.com/united-states/wage-growth"],
 ["Wages","s=unitedstawag","https://tradingeconomics.com/united-states/wages"],
 ["Wages in Manufacturing","s=unitedstawaginman","https://tradingeconomics.com/united-states/wages-in-manufacturing"],
-["Youth Unemployment Rate","s=unitedstayouunerat","https://tradingeconomics.com/united-states/youth-unemployment-rate"],
-["Prices"],
+["Youth Unemployment Rate","s=unitedstayouunerat","https://tradingeconomics.com/united-states/youth-unemployment-rate"]
+]},
+{"cat":"Prices","list":[
 ["Consumer Inflation Expectations","s=unitedstainfexp","https://tradingeconomics.com/united-states/inflation-expectations"],
 ["Core Consumer Prices","s=unitedstacorconpri","https://tradingeconomics.com/united-states/core-consumer-prices"],
 ["Core Inflation Rate MoM","s=usacirm","https://tradingeconomics.com/united-states/core-inflation-rate-mom"],
@@ -109,8 +112,9 @@
 ["PPI MoM","s=usappim","https://tradingeconomics.com/united-states/producer-price-inflation-mom"],
 ["PPI YoY","s=unitedstapropricha","https://tradingeconomics.com/united-states/producer-prices-change"],
 ["Rent Inflation","s=usareninf","https://tradingeconomics.com/united-states/rent-inflation"],
-["Services Inflation","s=usaserinf","https://tradingeconomics.com/united-states/services-inflation"],
-["Money"],
+["Services Inflation","s=usaserinf","https://tradingeconomics.com/united-states/services-inflation"]
+]},
+{"cat":"Money","list":[
 ["Banks Balance Sheet","s=unitedstabanbalshe","https://tradingeconomics.com/united-states/banks-balance-sheet"],
 ["Effective Federal Funds Rate","s=usaeffr","https://tradingeconomics.com/united-states/effective-federal-funds-rate"],
 ["Fed Balance Sheet","s=unitedstacenbanbalsh","https://tradingeconomics.com/united-states/central-bank-balance-sheet"],
@@ -125,8 +129,9 @@
 ["Money Supply M2","s=unitedstamonsupm2","https://tradingeconomics.com/united-states/money-supply-m2"],
 ["Private Debt to GDP","s=unitedstpridebtogdp","https://tradingeconomics.com/united-states/private-debt-to-gdp"],
 ["Proxy Funds Rate","s=usapfr","https://tradingeconomics.com/united-states/proxy-funds-rate"],
-["Secured Overnight Financing Rate","s=usasofr","https://tradingeconomics.com/united-states/secured-overnight-financing-rate"],
-["Trade"],
+["Secured Overnight Financing Rate","s=usasofr","https://tradingeconomics.com/united-states/secured-overnight-financing-rate"]
+]},
+{"cat":"Trade","list":[
 ["Auto Exports","s=usaautexp","https://tradingeconomics.com/united-states/auto-exports"],
 ["Balance of Trade","s=ustbtot","https://tradingeconomics.com/united-states/balance-of-trade"],
 ["Crude Oil Production","s=unitedstacruoilpro","https://tradingeconomics.com/united-states/crude-oil-production"],
@@ -151,8 +156,9 @@
 ["Tourism Revenues","s=unitedstatourev","https://tradingeconomics.com/united-states/tourism-revenues"],
 ["Tourist Arrivals","s=unitedstatouarr","https://tradingeconomics.com/united-states/tourist-arrivals"],
 ["Weapons Sales","s=unitedstweasal","https://tradingeconomics.com/united-states/weapons-sales"],
-["Weekly Crude Oil Production","s=usawcop","https://tradingeconomics.com/united-states/weekly-crude-oil-production"],
-["Government"],
+["Weekly Crude Oil Production","s=usawcop","https://tradingeconomics.com/united-states/weekly-crude-oil-production"]
+]},
+{"cat":"Government","list":[
 ["Asylum Applications","s=unitedstaasyapp","https://tradingeconomics.com/united-states/asylum-applications"],
 ["Corruption Index","s=unitedstcorind","https://tradingeconomics.com/united-states/corruption-index"],
 ["Corruption Rank","s=unitedstacorran","https://tradingeconomics.com/united-states/corruption-rank"],
@@ -166,8 +172,9 @@
 ["Government Spending to GDP","s=unitedstagstg","https://tradingeconomics.com/united-states/government-spending-to-gdp"],
 ["Holidays","s=unitedstagstg","https://tradingeconomics.com/united-states/holidays"],
 ["Military Expenditure","s=unitedstmil","https://tradingeconomics.com/united-states/military-expenditure"],
-["Monthly Budget Statement","s=unitedstagovbudval","https://tradingeconomics.com/united-states/government-budget-value"],
-["Business"],
+["Monthly Budget Statement","s=unitedstagovbudval","https://tradingeconomics.com/united-states/government-budget-value"]
+]},
+{"cat":"Business","list":[
 ["Bankruptcies","s=unitedstaban","https://tradingeconomics.com/united-states/bankruptcies"],
 ["Business Inventories MoM","s=unitedstabusinv","https://tradingeconomics.com/united-states/business-inventories"],
 ["Capacity Utilization","s=unitedstacaputi","https://tradingeconomics.com/united-states/capacity-utilization"],
@@ -207,8 +214,9 @@
 ["S&P Global Services PMI","s=unitedstaserpmi","https://tradingeconomics.com/united-states/services-pmi"],
 ["Steel Production","s=ussteel","https://tradingeconomics.com/united-states/steel-production"],
 ["Total Vehicle Sales","s=unitedstatotvehsal","https://tradingeconomics.com/united-states/total-vehicle-sales"],
-["Wholesale Inventories MoM","s=unitedstawhoinv","https://tradingeconomics.com/united-states/wholesale-inventories"],
-["Consumer"],
+["Wholesale Inventories MoM","s=unitedstawhoinv","https://tradingeconomics.com/united-states/wholesale-inventories"]
+]},
+{"cat":"Consumer","list":[
 ["Bank Lending Rate","s=unitedstabanlenrat","https://tradingeconomics.com/united-states/bank-lending-rate"],
 ["Chain Store Sales","s=unitedstachastosal","https://tradingeconomics.com/united-states/chain-store-sales"],
 ["Consumer Credit Change","s=unitedstaconcre","https://tradingeconomics.com/united-states/consumer-credit"],
@@ -236,8 +244,9 @@
 ["Retail Sales YoY","s=usaretailsalesyoy","https://tradingeconomics.com/united-states/retail-sales-annual"],
 ["Total Household Debt","s=usadbt","https://tradingeconomics.com/united-states/debt-balance-total"],
 ["Used Car Prices MoM","s=usaucpm","https://tradingeconomics.com/united-states/used-car-prices-mom"],
-["Used Car Prices YoY","s=usaucpy","https://tradingeconomics.com/united-states/used-car-prices-yoy"],
-["Housing"],
+["Used Car Prices YoY","s=usaucpy","https://tradingeconomics.com/united-states/used-car-prices-yoy"]
+]},
+{"cat":"Housing","list":[
 ["15-Year Mortgage Rate","s=usa15ymr","https://tradingeconomics.com/united-states/15-year-mortgage-rate"],
 ["30-Year Mortgage Rate","s=usa3ymr","https://tradingeconomics.com/united-states/30-year-mortgage-rate"],
 ["Average House Prices","s=usaahp","https://tradingeconomics.com/united-states/average-house-prices"],
@@ -273,16 +282,18 @@
 ["Residential Property Prices","s=usrpp","https://tradingeconomics.com/united-states/residential-property-prices"],
 ["S&P/Case-Shiller Home Price MoM","s=usacshpim","https://tradingeconomics.com/united-states/case-shiller-home-price-index-mom"],
 ["S&P/Case-Shiller Home Price YoY","s=usacshpiy","https://tradingeconomics.com/united-states/case-shiller-home-price-index-yoy"],
-["Total Housing Inventory","s=usathi","https://tradingeconomics.com/united-states/total-housing-inventory"],
-["Taxes"],
+["Total Housing Inventory","s=usathi","https://tradingeconomics.com/united-states/total-housing-inventory"]
+]},
+{"cat":"Taxes","list":[
 ["Corporate Tax Rate","s=usacorptax","https://tradingeconomics.com/united-states/corporate-tax-rate"],
 ["Personal Income Tax Rate","s=usairstax","https://tradingeconomics.com/united-states/personal-income-tax-rate"],
 ["Sales Tax Rate","s=ussalestax","https://tradingeconomics.com/united-states/sales-tax-rate"],
 ["Social Security Rate","s=usassr","https://tradingeconomics.com/united-states/social-security-rate"],
 ["Social Security Rate For Companies","s=usassrc","https://tradingeconomics.com/united-states/social-security-rate-for-companies"],
 ["Social Security Rate For Employees","s=usassre","https://tradingeconomics.com/united-states/social-security-rate-for-employees"],
-["Withholding Tax Rate","s=usawtr","https://tradingeconomics.com/united-states/withholding-tax-rate"],
-["Energy"],
+["Withholding Tax Rate","s=usawtr","https://tradingeconomics.com/united-states/withholding-tax-rate"]
+]},
+{"cat":"Energy","list":[
 ["API Crude Imports","s=unitedstaapicruimp","https://tradingeconomics.com/united-states/api-crude-imports"],
 ["API Crude Oil Stock Change","s=apicrudeoil","https://tradingeconomics.com/united-states/api-crude-oil-stock-change"],
 ["API Crude Runs","s=unitedstaapicrurun","https://tradingeconomics.com/united-states/api-crude-runs"],
@@ -303,15 +314,19 @@
 ["EIA Heating Oil Stocks Change","s=unitedstahos","https://tradingeconomics.com/united-states/heating-oil-stocks"],
 ["EIA Natural Gas Stocks Change","s=unitedstanatgasstoch","https://tradingeconomics.com/united-states/natural-gas-stocks-change"],
 ["EIA Refinery Crude Runs Change","s=unitedstarefcrurun","https://tradingeconomics.com/united-states/refinery-crude-runs"],
-["Strategic Petroleum Reserve Crude Oil Stocks","s=usasprcos","https://tradingeconomics.com/united-states/strategic-petroleum-reserve-crude-oil-stocks"],
-["Health"],
+["Strategic Petroleum Reserve Crude Oil Stocks","s=usasprcos","https://tradingeconomics.com/united-states/strategic-petroleum-reserve-crude-oil-stocks"]
+]},
+{"cat":"Health","list":[
 ["Hospital Beds","s=usbeds","https://tradingeconomics.com/united-states/hospital-beds"],
 ["Hospitals","s=ushosp","https://tradingeconomics.com/united-states/hospital"],
 ["Medical Doctors","s=usphys","https://tradingeconomics.com/united-states/medical-doctors"],
-["Nurses","s=usnurs","https://tradingeconomics.com/united-states/nurses"],
-["Climate"],
+["Nurses","s=usnurs","https://tradingeconomics.com/united-states/nurses"]
+]},
+{"cat":"Climate","list":[
 ["CO2 Emissions","s=usa.en.atm.co2e.kt","https://tradingeconomics.com/united-states/co2-emissions"],
 ["Precipitation","s=usaprec","https://tradingeconomics.com/united-states/precipitation"],
 ["Temperature","s=usatemp","https://tradingeconomics.com/united-states/temperature"]
-]}
 ]
+}
+]
+}]
