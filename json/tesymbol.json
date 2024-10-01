@@ -664,7 +664,7 @@
 ["Temperature","s=jpntemp","https://tradingeconomics.com/japan/temperature"]
 ]}]},
 
-{"country":"Japan","items":[
+{"country":"China","items":[
 {"cat":"Markets","list":[
 ["Currency","s=usdcny","https://tradingeconomics.com/china/currency"],
 ["Government Bond 10Y","s=gcny10yr","https://tradingeconomics.com/china/government-bond-yield"],
