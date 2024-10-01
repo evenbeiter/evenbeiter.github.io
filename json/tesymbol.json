@@ -326,7 +326,141 @@
 ["CO2 Emissions","s=usa.en.atm.co2e.kt","https://tradingeconomics.com/united-states/co2-emissions"],
 ["Precipitation","s=usaprec","https://tradingeconomics.com/united-states/precipitation"],
 ["Temperature","s=usatemp","https://tradingeconomics.com/united-states/temperature"]
+]}]},
+
+{"country":"Taiwan","items":[
+{"cat":"Markets","list":[
+["Currency","s=usdtwd","https://tradingeconomics.com/taiwan/currency"],
+["Government Bond 10Y","s=taiwangovbon10y","https://tradingeconomics.com/taiwan/government-bond-yield"],
+["Stock Market","s=twse","https://tradingeconomics.com/taiwan/stock-market"]
+]},
+{"cat":"GDP","list":[
+["Full Year GDP Growth","s=taifygg","https://tradingeconomics.com/taiwan/full-year-gdp-growth"],
+["GDP Constant Prices","s=taiwangdpconpri","https://tradingeconomics.com/taiwan/gdp-constant-prices"],
+["GDP from Agriculture","s=taiwangdpfroagr","https://tradingeconomics.com/taiwan/gdp-from-agriculture"],
+["GDP from Construction","s=taiwangdpfrocon","https://tradingeconomics.com/taiwan/gdp-from-construction"],
+["GDP from Manufacturing","s=taiwangdpfroman","https://tradingeconomics.com/taiwan/gdp-from-manufacturing"],
+["GDP from Mining","s=taiwangdpfromin","https://tradingeconomics.com/taiwan/gdp-from-mining"],
+["GDP from Public Administration","s=taiwangfpa","https://tradingeconomics.com/taiwan/gdp-from-public-administration"],
+["GDP from Services","s=taiwangdpfroser","https://tradingeconomics.com/taiwan/gdp-from-services"],
+["GDP from Transport","s=taiwangdpfrotra","https://tradingeconomics.com/taiwan/gdp-from-transport"],
+["GDP from Utilities","s=taiwangdpfrouti","https://tradingeconomics.com/taiwan/gdp-from-utilities"],
+["GDP Growth Rate","s=taiwangdpqoq","https://tradingeconomics.com/taiwan/gdp-growth"],
+["GDP Growth Rate YoY","s=taiwangdpyoy","https://tradingeconomics.com/taiwan/gdp-growth-annual"],
+["Gross Fixed Capital Formation","s=taiwangrofixcapfor","https://tradingeconomics.com/taiwan/gross-fixed-capital-formation"],
+["Gross National Product","s=taiwangronatpro","https://tradingeconomics.com/taiwan/gross-national-product"]
+]},
+{"cat":"Labour","list":[
+["Employed Persons","s=taiwanempper","https://tradingeconomics.com/taiwan/employed-persons"],
+["Labor Force Participation Rate","s=taiwanlabforparrat","https://tradingeconomics.com/taiwan/labor-force-participation-rate"],
+["Labour Costs","s=taiwanlabcos","https://tradingeconomics.com/taiwan/labour-costs"],
+["Minimum Wages","s=taiwanminwag","https://tradingeconomics.com/taiwan/minimum-wages"],
+["Population","s=taiwanpopulation","https://tradingeconomics.com/taiwan/population"],
+["Productivity","s=taiwanpro","https://tradingeconomics.com/taiwan/productivity"],
+["Unemployed Persons","s=taiwanuneper","https://tradingeconomics.com/taiwan/unemployed-persons"],
+["Unemployment Rate","s=taiwanur","https://tradingeconomics.com/taiwan/unemployment-rate"],
+["Wages","s=taiwanwag","https://tradingeconomics.com/taiwan/wages"],
+["Wages in Manufacturing","s=taiwanwaginman","https://tradingeconomics.com/taiwan/wages-in-manufacturing"],
+["Youth Unemployment Rate","s=taiwanyouunerat","https://tradingeconomics.com/taiwan/youth-unemployment-rate"]
+]},
+{"cat":"Prices","list":[
+["Consumer Price Index CPI","s=taiwanconpriindcpi","https://tradingeconomics.com/taiwan/consumer-price-index-cpi"],
+["Core Consumer Prices","s=taiwancorconpri","https://tradingeconomics.com/taiwan/core-consumer-prices"],
+["Core Inflation Rate","s=twncorecpirate","https://tradingeconomics.com/taiwan/core-inflation-rate"],
+["CPI Housing Utilities","s=taiwanchu","https://tradingeconomics.com/taiwan/cpi-housing-utilities"],
+["CPI Transportation","s=taiwancpitra","https://tradingeconomics.com/taiwan/cpi-transportation"],
+["Export Prices","s=taiwanexppri","https://tradingeconomics.com/taiwan/export-prices"],
+["Food Inflation","s=taiwanfooinf","https://tradingeconomics.com/taiwan/food-inflation"],
+["GDP Deflator","s=taiwangdpdef","https://tradingeconomics.com/taiwan/gdp-deflator"],
+["Import Prices","s=taiwanimppri","https://tradingeconomics.com/taiwan/import-prices"],
+["Inflation Rate MoM","s=taiwaninfratmom","https://tradingeconomics.com/taiwan/inflation-rate-mom"],
+["Inflation Rate YoY","s=taiwancpi","https://tradingeconomics.com/taiwan/inflation-cpi"],
+["Producer Prices","s=taiwanpropri","https://tradingeconomics.com/taiwan/producer-prices"],
+["Producer Prices Change","s=taiwanpropricha","https://tradingeconomics.com/taiwan/producer-prices-change"],
+["Services Inflation","s=taiserinf","https://tradingeconomics.com/taiwan/services-inflation"]
+]},
+{"cat":"Money","list":[
+["Banks Balance Sheet","s=taiwanbanbalshe","https://tradingeconomics.com/taiwan/banks-balance-sheet"],
+["Central Bank Balance Sheet","s=taiwancenbanbalshe","https://tradingeconomics.com/taiwan/central-bank-balance-sheet"],
+["Foreign Exchange Reserves","s=taiwanforexcres","https://tradingeconomics.com/taiwan/foreign-exchange-reserves"],
+["Interbank Rate","s=taiwanintrat","https://tradingeconomics.com/taiwan/interbank-rate"],
+["Interest Rate","s=taiwanir","https://tradingeconomics.com/taiwan/interest-rate"],
+["Loan Growth","s=taiwanloagro","https://tradingeconomics.com/taiwan/loan-growth"],
+["Loans to Private Sector","s=taiwanloatoprisec","https://tradingeconomics.com/taiwan/loans-to-private-sector"],
+["M2 Money Supply YoY","s=taiwanmonsupm2","https://tradingeconomics.com/taiwan/money-supply-m2"],
+["Money Supply M0","s=taiwanmonsupm0","https://tradingeconomics.com/taiwan/money-supply-m0"],
+["Money Supply M1","s=taiwanmonsupm1","https://tradingeconomics.com/taiwan/money-supply-m1"]
+]},
+{"cat":"Trade","list":[
+["Balance of Trade","s=taiwanbt","https://tradingeconomics.com/taiwan/balance-of-trade"],
+["Capital Flows","s=taiwancapflo","https://tradingeconomics.com/taiwan/capital-flows"],
+["Current Account","s=taiwanca","https://tradingeconomics.com/taiwan/current-account"],
+["Current Account to GDP","s=twnca2gdp","https://tradingeconomics.com/taiwan/current-account-to-gdp"],
+["Exports","s=taiwanex","https://tradingeconomics.com/taiwan/exports"],
+["Exports by Category","s=taiwanex","https://tradingeconomics.com/taiwan/exports-by-category"],
+["Exports by Country","s=taiwanex","https://tradingeconomics.com/taiwan/exports-by-country"],
+["Exports YoY","s=taiexpyoy","https://tradingeconomics.com/taiwan/exports-yoy"],
+["External Debt","s=taiwanextdeb","https://tradingeconomics.com/taiwan/external-debt"],
+["Foreign Direct Investment","s=taiwanfordirinv","https://tradingeconomics.com/taiwan/foreign-direct-investment"],
+["Gold Reserves","s=taiwangolres","https://tradingeconomics.com/taiwan/gold-reserves"],
+["Imports","s=taiwanim","https://tradingeconomics.com/taiwan/imports"],
+["Imports by Category","s=taiwanim","https://tradingeconomics.com/taiwan/imports-by-category"],
+["Imports by Country","s=taiwanim","https://tradingeconomics.com/taiwan/imports-by-country"],
+["Imports YoY","s=taiimpyoy","https://tradingeconomics.com/taiwan/imports-yoy"],
+["Terms of Trade","s=taiwanteroftra","https://tradingeconomics.com/taiwan/terms-of-trade"],
+["Terrorism Index","s=taiwanterind","https://tradingeconomics.com/taiwan/terrorism-index"],
+["Tourist Arrivals","s=taiwantouarr","https://tradingeconomics.com/taiwan/tourist-arrivals"]
+]},
+{"cat":"Government","list":[
+["Corruption Index","s=taiwancorind","https://tradingeconomics.com/taiwan/corruption-index"],
+["Corruption Rank","s=taiwancorran","https://tradingeconomics.com/taiwan/corruption-rank"],
+["Credit Rating","s=taiwancorran","https://tradingeconomics.com/taiwan/rating"],
+["Fiscal Expenditure","s=taiwanfisexp","https://tradingeconomics.com/taiwan/fiscal-expenditure"],
+["Government Budget","s=taiwangb","https://tradingeconomics.com/taiwan/government-budget"],
+["Government Budget Value","s=taiwangovbudval","https://tradingeconomics.com/taiwan/government-budget-value"],
+["Government Revenues","s=taiwangovrev","https://tradingeconomics.com/taiwan/government-revenues"],
+["Government Spending","s=taiwangovspe","https://tradingeconomics.com/taiwan/government-spending"],
+["Holidays","s=taiwangovspe","https://tradingeconomics.com/taiwan/holidays"],
+["Military Expenditure","s=taiwanmil","https://tradingeconomics.com/taiwan/military-expenditure"]
+]},
+{"cat":"Business","list":[
+["Bankruptcies","s=taiwanban","https://tradingeconomics.com/taiwan/bankruptcies"],
+["Car Production","s=taiwancarpro","https://tradingeconomics.com/taiwan/car-production"],
+["Cement Production","s=taiwancempro","https://tradingeconomics.com/taiwan/cement-production"],
+["Changes in Inventories","s=taiwanchaininv","https://tradingeconomics.com/taiwan/changes-in-inventories"],
+["Coincident Index","s=taiwancoiind","https://tradingeconomics.com/taiwan/coincident-index"],
+["Export Orders YoY","s=taiwanneword","https://tradingeconomics.com/taiwan/new-orders"],
+["Industrial Production Mom","s=taiwanindpromom","https://tradingeconomics.com/taiwan/industrial-production-mom"],
+["Industrial Production YoY","s=taiwanip","https://tradingeconomics.com/taiwan/industrial-production"],
+["Leading Economic Index","s=taiwanleaecoind","https://tradingeconomics.com/taiwan/leading-economic-index"],
+["Manufacturing Production","s=taiwanmanpro","https://tradingeconomics.com/taiwan/manufacturing-production"],
+["Mining Production","s=taiwanminpro","https://tradingeconomics.com/taiwan/mining-production"],
+["S&P Global Manufacturing PMI","s=taiwanmanpmi","https://tradingeconomics.com/taiwan/manufacturing-pmi"],
+["Total Car Registrations","s=taiwancarreg","https://tradingeconomics.com/taiwan/car-registrations"]
+]},
+{"cat":"Consumer","list":[
+["Bank Lending Rate","s=taiwanbanlenrat","https://tradingeconomics.com/taiwan/bank-lending-rate"],
+["Consumer Confidence","s=taiiwancondence","https://tradingeconomics.com/taiwan/consumer-confidence"],
+["Consumer Credit","s=taiwanconcre","https://tradingeconomics.com/taiwan/consumer-credit"],
+["Consumer Spending","s=taiwanconspe","https://tradingeconomics.com/taiwan/consumer-spending"],
+["Disposable Personal Income","s=taiwandisperinc","https://tradingeconomics.com/taiwan/disposable-personal-income"],
+["Retail Sales MoM","s=taiwanretsalmom","https://tradingeconomics.com/taiwan/retail-sales"],
+["Retail Sales YoY","s=twnretailsalesyoy","https://tradingeconomics.com/taiwan/retail-sales-annual"]
+]},
+{"cat":"Housing","list":[
+["Building Permits","s=taiwanbuiper","https://tradingeconomics.com/taiwan/building-permits"],
+["Housing Index","s=taiwanhouind","https://tradingeconomics.com/taiwan/housing-index"]
+]},
+{"cat":"Taxes","list":[
+["Corporate Tax Rate","s=twncorptax","https://tradingeconomics.com/taiwan/corporate-tax-rate"],
+["Personal Income Tax Rate","s=twnirstax","https://tradingeconomics.com/taiwan/personal-income-tax-rate"],
+["Sales Tax Rate","s=twnsalestax","https://tradingeconomics.com/taiwan/sales-tax-rate"],
+["Social Security Rate","s=taiwansocsecrat","https://tradingeconomics.com/taiwan/social-security-rate"],
+["Social Security Rate For Companies","s=taiwansocsecratforco","https://tradingeconomics.com/taiwan/social-security-rate-for-companies"],
+["Social Security Rate For Employees","s=taiwansocsecratforem","https://tradingeconomics.com/taiwan/social-security-rate-for-employees"]
+]},
+{"cat":"Climate","list":[
+["Temperature","s=twntemp","https://tradingeconomics.com/taiwan/temperature"]
+]}]}
+
 ]
-}
-]
-}]
