@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Audio Playback</title>
+</head>
+<body>
+
+  <audio id="audioPlayer" controls></audio>
+
+  <script>
+    // List of audio URLs
+    const audioUrls = [
+      'https://example.com/audio1.mp3',
+      'https://example.com/audio2.mp3',
+      'https://example.com/audio3.mp3'
+    ];
+
+    const audioPlayer = document.getElementById('audioPlayer');
+    let currentAudioIndex = 0;
+
+    // Load the first audio
+    audioPlayer.src = audioUrls[currentAudioIndex];
+    audioPlayer.load();
+
+    // Handle metadata loaded event
+    audioPlayer.addEventListener('loadedmetadata', function() {
+      // Fast forward to 10 seconds if it's the second audio
+      if (currentAudioIndex === 1) {
+        audioPlayer.currentTime = 10;
+      }
+    });
+
+    // Event listener for time updates (to rewind to first audio)
+    audioPlayer.addEventListener('timeupdate', function() {
+      if (currentAudioIndex === 1 && audioPlayer.currentTime >= 25) {
+        // After playing 15 seconds of the second audio (from 10s to 25s), switch to the first audio
+        currentAudioIndex = 0;
+        audioPlayer.src = audioUrls[currentAudioIndex];
+        audioPlayer.load();
+
+        // After loading the first audio, start playing from 20 seconds
+        audioPlayer.addEventListener('loadedmetadata', function() {
+          audioPlayer.currentTime = 20;
+          audioPlayer.play();
+        }, { once: true }); // 'once: true' ensures the event only fires once
+      }
+    });
+
+    // Play next audio when the current one ends
+    audioPlayer.addEventListener('ended', function() {
+      currentAudioIndex++;
+      if (currentAudioIndex < audioUrls.length) {
+        audioPlayer.src = audioUrls[currentAudioIndex];
+        audioPlayer.load();
+        audioPlayer.play();
+      }
+    });
+
+    // Start playing automatically when page loads
+    window.onload = function() {
+      audioPlayer.play();
+    };
+  </script>
+
+</body>
+</html>
