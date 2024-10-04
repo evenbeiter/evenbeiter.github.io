@@ -91,7 +91,7 @@ function getContent(i){
 }
 
 $(function(){
-  $(document).on("click", ".pp-lines tr", function(e) {
+  $(document).on("click", "#1 tr", function(e) {
     let track=Number($(this).next().children(':nth-child(2)').text());console.log(track);
     let startTime=Number($(this).children(':nth-child(3)').text());console.log(startTime);
     let endTime=Number($(this).next().children(':nth-child(3)').text());console.log(endTime);
