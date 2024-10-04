@@ -24,7 +24,7 @@
     <audio id="ap" controls preload="auto"></audio>
   </div>
 
-  <div id="list">
+  <div id="list" class="mt-2">
   </div>
 </div>
 
@@ -69,9 +69,9 @@ var data=[
 
 for (var i=0;i<data.length;i++){
   document.getElementById('list').innerHTML+=`
-  <p onclick="getContent(${i})">${data[i].c}</p>
-  <table class="table">
-    <tbody id="${i+1}" class="pp-lines" style="display:none"></tbody>
+  <p class="fw-bold" onclick="getContent(${i})">${data[i].c}</p>
+  <table id="${i+1}" class="table" style="display:none">
+    <tbody class="pp-lines"></tbody>
   </table>
   <hr>
   `;
@@ -79,12 +79,14 @@ for (var i=0;i<data.length;i++){
 
 function getContent(i){
   if (document.getElementById(i+1).style.display=='none'){document.getElementById(i+1).style.display='block'}else{document.getElementById(i+1).style.display='none'};
-  document.getElementById(i+1).innerHTML='';
+  document.getElementById(i+1).childNodes[1].innerHTML='';
   var j=0;
   for (let p of data[i].p){
-    document.getElementById(i+1).innerHTML+=`
-    <tr><td class="s fw-lighter">${++j}</td><td class="h">${p[0]}</td><td class="h">${p[1]}</td><td>${p[2]}</td></tr>
-    `;
+    if (p[2]!==""){
+      document.getElementById(i+1).childNodes[1].innerHTML+=`<tr><td class="s fw-lighter">${++j}</td><td class="h">${p[0]}</td><td class="h">${p[1]}</td><td>${p[2]}</td></tr>`;
+    } else {
+      document.getElementById(i+1).childNodes[1].innerHTML+=`<tr><td class="h">${++j}</td><td class="h">${p[0]}</td><td class="h">${p[1]}</td><td class="h">${p[2]}</td></tr>`;
+    }
   }
 }
 
