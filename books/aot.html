@@ -1,68 +1,125 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Audio Playback</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Age of Turbulence</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <style>
+    audio{margin-right:auto;margin-left:auto;width:100%}
+    video{margin-right:auto;margin-left:auto;width:100%}
+    .plyr__video-embed{height:315px !important;width:560px !important}
+    .sticky-top, .fixed-bottom{background-color:#FFF}
+    .disable-dbl-tap-zoom{touch-action:manipulation}
+    .b-highlight{color:green;background-color:#E5E4E2}
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}
+    .h{display:none}
+    .s{font-size:0.7rem}
+    [contenteditable]{outline: 0px solid transparent;}
+  </style>
 </head>
 <body>
+<div class="m-3">
+  <div id="top" class="sticky-top">
+    <audio id="ap" controls preload="auto"></audio>
+  </div>
 
-  <audio id="audioPlayer" controls></audio>
+  <div id="list">
+  </div>
+</div>
 
-  <script>
-    // List of audio URLs
-    const audioUrls = [
-      'https://example.com/audio1.mp3',
-      'https://example.com/audio2.mp3',
-      'https://example.com/audio3.mp3'
-    ];
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 
-    const audioPlayer = document.getElementById('audioPlayer');
-    let currentAudioIndex = 0;
+<script>
+const audioUrls = [
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/01.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/02.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/03.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/04.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/05.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/06.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/07.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/08.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/09.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/10.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/11.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/12.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/13.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/14.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/15.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/16.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/17.mp3',
+  'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/18.mp3'
+];
 
-    // Load the first audio
-    audioPlayer.src = audioUrls[currentAudioIndex];
-    audioPlayer.load();
+var data=[
+  {"c":"01 INTRODUCTION","p":[
+    [6,45,"August 9, 1995, will go down in history as the day the dot-com boom was born. What set it off was the initial public offering of Netscape, a tiny, two-year old Silicon Valley software maker that had almost no revenues and not a penny of profits. Yet its browser software had fueled an explosion in Internet use, helping turn what had started as a US government-owned online sandbox for scientists and engineers into the digital thoroughfare for the world. The day Netscape stock began to trade, it rocketed from $28 a share to $71, astonishing investors from Silicon Valley to Wall Street."],
+    [6,45.8,"The Internet gold rush was on. More and more start-ups went public to fantastic valuations. Netscape continued to climb. By November 1995, the company had a higher market capitalization than Delta Airlines, and Netscape CEO Jim Clark became the first Internet billionaire. High-tech excitement brought extra sizzle to what was already a hot market for stocks: Dow Jones Industrial Average broke 4,000, then 5,000, ending 1995 up by well over 30 percent. The technology-heavy NASDAQ, where the new stocks were listed, finished even better, with a gain of more than 40 percent in its composite index. The market growth roared unabated into 1996."],
+    [6,46.6,""]
+    ]
+  },
+  {"c":"08 IRRATIONAL EXUBERANCE","p":[
+      [6,52,"To take a more recent example, compare General Motors and Google. In November 2005, GM announced plans to terminate up to thirty thousand employees, and close twelve plants by 2008. If you looked at the company's flows of cash, you could see GM was directing billions of dollars it historically might have used to create products and build factories into funds to cover future pensions and health benefits of workers and retirees. These funds, in turn were investing the capital where returns were most promising - in areas like high tech. And at the same time Google, of course, was growing at a tremendous rate. The company's capital expenditures increased nearly threefold to more than $800 million in 2005. And in the expectation that the growth would continue, investors bid up the total market value of Google stock to eleven times that of GM's. In fact, the General Motors pension fund owned Google shares - a textbook example of capital shifting as a result of create destruction."],
+      [6,53,"Why should information technology have such a vast transforming effect? Much of corporate activity is direct at reducing uncertainty. For most of the twentieth century, corporate leaders lacked timely knowledge of consumers' needs. This has always been costly to the bottom line. Decisions were made based on information that was days or even weeks old."],
+      [6,53.8,""]
+    ]
+  }
+];
 
-    // Handle metadata loaded event
-    audioPlayer.addEventListener('loadedmetadata', function() {
-      // Fast forward to 10 seconds if it's the second audio
-      if (currentAudioIndex === 1) {
-        audioPlayer.currentTime = 10;
+for (var i=0;i<data.length;i++){
+  document.getElementById('list').innerHTML+=`
+  <p onclick="getContent(${i})">${data[i].c}</p>
+  <table class="table">
+    <tbody id="${i+1}" class="pp-lines" style="display:none"></tbody>
+  </table>
+  <hr>
+  `;
+}
+
+function getContent(i){
+  if (document.getElementById(i+1).style.display=='none'){document.getElementById(i+1).style.display='block'}else{document.getElementById(i+1).style.display='none'};
+  document.getElementById(i+1).innerHTML='';
+  var j=0;
+  for (let p of data[i].p){
+    document.getElementById(i+1).innerHTML+=`
+    <tr><td class="s fw-lighter">${++j}</td><td class="h">${p[0]}</td><td class="h">${p[1]}</td><td>${p[2]}</td></tr>
+    `;
+  }
+}
+
+$(function(){
+  $(document).on("click", ".pp-lines tr", function(e) {
+    let track=Number($(this).next().children(':nth-child(2)').text());console.log(track);
+    let startTime=Number($(this).children(':nth-child(3)').text());console.log(startTime);
+    let endTime=Number($(this).next().children(':nth-child(3)').text());console.log(endTime);
+    startPlay(startTime,endTime);
+  
+    async function startPlay(track,startTime,endTime){
+      var audio=$("#ap")[0];
+      audio.src=audioUrls[track-1];
+      audio.load();
+      let dr = audio.duration;
+      while (isNaN(dr)||dr===Infinity){
+      await new Promise(resolve=> setTimeout(resolve,200));
       }
-    });
 
-    // Event listener for time updates (to rewind to first audio)
-    audioPlayer.addEventListener('timeupdate', function() {
-      if (currentAudioIndex === 1 && audioPlayer.currentTime >= 25) {
-        // After playing 15 seconds of the second audio (from 10s to 25s), switch to the first audio
-        currentAudioIndex = 0;
-        audioPlayer.src = audioUrls[currentAudioIndex];
-        audioPlayer.load();
+      audio.currentTime=startTime;
+      audio.play();
 
-        // After loading the first audio, start playing from 20 seconds
-        audioPlayer.addEventListener('loadedmetadata', function() {
-          audioPlayer.currentTime = 20;
-          audioPlayer.play();
-        }, { once: true }); // 'once: true' ensures the event only fires once
+      audio.ontimeupdate = function(){
+        if (audio.currentTime > endTime){
+            audio.pause();
+        }  
       }
-    });
+    }
+  });
+});
 
-    // Play next audio when the current one ends
-    audioPlayer.addEventListener('ended', function() {
-      currentAudioIndex++;
-      if (currentAudioIndex < audioUrls.length) {
-        audioPlayer.src = audioUrls[currentAudioIndex];
-        audioPlayer.load();
-        audioPlayer.play();
-      }
-    });
+</script>
 
-    // Start playing automatically when page loads
-    window.onload = function() {
-      audioPlayer.play();
-    };
-  </script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
 </html>
