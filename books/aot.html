@@ -7,15 +7,12 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <style>
     audio{margin-right:auto;margin-left:auto;width:100%}
-    video{margin-right:auto;margin-left:auto;width:100%}
-    .plyr__video-embed{height:315px !important;width:560px !important}
     .sticky-top, .fixed-bottom{background-color:#FFF}
     .disable-dbl-tap-zoom{touch-action:manipulation}
     .b-highlight{color:green;background-color:#E5E4E2}
     .table-hover tbody tr:hover td, .table-hover tbody tr:hover th{color:green}
     .h{display:none}
     .s{font-size:0.7rem}
-    [contenteditable]{outline: 0px solid transparent;}
   </style>
 </head>
 <body>
@@ -26,11 +23,34 @@
 
   <div id="list" class="mt-2">
   </div>
+
+  <div id="bottom" class="mx-3 py-1 row fixed-bottom disable-dbl-tap-zoom">
+      <button class="col-2 btn btn-outline-secondary" type="button" onclick="rw5()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-rewind" viewBox="0 0 16 16">
+              <path d="M9.196 8 15 4.633v6.734zm-.792-.696a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+              <path d="M1.196 8 7 4.633v6.734zm-.792-.696a.802.802 0 0 0 0 1.392l6.363 3.692c.52.302 1.233-.043 1.233-.696V4.308c0-.653-.713-.998-1.233-.696z"/>
+          </svg>
+      </button>
+      <button class="col-2 btn btn-outline-secondary ms-2" type="button" onclick="fw5()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fast-forward" viewBox="0 0 16 16">
+              <path d="M6.804 8 1 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C.713 12.69 0 12.345 0 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+              <path d="M14.804 8 9 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C8.713 12.69 8 12.345 8 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
+          </svg>
+      </button>
+      <button class="col-2 btn btn-outline-secondary ms-2" id="btnPlay" type="button" onclick="playMedia()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16">
+              <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/>
+          </svg>
+      </button>
+  </div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
 
 <script>
+
+var audio=$("#ap")[0];
+
 const audioUrls = [
   'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/01.mp3',
   'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/02.mp3',
@@ -52,55 +72,101 @@ const audioUrls = [
   'http://ipaudio6.com/wp-content/uploads/SELL/Age of Turbulence (Alan Greenspan)/18.mp3'
 ];
 
-var data=[
-  {"c":"01 INTRODUCTION","p":[
-    [6,45,"August 9, 1995, will go down in history as the day the dot-com boom was born. What set it off was the initial public offering of Netscape, a tiny, two-year old Silicon Valley software maker that had almost no revenues and not a penny of profits. Yet its browser software had fueled an explosion in Internet use, helping turn what had started as a US government-owned online sandbox for scientists and engineers into the digital thoroughfare for the world. The day Netscape stock began to trade, it rocketed from $28 a share to $71, astonishing investors from Silicon Valley to Wall Street."],
-    [6,45.8,"The Internet gold rush was on. More and more start-ups went public to fantastic valuations. Netscape continued to climb. By November 1995, the company had a higher market capitalization than Delta Airlines, and Netscape CEO Jim Clark became the first Internet billionaire. High-tech excitement brought extra sizzle to what was already a hot market for stocks: Dow Jones Industrial Average broke 4,000, then 5,000, ending 1995 up by well over 30 percent. The technology-heavy NASDAQ, where the new stocks were listed, finished even better, with a gain of more than 40 percent in its composite index. The market growth roared unabated into 1996."],
-    [6,46.6,""]
-    ]
-  },
-  {"c":"08 IRRATIONAL EXUBERANCE","p":[
-      [6,52,"To take a more recent example, compare General Motors and Google. In November 2005, GM announced plans to terminate up to thirty thousand employees, and close twelve plants by 2008. If you looked at the company's flows of cash, you could see GM was directing billions of dollars it historically might have used to create products and build factories into funds to cover future pensions and health benefits of workers and retirees. These funds, in turn were investing the capital where returns were most promising - in areas like high tech. And at the same time Google, of course, was growing at a tremendous rate. The company's capital expenditures increased nearly threefold to more than $800 million in 2005. And in the expectation that the growth would continue, investors bid up the total market value of Google stock to eleven times that of GM's. In fact, the General Motors pension fund owned Google shares - a textbook example of capital shifting as a result of create destruction."],
-      [6,53,"Why should information technology have such a vast transforming effect? Much of corporate activity is directed at reducing uncertainty. For most of the twentieth century, corporate leaders lacked timely knowledge of consumers' needs. This has always been costly to the bottom line. Decisions were made based on information that was days or even weeks old."],
-      [6,53.8,""]
-    ]
-  }
-];
+async function getData(){
+  var res=await fetch('https://evenbeiter.github.io/books/aot.json');
+  var data=await res.json();
 
-for (var i=0;i<data.length;i++){
-  document.getElementById('list').innerHTML+=`
-  <p class="fw-bold" onclick="getContent(${i})">${data[i].c}</p>
-  <table id="${i+1}" class="table" style="display:none">
-    <tbody class="pp-lines"></tbody>
-  </table>
-  <hr>
-  `;
+  for (var i=0;i<data.length;i++){
+    document.getElementById('list').innerHTML+=`
+    <p class="fw-bold" onclick="getContent(${i})">${data[i].c}</p>
+    <table id="${i+1}" class="table" style="display:none">
+      <tbody class="pp-lines"></tbody>
+    </table>
+    <hr>
+    `;
+  }
 }
 
-function getContent(i){
+getData();
+
+async function getContent(i){
+  var res=await fetch('https://evenbeiter.github.io/books/aot.json');
+  var data=await res.json();
+
+  var audio=$("#ap")[0];
+  audio.src=audioUrls[data[i].p[0][0]-1];console.log(data[i].p[0][0]);
+  audio.load();
   if (document.getElementById(i+1).style.display=='none'){document.getElementById(i+1).style.display='block'}else{document.getElementById(i+1).style.display='none'};
   document.getElementById(i+1).childNodes[1].innerHTML='';
   var j=0;
   for (let p of data[i].p){
     if (p[2]!==""){
-      document.getElementById(i+1).childNodes[1].innerHTML+=`<tr><td class="s fw-lighter">${++j}</td><td class="h">${p[0]}</td><td class="h">${p[1]}</td><td>${p[2]}</td></tr>`;
+      document.getElementById(i+1).childNodes[1].innerHTML+=`<tr><td class="s fw-lighter">${++j}</td><td class="h">${p[0]}</td><td class="h">${s2n(p[1])}</td><td>${p[2]}</td></tr>`;
     } else {
-      document.getElementById(i+1).childNodes[1].innerHTML+=`<tr><td class="h">${++j}</td><td class="h">${p[0]}</td><td class="h">${p[1]}</td><td class="h">${p[2]}</td></tr>`;
+      document.getElementById(i+1).childNodes[1].innerHTML+=`<tr><td class="h">${++j}</td><td class="h">${p[0]}</td><td class="h">${s2n(p[1])}</td><td class="h">${p[2]}</td></tr>`;
     }
   }
 }
 
+function s2n(a) {
+  if (a!==''){
+    count=a.match(/:/g).length;
+    n = a.split(":");
+    if (count==1){
+      n = parseInt(n[0]) * 60 + parseFloat(n[1]);
+    }else if (count==2){
+      n = parseInt(n[0]) * 3660 + parseInt(n[1]) * 60 + parseFloat(n[2]);
+    }
+    return n.toFixed(2);
+  } else {return ''}
+}
+
+function playMedia(){
+    if ($('#ap')[0].paused){
+        $('#ap')[0].play();
+        $('#btnPlay').html(svgPause());
+    } else {
+        $('#ap')[0].pause();
+        $('#btnPlay').html(svgPlay());
+    }
+}
+
+function svgPlay(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393"/></svg>';
+}
+
+function svgPause(){
+  return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pause-fill" viewBox="0 0 16 16"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5m5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5"/></svg>';
+}
+  
+function rw5() {
+    $('#ap')[0].currentTime = $('#ap')[0].currentTime-5;
+    $('#ap')[0].play();
+    $('#btnPlay').html(svgPause());
+}
+
+function fw5() {
+    $('#ap')[0].currentTime = $('#ap')[0].currentTime+5;
+    $('#ap')[0].play();
+    $('#btnPlay').html(svgPause());
+}
+
+
 $(function(){
-  $(document).on("click", "#1 tr", function(e) {
-    let track=Number($(this).next().children(':nth-child(2)').text());console.log(track);
-    let startTime=Number($(this).children(':nth-child(3)').text());console.log(startTime);
-    let endTime=Number($(this).next().children(':nth-child(3)').text());console.log(endTime);
+  $(document).on("click", ".pp-lines tr", async function(e) {
+
+    let a=$(this).children(':nth-child(4)').text();
+    if (a!=='' && cnTest(a)!==true){
+      var t=await translate(a);
+      if (t!==''){$(this).children(':nth-child(4)').html(`${a}<br>${t}`)};
+    }
+
+    let startTime=Number($(this).children(':nth-child(3)').text());
+    let endTime=Number($(this).next().children(':nth-child(3)').text());
     startPlay(startTime,endTime);
   
-    async function startPlay(track,startTime,endTime){
+    async function startPlay(startTime,endTime){console.log(`${startTime},${endTime}`);
       var audio=$("#ap")[0];
-      audio.src=audioUrls[track-1];
-      audio.load();
       let dr = audio.duration;
       while (isNaN(dr)||dr===Infinity){
       await new Promise(resolve=> setTimeout(resolve,200));
@@ -112,11 +178,30 @@ $(function(){
       audio.ontimeupdate = function(){
         if (audio.currentTime > endTime){
             audio.pause();
+            endTime=dr;
         }  
       }
     }
   });
 });
+
+function cnTest(str) {
+  const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
+  return chineseCharRegex.test(str);
+}
+
+async function translate(a){
+  try{
+      var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=auto&tl=zh-TW&q='+encodeURIComponent(a);
+      var res=await fetch(url);
+      var raw=await res.json();
+      var ts='';
+      for (var j=0;j<raw[0].length;j++){
+          if (raw[0][j][0]!==null && raw[0][j][0]!==undefined && raw[0][j][0]!=='undefined'){ts=ts+raw[0][j][0]}else{ts=ts}
+      }
+      return ts
+  }catch (error) {console.error(error)}
+}
 
 </script>
 
