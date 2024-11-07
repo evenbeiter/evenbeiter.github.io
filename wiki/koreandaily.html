@@ -6,30 +6,34 @@
     <title>iPhone-like Calendar Interface</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* iBooks Sepia Theme */
         body {
-            background-color: #f9f9f9;
+            background-color: #f4ecd8;
+            color: #5b4636;
+            font-family: Arial, sans-serif;
         }
         .calendar-container {
             max-width: 400px;
-            margin: auto;
-            background-color: #fff;
+            margin: 20px auto;
+            background-color: #fefaf1;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         .calendar-header {
             padding: 15px;
-            background-color: #007bff;
-            color: white;
+            background-color: #c9b29b;
+            color: #5b4636;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .calendar-header button {
-            color: white;
+            color: #5b4636;
         }
         .month-year {
             font-size: 1.2em;
+            font-weight: bold;
         }
         .calendar-weekdays, .calendar-days {
             display: grid;
@@ -44,20 +48,60 @@
             border-radius: 8px;
             cursor: pointer;
             transition: background-color 0.3s;
-            background-color: #f1f1f1;
+            background-color: #faebd7;
+            color: #5b4636;
         }
         .calendar-day:hover {
-            background-color: #e0e0e0;
+            background-color: #e3d4b3;
         }
         .day-name, .calendar-day.inactive {
-            color: #ccc;
+            color: #d3c6b2;
+        }
+        .calendar-day.today {
+            background-color: #c9b29b;
+            color: #fff;
+            font-weight: bold;
         }
         .calendar-footer {
             padding: 10px;
-            background-color: #f1f1f1;
+            background-color: #fefaf1;
             text-align: center;
             font-size: 0.9em;
-            color: #555;
+            color: #5b4636;
+        }
+        /* Today Button Styling */
+        .today-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #c9b29b;
+            color: #5b4636;
+            font-size: 1.4em;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .today-btn:hover {
+            background-color: #b29d8d;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .calendar-container {
+                max-width: 95%;
+            }
+            .today-btn {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
@@ -82,10 +126,15 @@
     <div class="calendar-footer">Tap on a date to view</div>
 </div>
 
+<!-- "Go to Today" Button -->
+<div id="goToToday" class="today-btn">📅</div>
+
 <script>
     const calendar = document.getElementById('calendar');
     const currentMonthYear = document.getElementById('currentMonthYear');
+    const todayBtn = document.getElementById('goToToday');
     let currentDate = new Date();
+    const today = new Date();
 
     function renderCalendar() {
         calendar.innerHTML = '';
@@ -108,6 +157,11 @@
             const dayDiv = document.createElement('div');
             dayDiv.classList.add('calendar-day');
             dayDiv.textContent = i;
+
+            if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+                dayDiv.classList.add('today');
+            }
+
             dayDiv.addEventListener('click', () => openDateLink(year, month + 1, i));
             calendar.appendChild(dayDiv);
         }
@@ -128,6 +182,12 @@
     document.getElementById('nextMonth').addEventListener('click', () => {
         currentDate.setMonth(currentDate.getMonth() + 1);
         renderCalendar();
+    });
+
+    todayBtn.addEventListener('click', () => {
+        currentDate = new Date(today);
+        renderCalendar();
+        openDateLink(today.getFullYear(), today.getMonth() + 1, today.getDate());
     });
 
     renderCalendar();
