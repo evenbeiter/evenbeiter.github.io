@@ -6,30 +6,30 @@
     <title>iPhone-like Calendar Interface</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* iBooks Sepia Theme */
+        /* iBooks Paper Theme */
         body {
-            background-color: #f4ecd8;
-            color: #5b4636;
+            background-color: #fdfbf5;
+            color: #4f4a42;
             font-family: Arial, sans-serif;
         }
         .calendar-container {
             max-width: 400px;
             margin: 20px auto;
-            background-color: #fefaf1;
+            background-color: #faf6ee;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
         .calendar-header {
-            padding: 15px;
-            background-color: #c9b29b;
-            color: #5b4636;
+            padding: 10px;
+            background-color: #d3cbb8;
+            color: #4f4a42;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .calendar-header button {
-            color: #5b4636;
+            color: #4f4a42;
         }
         .month-year {
             font-size: 1.2em;
@@ -38,69 +38,57 @@
         .calendar-weekdays, .calendar-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 5px;
+            gap: 3px;
             text-align: center;
-            font-weight: 500;
-            padding: 10px;
+            padding: 5px;
         }
         .calendar-day {
-            padding: 15px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
-            background-color: #faebd7;
-            color: #5b4636;
+            background-color: #faf6ee;
+            color: #4f4a42;
+            font-size: 0.9em;
         }
         .calendar-day:hover {
-            background-color: #e3d4b3;
+            background-color: #e8e3d8;
         }
         .day-name, .calendar-day.inactive {
-            color: #d3c6b2;
+            color: #c2bba8;
         }
         .calendar-day.today {
-            background-color: #c9b29b;
+            background-color: #d3cbb8;
             color: #fff;
             font-weight: bold;
         }
         .calendar-footer {
-            padding: 10px;
-            background-color: #fefaf1;
+            padding: 5px;
+            background-color: #faf6ee;
             text-align: center;
             font-size: 0.9em;
-            color: #5b4636;
+            color: #4f4a42;
         }
-        /* Today Button Styling */
+        /* "Back to Today" Button Styling */
         .today-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #c9b29b;
-            color: #5b4636;
-            font-size: 1.4em;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            background-color: #d3cbb8;
+            color: #4f4a42;
+            font-size: 1em;
+            margin: 10px auto;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-align: center;
             cursor: pointer;
+            display: inline-block;
             transition: background-color 0.3s;
         }
         .today-btn:hover {
-            background-color: #b29d8d;
+            background-color: #b3ad9c;
         }
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .calendar-container {
                 max-width: 95%;
-            }
-            .today-btn {
-                bottom: 10px;
-                right: 10px;
-                width: 45px;
-                height: 45px;
-                font-size: 1.2em;
             }
         }
     </style>
@@ -124,10 +112,8 @@
     </div>
     <div id="calendar" class="calendar-days"></div>
     <div class="calendar-footer">Tap on a date to view</div>
+    <div id="goToToday" class="today-btn">Back to Today</div>
 </div>
-
-<!-- "Go to Today" Button -->
-<div id="goToToday" class="today-btn">📅</div>
 
 <script>
     const calendar = document.getElementById('calendar');
