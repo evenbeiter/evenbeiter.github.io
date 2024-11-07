@@ -3,80 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar Interface</title>
+    <title>iPhone-like Calendar Interface</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .calendar-day {
-            cursor: pointer;
+        body {
+            background-color: #f9f9f9;
+        }
+        .calendar-container {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .calendar-header {
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .calendar-header button {
+            color: white;
+        }
+        .month-year {
+            font-size: 1.2em;
+        }
+        .calendar-days {
             padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
             text-align: center;
-            border-radius: 4px;
+            font-weight: 500;
+        }
+        .calendar-day {
+            padding: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
         .calendar-day:hover {
-            background-color: #e9ecef;
+            background-color: #e0e0e0;
+        }
+        .day-name, .calendar-day.inactive {
+            color: #ccc;
+        }
+        .calendar-footer {
+            padding: 10px;
+            background-color: #f1f1f1;
+            text-align: center;
+            font-size: 0.9em;
+            color: #555;
         }
     </style>
 </head>
 <body>
-    <div class="container my-5">
-        <div class="text-center mb-4">
-            <button id="prevMonth" class="btn btn-outline-primary me-2">&lt; Previous</button>
-            <span id="currentMonthYear" class="h4"></span>
-            <button id="nextMonth" class="btn btn-outline-primary ms-2">Next &gt;</button>
-        </div>
-        <div id="calendar" class="row row-cols-7 g-2"></div>
+
+<div class="calendar-container">
+    <div class="calendar-header">
+        <button id="prevMonth" class="btn btn-link">&lt;</button>
+        <span id="currentMonthYear" class="month-year"></span>
+        <button id="nextMonth" class="btn btn-link">&gt;</button>
     </div>
+    <div class="calendar-days">
+        <div class="day-name">Sun</div>
+        <div class="day-name">Mon</div>
+        <div class="day-name">Tue</div>
+        <div class="day-name">Wed</div>
+        <div class="day-name">Thu</div>
+        <div class="day-name">Fri</div>
+        <div class="day-name">Sat</div>
+    </div>
+    <div id="calendar" class="calendar-days"></div>
+    <div class="calendar-footer">Tap on a date to view</div>
+</div>
 
-    <script>
-        const calendar = document.getElementById('calendar');
-        const currentMonthYear = document.getElementById('currentMonthYear');
-        let currentDate = new Date();
+<script>
+    const calendar = document.getElementById('calendar');
+    const currentMonthYear = document.getElementById('currentMonthYear');
+    let currentDate = new Date();
 
-        function renderCalendar() {
-            calendar.innerHTML = '';
-            currentDate.setDate(1);
-            const month = currentDate.getMonth();
-            const year = currentDate.getFullYear();
+    function renderCalendar() {
+        calendar.innerHTML = '';
+        currentDate.setDate(1);
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
 
-            currentMonthYear.innerText = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
+        currentMonthYear.innerText = `${currentDate.toLocaleString('default', { month: 'long' })} ${year}`;
 
-            const firstDayIndex = currentDate.getDay();
-            const daysInMonth = new Date(year, month + 1, 0).getDate();
+        const firstDayIndex = currentDate.getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            for (let i = 0; i < firstDayIndex; i++) {
-                const emptyDiv = document.createElement('div');
-                emptyDiv.classList.add('col');
-                calendar.appendChild(emptyDiv);
-            }
-
-            for (let i = 1; i <= daysInMonth; i++) {
-                const dayDiv = document.createElement('div');
-                dayDiv.classList.add('col', 'calendar-day');
-                dayDiv.textContent = i;
-                dayDiv.addEventListener('click', () => openDateLink(year, month + 1, i));
-                calendar.appendChild(dayDiv);
-            }
+        for (let i = 0; i < firstDayIndex; i++) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.classList.add('calendar-day', 'inactive');
+            calendar.appendChild(emptyDiv);
         }
 
-        function openDateLink(year, month, day) {
-            const formattedMonth = month.toString().padStart(2, '0');
-            const formattedDay = day.toString().padStart(2, '0');
-            const url = `https://www.example.com/${year}${formattedMonth}${formattedDay}`;
-            window.open(url, '_blank');
+        for (let i = 1; i <= daysInMonth; i++) {
+            const dayDiv = document.createElement('div');
+            dayDiv.classList.add('calendar-day');
+            dayDiv.textContent = i;
+            dayDiv.addEventListener('click', () => openDateLink(year, month + 1, i));
+            calendar.appendChild(dayDiv);
         }
+    }
 
-        document.getElementById('prevMonth').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
-        });
+    function openDateLink(year, month, day) {
+        const formattedMonth = month.toString().padStart(2, '0');
+        const formattedDay = day.toString().padStart(2, '0');
+        const url = `https://www.example.com/${year}${formattedMonth}${formattedDay}`;
+        window.open(url, '_blank');
+    }
 
-        document.getElementById('nextMonth').addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
-        });
-
+    document.getElementById('prevMonth').addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
         renderCalendar();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    });
+
+    document.getElementById('nextMonth').addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
+
+    renderCalendar();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
