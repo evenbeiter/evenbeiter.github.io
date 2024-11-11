@@ -5,6 +5,7 @@ var txt='逐字詳細解析以下句子的單詞活用、文法和句型。把�
 for (var i=0;i<li.length;i++){
     txt+=`${i+1}. ${li[i].innerText.slice(0,li[i].innerText.indexOf('\n'))} `;
 }
+win=window.open('','','');void(win.document.write(txt));
 })();
 
 
