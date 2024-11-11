@@ -1,3 +1,4 @@
+document.getElementById('main').style.height="6000px";
 var date=window.location.href.slice(-8);
 var li=document.getElementsByClassName('_txt_origin_wrap');
 var ex=document.getElementsByClassName('example_lst')[0].children;
