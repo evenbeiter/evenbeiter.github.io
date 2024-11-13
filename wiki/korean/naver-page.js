@@ -34,7 +34,7 @@ document.getElementById('list').style.display='block';
 document.getElementById('gpt').style.display='none';
 var gpt=await res.json();
 
-document.getElementById('title').innerHTML=\`<strong>\${data.title}<br>\${data.title_translation}</strong>\`;
+document.getElementById('title').innerHTML=\`<strong>\${date}<br>\${data.title}<br>\${data.title_translation}</strong>\`;
 
 var cvs='';var std='';var vocab='';
 var s=data.sentences;
@@ -47,7 +47,7 @@ var e=data.studys[0].examples;
 for (let j=0;j<e.length;j++){
   std+=\`<p onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p>\${gpt[s.length+j]}<br><hr>\`;
 }
-document.getElementById('std').innerHTML=\`<p>\${data.studys[0].origin_translation}</p><hr>\${std}\`;
+document.getElementById('std').innerHTML=\`<p>\${data.studys[0].title}</p>\${data.studys[0].origin_translation}</p><hr>\${std}\`;
 
 for (let t of data.entrys){
   vocab+=\`<p onclick="playAudio('\${t.pron_file_url}')">\${t.orgnc_entry_name}<br>\${t.mean}</p><hr>\`;
