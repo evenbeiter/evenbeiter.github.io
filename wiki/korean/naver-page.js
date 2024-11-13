@@ -39,13 +39,13 @@ document.getElementById('title').innerHTML=\`<strong>\${date}<br>\${data.title}<
 var cvs='';var std='';var vocab='';
 var s=data.sentences;
 for (let i=0;i<s.length;i++){
-  cvs+=\`<p onclick="playAudio('\${s[i].sentence_pron_file}')"><strong>\${i+1}. \${s[i].orgnc_sentence}<br>\${s[i].trsl_orgnc_sentence}</strong></p>\${gpt[i]}<br><hr>\`;
+  cvs+=\`<p onclick="playAudio('\${s[i].sentence_pron_file}')"><strong>\${i+1}. \${s[i].orgnc_sentence}<br>\${s[i].trsl_orgnc_sentence}</strong></p><div class="fs10">\${gpt[i]}</div><br><hr>\`;
 }
 document.getElementById('cvs').innerHTML=cvs;
 
 var e=data.studys[0].examples;
 for (let j=0;j<e.length;j++){
-  std+=\`<p onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p>\${gpt[s.length+j]}<br><hr>\`;
+  std+=\`<p onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p><div class="fs10">\${gpt[s.length+j]}</div><br><hr>\`;
 }
 document.getElementById('std').innerHTML=\`<p>\${data.studys[0].title}</p>\${data.studys[0].origin_translation}</p><hr>\${std}\`;
 
@@ -121,13 +121,14 @@ document.documentElement.innerHTML=`
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>NAVER KOREAN</title>
           <style>
-          body {background-color:#F4ECD8;color:#5B4636;font-size:1.3rem}
+          body {background-color:#F4ECD8;color:#5B4636;font-size:1.3rem;font-variant-east-asian: traditional}
           .content{display:none;cursor:pointer}
           .sepia{background-color:#F4ECD8;color:#5B4636}
           .sepia-contrast{background-color:#3B2D20;color:#F4ECD8}
           h1,h2,h3,h4,h5,h6,.title{font-size:1.3rem;color:#3B2D20 !important;font-weight:bold}
           a{word-wrap:break-word;white-space:normal;overflow-wrap:break-word;word-break:break-word}
           h1 a {color: navy; font-weight: bold; text-decoration:none;cursor:pointer}
+          .fs10{font-size:1rem}
           audio{display:none;margin-right:auto;margin-left:auto;width:100%}
           figcaption{font-size:1rem}
           img{display:block !important;margin:auto;width:100%;height:auto}
