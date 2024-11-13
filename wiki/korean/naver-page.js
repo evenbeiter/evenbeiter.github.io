@@ -39,24 +39,24 @@ document.getElementById('title').innerHTML=\`<strong>\${date}<br>\${data.title}<
 var cvs='';var std='';var vocab='';
 var s=data.sentences;
 for (let i=0;i<s.length;i++){
-  cvs+=\`<p onclick="playAudio('\${s[i].sentence_pron_file}')"><strong>\${i+1}. \${s[i].orgnc_sentence}<br>\${s[i].trsl_orgnc_sentence}</strong></p><div class="fs12">\${gpt[i]}</div><br><hr>\`;
+  cvs+=\`<p class="zh" onclick="playAudio('\${s[i].sentence_pron_file}')"><strong>\${i+1}. \${s[i].orgnc_sentence}<br>\${s[i].trsl_orgnc_sentence}</strong></p><div class="fs12">\${gpt[i]}</div><br><hr>\`;
 }
 document.getElementById('cvs').innerHTML=cvs;
 
 var e=data.studys[0].examples;
 for (let j=0;j<e.length;j++){
-  std+=\`<p onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p><div class="fs12">\${gpt[s.length+j]}</div><br><hr>\`;
+  std+=\`<p class="zh" onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p><div class="fs12">\${gpt[s.length+j]}</div><br><hr>\`;
 }
-document.getElementById('std').innerHTML=\`<p>\${data.studys[0].title}</p>\${data.studys[0].origin_translation}</p><hr>\${std}\`;
+document.getElementById('std').innerHTML=\`<p class="zh">\${data.studys[0].title}<br>\${data.studys[0].origin_translation}</p><hr>\${std}\`;
 
 for (let t of data.entrys){
-  vocab+=\`<p onclick="playAudio('\${t.pron_file_url}')">\${t.orgnc_entry_name}<br>\${t.mean}</p><hr>\`;
+  vocab+=\`<p class="zh" onclick="playAudio('\${t.pron_file_url}')">\${t.orgnc_entry_name}<br>\${t.mean}</p><hr>\`;
 }
 document.getElementById('vocab').innerHTML=vocab;
-}catch{console.log('here');
+}catch{
 document.getElementById('list').style.display='none';
 document.getElementById('gpt').style.display='block';
-var txt='<p>逐字詳細解析以下句子包括單詞活用、文法和句型三大段說明。並把每段說明的標題(單詞活用、文法、句型)和說明的內文都寫成用p標籤包裹的HTML格式，標題和各單詞及文法和句型的說明都自成一個p標籤，每個單詞的活用說明也都是各自獨立的p標籤；標題用粗體、內文用標準字體顯示。最後再把所有的HTML寫成JSON格式，每一個韓文句子的解析整合為一個字串(裡面應該會包含多個p標籤)，成為JSON的一個項目。JSON的格式為\[字串,字串…\］。</p><br>';
+var txt='<p>逐字詳細解析以下句子包括翻譯、單詞用法及活用、文法和句型四大段說明。並把每段說明的標題(翻譯、單詞月手用法及活用、文法、句型)和說明的內文都寫成用p標籤包裹的HTML格式，標題和各單詞及文法和句型的說明都自成一個p標籤，每個單詞的用法和活用說明也都是各自獨立的p標籤；標題用粗體、內文用標準字體顯示。最後再把所有的HTML寫成JSON格式，每一個韓文句子的解析整合為一個字串(裡面應該會包含多個p標籤)，成為JSON的一個項目。JSON的格式為\[字串,字串…\］。</p><br>';
 var n=1;
 for (let s of data.sentences){txt+=\`<p>\${n++}. \${s.orgnc_sentence}</p>\`};
 for (let e of data.studys[0].examples){txt+=\`<p>\${n++}. \${e.origin_example}</p>\`};
@@ -121,7 +121,8 @@ document.documentElement.innerHTML=`
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <title>NAVER KOREAN</title>
           <style>
-          body {background-color:#F4ECD8;color:#5B4636;font-size:1.3rem;font-family: 'PingFang SC';font-variant-east-asian: traditional}
+          body {background-color:#F4ECD8;color:#5B4636;font-size:1.3rem}
+          .zh{font-family: 'PingFang SC';font-variant-east-asian: traditional}
           .content{display:none;cursor:pointer}
           .sepia{background-color:#F4ECD8;color:#5B4636}
           .sepia-contrast{background-color:#3B2D20;color:#F4ECD8}
