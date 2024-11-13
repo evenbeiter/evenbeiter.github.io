@@ -34,7 +34,7 @@ document.getElementById('list').style.display='block';
 document.getElementById('gpt').style.display='none';
 var gpt=await res.json();
 
-document.getElementById('title').innerHTML=\`<strong>\${date}<br>\${data.title}<br>\${data.title_translation}</strong>\`;
+document.getElementById('title').innerHTML=\`<p>\${date}</p><p>\${data.title}</p><p>\${data.title_translation}</p>\`;
 
 var cvs='';var std='';var vocab='';
 var s=data.sentences;
@@ -122,7 +122,7 @@ document.documentElement.innerHTML=`
     <title>NAVER KOREAN</title>
           <style>
           body {background-color:#F4ECD8;color:#5B4636;font-size:1.3rem}
-          .zh{font-family: 'PingFang SC';font-variant-east-asian: traditional}
+          .zh{font-family: 'PingFang SC';font-weight:bold;font-variant-east-asian: traditional}
           .content{display:none;cursor:pointer}
           .sepia{background-color:#F4ECD8;color:#5B4636}
           .sepia-contrast{background-color:#3B2D20;color:#F4ECD8}
@@ -245,7 +245,7 @@ document.documentElement.innerHTML=`
     </div>
   </form>
 <div id="list" class="mx-3 pt-3" style="display:none">
-  <h1 id="title"></h1>
+  <div id="title" class="zh"></div>
   <br><br>
   <h2><strong>Conversation</strong></h2>
   <div id="cvs"></div>
