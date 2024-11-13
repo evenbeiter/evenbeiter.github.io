@@ -122,11 +122,11 @@ document.documentElement.innerHTML=`
     <title>NAVER KOREAN</title>
           <style>
           body {background-color:#F4ECD8;color:#5B4636;font-size:1.3rem}
-          .zh{font-family: 'PingFang SC';font-weight:bold;font-variant-east-asian: traditional}
           .content{display:none;cursor:pointer}
           .sepia{background-color:#F4ECD8;color:#5B4636}
           .sepia-contrast{background-color:#3B2D20;color:#F4ECD8}
           h1,h2,h3,h4,h5,h6,.title{font-size:1.3rem;color:#3B2D20 !important;font-weight:bold}
+          .zh{font-family: 'PingFang SC';font-weight:800;font-variant-east-asian: traditional}
           a{word-wrap:break-word;white-space:normal;overflow-wrap:break-word;word-break:break-word}
           h1 a {color: navy; font-weight: bold; text-decoration:none;cursor:pointer}
           .fs12{font-size:1.2rem}
@@ -245,7 +245,7 @@ document.documentElement.innerHTML=`
     </div>
   </form>
 <div id="list" class="mx-3 pt-3" style="display:none">
-  <div id="title" class="zh"></div>
+  <div id="title" class="title zh"></div>
   <br><br>
   <h2><strong>Conversation</strong></h2>
   <div id="cvs"></div>
