@@ -252,7 +252,7 @@ document.documentElement.innerHTML=`
   <br><h2><strong>Vocabulary</strong></h2>
   <div id="vocab"></div>
 </div>
-<div id="gpt" class="mx-3 pt-3" style="display:none"></div>
+<div id="gpt" class="mx-3 pt-3" style="font-size:0.8rem;display:none"></div>
 </div></body>
 <script>
 const calendar = document.getElementById('calendar');
