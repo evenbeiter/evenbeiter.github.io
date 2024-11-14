@@ -98,6 +98,11 @@ function renderCalendar() {
     }
 }
 
+function goToDate(inputDate) {
+    renderCalendar();
+    openDateLink(inputDate);
+}
+    
 function cvtDate(year,month,day){
   const formattedMonth = month.toString().padStart(2, '0');
   const formattedDay = day.toString().padStart(2, '0');
@@ -242,6 +247,12 @@ document.documentElement.innerHTML=`
         </div>
         <div id="calendar" class="calendar-days"></div>
         <div id="goToToday" class="today-btn">Today's Lesson</div>
+        <div class="date-input-group">
+        <div class="input-group">
+          <input type="text" id="dateInput" class="form-control" placeholder="Enter date (yyyymmdd)">
+          <button id="submitDate" class="btn btn-secondary">Go</button>
+        </div>
+    </div>
     </div>
   </form>
 <div id="list" class="mx-3 pt-3" style="display:none">
@@ -257,10 +268,6 @@ document.documentElement.innerHTML=`
 <div id="gpt" class="mx-3 pt-3" style="font-size:0.8rem;display:none"></div>
 </div></body>
 <script>
-const calendar = document.getElementById('calendar');
-const currentMonthYear = document.getElementById('currentMonthYear');
-let currentDate = new Date();
-const today = new Date();
 
 </script>
 </html>
@@ -272,6 +279,12 @@ var scriptTag=document.createElement('script');
 document.body.appendChild(scriptTag);
 
 scriptTag.innerHTML=`
+const calendar = document.getElementById('calendar');
+const currentMonthYear = document.getElementById('currentMonthYear');
+const submitDateBtn = document.getElementById('submitDate');
+let currentDate = new Date();
+const today = new Date();
+
 document.getElementById('prevMonth').addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     renderCalendar();
@@ -284,6 +297,14 @@ document.getElementById('goToToday').addEventListener('click', () => {
     currentDate = new Date(today);
     renderCalendar();
     openDateLink(cvtDate(today.getFullYear(), today.getMonth() + 1, today.getDate()));
+});
+document.getElementById('submitDate').addEventListener('click', () => {
+    const dateInput = document.getElementById('dateInput').value;
+    if (/^\d{8}$/.test(dateInput)) {
+        goToDate(dateInput);
+    } else {
+        alert("Please enter a valid date in YYYYMMDD format.");
+    }
 });
 `;
 })();
