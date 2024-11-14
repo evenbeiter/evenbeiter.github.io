@@ -55,7 +55,7 @@ document.getElementById('navbar').style.display='block';
 if (isSunday(date)){console.log('sunday');
 document.getElementById('list').style.display='none';
 document.getElementById('gpt-area').style.display='block';
-document.getElementById('gpt-area').innerHTML=\`
+document.getElementById('gpt').innerHTML=\`
 <div class="pt-3 text-center" style="font-size:1.3rem"><p>No Lessons for \${date}.</p></div>
 \`;
 }else{
