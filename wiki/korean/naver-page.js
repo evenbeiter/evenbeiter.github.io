@@ -55,6 +55,7 @@ document.getElementById('navbar').style.display='block';
 if (isSunday(date)){console.log('sunday');
 document.getElementById('list').style.display='none';
 document.getElementById('gpt-area').style.display='block';
+document.getElementById('btn-copy').style.display='none';
 document.getElementById('gpt').innerHTML=\`
 <div class="pt-3 text-center" style="font-size:1.3rem"><p>No Lessons for \${date}.</p></div>
 \`;
@@ -67,6 +68,7 @@ try {
 var res=await fetch('https://evenbeiter.github.io/wiki/korean/'+date+'.json');
 document.getElementById('list').style.display='block';
 document.getElementById('gpt-area').style.display='none';
+document.getElementById('btn-copy').style.display='block';
 var gpt=await res.json();
 
 document.getElementById('title').innerHTML=\`<p>\${date}</p><p>\${data.title}</p><p>\${data.title_translation}</p>\`;
@@ -91,6 +93,7 @@ document.getElementById('vocab').innerHTML=vocab;
 }catch{
 document.getElementById('list').style.display='none';
 document.getElementById('gpt-area').style.display='block';
+document.getElementById('btn-copy').style.display='block';
 var txt='<p>詳細解析以下句子包括翻譯、「逐字說明」單詞用法及活用、文法和句型四大段說明。並把每段說明的標題(翻譯、單詞用法及活用、文法、句型)和說明的內文都寫成用p標籤包裹的HTML格式，標題和各單詞及文法和句型的說明都自成一個p標籤，每個單詞的用法和活用說明也都是各自獨立的p標籤；標題用粗體、內文用標準字體顯示。最後再把所有的HTML寫成JSON格式，每一個韓文句子的解析整合為一個字串(裡面應該會包含多個p標籤)，成為JSON的一個項目。JSON的格式為\[字串,字串…\］。</p><br>';
 var n=1;
 for (let s of data.sentences){txt+=\`<p>\${n++}. \${s.orgnc_sentence}</p>\`};
@@ -342,7 +345,7 @@ document.documentElement.innerHTML=`
 <div id="gpt-area" class="mx-3 pt-3" style="font-size:0.8rem;display:none">
   <p id="date"></p>
   <div id="gpt"></div>
-  <button class="btn btn-secondary" onclick="copyText()">Copy</button>
+  <button id="btn-copy" class="btn btn-secondary" onclick="copyText()">Copy</button>
 </div>
 </div></body>
 <script>
