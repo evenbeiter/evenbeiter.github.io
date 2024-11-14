@@ -9,6 +9,7 @@ function openOptions(){
   var options=document.getElementById('btn-group');
     if (options.style.display=='none'){
     options.style.display='block';
+    document.getElementById('dateInput').value='';
     renderCalendar();
   }else{options.style.display='none'}
 }
@@ -20,6 +21,9 @@ var audio=document.getElementById('ap');
 audio.src=str.url;
 audio.play(); 
 }
+
+let currentDate = new Date();
+const today = new Date();
 
 async function openDateLink(date){
 var options=document.getElementById('btn-group');
@@ -63,9 +67,6 @@ for (let e of data.studys[0].examples){txt+=\`<p>\${n++}. \${e.origin_example}</
 document.getElementById('gpt').innerHTML=txt;
 }
 }
-
-let currentDate = new Date();
-const today = new Date();
 
 function renderCalendar() {
     calendar.innerHTML = '';
@@ -247,7 +248,7 @@ document.documentElement.innerHTML=`
         </div>
         <div id="calendar" class="calendar-days"></div>
         <div id="goToToday" class="today-btn">Today's Lesson</div>
-        <div class="date-input-group">
+        <div class="date-input-group mt-1">
         <div class="input-group">
           <input type="text" id="dateInput" class="form-control" placeholder="Enter date (yyyymmdd)">
           <button id="submitDate" class="btn btn-secondary">Go</button>
@@ -282,8 +283,6 @@ scriptTag.innerHTML=`
 const calendar = document.getElementById('calendar');
 const currentMonthYear = document.getElementById('currentMonthYear');
 const submitDateBtn = document.getElementById('submitDate');
-let currentDate = new Date();
-const today = new Date();
 
 document.getElementById('prevMonth').addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
@@ -300,11 +299,7 @@ document.getElementById('goToToday').addEventListener('click', () => {
 });
 document.getElementById('submitDate').addEventListener('click', () => {
     const dateInput = document.getElementById('dateInput').value;
-    if (/^\d{8}$/.test(dateInput)) {
-        goToDate(dateInput);
-    } else {
-        alert("Please enter a valid date in YYYYMMDD format.");
-    }
+    goToDate(dateInput);
 });
 `;
 })();
