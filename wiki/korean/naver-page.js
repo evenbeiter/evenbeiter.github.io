@@ -28,6 +28,8 @@ const today = new Date();
 async function openDateLink(date){
 var options=document.getElementById('btn-group');
 options.style.display='none';
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
 var res=await fetch('https://gateway.dict.naver.com/krdict/kr/kozh/today/'+date+'/conversation.dict?callback=angular.callbacks._0');
 var str=await res.text();
 var data=JSON.parse(str.slice(21,-1)).data;  
