@@ -100,8 +100,11 @@ function renderCalendar() {
 }
 
 function goToDate(inputDate) {
+    const year = parseInt(inputDate.slice(0, 4));
+    const month = parseInt(inputDate.slice(4, 6)) - 1;
+    const day = parseInt(inputDate.slice(6, 8));
+    currentDate = new Date(year, month, 1);
     renderCalendar();
-    openDateLink(inputDate);
 }
     
 function cvtDate(year,month,day){
@@ -248,10 +251,11 @@ document.documentElement.innerHTML=`
         </div>
         <div id="calendar" class="calendar-days"></div>
         <div id="goToToday" class="today-btn">Today's Lesson</div>
-        <div class="date-input-group">
+        <div class="date-input-group m-1">
         <div class="input-group">
           <input type="text" id="dateInput" class="form-control" placeholder="Enter date (yyyymmdd)">
-          <button id="submitDate" class="btn btn-secondary">Go</button>
+          <button id="viewCalendar" class="btn btn-secondary text-white border-white">View</button>
+          <button id="submitDate" class="btn btn-secondary text-white border-white">Go</button>
         </div>
     </div>
     </div>
@@ -282,7 +286,6 @@ document.body.appendChild(scriptTag);
 scriptTag.innerHTML=`
 const calendar = document.getElementById('calendar');
 const currentMonthYear = document.getElementById('currentMonthYear');
-const submitDateBtn = document.getElementById('submitDate');
 
 document.getElementById('prevMonth').addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
@@ -297,9 +300,13 @@ document.getElementById('goToToday').addEventListener('click', () => {
     renderCalendar();
     openDateLink(cvtDate(today.getFullYear(), today.getMonth() + 1, today.getDate()));
 });
-document.getElementById('submitDate').addEventListener('click', () => {
+document.getElementById('viewCalendar').addEventListener('click', () => {
     const dateInput = document.getElementById('dateInput').value;
     goToDate(dateInput);
+});
+document.getElementById('submitDate').addEventListener('click', () => {
+    const dateInput = document.getElementById('dateInput').value;
+    openDateLink(dateInput);
 });
 `;
 })();
