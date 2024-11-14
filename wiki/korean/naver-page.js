@@ -28,11 +28,37 @@ const today = new Date();
 async function openDateLink(date){
 var options=document.getElementById('btn-group');
 options.style.display='none';
-document.body.scrollTop = 0;
 document.documentElement.scrollTop = 0;
+document.body.scrollTop = 0;
+
+const {prevDate,nextDate}=getAdjacentDates(date);
+document.getElementById('nav').innerHTML=\`
+<div class="container">
+<div class="row">
+<div class="col-sm-4 text-end fs10">
+  <span id="prevButton" onclick="openDateLink('\${prevDate}')">\${prevDate}</span>
+</div>
+<div class="col-sm-4 text-center fs10">
+  <span id="nav-t" onclick="openDateLink('\${date}')">\${date}</span>
+</div>
+<div class="col-sm-4 text-start fs10">
+  <span id="nextButton" onclick="openDateLink('\${nextDate}')">\${nextDate}</span>
+</div>
+</div>
+</div>
+\`;
+document.getElementById('navbar').style.display='block';
+
+if (isSunday(date)){console.log('sunday');
+document.getElementById('list').style.display='none';
+document.getElementById('gpt-area').style.display='block';
+document.getElementById('gpt-area').innerHTML=\`
+<div class="pt-3 text-center" style="font-size:1.3rem"><p>No Lessons for \${date}.</p></div>
+\`;
+}else{
 var res=await fetch('https://gateway.dict.naver.com/krdict/kr/kozh/today/'+date+'/conversation.dict?callback=angular.callbacks._0');
 var str=await res.text();
-var data=JSON.parse(str.slice(21,-1)).data;  
+var data=JSON.parse(str.slice(21,-1)).data;
 
 try {
 var res=await fetch('https://evenbeiter.github.io/wiki/korean/'+date+'.json');
@@ -66,11 +92,36 @@ var txt='<p>詳細解析以下句子包括翻譯、「逐字說明」單詞用�
 var n=1;
 for (let s of data.sentences){txt+=\`<p>\${n++}. \${s.orgnc_sentence}</p>\`};
 for (let e of data.studys[0].examples){txt+=\`<p>\${n++}. \${e.origin_example}</p>\`};
+document.getElementById('date').innerHTML=date;
 document.getElementById('gpt').innerHTML=txt;
 }
 }
+}
+
+function getAdjacentDates(date) {
+  const year = date.slice(0, 4);
+  const month = date.slice(4, 6) - 1;
+  const day = date.slice(6, 8);
+  
+  const currentDate = new Date(year, month, day);
+  currentDate.setHours(currentDate.getHours() + 8);
+
+  const prevDate = new Date(currentDate);
+  prevDate.setDate(currentDate.getDate() - 1);
+  const prevDateFormatted = prevDate.toISOString().split('T')[0].replace(/-/g, '');
+
+  const nextDate = new Date(currentDate);
+  nextDate.setDate(currentDate.getDate() + 1);
+  const nextDateFormatted = nextDate.toISOString().split('T')[0].replace(/-/g, '');
+  
+  return {
+      prevDate: prevDateFormatted,
+      nextDate: nextDateFormatted
+  };
+}
 
 function renderCalendar() {
+    document.getElementById('navbar').style.display='none';
     calendar.innerHTML = '';
     currentDate.setDate(1);
     const month = currentDate.getMonth();
@@ -115,6 +166,14 @@ function cvtDate(year,month,day){
   return year+formattedMonth+formattedDay;
 }
 
+function isSunday(date) {
+  const year = date.substring(0, 4);
+  const month = date.substring(4, 6);
+  const day = date.substring(6, 8);
+  const currentDate = new Date(\`\${year}-\${month}-\${day}\`);
+  return currentDate.getDay() === 0;
+}
+
 `;
   
 scriptTag=document.createElement('script');
@@ -140,9 +199,10 @@ document.documentElement.innerHTML=`
           .zh{font-family: 'PingFang SC';font-weight:800;font-variant-east-asian: traditional}
           a{word-wrap:break-word;white-space:normal;overflow-wrap:break-word;word-break:break-word}
           h1 a {color: navy; font-weight: bold; text-decoration:none;cursor:pointer}
+          .fs13{font-size:1.3rem}
           .fs12{font-size:1.2rem}
+          .fs10{font-size:1rem}
           audio{display:none;margin-right:auto;margin-left:auto;width:100%}
-          figcaption{font-size:1rem}
           img{display:block !important;margin:auto;width:100%;height:auto}
           @media (min-width:768px){
             @font-face{font-family:"Microsoft JhengHei Bold";src:local("Microsoft JhengHei Bold");unicode-range:U+4E00-9FFF}
@@ -226,6 +286,10 @@ document.documentElement.innerHTML=`
       </style>
 </head>
 <body>
+<nav id="navbar" class="navbar sticky-top bg-light border-bottom" style="max-width:600px;margin:auto;display:none">
+  <div id="nav" class="container-fluid justify-content-between">
+  </div>
+</nav>
 <div style="max-width:600px;margin:auto">
 <audio id="ap" controls preload="auto"></audio>
 
@@ -273,6 +337,7 @@ document.documentElement.innerHTML=`
   <div id="vocab"></div>
 </div>
 <div id="gpt-area" class="mx-3 pt-3" style="font-size:0.8rem;display:none">
+  <p id="date"></p>
   <div id="gpt"></div>
   <button class="btn btn-secondary" onclick="copyText()">Copy</button>
 </div>
