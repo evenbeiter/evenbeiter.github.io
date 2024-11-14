@@ -35,13 +35,13 @@ const {prevDate,nextDate}=getAdjacentDates(date);
 document.getElementById('nav').innerHTML=\`
 <div class="container">
 <div class="row">
-<div class="col-sm-4 text-end fs10">
+<div class="col-4 text-end fs10">
   <span id="prevButton" onclick="openDateLink('\${prevDate}')">\${prevDate}</span>
 </div>
-<div class="col-sm-4 text-center fs10">
+<div class="col-4 text-center fs10">
   <span id="nav-t" onclick="openDateLink('\${date}')">\${date}</span>
 </div>
-<div class="col-sm-4 text-start fs10">
+<div class="col-4 text-start fs10">
   <span id="nextButton" onclick="openDateLink('\${nextDate}')">\${nextDate}</span>
 </div>
 </div>
