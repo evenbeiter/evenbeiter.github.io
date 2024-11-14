@@ -9,9 +9,12 @@ function openOptions(){
   var options=document.getElementById('btn-group');
     if (options.style.display=='none'){
     options.style.display='block';
+document.getElementById('navbar').style.display='none';
     document.getElementById('dateInput').value='';
     renderCalendar();
-  }else{options.style.display='none'}
+  }else{options.style.display='none';
+  document.getElementById('navbar').style.display='block';
+  }
 }
 
 async function playAudio(a){
