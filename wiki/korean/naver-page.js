@@ -66,7 +66,7 @@ var str=await res.text();
 var data=JSON.parse(str.slice(21,-1)).data;
 
 try {
-var res=await fetch('https://evenbeiter.github.io/wiki/korean/'+date+'.json');
+var res=await fetch('https://raw.githubusercontent.com/evenbeiter/naverkorean/main/'+date+'.json');
 document.getElementById('list').style.display='block';
 document.getElementById('gpt-area').style.display='none';
 document.getElementById('date').style.display='none';
