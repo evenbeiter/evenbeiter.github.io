@@ -262,6 +262,16 @@ const currentMonthYear = document.getElementById('currentMonthYear');
 let currentDate = new Date();
 const today = new Date();
 
+</script>
+</html>
+`;
+
+renderCalendar();
+
+var scriptTag=document.createElement('script');
+document.body.appendChild(scriptTag);
+
+scriptTag.innerHTML=`
 document.getElementById('prevMonth').addEventListener('click', () => {
     currentDate.setMonth(currentDate.getMonth() - 1);
     renderCalendar();
@@ -275,9 +285,5 @@ document.getElementById('goToToday').addEventListener('click', () => {
     renderCalendar();
     openDateLink(cvtDate(today.getFullYear(), today.getMonth() + 1, today.getDate()));
 });
-</script>
-</html>
 `;
-
-renderCalendar();
 })();
