@@ -286,7 +286,7 @@ document.documentElement.innerHTML=`
       </style>
 </head>
 <body>
-<nav id="navbar" class="navbar sticky-top bg-light border-bottom" style="max-width:600px;margin:auto;display:none">
+<nav id="navbar" class="navbar sticky-top border-bottom" style="background-color:#d3cbb8;max-width:600px;margin:auto;display:none">
   <div id="nav" class="container-fluid justify-content-between">
   </div>
 </nav>
