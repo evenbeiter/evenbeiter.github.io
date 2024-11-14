@@ -43,13 +43,13 @@ document.getElementById('title').innerHTML=\`<p>\${date}</p><p>\${data.title}</p
 var cvs='';var std='';var vocab='';
 var s=data.sentences;
 for (let i=0;i<s.length;i++){
-  cvs+=\`<div class="sepia-contrast p-2"><p class="zh" onclick="playAudio('\${s[i].sentence_pron_file}')"><strong>\${i+1}. \${s[i].orgnc_sentence}<br>\${s[i].trsl_orgnc_sentence}</strong></p></div><div class="fs12">\${gpt[i]}</div><br><hr>\`;
+  cvs+=\`<p class="zh sepia-contrast p-2" onclick="playAudio('\${s[i].sentence_pron_file}')"><strong>\${i+1}. \${s[i].orgnc_sentence}<br>\${s[i].trsl_orgnc_sentence}</strong></p><div class="fs12">\${gpt[i]}</div><br><hr>\`;
 }
 document.getElementById('cvs').innerHTML=cvs;
 
 var e=data.studys[0].examples;
 for (let j=0;j<e.length;j++){
-  std+=\`<div class="sepia-contrast p-2"><p class="zh" onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p></div><div class="fs12">\${gpt[s.length+j]}</div><br><hr>\`;
+  std+=\`<p class="zh sepia-contrast p-2" onclick="playAudio('\${e[j].pron_file_url}')"><strong>\${j+1}. \${e[j].origin_example}<br>\${e[j].origin_translation}</strong></p><div class="fs12">\${gpt[s.length+j]}</div><br><hr>\`;
 }
 document.getElementById('std').innerHTML=\`<p class="zh">\${data.studys[0].title}<br>\${data.studys[0].origin_translation}</p><hr>\${std}\`;
 
@@ -248,7 +248,7 @@ document.documentElement.innerHTML=`
         </div>
         <div id="calendar" class="calendar-days"></div>
         <div id="goToToday" class="today-btn">Today's Lesson</div>
-        <div class="date-input-group mt-1">
+        <div class="date-input-group">
         <div class="input-group">
           <input type="text" id="dateInput" class="form-control" placeholder="Enter date (yyyymmdd)">
           <button id="submitDate" class="btn btn-secondary">Go</button>
