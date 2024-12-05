@@ -39,8 +39,9 @@
     
   </form>
 <div id="list" class="mx-3 pt-3">
-  <p id="1000" class="title" onclick="getBucket(this.id)">1000</p><div id="1000-list" class="title" onclick="getList(this.id)"></div><hr>
-  <p id="2000" class="title" onclick="getBucket(this.id)">2000</p><div id="2000-list" class="title" onclick="getList(this.id)"></div><hr>
+  <div><div id="1000" class="title" onclick="getBucket(this.id)"><p>1000</p></div><div id="list-1000" class="title" onclick="getList(this.id)"></div></div><hr>
+  <div><div id="2000" class="title" onclick="getBucket(this.id)"><p>2000</p></div><div id="list-2000" class="title" onclick="getList(this.id)"></div></div><hr>
+  <div><div id="3000" class="title" onclick="getBucket(this.id)"><p>3000</p></div><div id="list-3000" class="title" onclick="getList(this.id)"></div></div><hr>
 
   
 </div>
@@ -48,25 +49,19 @@
 </div>
 </body>
 <script>
-var tabs=[];
-  for (let i = 0; i <= 17000; i += 100) {
-    tabs.push(i);
-  }
-var btn='';
-for (let i=0;i<tabs.length;i++){
-  btn+=`<button class="btn sepia me-1 mb-1" type="button" onclick="getList(${tabs[i]})">${tabs[i+1]}</button>`;
-}
-document.getElementById('btn-group').innerHTML=btn;
-
-function openOptions(){
-  var options=document.getElementById('btn-group');
-    if (options.style.display=='none'){
-    options.style.display='block';
-  }else{options.style.display='none'}
-}
 
 function getBucket(id){
-  
+  var list=document.getElementById(`list-${id}`);
+  if (list.style.display='none'){
+    list.style.display='block';
+  } else {
+    list.style.display='none';
+  }
+  var a='';
+  for (let i=id-1000;i<id+1;i+=100){
+    a+=`<div id="list-${i+100}" class="title" onclick="getWords(this.id)"></div><hr>`;
+    list.innerHTML=a;
+  }
 }
   
 </script>
