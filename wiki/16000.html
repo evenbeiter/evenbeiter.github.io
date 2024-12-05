@@ -25,139 +25,34 @@
             h1,h2,h3,h4,h5,h6,.title{font-size:1.2rem;color:#3B2D20 !important;font-weight:normal}
           }
 
-        .calendar-container {
-            max-width: 400px;
-            margin: 20px auto;
-            background-color: #faf6ee;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-        .calendar-header {
-            padding: 10px;
-            background-color: #d3cbb8;
-            color: #4f4a42;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .calendar-header button {
-            color: #4f4a42;
-        }
-        .month-year {
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-        .calendar-weekdays, .calendar-days {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            gap: 3px;
-            text-align: center;
-            padding: 5px;
-        }
-        .calendar-day {
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            background-color: #faf6ee;
-            color: #4f4a42;
-            font-size: 0.9em;
-        }
-        .calendar-day:hover {
-            background-color: #e8e3d8;
-        }
-        .day-name, .calendar-day.inactive {
-            color: #c2bba8;
-        }
-        .calendar-day.today {
-            background-color: #d3cbb8;
-            color: #fff;
-            font-weight: bold;
-        }
-        /* "Today's Lesson" Button Styling */
-        .today-btn {
-            background-color: #d3cbb8;
-            color: #4f4a42;
-            font-size: 1em;
-            padding: 8px 16px;
-            text-align: center;
-            cursor: pointer;
-            display: block;
-            width: 100%;
-            margin-top: 10px;
-            border-radius: 0 0 10px 10px;
-            transition: background-color 0.3s;
-        }
-        .today-btn:hover {
-            background-color: #b3ad9c;
-        }
-        /* Responsive adjustments */
-        @media (max-width: 480px) {
-            .calendar-container {
-                max-width: 95%;
-            }
-        }
       </style>
 </head>
 <body>
-<nav id="navbar" class="navbar sticky-top border-bottom" style="background-color:#d3cbb8;max-width:600px;margin:auto;display:none">
-  <div id="nav" class="container-fluid justify-content-between">
-  </div>
-</nav>
 <div style="max-width:600px;margin:auto">
-<audio id="ap" controls preload="auto"></audio>
-
+  
 <button type="button" class="sticky-top m-2 btn btn-light position-fixed top-0 end-0 sepia-contrast opacity-25" style="z-index:1030" onclick="openOptions()">
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
   </svg>
 </button>
   <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast">
-    <h2 class="text-center mt-4 text-light">16000</h2>
-    <div class="calendar-container">
-        <div class="calendar-header">
-            <button id="prevMonth" class="btn btn-link">&lt;</button>
-            <span id="currentMonthYear" class="month-year"></span>
-            <button id="nextMonth" class="btn btn-link">&gt;</button>
-        </div>
-        <div class="calendar-weekdays">
-            <div class="day-name">Sun</div>
-            <div class="day-name">Mon</div>
-            <div class="day-name">Tue</div>
-            <div class="day-name">Wed</div>
-            <div class="day-name">Thu</div>
-            <div class="day-name">Fri</div>
-            <div class="day-name">Sat</div>
-        </div>
-        <div id="calendar" class="calendar-days"></div>
-        <div id="goToToday" class="today-btn">Today's Lesson</div>
-        <div class="date-input-group m-1">
-        <div class="input-group">
-          <input type="text" id="dateInput" class="form-control" placeholder="Enter date (yyyymmdd)">
-          <button id="viewCalendar" class="btn btn-secondary text-white border-white">View</button>
-          <button id="submitDate" class="btn btn-secondary text-white border-white">Go</button>
-        </div>
-    </div>
-    </div>
+    
   </form>
 <div id="list" class="mx-3 pt-3" style="display:none">
-  <div id="title" class="title zh"></div>
-  <br><br>
-  <h2><strong>Conversation</strong></h2>
-  <div id="cvs"></div>
-  <br><h2><strong>Study</strong></h2>
-  <div id="std"></div>
-  <br><h2><strong>Vocabulary</strong></h2>
-  <div id="vocab"></div>
-</div>
-<div id="gpt-area" class="mx-3 pt-3" style="font-size:0.8rem;display:none">
-  <p id="date"></p>
-  <div id="gpt"></div>
-  <button id="btn-copy" class="btn btn-secondary" onclick="copyText()">Copy</button>
-</div>
-</div></body>
-<script>
 
+  
+</div>
+
+</div>
+</body>
+<script>
+var tabs=[];
+  for (let i = 0; i <= 17000; i += 100) {
+    tabs.push(i);
+  }
+var btn='';
+for (let i=0;i<tabs.length;i++){
+  btn+=`<button class="btn sepia me-1 mb-1" type="button" onclick="getList(['${ti}'])">~${tabs[i+1]}</button>`;
+}
 </script>
 </html>
