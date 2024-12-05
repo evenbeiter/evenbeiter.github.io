@@ -59,7 +59,7 @@ function getBucket(id){
   }
   var a='';
   for (let i=id-1000;i<=id;i+=100){console.log(i);console.log(id);
-    a+=`<div id="list-${i+100}" class="title" onclick="getWords(this.id)"></div><hr>`;
+    a+=`<div id="list-${i+100}" class="title" onclick="getWords(this.id)"><p>${i+100}</p></div><hr>`;
     list.innerHTML=a;
   }
 }
