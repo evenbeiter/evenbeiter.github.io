@@ -39,9 +39,9 @@
     
   </form>
 <div id="list" class="mx-3 pt-3">
-  <div><div id="1000" class="title" onclick="getBucket(this.id)"><p>1000</p></div><div id="list-1000" class="title" onclick="getList(this.id)"></div></div><hr>
-  <div><div id="2000" class="title" onclick="getBucket(this.id)"><p>2000</p></div><div id="list-2000" class="title" onclick="getList(this.id)"></div></div><hr>
-  <div><div id="3000" class="title" onclick="getBucket(this.id)"><p>3000</p></div><div id="list-3000" class="title" onclick="getList(this.id)"></div></div><hr>
+  <div><div id="1000" class="title" onclick="getBucket(this.id)"><p>1000</p></div><div id="list-1000" class="title"></div></div><hr>
+  <div><div id="2000" class="title" onclick="getBucket(this.id)"><p>2000</p></div><div id="list-2000" class="title"></div></div><hr>
+  <div><div id="3000" class="title" onclick="getBucket(this.id)"><p>3000</p></div><div id="list-3000" class="title"></div></div><hr>
 
   
 </div>
@@ -58,18 +58,33 @@ function getBucket(id){
     list.style.display='none';
   }
   var a='';
-  for (let i=id-1000;i<=id;i+=100){console.log(i);console.log(id);
-    a+=`<div id="list-${i+100}" class="title" onclick="getWords(this.id)"><p>${i+100}</p></div><hr>`;
+  for (let i=id-1000;i<=id;i+=100){
+    a+=`<div id="list-${i+100}" class="title" onclick="getList(this.id)"><p>${i+100}</p></div><hr>`;
     list.innerHTML=a;
   }
 }
 
-function getList(id){
-  var list=document.getElementById(`list-${id}`);
+async function getList(k){
+  var id=k.slice(5);
+  var list=document.getElementById(k);
   if (list.style.display='none'){
     list.style.display='block';
   } else {
     list.style.display='none';
+  }
+  var res=await fetch('https://evenbeiter.github.io/wiki/16000.json');
+  var str=await res.json();
+  var a='';
+  for (let i=id-100;i<=id;i++){
+    a+=`<div id="${str[i]}" class="title" onclick="openEudic(this.id)"><p>${str[i]}</p></div><hr>`;
+    list.innerHTML=a;
+  }
+}
+
+function openEudic(word) {
+  if (word && /^[a-zA-Z]+$/.test(word)) {
+    const eudicUrl = `eudic://dict/${word}`;
+    window.location.href = eudicUrl;
   }
 }
   
