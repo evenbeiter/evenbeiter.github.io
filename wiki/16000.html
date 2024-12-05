@@ -35,10 +35,12 @@
     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
   </svg>
 </button>
-  <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast">
+  <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast" style="display=none">
     
   </form>
-<div id="list" class="mx-3 pt-3" style="display:none">
+<div id="list" class="mx-3 pt-3">
+  <p id="1000" class="title" onclick="getBucket(this.id)">1000</p><div id="1000-list" class="title" onclick="getList(this.id)"></div><hr>
+  <p id="2000" class="title" onclick="getBucket(this.id)">2000</p><div id="2000-list" class="title" onclick="getList(this.id)"></div><hr>
 
   
 </div>
@@ -52,7 +54,7 @@ var tabs=[];
   }
 var btn='';
 for (let i=0;i<tabs.length;i++){
-  btn+=`<button class="btn sepia me-1 mb-1" type="button" onclick="getList()">~${tabs[i+1]}</button>`;
+  btn+=`<button class="btn sepia me-1 mb-1" type="button" onclick="getList(${tabs[i]})">${tabs[i+1]}</button>`;
 }
 document.getElementById('btn-group').innerHTML=btn;
 
@@ -61,6 +63,10 @@ function openOptions(){
     if (options.style.display=='none'){
     options.style.display='block';
   }else{options.style.display='none'}
+}
+
+function getBucket(id){
+  
 }
   
 </script>
