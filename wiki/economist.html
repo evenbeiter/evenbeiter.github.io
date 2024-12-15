@@ -113,23 +113,12 @@ async function openBook(){
       return acc;
     }, {})
     );
-    console.log(tabs);
-    console.log(content);
-    console.log(jsonOutput.chapters);
   
     for (let tab of tabs){
     document.getElementById('btn-group').innerHTML+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList('${tab}')">${tab}</button>`;
     }
       
     getList('Leaders');
-    
-    let ul=document.getElementsByClassName('sec_index_ul');
-    for (let l of ul){
-      l.style.display='none';
-      l.nextElementSibling.style.display='none';
-    }
-  
-
   }
   reader.readAsArrayBuffer(file);
 };
