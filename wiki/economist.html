@@ -85,9 +85,9 @@
                 }
                     console.log(jsonOutput);
                 var tabs=[];
-                for (let c of jsonOutput.chapters){
+                for (let c of jsonOutput.chapters){console.log(c.content);
                     var parser = new DOMParser();
-                    var doc = parser.parseFromString(c.content, "text/html");
+                    var doc = parser.parseFromString(c.content, "text/html");console.log(doc);
                     tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent]);
                 }
                 tabs=[...new Set(tabs)];
