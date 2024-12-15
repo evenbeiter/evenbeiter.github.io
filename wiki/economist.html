@@ -39,7 +39,7 @@
 <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
 
 <script>
-var jsonOutput={};
+var content=[];
 
 function openOptions(){
   var options=document.getElementById('btn-group');
@@ -81,14 +81,14 @@ async function openBook(){
       chapters: []
     };
 
-    let spineItems = book.spine.spineItems;console.log(spineItems);
+    let spineItems = book.spine.spineItems;
     var i=0;
     for (let item of spineItems) {
       i=i+1;
       let chapter = await item.load(book.load.bind(book));
       let content = await item.render(); // Render the chapter to get its content
 
-      jsonOutput.chapters.push({
+      var jsonOutput.chapters.push({
         id: 'chapter_'+i,
         href: item.href,
         content: content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','') // Store the rendered content
@@ -105,7 +105,7 @@ async function openBook(){
       }
     }
     var tabs = [...new Set(array.map(item => item.section))];
-    var content = Object.values(array.reduce((acc, item) => {
+    content = Object.values(array.reduce((acc, item) => {
       if (!acc[item.section]) {
         acc[item.section] = { section: item.section, content: [] };
       }
@@ -147,11 +147,10 @@ async function openBook(){
 };
 
 console.log(jsonOutput.chapters);
-function getList(a){
-  for (let c of jsonOutput.chapters){
-    if (c.id!=='chapter_1' && c.id!=='chapter_2' && c.id!=='chapter_3'){
+function getList(a){console.log(content);
+  var secA = content.find(item => item.section === a);
+  for (let c of secA.content){
     document.getElementById('list').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replace(/<p><i>For subscribers only[\s\S]*?<\/p>/g,'').replace(/<p>This article was downloaded by[\s\S]*?<\/p>/g,'').replaceAll('<p>','<p class="tl">')+'</div><hr>';
-    }
   }
 }
 
