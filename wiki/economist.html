@@ -65,7 +65,7 @@
                     chapters: []
                 };
 
-                let spineItems = book.spine.spineItems;console.log(spinItems);
+                let spineItems = book.spine.spineItems;console.log(spineItems);
                 var i=0;
                 for (let item of spineItems) {
                     i=i+1;
@@ -84,11 +84,16 @@
                 for (let c of jsonOutput.chapters){
                     var parser = new DOMParser();
                     var doc = parser.parseFromString(c, "text/html");
-                    tabs.push(doc.querySelector('.te_section_title').textContent);
+                    tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent]);
                 }
                 tabs=[...new Set(tabs)];
                 console.log(tabs);
 
+              var btn='';
+for (let tab of tabs){
+  btn+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList(['${tab[0]}'])">${tab[1]}</button>`;
+}
+              
                     for (let c of jsonOutput.chapters){
                         if (c.id!=='chapter_1' && c.id!=='chapter_2' && c.id!=='chapter_3'){
                             document.getElementById('output').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replace(/<p><i>For subscribers only[\s\S]*?<\/p>/g,'').replace(/<p>This article was downloaded by[\s\S]*?<\/p>/g,'').replaceAll('<p>','<p class="tl">')+'</div><hr>';
