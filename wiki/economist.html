@@ -135,6 +135,7 @@ async function openBook(){
 };
   
 async function getList(a){
+  document.getElementById('btn-group').style.display='none';
   document.getElementById('list').innerHTML='';
   var secA = content.find(item => item.section === a);
   for (let c of secA.content){
