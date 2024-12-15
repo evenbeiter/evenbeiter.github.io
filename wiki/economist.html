@@ -29,7 +29,11 @@
         </div>
     <pre id="output" style="max-width:600px;margin:auto"></pre>
     </div>
-
+<button type="button" class="sticky-top m-2 btn btn-light position-fixed top-0 end-0 sepia-contrast opacity-25" style="z-index:1030" onclick="openOptions()">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+  </svg>
+</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
     <script>
@@ -83,7 +87,7 @@
                 var tabs=[];
                 for (let c of jsonOutput.chapters){
                     var parser = new DOMParser();
-                    var doc = parser.parseFromString(c, "text/html");
+                    var doc = parser.parseFromString(c.content, "text/html");
                     tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent]);
                 }
                 tabs=[...new Set(tabs)];
