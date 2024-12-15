@@ -39,6 +39,8 @@
 <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
 
 <script>
+var jsonOutput={};
+
 function openOptions(){
   var options=document.getElementById('btn-group');
     if (options.style.display=='none'){
@@ -56,8 +58,6 @@ function dlEpub(){
   link.click();
   link.remove();
 }
-
-var jsonOutput={};
   
 async function openBook(){
   document.getElementById('nav').style.display='none';
@@ -95,17 +95,26 @@ async function openBook(){
       });
     }
     console.log(jsonOutput);
-    var tabs=[];
+    var array=[];
     for (let c of jsonOutput.chapters){
       var parser = new DOMParser();
       var doc = parser.parseFromString(c.content, "text/html");
       if(doc.querySelector('.te_section_title')){
         c.section=doc.querySelector('.te_section_title').textContent;
-        tabs.push(doc.querySelector('.te_section_title').textContent)
-      };
+        array.push(c);
+      }
     }
-    tabs = tabs.filter((item, index) => tabs.indexOf(item) === index);   
+    var tabs = [...new Set(content.map(item => item.section))];
+    var content = Object.values(array.reduce((acc, item) => {
+      if (!acc[item.section]) {
+        acc[item.section] = { section: item.section, content: [] };
+      }
+      acc[item.section].content.push(item);
+      return acc;
+    }, {})
+    );
     console.log(tabs);
+    console.log(content);
     console.log(jsonOutput.chapters);
   
     for (let tab of tabs){
@@ -142,43 +151,45 @@ function getList(){
   
 }
 
-        async function getContent(id){
-            var el=document.getElementById(id);
-            if (el.style.display=='none'){
-                el.style.display='block';
-                if (el.innerText!=='' && cnTest(el.innerText)!==true){
-                var all=el.querySelectorAll('.tl');
-                for (let a of all){
-                    if (a.innerText!=='' && cnTest(a.innerText)!==true){
-                        var t=await translate(a.textContent);
-                        if (t!==''){a.outerHTML+=`<p class="zh">${t}</p>`};
-                    }
-                }
-            }}else{
-                el.style.display='none';
-                el.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView()
-            }
+async function getContent(id){
+  var el=document.getElementById(id);
+  if (el.style.display=='none'){
+    el.style.display='block';
+    if (el.innerText!=='' && cnTest(el.innerText)!==true){
+      var all=el.querySelectorAll('.tl');
+      for (let a of all){
+        if (a.innerText!=='' && cnTest(a.innerText)!==true){
+            var t=await translate(a.textContent);
+            if (t!==''){a.outerHTML+=`<p class="zh">${t}</p>`};
         }
+      }
+    }
+  }else{
+      el.style.display='none';
+      el.previousElementSibling.previousElementSibling.previousElementSibling.scrollIntoView()
+  }
+}
 
-        async function translate(a){
-            try{
-                var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=auto&tl=zh-TW&q='+encodeURIComponent(a);
-                var res=await fetch(url);
-                var raw=await res.json();
-                var ts='';
-                for (var j=0;j<raw[0].length;j++){
-                    if (raw[0][j][0]!==null && raw[0][j][0]!==undefined && raw[0][j][0]!=='undefined'){ts=ts+raw[0][j][0]}else{ts=ts}
-                }
-                return ts
-            }catch (error) {console.error(error)}
-        }
+async function translate(a){
+  try{
+    var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=auto&tl=zh-TW&q='+encodeURIComponent(a);
+    var res=await fetch(url);
+    var raw=await res.json();
+    var ts='';
+    for (var j=0;j<raw[0].length;j++){
+        if (raw[0][j][0]!==null && raw[0][j][0]!==undefined && raw[0][j][0]!=='undefined'){ts=ts+raw[0][j][0]}else{ts=ts}
+    }
+    return ts
+  }catch (error) {console.error(error)}
+}
 
-        function cnTest(str) {
-            const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
-            return chineseCharRegex.test(str);
-        }
+function cnTest(str) {
+  const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
+  return chineseCharRegex.test(str);
+}
 
-    </script>
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>
