@@ -90,7 +90,12 @@
                     var doc = parser.parseFromString(c.content, "text/html");console.log(doc);
                     if(doc.querySelector('.te_section_title')){tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent])};
                 }
-                tabs=[...new Set(tabs)];
+tabs = tabs.filter((item, index, self) => 
+  index === self.findIndex((other) => 
+    JSON.stringify(other) === JSON.stringify(item)
+  )
+);
+              
                 console.log(tabs);
 
               var btn='';
