@@ -34,6 +34,7 @@
     <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
   </svg>
 </button>
+<form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast"></form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
     <script>
@@ -105,9 +106,8 @@ tabs = tabs.filter((item, index, self) =>
               
                 console.log(tabs);
 
-              var btn='';
 for (let tab of tabs){
-  btn+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList(['${tab[0]}'])">${tab[1]}</button>`;
+  document.getElementById('btn-group').innerHTML+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList(['${tab[0]}'])">${tab[1]}</button>`;
 }
               
                     for (let c of jsonOutput.chapters){
