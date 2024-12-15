@@ -134,9 +134,9 @@ async function openBook(){
   reader.readAsArrayBuffer(file);
 };
   
-async function getList(a){console.log(content);
-  document.getElementById('list').innerHTML;
-  var secA = content.find(item => item.section === a);console.log(a);console.log(secA);
+async function getList(a){
+  document.getElementById('list').innerHTML='';
+  var secA = content.find(item => item.section === a);
   for (let c of secA.content){
     document.getElementById('list').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replace(/<p><i>For subscribers only[\s\S]*?<\/p>/g,'').replace(/<p>This article was downloaded by[\s\S]*?<\/p>/g,'').replaceAll('<p>','<p class="tl">')+'</div><hr>';
   }
