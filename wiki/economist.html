@@ -118,7 +118,7 @@ async function openBook(){
     console.log(jsonOutput.chapters);
   
     for (let tab of tabs){
-    document.getElementById('btn-group').innerHTML+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList(['${tab}'])">${tab}</button>`;
+    document.getElementById('btn-group').innerHTML+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList('${tab}')">${tab}</button>`;
     }
       
     getList('Leaders');
