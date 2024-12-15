@@ -76,13 +76,12 @@ async function openBook(){
 
     await book.open(arrayBuffer);
 
-    jsonOutput = {
+    var jsonOutput = {
       metadata: book.packaging.metadata,
       chapters: []
     };
 
     let spineItems = book.spine.spineItems;
-    var jsonOutput={};
     var i=0;
     for (let item of spineItems) {
       i=i+1;
