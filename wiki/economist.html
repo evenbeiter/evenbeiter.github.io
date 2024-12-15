@@ -96,17 +96,18 @@
                     var parser = new DOMParser();
                     var doc = parser.parseFromString(c.content, "text/html");
                     if(doc.querySelector('.te_section_title')){
-                      c.section=doc.querySelector('.te_section_title');
+                      c.section=doc.querySelector('.te_section_title').textContent;
+                      c.sectionHTML=doc.querySelector('.te_section_title').outerHTML;
                       tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent])
                     };
                     if(doc.querySelector('.te_fly_span')){
-                      c.fly=doc.querySelector('.te_fly_span');
+                      c.fly=doc.querySelector('.te_fly_span').outerHTML;
                     };
                     if(doc.querySelector('.te_article_title')){
-                      c.title=doc.querySelector('.te_article_title');
+                      c.title=doc.querySelector('.te_article_title').outerHTML;
                     };
                     if(doc.querySelector('.te_article_rubric')){
-                      c.rubric=doc.querySelector('.te_article_rubric');
+                      c.rubric=doc.querySelector('.te_article_rubric').outerHTML;
                     };
                 }
 tabs = tabs.filter((item, index, self) => 
