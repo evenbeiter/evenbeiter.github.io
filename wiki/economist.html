@@ -27,7 +27,7 @@
       <button class="btn m-2 sepia" onclick="dlEpub()">Download the Latest</button><br>
       <input type="file" id="fileInput" class="btn" onchange="openBook()"/>
     </div>
-  <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast"></form>
+  <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start sepia-contrast" style="display:none"></form>
   <pre id="list" style="max-width:600px;margin:auto"></pre>
   </div>
   <button type="button" class="sticky-top m-2 btn btn-light position-fixed top-0 end-0 sepia-contrast opacity-25" style="z-index:1030" onclick="openOptions()">
@@ -136,7 +136,7 @@ async function openBook(){
   
 async function getList(a){console.log(content);
   document.getElementById('list').innerHTML;
-  var secA = content.find(item => item.section === a);console.log(secA);
+  var secA = content.find(item => item.section === a);console.log(a);console.log(secA);
   for (let c of secA.content){
     document.getElementById('list').innerHTML += c.content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','').replace('<h1 class="te_article_title">',`<div id="${c.id}" class="tl" onclick="getContent('${c.id}_content')"><h1 class="te_article_title">`).replace('<h3 class="te_article_datePublished">',`</div><div id="${c.id}_content" onclick="getContent('${c.id}_content')" style="display:none"><h3 class="te_article_datePublished">`).replaceAll('te_article_rubric','tl te_article_rubric').replace(/<p><i>For subscribers only[\s\S]*?<\/p>/g,'').replace(/<p>This article was downloaded by[\s\S]*?<\/p>/g,'').replaceAll('<p>','<p class="tl">')+'</div><hr>';
   }
