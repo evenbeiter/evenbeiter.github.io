@@ -87,16 +87,27 @@
                     jsonOutput.chapters.push({
                         id: 'chapter_'+i,
                         href: item.href,
-                        title: item.title,
-                        content: content // Store the rendered content
+                        content: content.replace(/<html[\s\S]*?\<body>/g,'').replace(/<link [\s\S]*?\/>/g,'').replace('</body></html>','').replaceAll(' class="link_navbar"','') // Store the rendered content
                     });
                 }
                     console.log(jsonOutput);
                 var tabs=[];
-                for (let c of jsonOutput.chapters){console.log(c.content);
+                for (let c of jsonOutput.chapters){
                     var parser = new DOMParser();
-                    var doc = parser.parseFromString(c.content, "text/html");console.log(doc);
-                    if(doc.querySelector('.te_section_title')){tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent])};
+                    var doc = parser.parseFromString(c.content, "text/html");
+                    if(doc.querySelector('.te_section_title')){
+                      c.section=doc.querySelector('.te_section_title');
+                      tabs.push([doc.querySelector('.te_section_title').textContent,doc.querySelector('.te_section_title').textContent])
+                    };
+                    if(doc.querySelector('.te_fly_span')){
+                      c.fly=doc.querySelector('.te_fly_span');
+                    };
+                    if(doc.querySelector('.te_article_title')){
+                      c.title=doc.querySelector('.te_article_title');
+                    };
+                    if(doc.querySelector('.te_article_rubric')){
+                      c.rubric=doc.querySelector('.te_article_rubric');
+                    };
                 }
 tabs = tabs.filter((item, index, self) => 
   index === self.findIndex((other) => 
@@ -105,6 +116,7 @@ tabs = tabs.filter((item, index, self) =>
 );
               
                 console.log(tabs);
+              console.log(jsonOutput.chapters);
 
 for (let tab of tabs){
   document.getElementById('btn-group').innerHTML+=`<button class="btn btn-sm sepia me-1 mb-1" type="button" onclick="getList(['${tab[0]}'])">${tab[1]}</button>`;
