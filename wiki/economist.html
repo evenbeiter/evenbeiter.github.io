@@ -134,7 +134,7 @@ async function openBook(){
   reader.readAsArrayBuffer(file);
 };
   
-function getList(a){console.log('Content: '+content);
+async function getList(a){console.log('Content: '+content);
   document.getElementById('list').innerHTML
   var secA = content.find(item => item.section === a);
   for (let c of secA.content){
