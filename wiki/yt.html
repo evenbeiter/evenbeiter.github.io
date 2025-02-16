@@ -10,11 +10,12 @@
     </style>
 </head>
 <body>
-<div class="input-group mb-3">
-  <input type="text" id="videoId" class="form-control">
-  <button class="btn sepia" type="button" id="search-btn" onclick="getVideo()">Go</button>
-</div>
-<div id="container" class="my-2 mx-auto align-content-center" style="max-width:500px">
+
+<div id="container" class="my-2 mx-auto align-content-center" style="max-width:600px">
+    <div class="input-group m-3">
+      <input type="text" id="videoId" class="form-control">
+      <button class="btn sepia" type="button" id="search-btn" onclick="getVideo()">Go</button>
+    </div>
     <div id="top" class="sticky-top">
         <div id="video-placeholder"></div>
     </div>
@@ -45,6 +46,7 @@ function getVideo(){
           }
       });
   //}
+  document.getElementById('videoId').value='';
 }
 
 function pauseVideo(){
