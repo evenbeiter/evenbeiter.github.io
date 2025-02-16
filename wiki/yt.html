@@ -30,14 +30,13 @@
 <script>
 
 function getVideo(){
-  var mediaSrc=document.getElementById('videoId').value;
 
   var player, stopPlayAt=0, stopPlayTimer;
-  function onYouTubeIframeAPIReady() {
+  //function onYouTubeIframeAPIReady() {
       player = new YT.Player('video-placeholder', {
           height: '200',
           width: '100%',
-          videoId: '`+mediaSrc+`',
+          videoId: document.getElementById('videoId').value,
           playerVars:{
               rel:0
           },
@@ -45,7 +44,7 @@ function getVideo(){
               onStateChange: onPlayerStateChange
           }
       });
-  }
+  //}
 }
 
 function pauseVideo(){
