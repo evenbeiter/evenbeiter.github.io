@@ -177,4 +177,4 @@ document.documentElement.innerHTML=`
 </div></body></html>
 `;
 
-getList('insights');
+//getList('insights');
