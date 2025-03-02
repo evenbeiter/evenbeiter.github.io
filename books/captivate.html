@@ -87,8 +87,9 @@ function audioSource(url){
   var audio=document.getElementById('audio');
   document.getElementById('audioSource').src=url;
   audio.load();
-  audio.play();
-}
+    setTimeout(() => {
+        audio.play();
+    }, 100);}
   
 function adjustSpeed() {
     var audio = document.getElementById("audio");
