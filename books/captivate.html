@@ -83,9 +83,9 @@ function openOptions(){
 }
 
 function audioSource(url){
+  document.getElementById('btn-group').style.display='none';
   var audio=document.getElementById('audioSource');
   audio.src=url;
-  audio.load();
   audio.play();
 }
   
