@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>API Proxy Tester</title>
+</head>
+<body>
+  <h1>Python API Proxy Demo</h1>
+
+  <form id="apiForm">
+    <label for="url">Target API URL:</label><br>
+    <input type="text" id="url" name="url" size="50" value="https://api.github.com/users/octocat"><br><br>
+
+    <label for="method">Request Method:</label><br>
+    <select id="method" name="method">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+    </select><br><br>
+
+    <label for="params">POST Params (key=value, comma separated):</label><br>
+    <input type="text" id="params" name="params" placeholder="e.g. key1=value1,key2=value2"><br><br>
+
+    <button type="submit">Fetch</button>
+  </form>
+
+  <h2>Result:</h2>
+  <pre id="output">Waiting...</pre>
+
+  <script>
+    document.getElementById('apiForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const url = 'https://today.line.me/webapi/trending/cp/latest/listings/module:cp:top:5f4dd7e908b2af5b0e13bba1:0?offset=0&length=50&country=tw&targetContent=ALL&cps=top:200';
+      const method = 'GET';
+      const paramStr = '';
+
+      const proxyUrl = 'https://03e71654-f945-4524-a155-377d4f2b1a6e-00-2rayym3jder48.sisko.replit.dev/api/fetch';
+
+      const output = document.getElementById('output');
+      output.textContent = "Fetching...";
+
+      if (method === "GET") {
+        const fullUrl = `${proxyUrl}?url=${encodeURIComponent(url)}`;
+        fetch(fullUrl)
+          .then(res => res.text())
+          .then(data => output.textContent = data)
+          .catch(err => output.textContent = 'Error: ' + err);
+      } else {
+        const formData = new URLSearchParams();
+        formData.append('url', url);
+
+        // Add user-provided params
+        paramStr.split(',').forEach(pair => {
+          const [key, value] = pair.split('=');
+          if (key && value) formData.append(key.trim(), value.trim());
+        });
+
+        fetch(proxyUrl + '?url=' + encodeURIComponent(url), {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.text())
+        .then(data => output.textContent = data)
+        .catch(err => output.textContent = 'Error: ' + err);
+      }
+    });
+  </script>
+</body>
+</html>
