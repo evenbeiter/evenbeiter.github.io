@@ -27,7 +27,7 @@ async function getList(url){
       output.textContent = "Fetching...";
 
       if (method === "GET") {
-        const fullUrl = `${proxyUrl}?url=${encodeURIComponent(url)}`;
+        const fullUrl = `${proxyUrl}?url=${url}`;
         getList(fullUrl);
         // var res=await fetch(fullUrl);
         // var str=await res.json();
