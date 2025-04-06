@@ -11,6 +11,12 @@
 
   <script>
 
+async function getList(url){
+  var res=await fetch(url);
+  var str=await res.json();
+  console.log(str);
+}
+    
       const url = 'https://today.line.me/webapi/trending/cp/latest/listings/module:cp:top:5f4dd7e908b2af5b0e13bba1:0?offset=0&length=50&country=tw&targetContent=ALL&cps=top:200';
       const method = 'GET';
       const paramStr = '';
@@ -22,9 +28,10 @@
 
       if (method === "GET") {
         const fullUrl = `${proxyUrl}?url=${encodeURIComponent(url)}`;
-        var res=await fetch(fullUrl);
-        var str=await res.json();
-        console.log(str);
+        getList(fullUrl);
+        // var res=await fetch(fullUrl);
+        // var str=await res.json();
+        // console.log(str);
         // fetch(fullUrl)
         //   .then(res => res.text())
         //   .then(data => output.textContent = data)
