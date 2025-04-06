@@ -76,11 +76,13 @@ function openOptions(){
 }
 
 function createBtnGroup(site){
+  const obj={site};
+  const mediaName=Object.keys(obj)[0];
   btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
   for (let tab of site){
     if(Array.isArray(tab[0])){
     var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
-    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${site}Get1stList(['${ti}'])">${tab[1]}</button>`;
+    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${mediaName}Get1stList(['${ti}'])">${tab[1]}</button>`;
   }
 }
 
