@@ -34,7 +34,7 @@ img{display:block !important;margin:auto;width:100%;height:auto}
     <div id="btn"></div>
     <div class="input-group mb-3">
       <input type="text" id="search-term" class="form-control">
-      <button class="btn sepia" type="button" id="search-btn" onclick="searchResults()">Search</button>
+      <button class="btn sepia" type="button" id="search-btn" onclick="get1stSearchResults()">Search</button>
     </div>
   </form>
 <div id="list" class="mx-3 pt-3"></div>
@@ -295,7 +295,11 @@ window.onscroll = function () {
     const windowHeight = window.innerHeight;
     const documentHeight = document.documentElement.scrollHeight;
     if (scrollTop + windowHeight >= documentHeight - 5) {
-      if(rt!=='s'){${siteName}GetList(rt)}else{${siteName}GetSearchResults()}
+      if(rt!=='s'){
+        if (typeof window[`${siteName}GetList`] === "function") {window[`${siteName}GetList`](rt)}
+      }else{
+        if (typeof window[`${siteName}GetSearchResults`] === "function") {window[`${siteName}GetSearchResults`]()}
+      }
     }
   }, 1000);
 };
