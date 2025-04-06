@@ -90,6 +90,7 @@ lineTodayGetList(tt);
 }
 
 async function lineTodayGetList(tt){
+var siteName='lineToday';
 rt=tt;
 if (rr==0){
   document.getElementById('btn-group').style.display='none';
@@ -166,6 +167,7 @@ getList(t);
 }
 
 async function yahooTWGetList(t){
+var siteName='yahooTW';
 var coun='TW';
 if (t.slice(-2)=='__'){t=t.slice(0,-2);coun='US'};
 var items = [];
