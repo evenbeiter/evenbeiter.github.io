@@ -10,8 +10,6 @@
   <pre id="output">Waiting...</pre>
 
   <script>
-    document.getElementById('apiForm').addEventListener('submit', function(e) {
-      e.preventDefault();
 
       const url = 'https://today.line.me/webapi/trending/cp/latest/listings/module:cp:top:5f4dd7e908b2af5b0e13bba1:0?offset=0&length=50&country=tw&targetContent=ALL&cps=top:200';
       const method = 'GET';
@@ -49,7 +47,7 @@
         .then(data => output.textContent = data)
         .catch(err => output.textContent = 'Error: ' + err);
       }
-    });
+
   </script>
 </body>
 </html>
