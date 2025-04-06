@@ -47,9 +47,9 @@ var tabs=[];
 var rt=[];
 var rr=0;
 var options=document.getElementById('btn-group');
+var btn=document.getElementById('btn');
 var list=document.getElementById('list');
 const proxyUrl = 'https://03e71654-f945-4524-a155-377d4f2b1a6e-00-2rayym3jder48.sisko.replit.dev/api/fetch?url=';
-
   
 const allSites=[['lineToday','LINE'],['yahooTW','Yahoo']];
   
@@ -69,25 +69,25 @@ function openOptions(){
       options.style.display='block';
       if (list.innerHTML===''){
         tabs=allSites;
-        var btn=document.getElementById('btn');
-        for (let tab of tabs){
-          btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="createBtnGroup('${tab[0]}')">${tab[1]}</button>`;
-        }
+
       } else {createBtnGroup(tabs)}
     } else {options.style.display='none'}
 }
 
 function createBtnGroup(site){
-  var btn=document.getElementById('btn');
-  btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`
-  for (let tab of site){
-    if(Array.isArray(tab[0])){
-    var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
-    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="get1stList(['${ti}'])">${tab[1]}</button>`;
+  btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
+  if (site===allSites){console.log(site);
+    for (let tab of site){
+      btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="createBtnGroup('${tab[0]}')">${tab[1]}</button>`;
+    }
+  } else {console.log(site);
+    for (let tab of site){
+      if(Array.isArray(tab[0])){
+      var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
+      btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="get1stList(['${ti}'])">${tab[1]}</button>`;
+    }
   }
 }
-
-
 
 async function get1stList(tt){
 rr=0;
