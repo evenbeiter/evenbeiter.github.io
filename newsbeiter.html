@@ -63,7 +63,7 @@ function openMediaList(){
   tabs=allSites;
   btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
   for (let tab of tabs){
-    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="createBtnGroup(${tab[0]})">${tab[1]}</button>`;
+    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="createBtnGroup(${tab[0]},'${tab[0]}')">${tab[1]}</button>`;
   }
   options.style.display='block';
 }
@@ -75,10 +75,7 @@ function openOptions(){
   }else{options.style.display='none'}
 }
 
-function createBtnGroup(site){
-  console.log(site);
-  const obj={site};console.log(obj);
-  const mediaName=Object.keys(obj)[0];(console.log(mediaName));
+function createBtnGroup(site,mediaName){
   btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
   for (let tab of site){
     if(Array.isArray(tab[0])){
