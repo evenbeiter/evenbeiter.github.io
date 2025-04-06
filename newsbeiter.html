@@ -31,7 +31,7 @@ img{display:block !important;margin:auto;width:100%;height:auto}
   </svg>
 </button>
   <form id="btn-group" class="py-2 sticky-top container-fluid justify-content-start overflow-auto sepia-contrast" style="max-height:100vh">
-    <div>${btn}</div>
+    <div id="btn"></div>
     <div class="input-group mb-3">
       <input type="text" id="search-term" class="form-control">
       <button class="btn sepia" type="button" id="search-btn" onclick="searchResults()">Search</button>
@@ -43,8 +43,46 @@ img{display:block !important;margin:auto;width:100%;height:auto}
 
 <script>
 
+var tabs=[];
+
+const allSites=[['lineToday','LINE'],['yahooTW','Yahoo']];
+  
+const lineToday=[['top','焦點'],['finance','理財'],['100140','鉅亨'],
+[['102394','103101'],'經濟工商'],[['103214','100267'],'M平方'],['100295','今周刊'],['101131','CMoney'],[['100422','100421','100423'],'商周'],['101170','路透社'],[['104453','101006'],'財訊'],[['100150','103088'],'鏡週刊'],['101427','CTWANT'],['100237','東森'],['100167','TVBS'],[['100004','101886'],'風傳媒'],[['100275','101201'],'關鍵評論網'],['global','國際'],['100003','中央社'],[['TOPIC-USelection','2024election'],'川普2.0'],['worldtrend','世界趨勢'],['101074','CNN'],['tech','科技'],['AI','AI'],['100317','數位時代'],['100341','科技新報'],['101196','科技報橘'],['104322','優分析'],['104264','產業定錨筆記'],['100198','經理人月刊'],['101499','德國之聲'],['100462','換日線'],[['100568','100158'],'天下雜誌'],['101031','地球圖輯隊'],[['101934','100394'],'閱讀'],['domestic','國內'],['TOPIC-BingeWatching','追劇'],['TOPIC-KoreaStar','韓星最前線'],['health','健康'],['life','生活'],['cleanandstorage','生活智慧王'],['fun','鄉民'],['entertainment','娛樂'],['travel','旅遊'],['TOPIC-TravelJapan','日本旅遊情報']];
+
+const yahooTW=[['cff206bf-9612-4903-9863-a9ad12319b12','焦點'],['b11aeba6-28c8-47bd-b0d8-96b89a20d817','即時'],['a8a208bf-23e1-4950-8aba-8a8d1c0c2da5','財經'],['f10835b8-98fe-48b4-a506-023937ab0a4b','Yahoo 特派'],['4e1fb4b1-9bf1-4d00-81a1-64001c935310','股匯市'],['cdbe8dd0-22d4-11ea-bbfb-7e2fb6871bd3','台股盤勢'],['9f0e62c0-22d5-11ea-bede-345eb8f1edf4','國際財經'],['e9628320-22d4-11ea-9ef0-2fabb53ab0e9','基金動態'],['381351b0-6d8c-11e9-bb53-0fc098ecd9a1','雜誌'],['ad05d340-22d5-11ea-9db1-fe39a6582c47','研究報告'],['70394000-22d5-11ea-bef4-114a94a8f820','小資理財'],['875b56b0-22d5-11ea-95cf-d43d8a1a8360','專家專欄'],['ebb0818f-c3e6-4c43-ab06-7fabe34c02f5','產業'],['65c6fa3b-b4c8-42e7-afed-c468a927d71f','國際'],['9336b431-7f5d-4dba-b06d-0dce56fb3f8f','娛樂'],['47409191-3f19-48a5-b99a-b7a19c5152f1','Yahoo'],['1af9d85f-9f45-4f07-a290-d6116fcd7e94','BBC'],['fbe20d0c-5704-4a52-a6dd-862b105734a8','中時'],['e9162370-a63f-41e1-b6ab-a2ca4bc88aa3','三立'],['841ae727-aaf4-4d96-89e8-6023380a5f0d','TVBS'],['d1c5195f-8c50-441f-8d4f-192505ff481a','公視'],['616c3db4-1af4-4d9a-90c2-e8d5b61fdca8','中天'],['24a219a6-e124-4d54-85c0-da53c42dad3f','聯合'],['1eeeee88-4e98-49f5-9283-d95b59faa8d0','東森'],['92e62bbd-f6b0-4ff2-ae60-da5e92602b8b','CWANT'],['15344921-beff-4849-8c1e-799f00eb6104','壹蘋'],['15fd91e7-7935-439f-a2a9-caea96a5c3db','鏡週刊'],['81870ef4-46f4-4ed2-a2b3-d436b9b85c06','NOWNews'],['80c8c637-4f0d-4df0-8c2e-d66523148f6d','台視'],['"75f58300-9102-4339-a493-1e2f3e31313c"','民視'],['f0caaf82-30b3-4e6c-a2eb-aa9577dbe7d4','華視'],['483b66c7-0238-411e-be93-53e1478272d3','新頭殻'],['71b213f3-88c4-41fe-b9f0-a59e9045e2d0','風傳媒'],['bd00c410-4b30-4245-abf8-d23656709efa__','Latest'],['db1d46e0-a969-11e9-bff5-6dfdb80d79cf__','Stock Market News'],['04d9350a-bbd1-4787-95be-740cc5ee8852__','Earnings'],['0897608a-7d79-47df-9377-b07bd22b0fde__','Yahoo Finance'],['ed5c8883-d951-4e70-87b3-9f8f375fb410__','Premium News'],['dffbd430-02a2-11e7-bcfc-437e9432ca73__','Tech'],['b1f0c990-db7a-11e7-a937-0d92c86f9da1__','Crypto']];
+  
 const proxyUrl = 'https://03e71654-f945-4524-a155-377d4f2b1a6e-00-2rayym3jder48.sisko.replit.dev/api/fetch?url=';
 
+function openMediaList(){
+  document.getElementById('list').innerHTML='';
+  openOptions();
+}
+
+function openOptions(){
+  var options=document.getElementById('btn-group');
+  var list=document.getElementById('list');
+    if (options.style.display=='none'){
+      options.style.display='block';
+      if (list.innerHTML===''){
+        tabs=allSites;
+        var btn=document.getElementById('btn');
+        for (let tab of tabs){
+          btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="createBtnGroup('${tab[0]}')">${tab[1]}</button>`;
+        }
+      } else {createBtnGroup(tabs)}
+    } else {options.style.display='none'}
+}
+
+function createBtnGroup(site){
+  var btn=document.getElementById('btn');
+  btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`
+  for (let tab of site){
+    if(Array.isArray(tab[0])){
+    var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
+    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="get1stList(['${ti}'])">${tab[1]}</button>`;
+  }
+}
   
 async function getList(url){
   var res=await fetch(url);
@@ -56,9 +94,7 @@ const url = 'https://today.line.me/api/v6/listings/80dd887e-a412-4ab5-9d69-c8996
 const method = 'GET';
 const paramStr = '';
 
-
-const output = document.getElementById('output');
-output.textContent = "Fetching...";
+const output = document.getElementById('list');
 
 if (method === "GET") {
   const fullUrl = `${proxyUrl}?url=${url}`;
