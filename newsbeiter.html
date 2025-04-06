@@ -37,8 +37,7 @@ img{display:block !important;margin:auto;width:100%;height:auto}
       <button class="btn sepia" type="button" id="search-btn" onclick="searchResults()">Search</button>
     </div>
   </form>
-<div id="list" class="mx-3 pt-3">
-</div>
+<div id="list" class="mx-3 pt-3"></div>
 </div>
 
 <script>
@@ -71,22 +70,22 @@ function openOptions(){
       options.style.display='block';
       if (list.innerHTML===''){
         tabs=allSites;
-      }console.log(tabs);
+      }
       createBtnGroup(tabs);
     } else {options.style.display='none'}
 }
 
 function createBtnGroup(site){
   btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
-  if (site===allSites){console.log(site);
+  if (site===allSites){
     for (let tab of site){
       btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="createBtnGroup('${tab[0]}')">${tab[1]}</button>`;
     }
-  } else {console.log(site);
+  } else {
     for (let tab of site){
       if(Array.isArray(tab[0])){
       var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
-      btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${ti}Get1stList(['${ti}'])">${tab[1]}</button>`;
+      btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${site}Get1stList(['${ti}'])">${tab[1]}</button>`;
     }
   }
 }
