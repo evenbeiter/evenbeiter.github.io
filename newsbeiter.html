@@ -75,12 +75,12 @@ function openOptions(){
   }else{options.style.display='none'}
 }
 
-function createBtnGroup(site,mediaName){
+function createBtnGroup(site,siteName){
   btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
   for (let tab of site){
     if(Array.isArray(tab[0])){
     var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
-    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${mediaName}Get1stList(['${ti}'])">${tab[1]}</button>`;
+    btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${siteName}Get1stList(['${ti}'])">${tab[1]}</button>`;
   }
 }
 
@@ -131,45 +131,33 @@ items.sort((a, b) => {return Number(b[1]) - Number(a[1])});
 
 var html ='';
 for (let h of items){
-  html+=`<p class="title" onclick="getContent(this.id,'${h[0]}')">${h[2]}</p><div id="${h[0]}" class="content" onclick="getContent(this.id,'${h[0]}')"></div><hr>`
+  html+=`<p class="title" onclick="${siteName}GetContent(this.id,'${h[0]}')">${h[2]}</p><div id="${h[0]}" class="content" onclick="${siteName}GetContent(this.id,'${h[0]}')"></div><hr>`
 }
 if(html!==''){document.getElementById('list').innerHTML+=html;
 rr++;}
 }
 
-async function getList(url){
-  var res=await fetch(url);
-  var str=await res.json();
-  console.log(str);
-}
-    
-const url = 'https://today.line.me/api/v6/listings/80dd887e-a412-4ab5-9d69-c89960b5c27b?country=tw&offset=0&length=6';
-const method = 'GET';
-const paramStr = '';
-
-const output = document.getElementById('list');
-
-if (method === "GET") {
-  const fullUrl = `${proxyUrl}${url}`;
-  getList(fullUrl);
-
-} else {
-  const formData = new URLSearchParams();
-  formData.append('url', url);
-
-  // Add user-provided params
-  paramStr.split(',').forEach(pair => {
-    const [key, value] = pair.split('=');
-    if (key && value) formData.append(key.trim(), value.trim());
-  });
-
-  fetch(proxyUrl + '?url=' + url, {
-    method: 'POST',
-    body: formData
-  })
-  .then(res => res.text())
-  .then(data => output.textContent = data)
-  .catch(err => output.textContent = 'Error: ' + err);
+async function lineTodayGetContent(clickedId,id){
+  var cEl=document.getElementById(id);
+  if (cEl.style.display=='none' || cEl.style.display==''){
+    cEl.style.display='block';
+    const res = await fetch(proxyUrl+'https://today.line.me/webapi/portal/page/setting/article?country=tw&hash=' + id);
+    const str=await res.json();
+    const a = str.data;
+    if (a) {
+      if (a.media==undefined){
+        var nuxtDataItem = '<span>' + a.publishTime + ' ' + a.publisher + '</span><br>' + a.content.replace(/img data-hashid="/g, 'img src="https://today-obs.line-scdn.net/') + '<p class="text-end"><a href="' + a.url.url + '" target="_blank">分享</a></p><br>';
+      } else {
+        var nuxtDataItem = '<span>' + a.publishTime + ' ' + a.publisher + '</span><br>' + '<video class="vjs-tech" style="width:100%" tabindex="-1" playsinline webkit-playsinline controls><source src="https://today-obs.line-scdn.net/'+a.media.hash+'/270p.m3u8" muted="muted" type="application/x-mpegURL"></source></video>' + a.content.replace(/img data-hashid="/g, 'img src="https://today-obs.line-scdn.net/') + '<p class="text-end"><a href="' + a.url.url + '" target="_blank">分享</a></p><br>';
+      }
+        cEl.innerHTML=nuxtDataItem;
+        cEl.style.display='block';
+    }
+  } else {
+    if (clickedId=='' || cEl.innerHTML.indexOf('<video')==-1){cEl.style.display='none';
+      cEl.previousElementSibling.previousElementSibling.scrollIntoView()
+    }
+  }
 }
 
 </script>
