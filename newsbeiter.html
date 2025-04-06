@@ -69,8 +69,8 @@ function openOptions(){
       options.style.display='block';
       if (list.innerHTML===''){
         tabs=allSites;
-
-      } else {createBtnGroup(tabs)}
+      }
+      createBtnGroup(tabs);
     } else {options.style.display='none'}
 }
 
