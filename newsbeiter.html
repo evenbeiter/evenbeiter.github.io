@@ -43,6 +43,7 @@ img{display:block !important;margin:auto;width:100%;height:auto}
 <script>
 
 var tabs=[];
+var siteName='';
 var rt=[];
 var rr=0;
 var options=document.getElementById('btn-group');
@@ -90,7 +91,7 @@ lineTodayGetList(tt);
 }
 
 async function lineTodayGetList(tt){
-var siteName='lineToday';
+siteName='lineToday';
 rt=tt;
 if (rr==0){
   document.getElementById('btn-group').style.display='none';
@@ -161,13 +162,40 @@ async function lineTodayGetContent(clickedId,id){
   }
 }
 
+async function lineTodaySearchResults(){
+siteName='lineToday';
+document.getElementById('btn-group').style.display='none';
+document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+var items = [];
+var url='';
+    url=proxyUrl+'https://today.line.me/webapi/listing/search?country=tw&query='+document.getElementById('search-term').value;
+    let res=await fetch(url);
+    let str=await res.json();
+    for (let a of str.items){
+      items.push(JSON.stringify([a.url.hash,a.publishTimeUnix,a.title,a.publisher]))
+    }
+
+items=[...new Set(items)];
+items=items.map(i=>JSON.parse(i));
+items=items.filter(i=>i[0]!==null && i[0]!=='');
+items.sort((a, b) => {return Number(b[1]) - Number(a[1])});
+
+var html ='';
+for (let h of items){
+  html+=`<p class="title" onclick="${siteName}GetContent(this.id,'${h[0]}')">${h[2]}<br><span class="fs10 fw-normal">${h[3]} | ${cvtTime(h[1])}</span></p><div id="${h[0]}" class="content" onclick="${siteName}GetContent(this.id,'${h[0]}')"></div><hr>`
+}
+document.getElementById('list').innerHTML=html;
+document.getElementById('search-term').value='';
+}
+  
 async function yahooTWGet1stList(t){
 rr=0;
 yahooTWGetList(t);
 }
 
 async function yahooTWGetList(t){
-var siteName='yahooTW';
+siteName='yahooTW';
 var coun='TW';
 if (t.slice(-2)=='__'){t=t.slice(0,-2);coun='US'};
 var items = [];
@@ -228,6 +256,50 @@ async function yahooTWGetContent(clickedId,id,coun){
   }
 }
 
+function cvtTime(unixTimestamp) {
+  const date = new Date(unixTimestamp);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
+}
+
+function cvt2Timezone(timestamp) {
+    const date = new Date(timestamp);
+    return date.toLocaleString();
+}
+
+async function translate(a){
+  try{
+    var url = 'https://translate.googleapis.com/translate_a/single?client=gtx&dt=t&sl=auto&tl=zh-TW&q='+encodeURIComponent(a);
+    var res=await fetch(url);
+    var raw=await res.json();
+    var ts='';
+    for (var j=0;j<raw[0].length;j++){
+        if (raw[0][j][0]!==null && raw[0][j][0]!==undefined && raw[0][j][0]!=='undefined'){ts=ts+raw[0][j][0]}else{ts=ts}
+    }
+    return ts
+  }catch (error) {console.error(error)}
+}
+
+function cnTest(str) {
+  const chineseCharRegex = /[\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF]/;
+  return chineseCharRegex.test(str);
+}
+  
+let scrollTimeout;
+window.onscroll = function () {
+  clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(() => {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    if (scrollTop + windowHeight >= documentHeight - 5) {
+      if(rt!=='s'){${siteName}GetList(rt)}else{${siteName}GetSearchResults()}
+    }
+  }, 1000);
+};
+  
 </script>
 </body>
 </html>
