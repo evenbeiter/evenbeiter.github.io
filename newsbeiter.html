@@ -41,7 +41,7 @@
       if (method === "GET") {
         const fullUrl = `${proxyUrl}?url=${encodeURIComponent(url)}`;
         fetch(fullUrl)
-          .then(res => res.text())
+          .then(res => res.text();console.log(res.text()))
           .then(data => output.textContent = data)
           .catch(err => output.textContent = 'Error: ' + err);
       } else {
