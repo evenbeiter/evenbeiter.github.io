@@ -84,17 +84,17 @@ function createBtnGroup(site){
     for (let tab of site){
       if(Array.isArray(tab[0])){
       var ti=tab[0].join('\',\'')}else{var ti=tab[0]};
-      btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="get1stList(['${ti}'])">${tab[1]}</button>`;
+      btn.innerHTML+=`<button class="btn sepia me-1 mb-1" type="button" onclick="${ti}Get1stList(['${ti}'])">${tab[1]}</button>`;
     }
   }
 }
 
-async function get1stList(tt){
+async function lineTodayGet1stList(tt){
 rr=0;
-getList(tt);
+lineTodayGetList(tt);
 }
 
-async function getList(tt){
+async function lineTodayGetList(tt){
 rt=tt;
 if (rr==0){
   document.getElementById('btn-group').style.display='none';
