@@ -6,22 +6,6 @@
 <body>
   <h1>Python API Proxy Demo</h1>
 
-  <form id="apiForm">
-    <label for="url">Target API URL:</label><br>
-    <input type="text" id="url" name="url" size="50" value="https://api.github.com/users/octocat"><br><br>
-
-    <label for="method">Request Method:</label><br>
-    <select id="method" name="method">
-      <option value="GET">GET</option>
-      <option value="POST">POST</option>
-    </select><br><br>
-
-    <label for="params">POST Params (key=value, comma separated):</label><br>
-    <input type="text" id="params" name="params" placeholder="e.g. key1=value1,key2=value2"><br><br>
-
-    <button type="submit">Fetch</button>
-  </form>
-
   <h2>Result:</h2>
   <pre id="output">Waiting...</pre>
 
@@ -40,10 +24,13 @@
 
       if (method === "GET") {
         const fullUrl = `${proxyUrl}?url=${encodeURIComponent(url)}`;
-        fetch(fullUrl)
-          .then(res => res.text();console.log(res.text()))
-          .then(data => output.textContent = data)
-          .catch(err => output.textContent = 'Error: ' + err);
+        var res=await fetch(fullUrl);
+        var str=await res.json();
+        console.log(str);
+        // fetch(fullUrl)
+        //   .then(res => res.text())
+        //   .then(data => output.textContent = data)
+        //   .catch(err => output.textContent = 'Error: ' + err);
       } else {
         const formData = new URLSearchParams();
         formData.append('url', url);
