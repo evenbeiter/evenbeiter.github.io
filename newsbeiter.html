@@ -160,6 +160,72 @@ async function lineTodayGetContent(clickedId,id){
   }
 }
 
+async function yahooTWGet1stList(t){
+rr=0;
+getList(t);
+}
+
+async function yahooTWGetList(t){
+var coun='TW';
+if (t.slice(-2)=='__'){t=t.slice(0,-2);coun='US'};
+var items = [];
+rr++;
+rt=t;
+console.log(rr);
+if (rr==1){
+  document.getElementById('btn-group').style.display='none';
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+  document.getElementById('list').innerHTML='';
+}
+var url=proxyUrl+'https://ncp-gw-finance.media.yahoo.com/api/v2/gql/stream_view?count=200&imageFormat=WEBP&namespace=finance&ntkEnabled=false&ssl=true&id=neo-ntk-assetlist-stream&site=finance&version=v1&enableCrossModuleDedup=true&snippetCount=200&listId='+t;
+let res=await fetch(url);
+let str=await res.json();
+var data=str.data.main.stream.slice((rr-1)*50,rr*50);
+for (let h of data){
+  if(h.content){
+    h=h.content;
+    items.push([h.id,h.title])
+  }
+}
+var html='';
+for (let h of items){
+  html+=`<p class="title" onclick="yahooTWGetContent(this.id,'${h[0]}','${coun}')">${h[1]}</p><div id="${h[0]}" class="content" onclick="yahooTWGetContent(this.id,'${h[0]}','${coun}')"></div><hr>`
+}
+document.getElementById('list').innerHTML+=html;
+}
+
+async function yahooTWGetContent(clickedId,id,coun){
+  var cEl=document.getElementById(id);
+  if (cEl.style.display=='none' || cEl.style.display==''){
+    cEl.style.display='block';
+    const res = await fetch(proxyUrl+'https://www.yahoo.com/caas/content/article/?region='+coun+'&uuid='+id);
+    const str=await res.json();
+    var a=str.items[0].data.partnerData;
+
+    var b=str.items[0].markup.replaceAll('data-src','src').replace(/padding-bottom[\\s\\S]*?%/g,'');
+    
+    var nuxtDataItem = '<p class="fs10">'+cvt2Timezone(a.publishDate)+' | '+a.publisher+'</p>'+ b + '<p class="text-end"><a href="' + a.finalUrl + '" target="_blank">分享</a></p><br>';
+    cEl.innerHTML=nuxtDataItem;
+    var header=cEl.querySelector('.caas-header');header.remove();
+    var attr=cEl.querySelector('.caas-attr');attr.remove();
+    var readmore=cEl.querySelector('.caas-readmore');readmore.remove();
+
+    var all=[...cEl.querySelectorAll('li'),...cEl.querySelectorAll('p')];
+    for (let a of all){
+      if (a.innerText!=='' && cnTest(a.innerText)!==true){
+        var t=await translate(a.textContent);
+        if (t!==''){a.innerHTML+='<br>'+t};
+      }
+    }
+    
+  } else {
+    if (clickedId=='' || cEl.innerHTML.indexOf('<video')==-1){cEl.style.display='none';
+      cEl.previousElementSibling.previousElementSibling.scrollIntoView()
+    }
+  }
+}
+
 </script>
 </body>
 </html>
