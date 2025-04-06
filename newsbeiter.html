@@ -76,6 +76,7 @@ function openOptions(){
 }
 
 function createBtnGroup(site){
+  console.log(site);
   const obj={site};
   const mediaName=Object.keys(obj)[0];
   btn.innerHTML=`<button class="btn sepia me-1 mb-1" type="button" onclick="openMediaList()">媒體總覽</button><br>`;
