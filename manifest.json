@@ -1,0 +1,8 @@
+{
+  "name": "뉴스베이터",
+  "short_name": "뉴스베이터",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "icons": [
+  ]
+}
