@@ -420,8 +420,8 @@
             var mstar_data = await getJsonData(mstarFile);
             let rows_data = mstar_data["rows"];
 
-            var fx_data = await getJsonData("https://api.exchangeratesapi.io/history?start_at=" + mthAgo(lastDay(), 5) + "&end_at=" + lastDay() +"&base=GBP&symbols=USD");
-            let gbp_data = fx_data["rates"];
+            var fx_data = await getJsonData("https://api.frankfurter.dev/v1/" + mthAgo(lastDay(), 5) + ".." + lastDay() +"?base=GBP&symbols=USD");
+            let gbp_data = fx_data.rates;
             let gbp_dt = Object.keys(gbp_data);
 
             rows_data.forEach(async function (data) {
