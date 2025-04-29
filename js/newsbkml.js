@@ -1,6 +1,6 @@
 javascript:(function(){
-  const targetUrl = "https://example.com";
-  const externalScriptUrl = "https://yourdomain.com/logic.js";
+  const targetUrl = "https://hao.cnyes.com/ch/361680";
+  const externalScriptUrl = "https://evenbeiter.github.io/js/news.js";
 
   const injectScript = () => {
     const script = document.createElement('script');
