@@ -50,7 +50,7 @@ document.getElementById("upload").addEventListener("change", async function (e) 
     if (relativePath.endsWith(".xhtml") || relativePath.endsWith(".html")) {
       htmlFiles.push(relativePath);
     }
-  });
+  });console.log(htmlFiles);
 
   // Modify text content
   for (const path of htmlFiles) {
