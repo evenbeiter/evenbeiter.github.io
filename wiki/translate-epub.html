@@ -61,7 +61,8 @@ document.getElementById("upload").addEventListener("change", async function (e) 
     // Add <p> to tags containing text
     doc.querySelectorAll("body *").forEach(el => {
       if (el.childNodes.length === 1 && el.firstChild.nodeType === 3) { // Text only
-        el.outerHTML+= '<p>'+await translate(el.textContent)+'</p>';
+        var t=await translate(el.textContent);
+        el.outerHTML+= '<p>'+t+'</p>';
       }
     });
 
