@@ -56,7 +56,7 @@ document.getElementById("upload").addEventListener("change", async function (e) 
   for (const path of htmlFiles) {
     let content = await zip.file(path).async("string");
     const parser = new DOMParser();
-    const doc = parser.parseFromString(content, "application/xhtml+xml");
+    const doc = parser.parseFromString(content, "application/xhtml+xml");console.log(doc);
 
     // Add <p> to tags containing text
     doc.querySelectorAll("body *").forEach(el => {
