@@ -38,49 +38,57 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <input type="file" id="upload" />
+
 <script>
+async function translateText(text) {
+  // Dummy translation for demo
+  return "[Translated] " + text;
+}
+
 document.getElementById("upload").addEventListener("change", async function (e) {
   const file = e.target.files[0];
   const zip = await JSZip.loadAsync(file);
-
-  // Loop through all HTML/XHTML files
   const htmlFiles = [];
+
+  // Find .xhtml/.html files
   zip.forEach((relativePath, zipEntry) => {
     if (relativePath.endsWith(".xhtml") || relativePath.endsWith(".html")) {
       htmlFiles.push(relativePath);
     }
   });
 
-  // Modify text content
   for (const path of htmlFiles) {
-    let content = await zip.file(path).async("string");
+    const content = await zip.file(path).async("string");
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, "application/xhtml+xml");
 
-    // Add <p> to tags containing text
-    doc.querySelectorAll("body *").forEach(el => {
-      if (el.childNodes.length === 1 && el.firstChild.nodeType === 3) { // Text only
-        const p = doc.createElement("p");
-        p.textContent = await translate(el.textContent);
-        //el.innerHTML = "";
-        el.appendChild(p);
-      }
-    });
+    const elements = [...doc.querySelectorAll("body *")];
+    for (const el of elements) {
+      if (el.childNodes.length === 1 && el.firstChild.nodeType === 3 && el.textContent.trim()) {
+        const originalText = el.textContent.trim();
+        const translation = await translate(originalText);
 
-    // Serialize and replace in zip
+        const p = doc.createElement("p");
+        p.className = "translation";
+        p.textContent = translation;
+
+        el.parentNode.insertBefore(p, el.nextSibling);
+      }
+    }
+
+    // Serialize and save modified file
     const serializer = new XMLSerializer();
     const modifiedContent = serializer.serializeToString(doc);
     zip.file(path, modifiedContent);
   }
 
-  // Rebuild EPUB
+  // Generate and download new EPUB
   const newEpubBlob = await zip.generateAsync({ type: "blob" });
   const a = document.createElement("a");
   a.href = URL.createObjectURL(newEpubBlob);
-  a.download = "modified.epub";
-  a.textContent = "Download modified EPUB";
+  a.download = "translated.epub";
+  a.textContent = "Download Translated EPUB";
   document.body.appendChild(a);
 });
 
