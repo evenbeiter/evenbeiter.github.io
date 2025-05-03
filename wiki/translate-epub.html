@@ -38,6 +38,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/epubjs@0.3.88/dist/epub.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <input type="file" id="upload" />
 <script>
 document.getElementById("upload").addEventListener("change", async function (e) {
@@ -50,19 +51,21 @@ document.getElementById("upload").addEventListener("change", async function (e) 
     if (relativePath.endsWith(".xhtml") || relativePath.endsWith(".html")) {
       htmlFiles.push(relativePath);
     }
-  });console.log(htmlFiles);
+  });
 
   // Modify text content
   for (const path of htmlFiles) {
     let content = await zip.file(path).async("string");
     const parser = new DOMParser();
-    const doc = parser.parseFromString(content, "application/xhtml+xml");console.log(doc);
+    const doc = parser.parseFromString(content, "application/xhtml+xml");
 
     // Add <p> to tags containing text
     doc.querySelectorAll("body *").forEach(el => {
       if (el.childNodes.length === 1 && el.firstChild.nodeType === 3) { // Text only
-        var t=await translate(el.textContent);console.log('1');
-        el.outerHTML+= '<p>'+t+'</p>';
+        const p = doc.createElement("p");
+        p.textContent = await translate(el.textContent);
+        //el.innerHTML = "";
+        el.appendChild(p);
       }
     });
 
