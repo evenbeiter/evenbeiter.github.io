@@ -67,7 +67,7 @@ document.getElementById("upload").addEventListener("change", async function (e) 
     for (const el of elements) {
       if (el.childNodes.length === 1 && el.firstChild.nodeType === 3 && el.textContent.trim()) {
         const originalText = el.textContent.trim();
-        const translation = await translate(originalText);
+        try{var translation = await translate(originalText);}catch{var translation=''};
 
         const p = doc.createElement("p");
         p.className = "translation";
