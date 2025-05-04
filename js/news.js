@@ -465,7 +465,7 @@ async function invtComGetList(siteName,t){
     var doc=parser.parseFromString(str, "text/html");
     if (t.slice(0,8)!=='analysis'){var hh=doc.querySelectorAll('article')}else{var hh=doc.querySelector('#contentSection').querySelectorAll('article')};
     for (let h of hh){
-      items.push([h.children[1].children[0].href,h.children[1].children[0].innerText,h.querySelector('time').getAttribute('datetime')+' GMT+0',h.children[1].children[2].querySelectorAll('span')[1].innerText]);
+      items.push([h.children[1].children[0].href,h.children[1].children[0].innerText,h.querySelector('time').getAttribute('datetime').replace(' ','T')+'Z',h.children[1].children[2].querySelectorAll('span')[1].innerText]);
     }
   }
   for (let h of items){
