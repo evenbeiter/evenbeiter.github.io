@@ -54,7 +54,7 @@ async function parseEpub(file) {
     if (zip.file(filePath)) {
       const content = await zip.file(filePath).async("string");
       const doc = parser.parseFromString(content, "application/xhtml+xml");
-      const bodyText = doc.body.innerText.trim();
+      const bodyText = doc.body.innerHTML.replace(/<p[\s\S]*?>/g,'<p>').replace(/<h1[\s\S]*?>/g,'<h1>').replace(/<h2[\s\S]*?>/g,'<h2>').replace(/<hr[\s\S]*?>/g,'<hr>');
       if (bodyText) chapters.push(bodyText);
     }
   }
@@ -68,7 +68,7 @@ document.getElementById("uploadEnglish").addEventListener("change", async (e) =>
   const file = e.target.files[0];
   if (file) {
     englishChapters = await parseEpub(file);
-    document.getElementById("englishText").value = englishChapters.join("\n\n=== CHAPTER BREAK ===\n\n");
+    document.getElementById("englishText").value = englishChapters.join("<h2>=== CHAPTER BREAK ===</h2>");
   }
 });
 
@@ -76,7 +76,7 @@ document.getElementById("uploadChinese").addEventListener("change", async (e) =>
   const file = e.target.files[0];
   if (file) {
     chineseChapters = await parseEpub(file);
-    document.getElementById("chineseText").value = chineseChapters.join("\n\n=== CHAPTER BREAK ===\n\n");
+    document.getElementById("chineseText").value = chineseChapters.join("<h2>=== CHAPTER BREAK ===</h2>");
   }
 });
 
