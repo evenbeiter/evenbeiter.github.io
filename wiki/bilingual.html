@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bilingual EPUB Viewer</title>
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    .pair { margin-bottom: 1em; }
+    .en { color: navy; }
+    .zh { color: darkred; }
+    #output { border: 1px solid #ccc; padding: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Bilingual EPUB Viewer</h1>
+  <p>Upload English EPUB and Chinese EPUB:</p>
+  <input type="file" id="enFile" accept=".epub">  
+  <input type="file" id="zhFile" accept=".epub">  
+  <button onclick="generate()">Generate Bilingual</button>
+  <button onclick="copyHTML()">Copy innerHTML</button>
+
+  <div id="output"></div>
+
+  <script>
+    async function readEPUB(file) {
+      const zip = await JSZip.loadAsync(file);
+      let contents = "";
+
+      // 找第一個 xhtml/html 檔來示範（實際上應該根據 EPUB spine 順序）
+      for (let filename of Object.keys(zip.files)) {
+        if (filename.endsWith(".xhtml") || filename.endsWith(".html")) {
+          const text = await zip.files[filename].async("string");
+          contents += text;
+        }
+      }
+      return contents;
+    }
+
+    async function generate() {
+      const enFile = document.getElementById("enFile").files[0];
+      const zhFile = document.getElementById("zhFile").files[0];
+      if (!enFile || !zhFile) {
+        alert("Please upload both English and Chinese EPUB files!");
+        return;
+      }
+
+      const [enContent, zhContent] = await Promise.all([
+        readEPUB(enFile),
+        readEPUB(zhFile)
+      ]);
+
+      const parser = new DOMParser();
+      const enDoc = parser.parseFromString(enContent, "text/html");
+      const zhDoc = parser.parseFromString(zhContent, "text/html");
+
+      const enParas = Array.from(enDoc.querySelectorAll("p")).map(p => p.textContent.trim()).filter(t => t);
+      const zhParas = Array.from(zhDoc.querySelectorAll("p")).map(p => p.textContent.trim()).filter(t => t);
+
+      const output = document.getElementById("output");
+      output.innerHTML = "";
+
+      for (let i = 0; i < Math.min(enParas.length, zhParas.length); i++) {
+        const div = document.createElement("div");
+        div.className = "pair";
+        div.innerHTML = `<p class="en">${enParas[i]}</p><p class="zh">${zhParas[i]}</p>`;
+        output.appendChild(div);
+      }
+    }
+
+    function copyHTML() {
+      const output = document.getElementById("output");
+      navigator.clipboard.writeText(output.innerHTML).then(() => {
+        alert("innerHTML copied!");
+      });
+    }
+  </script>
+</body>
+</html>
