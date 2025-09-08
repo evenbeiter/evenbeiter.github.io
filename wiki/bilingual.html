@@ -59,8 +59,8 @@ async function parseEpub(file) {
     if (zip.file(filePath)) {
       const content = await zip.file(filePath).async("string");
       const doc = parser.parseFromString(content, "application/xhtml+xml");
-      const bodyText = doc.body.innerText.trim();
-      if (bodyText) fullText += bodyText + "\n\n";
+      const bodyText = doc.body.innerHTML;
+      if (bodyText) fullText += bodyText;
     }
   }
   return fullText;
