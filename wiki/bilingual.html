@@ -54,7 +54,7 @@ async function parseEpub(file) {
     if (zip.file(filePath)) {
       const content = await zip.file(filePath).async("string");
       const doc = parser.parseFromString(content, "application/xhtml+xml");
-      const bodyText = doc.body.innerHTML.replace(/<p[\s\S]*?>/g,'<p>').replace(/<h1[\s\S]*?>/g,'<h1>').replace(/<h2[\s\S]*?>/g,'<h2>').replace(/<hr[\s\S]*?>/g,'<hr>');
+      const bodyText = doc.body.innerHTML.replace(/<p[\s\S]*?>/g,'<p>').replace(/<h1[\s\S]*?>/g,'<h1>').replace(/<h2[\s\S]*?>/g,'<h2>').replace(/<h3[\s\S]*?>/g,'<h3>').replace(/<hr[\s\S]*?>/g,'<hr>').replace(/<span[\s\S]*?>/g,'<span>').replace(/<div[\s\S]*?>/g,'<div>').replace(/<a[\s\S]*?>/g,'').replaceAll('</a>','');
       if (bodyText) chapters.push(bodyText);
     }
   }
